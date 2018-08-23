@@ -40,7 +40,6 @@ class Solution(object):
         step = 0
 
         self.start1(elems, step, path, result)
-
         return result
 
     # todo
@@ -126,7 +125,6 @@ class Solution(object):
         return result
 
     def start3(self, nums, elem, step, path, result):
-
         if step == len(elem):
             result.append(path)
             return
@@ -138,8 +136,26 @@ class Solution(object):
             # print(path)
             self.start3(nums, elem, step + 1, list(path), result)
             for _ in range(i):
-                path.pop()
+                print("pop", path.pop())
+
+    def subsetsWithDup4(self, nums):
+        nums = sorted(nums)
+        length = len(nums)
+        result = []
+
+        for i in range(1 << length):
+            l = list()
+            for j in range(length):
+                if i & (1 << j) != 0:
+                    l.append(nums[j])
+            result.append(l)
+            del l
+            # del duplicated tuple, cannot add list to set since it's mutable
+            # but really slow..
+            tuples = {tuple(x) for x in result}
+            real_res = [list(x) for x in tuples]
+        return real_res
 
 
 a = Solution()
-print(a.subsetsWithDup3([1, 2, 2]))
+print(a.subsetsWithDup4([1, 2, 2]))
