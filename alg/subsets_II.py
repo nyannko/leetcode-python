@@ -65,10 +65,11 @@ class Solution(object):
         selected = {}
 
         # list way
-        # count = [0 for _ in range(max(nums) + 2)]
+        # count = [0 for _ in range(nums[-1] - nums[0] + 1)]
 
         # dict way, faster than list
-        keys = [x for x in range(max(nums) + 2)]
+        length = nums[-1] - nums[0] + 1
+        keys = [x for x in range(length)]
         count = dict.fromkeys(keys, 0)
         # print(count)
 
@@ -158,4 +159,4 @@ class Solution(object):
 
 
 a = Solution()
-print(a.subsetsWithDup4([1, 2, 2]))
+print(a.subsetsWithDup2([1, 2, 2]))
