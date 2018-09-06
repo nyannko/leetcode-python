@@ -1,5 +1,5 @@
 import unittest
-from longest_substring import Solution
+from alg.longest_substring import Solution
 
 class Testsubstring(unittest.TestCase):
 

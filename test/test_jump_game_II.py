@@ -1,6 +1,6 @@
 import unittest
 
-from jump_game_II import Solution
+from alg.jump_game_II import Solution
 
 
 class TestJumpGameII(unittest.TestCase):

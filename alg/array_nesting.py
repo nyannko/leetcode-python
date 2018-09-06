@@ -1,4 +1,5 @@
 class Solution(object):
+
     def arrayNesting(self, nums):
         d = {}
         for i, num in enumerate(nums):
@@ -36,4 +37,4 @@ class Solution(object):
 
 
 a = Solution()
-print(a.array_nesting([5,4,0,3,1,6,2]))
+print(a.array_nesting([5, 4, 0, 3, 1, 6, 2]))

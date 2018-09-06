@@ -1,5 +1,5 @@
 import unittest
-from sell_stock import Solution
+from alg.sell_stock import Solution
 
 
 class TestSellStock(unittest.TestCase):

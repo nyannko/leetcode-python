@@ -1,6 +1,6 @@
 import unittest
 
-from code.triangle import Solution
+from alg.triangle import Solution
 
 
 class TestTriangle(unittest.TestCase):

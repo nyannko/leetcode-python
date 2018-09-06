@@ -1,6 +1,6 @@
 import unittest
 
-from max_area import Solution
+from alg.max_area import Solution
 
 class TestMaxArea(unittest.TestCase):
 

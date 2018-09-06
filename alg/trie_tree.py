@@ -14,6 +14,7 @@ class Trie:
             # 如果中间节点(如abc)已经出现就删除结尾的None值
             if cls.end in node:
                 del node[cls.end]
+            # return provided default value
             node = node.setdefault(c, {})
             print("add:", cls.root)
         node[cls.end] = None

@@ -1,6 +1,6 @@
 import unittest
 
-from code.two_sum import Solution
+from alg.two_sum import Solution
 
 
 class TestTwoSum(unittest.TestCase):

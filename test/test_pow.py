@@ -1,6 +1,6 @@
 import unittest
 
-from pow import Solution
+from alg.pow import Solution
 
 
 class test_pow(unittest.TestCase):
