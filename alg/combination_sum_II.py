@@ -1,5 +1,5 @@
 class Solution(object):
-    def combinationSum(self, candidates, target):
+    def combinationSum2(self, candidates, target):
         """
         :type candidates: List[int]
         :type target: int
@@ -18,11 +18,14 @@ class Solution(object):
         if target == 0:
             res.append(path)
             return
+        pre = -1
         for i in range(step, len(candidates)):
-            self.dfs(candidates, target - candidates[i], path + [candidates[i]], i, res)
-            # Since we can repeatedly select elements from candidates, so i = i
+            if pre == candidates[i]: continue
+            pre = candidates[i]
+            self.dfs(candidates, target - candidates[i], path + [candidates[i]], i + 1, res)
 
 
 a = Solution()
-print(a.combinationSum([2, 3, 6, 7], 7))
-# https://pasteboard.co/HCPWD1t.png
+print(a.combinationSum2([2,5,2,1,2], 5))
+#https://pasteboard.co/HCXDtTs.png
+#https://pasteboard.co/HCXK1Y3.png
