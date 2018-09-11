@@ -45,8 +45,30 @@ class Solution:
 
         return new_head
 
+    def removeNthFromEnd(self, head, n):
+        """
+        :type head: ListNode
+        :type n: int
+        :rtype: ListNode
+        """
+        node = head
+        length = 0
+        while node is not None:
+            node = node.next
+            length += 1
+        loc = length - n - 1
+        new_node = head
+        # first and other nodes
+        if loc < 0:
+            return head.next
 
-l = [1, 2, 3, 4]
+        for _ in range(loc):
+            new_node = new_node.next
+        new_node.next = new_node.next.next
+        return head
+
+
+l = [1, 2]
 
 head = ll = ListNode(1)
 for i in range(2, len(l) + 1):
@@ -55,4 +77,5 @@ for i in range(2, len(l) + 1):
 
 a = Solution()
 # print(a.swapPairs(head).next.next.val)
-a.reverse_list_recursive(head, None)
+# a.reverse_list_recursive(head, None)
+print(a.removeNthFromEnd(head, 1).val)

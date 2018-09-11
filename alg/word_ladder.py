@@ -21,11 +21,13 @@ class Solution(object):
                 return length
 
             for i in range(len(word)):
+
                 for c in alphabet:
                     new_word = word[:i] + c + word[i + 1:]
 
                     if new_word in wordList and new_word not in visited:
                         q.append((new_word, length + 1))
+                        print(i, new_word)
                         visited.add(new_word)
 
         return 0
