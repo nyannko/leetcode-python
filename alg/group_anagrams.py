@@ -26,6 +26,5 @@ class Solution(object):
         return filter(lambda x: count[tuple(sorted(x))] > 1, strs)
 
 
-
 a = Solution()
 print(a.groupAnagrams1(["eat", "tea", "tan", "ate", "nat", "bat"]))
