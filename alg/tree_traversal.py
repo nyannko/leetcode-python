@@ -109,6 +109,7 @@ tree = TreeNode(5).insert(2).insert(1).insert(3).insert(7).insert(6).insert(8)
 print(tree.search(7))
 print(a.preorderTraversal(tree))
 print(a.inorderTraversal(tree))
+# https://pasteboard.co/HFh1qvW.png
 print(a.maxDepth(tree))
 print(a.postorderTraversal(tree))
-# https://pasteboard.co/HFh1qvW.png
+# https://pasteboard.co/HFvQq4D.png
