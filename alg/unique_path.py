@@ -29,7 +29,9 @@ class Solution(object):
                 table[m][n] = dfs(m - 1, n) + dfs(m, n - 1)
 
             return table[m][n]
+
         return dfs1(m - 1, n - 1)
 
+
 a = Solution()
-print(a.uniquePaths(3,2))
+print(a.uniquePaths(3, 2))

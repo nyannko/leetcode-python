@@ -4,7 +4,6 @@ class Solution(object):
         :type grid: List[List[int]]
         :rtype: int
         """
-
         # build a table
         row = len(grid)
         col = len(grid[0])
@@ -31,4 +30,4 @@ class Solution(object):
 
 
 a = Solution()
-print(a.minPathSum([[1,2],[1,1]]))  # 7
+print(a.minPathSum([[1, 2], [1, 1]]))  # 7

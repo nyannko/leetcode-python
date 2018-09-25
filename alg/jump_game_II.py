@@ -1,5 +1,4 @@
 class Solution(object):
-
     def jump(self, nums):
         result = last = cur = 0
         for i, j in enumerate(nums):

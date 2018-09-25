@@ -1,5 +1,4 @@
 class Solution:
-
     def mySqrt(self, x):
         left = 1
         right = x / 2
@@ -19,6 +18,7 @@ class Solution:
                 return mid
 
         return last_mid
+
 
 a = Solution()
 print(a.mySqrt(8))

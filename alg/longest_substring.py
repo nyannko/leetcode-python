@@ -1,5 +1,4 @@
 class Solution(object):
-
     def substring(self, s):
         # alphabet = list(string.ascii_letters + string.digits + string.punctuation)
         alphabet = [chr(i) for i in range(127)]

@@ -4,8 +4,8 @@ class Solution(object):
         :type obstacleGrid: List[List[int]]
         :rtype: int
         """
-        def dfs(obstacleGrid, m, n):
 
+        def dfs(obstacleGrid, m, n):
             ### out is right??? can read a number in the list by negative index.
             if m < 0 or n < 0:
                 return 0

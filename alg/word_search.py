@@ -9,7 +9,7 @@ class Solution:
 
 a = Solution()
 print(a.exist([
-  ['A','B','C','E'],
-  ['S','F','C','S'],
-  ['A','D','E','E']
+    ['A', 'B', 'C', 'E'],
+    ['S', 'F', 'C', 'S'],
+    ['A', 'D', 'E', 'E']
 ], 'SEE'))

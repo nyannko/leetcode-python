@@ -1,5 +1,4 @@
 class Solution(object):
-
     # exactly
     def can_jump(self, arr):
         index = 0

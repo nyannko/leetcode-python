@@ -1,7 +1,5 @@
 # https://pasteboard.co/HAIdoF6.png do not split the words
 # if you want to find the longest path
-
-
 class Trie:
     root = {}
     end = '/'

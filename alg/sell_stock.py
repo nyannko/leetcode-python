@@ -1,5 +1,4 @@
 class Solution(object):
-
     def max_profit(self, prices):
         if not prices:
             return 0

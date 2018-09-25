@@ -13,7 +13,9 @@ def more_than_half(arr):
 
     return result
 
+
 import string
+
 print(string.ascii_letters, string.punctuation, string.digits)
 
 arr1 = [1, 2, 3, 2, 2, 2, 5, 4, 2]

@@ -42,7 +42,6 @@ class Solution:
         return res
 
 
-
 a = Solution()
 # help(Solution)
 print(a.merge1([Interval(0, 5), Interval(5, 7)]))  # [[0, 7]]

@@ -33,8 +33,6 @@ class TreeNode:
 
 
 class Solution:
-
-    # stack
     def preorderTraversal(self, root):
         """
         :type root: TreeNode
@@ -69,10 +67,48 @@ class Solution:
                 cur = cur.right
         return res
 
+    def maxDepth(self, root):
+        """
+        :type root: TreeNode
+        :rtype: int
+        """
+        if not root:
+            return 0
+        depth = max(self.maxDepth(root.left), self.maxDepth(root.right)) + 1
+        return depth
+
+    def postorderTraversal(self, root):
+        """
+        :type root: TreeNode
+        :rtype: List[int]
+        """
+        if not root: return []
+        res = []
+        stack = [root]
+        p = root.left
+
+        while stack:
+            while p:
+                stack.append(p)
+                p = p.left
+            q = None
+            while stack:
+                p = stack.pop()
+                if p.right == q:
+                    res.append(p.val)
+                    q = p
+                else:
+                    stack.append(p)
+                    p = p.right
+                    break
+        return res
+
 
 a = Solution()
 tree = TreeNode(5).insert(2).insert(1).insert(3).insert(7).insert(6).insert(8)
 print(tree.search(7))
 print(a.preorderTraversal(tree))
 print(a.inorderTraversal(tree))
+print(a.maxDepth(tree))
+print(a.postorderTraversal(tree))
 # https://pasteboard.co/HFh1qvW.png

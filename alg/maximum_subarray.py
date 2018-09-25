@@ -1,5 +1,6 @@
 import sys
 
+
 class Solution(object):
     def maxSubArray(self, nums):
         """
@@ -14,6 +15,6 @@ class Solution(object):
 
         return result
 
-a = Solution()
-print(a.maxSubArray([-2,1,-3,4,-1,2,1,-5,4]))
 
+a = Solution()
+print(a.maxSubArray([-2, 1, -3, 4, -1, 2, 1, -5, 4]))

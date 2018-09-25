@@ -1,5 +1,4 @@
 class Solution:
-
     def trap(self, height):
         i, j = 0, len(height) - 1
         l_max, r_max = 0, 0

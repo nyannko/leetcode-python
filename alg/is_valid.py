@@ -15,7 +15,8 @@ class Solution(object):
             else:
                 return False
         return stack == []
-        #复习is ==....
+        # 复习is ==....
+
 
 a = Solution()
 print(a.isValid("[])"))

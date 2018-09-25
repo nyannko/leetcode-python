@@ -1,7 +1,5 @@
 class Solution(object):
-
     def predict_the_winner(self, nums):
-
         length = len(nums)
         cache = [[-1 for x in range(length)] for x in range(length)]
 

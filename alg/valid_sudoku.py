@@ -22,7 +22,6 @@ class Solution:
         return True
 
 
-
 a = Solution()
 print(a.isValidSudoku([
     ["5", "3", ".", ".", "7", ".", ".", ".", "."],

@@ -1,5 +1,4 @@
 class Solution(object):
-
     def arrayNesting(self, nums):
         d = {}
         for i, num in enumerate(nums):

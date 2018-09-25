@@ -1,5 +1,4 @@
 class Solution(object):
-
     def check_pow_loop(self, base, exp):
         if exp < 0:
             return 1 / self.pow_loop(base, -exp)
