@@ -32,6 +32,22 @@ class Solution(object):
                 i += 1
         return i
 
+    def removeDuplicates3(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        if len(nums) <= 2:
+            return len(nums)
+
+        index = 2
+        for i in range(2, len(nums)):
+            if nums[index - 2] != nums[i]:
+                nums[index] = nums[i]
+                index += 1
+        print(nums)
+        return index
+
 
 a = Solution()
 print(a.removeDuplicates2([1, 1, 1, 1, 2, 2, 3]))
