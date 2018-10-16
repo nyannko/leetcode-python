@@ -9,7 +9,7 @@ class Solution(object):
         # create a table for dp
         row = len(s1) + 1
         col = len(s2) + 1
-        print(row+col, len(s3)+2)
+        print(row + col, len(s3) + 2)
         if row + col != len(s3) + 2:
             return False
 
