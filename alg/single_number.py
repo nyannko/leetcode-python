@@ -16,3 +16,16 @@ class Solution(object):
         :rtype: int
         """
         return sum(set(nums)) * 2 - sum(nums)
+
+    def singleNumber3(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: List[int]
+        """
+        enc = 0
+        for i in nums:
+            enc ^= i
+        for i in nums:
+            res = enc ^ i
+            if res in nums:
+                return [i, res]
