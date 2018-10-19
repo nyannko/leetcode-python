@@ -1,11 +1,8 @@
 class Solution(object):
-    def findComplement(self, num):
+    def hasAlternatingBits(self, n):
         """
-        :type num: int
-        :rtype: int
+        :type n: int
+        :rtype: bool
         """
-        mask = 1
-        while num >= mask:
-            num ^= mask
-            mask <<= 1
-        return num
+        s = bin(n)
+        return '00' not in s and '11' not in s
