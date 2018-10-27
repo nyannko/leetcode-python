@@ -21,3 +21,19 @@ class Solution:
         if root:
             root.left, root.right = self.invertTree(root.right), self.invertTree(root.left)
             return root
+
+    def invertTree2(self, root):
+        if not root: return []
+        root.left, root.right = root.right, root.left
+        if root.left:
+            self.invertTree(root.left)
+        if root.right:
+            self.invertTree(root.right)
+        return root
+
+    def invertTree3(self, root):
+        if root:
+            self.invertTree(root.left)
+            self.invertTree(root.right)
+            root.left, root.right = root.right, root.left
+        return root
