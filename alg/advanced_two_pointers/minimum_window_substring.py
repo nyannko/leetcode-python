@@ -21,7 +21,7 @@ class Solution:
             d[s[end]] -= 1
             end += 1
 
-            # all letters in t has occurred in window
+            # all letters in t has occurred in the window
             while counter == 0:
                 # clac length
                 if end - begin < min_length:

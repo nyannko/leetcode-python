@@ -17,4 +17,4 @@ class Solution(object):
                 min_length = min(min_length, j - i)
                 res -= nums[i]
                 i += 1
-        return 0 if min_length == float('inf') else min_length./auto
+        return 0 if min_length == float('inf') else min_length
