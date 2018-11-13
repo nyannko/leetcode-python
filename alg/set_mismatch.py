@@ -7,6 +7,7 @@ class Solution:
         # ugly
         res, val = [], 0
         import operator
+        from functools import reduce
         # for python2
         v1 = reduce(operator.xor, list(set(nums)) + nums)
         res.append(v1)
