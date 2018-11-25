@@ -22,10 +22,12 @@ class Solution(object):
         :type nums: List[int]
         :rtype: List[int]
         """
+        d = dict.fromkeys(nums)
         enc = 0
         for i in nums:
             enc ^= i
+        # enc = reduce(lambda x, y: x ^ y, nums)
         for i in nums:
             res = enc ^ i
-            if res in nums:
+            if res in d:
                 return [i, res]
