@@ -1,3 +1,6 @@
+from random import randint
+
+
 class Solution:
     def findKthLargest(self, nums, k):
         """
@@ -34,7 +37,7 @@ class Solution:
         pos = self.partition(nums, 0, len(nums) - 1)
         # print pos, nums, nums[pos+1:], nums[:pos]
         if k > pos + 1:
-            return self.findKthSmallest(nums[pos + 1:], k - pos - 1)
+            return self.findKthSmallest(nums[pos + 1:], k - (pos + 1))
         elif k < pos + 1:
             return self.findKthSmallest(nums[:pos], k)
         else:
@@ -42,6 +45,8 @@ class Solution:
 
     def partition(self, nums, first, last):
         p_index = first
+        random_index = randint(first, last)
+        nums[random_index], nums[p_index] = nums[p_index], nums[random_index]
         pivot = nums[last]
         for i in range(first, last):
             if nums[i] <= pivot:
