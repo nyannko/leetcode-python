@@ -60,6 +60,45 @@ class LRUCache(object):
         p.next = n
         n.prev = p
 
+
+from collections import OrderedDict
+
+
+class LRUCache1:
+
+    def __init__(self, capacity):
+        """
+        :type capacity: int
+        """
+        self.cap = capacity
+        self.d = OrderedDict()
+
+    def get(self, key):
+        """
+        :type key: int
+        :rtype: int
+        """
+        if key not in self.d:
+            return -1
+        v = self.d.pop(key)
+        self.d[key] = v
+        return v
+
+    def put(self, key, value):
+        """
+        :type key: int
+        :type value: int
+        :rtype: void
+        """
+        if key in self.d:
+            self.d.pop(key)
+        else:
+            if self.cap > 0:
+                self.cap -= 1
+            else:
+                self.d.popitem(last=False)
+        self.d[key] = value
+
 # Your LRUCache object will be instantiated and called as such:
 # obj = LRUCache(capacity)
 # param_1 = obj.get(key)
