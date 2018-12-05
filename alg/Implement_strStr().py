@@ -17,7 +17,7 @@ class Solution(object):
                 j += 1
             if j == B:
                 return i - j
-            if i < A and haystack[i] != needle[j]:
+            if i < A and haystack[i] != needle[j]:  # i < A in front
                 if j:
                     j = lps[j - 1]
                 else:
@@ -37,7 +37,7 @@ class Solution(object):
                 lps[i] = dis
                 i += 1
             elif dis:
-                dis = lps[dis - 1]
+                dis = lps[dis - 1]  # ababb
             else:
                 lps[i] = 0
                 i += 1
@@ -77,3 +77,8 @@ class Solution(object):
         :rtype: int
         """
         return haystack.find(needle)
+
+
+a = Solution()
+print(a.create_lps("AABAACAABAA"))
+print(a.strStr_kmp("AAAAABAAABA", "BAAAA"))
