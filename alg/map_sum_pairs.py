@@ -71,5 +71,6 @@ class MapSumTrie(object):
 # param_2 = obj.sum(prefix)
 a = MapSumTrie()
 a.insert("apple", 3)
+a.insert("apple", 2)
 a.insert("ap", 2)
 a.insert("y", 1)
