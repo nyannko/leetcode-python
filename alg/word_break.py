@@ -12,6 +12,28 @@ class Solution:
             ok += any(ok[j] and (s[j:i] in wordDict) for j in range(max(0, i - max_len), i)),
         return ok[-1]
 
+    def wordBreak_II(self, s, wordDict):
+        return self.dfs(s, wordDict, {})
+
+    def dfs(self, s, wordDict, d):
+        if s in d:
+            return d[s]
+        res = []
+        if len(s) == 0:
+            # res.append("")
+            res += "",
+            return res
+        for word in wordDict:
+            if s.startswith(word):
+                length = len(word)
+                sub_list = self.dfs(s[length:], wordDict, d)
+                for sub in sub_list:
+                    mid = "" if len(sub) == 0 else " "
+                    # res.append(word + mid + sub)
+                    res += word + mid + sub,
+        d[s] = res
+        return res
+
     def wordBreak1(self, s, wordDict):
         """
         :type s: str
@@ -37,4 +59,5 @@ class Solution:
 
 
 a = Solution()
-a.wordBreak("applepenapple", ["apple", "pen"])
+# a.wordBreak("applepenapple", ["apple", "pen"])
+print(a.wordBreak_II("catsanddog", ["cat", "cats", "and", "sand", "dog"]))
