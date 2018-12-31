@@ -19,9 +19,7 @@ class Solution:
 
         tmp = board[i][j]
         board[i][j] = '-'
-        res = self.dfs(board, i - 1, j, word[1:]) or self.dfs(board, i + 1, j, word[1:]) or self.dfs(board, i, j + 1,
-                                                                                                     word[
-                                                                                                     1:]) or self.dfs(
-            board, i, j - 1, word[1:])
+        res = self.dfs(board, i - 1, j, word[1:]) or self.dfs(board, i + 1, j, word[1:]) or \
+              self.dfs(board, i, j + 1, word[1:]) or self.dfs(board, i, j - 1, word[1:])
         board[i][j] = tmp
         return res
