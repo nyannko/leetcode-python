@@ -26,13 +26,16 @@ class Solution(object):
             level = next_level
             parents.update(next_level)
         print(parents)
-
-        res = [[endWord]]
+        # {child : parent}
+        # {'hot': {'hit'}, 'dot': {'hot'}, 'lot': {'hot'}, 'dog': {'dot'}, 'log': {'lot'}, 'cog': {'dog', 'log'}
+        res = [[endWord]]  # cog
         while res and res[0][0] != beginWord:
-            res = [[p] + r for r in res for p in parents[r[0]]]
-
+            res = [[p] + r for r in res for p in parents[r[0]]]  # 注意一下这个列表生成式的写法..
+            # for r in res:
+            #     res = [[p] + r for p in parents[r[0]]]
+            #     print (r, res)
         return res
 
 
 a = Solution()
-a.findLadders("hit", "cog", ["hot", "dot", "dog", "lot", "log"])
+a.findLadders("hit", "cog", ["hot", "dot", "dog", "lot", "log", "cog"])
