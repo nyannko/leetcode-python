@@ -27,11 +27,10 @@ class Solution:
                     overlap += 1
                     continue
                 gcd = self.getGCD(dx, dy)  # get the common greatest divisor
-                print("gcd", gcd)
                 dx //= gcd
                 dy //= gcd  # decrease the x and y at the same time to prevent overflow
                 d[(dx, dy)] += 1
-                # print(d)
+                print(d)
                 cur_max = max(cur_max, d[(dx, dy)])
             result = max(result, cur_max + overlap + 1)
 
@@ -67,9 +66,9 @@ class Solution:
 
 
 a = Solution()
-# l = [[0, 0], [1, 0], [1, 1], [2, 2]]
-l = [[0, 0], [94911151, 94911150], [94911152, 94911151]]
+l = [[0, 0], [1, 0], [1, 1], [2, 2]]
+# l = [[0, 0], [94911151, 94911150], [94911152, 94911151]]
 # ↑ in this case maxPoints2 will fail because of the floating point precision..{0.9999999894638303: 2}
 # l = [[84, 250], [0, 0], [1, 0], [0, -70], [0, -70], [1, -1], [21, 10], [42, 90], [-42, -230]]
 input = [Point(i, j) for i, j in l]
-print(a.maxPoints2(input))
+print(a.maxPoints(input))
