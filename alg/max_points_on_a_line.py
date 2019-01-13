@@ -30,7 +30,7 @@ class Solution:
                 dx //= gcd
                 dy //= gcd  # decrease the x and y at the same time to prevent overflow
                 d[(dx, dy)] += 1
-                print(d)
+                # print(d)
                 cur_max = max(cur_max, d[(dx, dy)])
             result = max(result, cur_max + overlap + 1)
 
@@ -59,7 +59,7 @@ class Solution:
                     continue
                 slope = Decimal(dy * 1.0) / dx if dx != 0 else 'infinity'
                 d[slope] += 1
-                print(i, j, points[i].x, points[i].y, points[j].x, points[j].y, dx, dy, d)  # for debug
+                # print(i, j, points[i].x, points[i].y, points[j].x, points[j].y, dx, dy, d)  # for debug
                 cur_max = max(cur_max, d[slope])
             result = max(result, cur_max + overlap + 1)
         return result
