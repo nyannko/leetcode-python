@@ -105,3 +105,6 @@ venv.bak/
 .mypy_cache/
 
 auto_commit.sh
+gbsync.sh
+gitbook_script.sh
+contents.sh
