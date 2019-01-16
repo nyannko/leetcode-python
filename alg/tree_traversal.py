@@ -67,6 +67,18 @@ class Solution:
                 cur = cur.right
         return res
 
+    def inorderTraversal1(self, root):
+        res = []
+        self.inorder_dfs(root, res)
+        return res
+
+    def inorder_dfs(self, root, res):
+        if not root:
+            return
+        self.inorder_dfs(root.left, res)
+        res.append(root.val)
+        self.inorder_dfs(root.right, res)
+
     def maxDepth(self, root):
         """
         :type root: TreeNode
