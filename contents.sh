@@ -6,7 +6,7 @@ set -u
 HOME_DIR="$HOME/github/gitbooks/leetcode/"
 # original title
 title="$@"
-name=$(echo $title | sed -e 's/\. /_/g' -e 's/ /_/g')
+name=$(echo $title | sed -e 's/\. /_/g' -e 's/ /_/g') # `-e` multiple exps in a line
 # generated title
 FILE="${name}.md"
 

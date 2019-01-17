@@ -155,6 +155,19 @@
             
         </li>
     
+        <li class="chapter " data-level="1.1.5" data-path="704_Binary_Search.html">
+            
+                <a href="704_Binary_Search.html">
+            
+                    
+                    704. Binary Search
+            
+                </a>
+            
+
+            
+        </li>
+    
 
             </ul>
             
@@ -246,6 +259,20 @@
 <p>&#x4E00;&#x4E2A;&#x4F8B;&#x5B50;&#xFF1A;&#x68C0;&#x67E5;&#x5DE6;&#x8FB9;&#x7684;None&#x540E;pop(1),&#x68C0;&#x67E5;&#x53F3;&#x8FB9;&#x7684;None&#x540E;pop(3)</p>
 <p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fz6s23arddj30io0d4whp.jpg" width="500"></p>
 <p>java&#x7528;stack&#x505A;&#xFF0C;&#x6CE8;&#x610F;&#x5224;&#x7A7A;&#x4E0D;&#x8981;&#x76F4;&#x63A5;&#x50CF;python&#x4E00;&#x6837;&#x548C;null&#x6BD4;&#x8F83;&#x3002;&#x3002;</p>
+<p><a href="https://leetcode.com/problems/binary-tree-inorder-traversal/" target="_blank">inorder&#x7684;&#x9012;&#x5F52;&#x5199;&#x6CD5;</a>&#xFF0C;&#x601D;&#x8DEF;&#x5C31;&#x662F;&#x6309;&#x7167;&#x5DE6;&#x4E2D;&#x53F3;&#x7684;&#x5904;&#x7406;&#x987A;&#x5E8F;(&#x5DE6;&#x8FB9;&#x5904;&#x7406;&#x5B8C;&#x4E86;&#xFF0C;&#x5C06;&#x5DE6;&#x8FB9;&#x7684;&#x8282;&#x70B9;&#x653E;&#x5165;&#x7ED3;&#x679C;&#xFF0C;&#x4E0A;&#x8FF0;&#x56FE;&#x4F8B;&#x4E2D;&#x6309;&#x7167;1111231...&#x7684;&#x987A;&#x5E8F;&#x6267;&#x884C;)</p>
+<pre><code class="lang-python">    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">inorderTraversal</span><span class="hljs-params">(self, root)</span>:</span>
+        res = []
+        self.dfs(root, res)
+        <span class="hljs-keyword">return</span> res
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">dfs</span><span class="hljs-params">(self, root, res)</span>:</span>
+        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> root:
+            <span class="hljs-keyword">return</span>
+
+        self.dfs(root.left, res)  <span class="hljs-comment">#1</span>
+        res.append(root.val)      <span class="hljs-comment">#2</span>
+        self.dfs(root.right, res) <span class="hljs-comment">#3</span>
+</code></pre>
 
                                 
                                 </section>
@@ -289,7 +316,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"173. Binary Search Tree Iterator","level":"1.1.3","depth":2,"next":{"title":"215. Kth Largest Element in an Array","level":"1.1.4","depth":2,"path":"alg/215_Kth_Largest_Element_in_an_Array.md","ref":"alg/215_Kth_Largest_Element_in_an_Array.md","articles":[]},"previous":{"title":"169. Majority Element","level":"1.1.2","depth":2,"path":"alg/169_Majority_Element.md","ref":"alg/169_Majority_Element.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"alg/173_Binary_Search_Tree_Iterator.md","mtime":"2019-01-14T20:47:44.527Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-01-15T22:54:44.385Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"173. Binary Search Tree Iterator","level":"1.1.3","depth":2,"next":{"title":"215. Kth Largest Element in an Array","level":"1.1.4","depth":2,"path":"alg/215_Kth_Largest_Element_in_an_Array.md","ref":"alg/215_Kth_Largest_Element_in_an_Array.md","articles":[]},"previous":{"title":"169. Majority Element","level":"1.1.2","depth":2,"path":"alg/169_Majority_Element.md","ref":"alg/169_Majority_Element.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"alg/173_Binary_Search_Tree_Iterator.md","mtime":"2019-01-16T22:27:11.308Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-01-17T22:42:47.445Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
