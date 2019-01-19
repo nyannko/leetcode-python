@@ -19,6 +19,24 @@ class Solution:
 
         return last_mid
 
+    def mySqrt2(self, x):
+        """
+        :type x: int
+        :rtype: int
+        """
+        if x < 2:
+            return x
+
+        l, r = 0, x / 2 + 1
+        while l <= r:
+            m = (l + r) / 2
+            if m ** 2 == x: return m  # if equals
+            if m ** 2 < x:
+                l = m + 1
+            else:
+                r = m - 1
+        return l - 1  # lower bound
+
 
 a = Solution()
 print(a.mySqrt(8))
