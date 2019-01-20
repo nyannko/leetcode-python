@@ -15,12 +15,32 @@ class Solution(object):
                 continue
             d = {}
         for x in nums[i + 1:]:
-                print(x)
-                if x not in d:
-                    d[-v - x] = 1
-                else:
-                    res.add((v, -v - x, x))
+            print(x)
+            if x not in d:
+                d[-v - x] = 1
+            else:
+                res.add((v, -v - x, x))
 
+        return res
+
+    def threeSum1(self, nums):
+        res = []
+        nums.sort();
+        for i in range(len(nums) - 2):
+            if i > 0 and nums[i] == nums[i - 1]: continue
+            target = -nums[i]
+            l, r = i + 1, len(nums) - 1
+            while l < r:
+                if nums[l] + nums[r] == target:
+                    res.append([nums[i], nums[l], nums[r]])
+                    l += 1
+                    r -= 1
+                    while l < r and nums[l] == nums[l - 1]: l += 1
+                    while l < r and nums[r] == nums[r + 1]: r -= 1
+                elif nums[l] + nums[r] < target:
+                    l += 1
+                else:
+                    r -= 1
         return res
 
 
