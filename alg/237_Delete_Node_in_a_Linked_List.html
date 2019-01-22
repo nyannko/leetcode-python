@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>69. Sqrt(x) · GitBook</title>
+        <title>237. Delete Node in a Linked List · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="149_Max_Points_on_a_Line.html" />
+    <link rel="next" href="203_Remove_Linked_List_Elements.html" />
     
     
-    <link rel="prev" href="18_4Sum.html" />
+    <link rel="prev" href="160_Intersection_of_Two_Linked_Lists.html" />
     
 
     </head>
@@ -142,7 +142,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.1.4" data-path="69_Sqrtx.html">
+        <li class="chapter " data-level="1.1.4" data-path="69_Sqrtx.html">
             
                 <a href="69_Sqrtx.html">
             
@@ -317,7 +317,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.7" data-path="237_Delete_Node_in_a_Linked_List.html">
+        <li class="chapter active" data-level="1.2.7" data-path="237_Delete_Node_in_a_Linked_List.html">
             
                 <a href="237_Delete_Node_in_a_Linked_List.html">
             
@@ -430,7 +430,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >69. Sqrt(x)</a>
+        <a href=".." >237. Delete Node in a Linked List</a>
     </h1>
 </div>
 
@@ -445,74 +445,11 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h3 id="69-sqrtx">69. Sqrt(x)</h3>
-<p>&#x4E8C;&#x5206;&#x6CD5;&#x7684;&#x6269;&#x5C55;&#xFF0C;&#x6761;&#x4EF6;&#x662F;&#x4E00;&#x4E2A;&#x6570;&#x7684;&#x5E73;&#x65B9;&#x5927;&#x4E8E;x&#x3002;&#x53EF;&#x4EE5;&#x7528;&#x4E58;&#x6CD5;&#x6216;&#x8005;&#x9664;&#x6CD5;&#x8FDB;&#x884C;&#x6BD4;&#x8F83;&#xFF0C;&#x9664;&#x6CD5;&#x7684;&#x65F6;&#x5019;&#x8981;&#x6CE8;&#x610F;<code>l=1</code>&#xFF0C;&#x4E0D;&#x7136;&#x7684;&#x8BDD;m&#x6709;&#x53EF;&#x80FD;&#x7B49;&#x4E8E;&#x96F6;&#x51FA;&#x9519;&#x3002;&#x52A0;&#x4E0A;&#x4E8C;&#x5206;&#x6CD5;&#x6700;&#x57FA;&#x672C;&#x7684;&#x4E24;&#x79CD;&#x5199;&#x6CD5;&#xFF0C;&#x90A3;&#x4E48;&#x53EF;&#x4EE5;&#x6709;&#x56DB;&#x79CD;&#x5199;&#x6CD5;&#x3002;&#x8FD4;&#x56DE;lower bound&#x3002;</p>
-<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">mySqrt</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span> </span>{
-    <span class="hljs-keyword">if</span> (x &lt; <span class="hljs-number">2</span>) <span class="hljs-keyword">return</span> x;
-
-    <span class="hljs-keyword">int</span> l = <span class="hljs-number">0</span>, r = x / <span class="hljs-number">2</span> + <span class="hljs-number">1</span>;
-
-    <span class="hljs-keyword">while</span> (l &lt; r) {
-        <span class="hljs-keyword">int</span> m = (l + r) &gt;&gt;&gt; <span class="hljs-number">1</span>;
-        <span class="hljs-keyword">if</span> (Math.pow(m, <span class="hljs-number">2</span>) == x) <span class="hljs-keyword">return</span> m;
-        <span class="hljs-keyword">if</span> (Math.pow(m, <span class="hljs-number">2</span>) &lt; x) {
-            l = m + <span class="hljs-number">1</span>;
-        } <span class="hljs-keyword">else</span> {
-            r = m;
-        }
-    }
-    <span class="hljs-keyword">return</span> l - <span class="hljs-number">1</span>;
-}
-
-<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">mySqrt1</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span> </span>{
-    <span class="hljs-keyword">if</span> (x &lt; <span class="hljs-number">2</span>) <span class="hljs-keyword">return</span> x;
-    <span class="hljs-keyword">int</span> l = <span class="hljs-number">1</span>,
-            r = x / <span class="hljs-number">2</span> + <span class="hljs-number">1</span>;
-
-    <span class="hljs-keyword">while</span> (l &lt; r) {
-        <span class="hljs-keyword">int</span> m = (l + r) &gt;&gt;&gt; <span class="hljs-number">1</span>;
-        <span class="hljs-keyword">if</span> (x / m == m) <span class="hljs-keyword">return</span> m;
-        <span class="hljs-keyword">if</span> (x / m &gt; m) {
-            l = m + <span class="hljs-number">1</span>;
-        } <span class="hljs-keyword">else</span> {
-            r = m;
-        }
-    }
-    <span class="hljs-keyword">return</span> l - <span class="hljs-number">1</span>;
-}
-
-<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">mySqrt3</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span> </span>{
-    <span class="hljs-keyword">if</span> (x &lt; <span class="hljs-number">2</span>) <span class="hljs-keyword">return</span> x;
-
-    <span class="hljs-keyword">int</span> l = <span class="hljs-number">0</span>, r = x / <span class="hljs-number">2</span>;
-
-    <span class="hljs-keyword">while</span> (l &lt;= r) {
-        <span class="hljs-keyword">int</span> m = (l + r) &gt;&gt;&gt; <span class="hljs-number">1</span>;
-        <span class="hljs-keyword">if</span> (Math.pow(m, <span class="hljs-number">2</span>) == x) <span class="hljs-keyword">return</span> m;
-        <span class="hljs-keyword">if</span> (Math.pow(m, <span class="hljs-number">2</span>) &lt; x) {
-            l = m + <span class="hljs-number">1</span>;
-        } <span class="hljs-keyword">else</span> {
-            r = m - <span class="hljs-number">1</span>;
-        }
-    }
-    <span class="hljs-keyword">return</span> l - <span class="hljs-number">1</span>;
-}
-
-<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">mySqrt4</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span> </span>{
-    <span class="hljs-keyword">if</span> (x &lt; <span class="hljs-number">2</span>) <span class="hljs-keyword">return</span> x;
-    <span class="hljs-keyword">int</span> l = <span class="hljs-number">1</span>,
-            r = x / <span class="hljs-number">2</span>;
-
-    <span class="hljs-keyword">while</span> (l &lt;= r) {
-        <span class="hljs-keyword">int</span> m = (l + r) &gt;&gt;&gt; <span class="hljs-number">1</span>;
-        <span class="hljs-keyword">if</span> (x / m == m) <span class="hljs-keyword">return</span> m;
-        <span class="hljs-keyword">if</span> (x / m &gt; m) {
-            l = m + <span class="hljs-number">1</span>;
-        } <span class="hljs-keyword">else</span> {
-            r = m - <span class="hljs-number">1</span>;
-        }
-    }
-    <span class="hljs-keyword">return</span> l - <span class="hljs-number">1</span>;
+                                <h3 id="237-delete-node-in-a-linked-list">237. Delete Node in a Linked List</h3>
+<p>&#x5220;&#x9664;&#x94FE;&#x8868;&#x4E2D;&#x7684;&#x4E00;&#x4E2A;&#x8282;&#x70B9;&#xFF0C;&#x5C31;&#x662F;&#x4FEE;&#x6539;&#x503C;&#x548C;&#x6307;&#x9488;&#x3002;</p>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">deleteNode</span><span class="hljs-params">(ListNode node)</span> </span>{
+    node.val = node.next.val;
+    node.next = node.next.next;
 }
 </code></pre>
 
@@ -542,12 +479,12 @@
 
             
                 
-                <a href="18_4Sum.html" class="navigation navigation-prev " aria-label="Previous page: 18. 4Sum">
+                <a href="160_Intersection_of_Two_Linked_Lists.html" class="navigation navigation-prev " aria-label="Previous page: 160. Intersection of Two Linked Lists">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="149_Max_Points_on_a_Line.html" class="navigation navigation-next " aria-label="Next page: 149. Max Points on a Line">
+                <a href="203_Remove_Linked_List_Elements.html" class="navigation navigation-next " aria-label="Next page: 203. Remove Linked List Elements">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -558,7 +495,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"69. Sqrt(x)","level":"1.1.4","depth":2,"next":{"title":"149. Max Points on a Line","level":"1.1.5","depth":2,"path":"alg/149_Max_Points_on_a_Line.md","ref":"alg/149_Max_Points_on_a_Line.md","articles":[]},"previous":{"title":"18. 4Sum","level":"1.1.3","depth":2,"path":"alg/18_4Sum.md","ref":"alg/18_4Sum.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"alg/69_Sqrtx.md","mtime":"2019-01-19T23:19:21.912Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-01-22T19:46:47.959Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"237. Delete Node in a Linked List","level":"1.2.7","depth":2,"next":{"title":"203. Remove Linked List Elements","level":"1.2.8","depth":2,"path":"alg/203_Remove_Linked_List_Elements.md","ref":"alg/203_Remove_Linked_List_Elements.md","articles":[]},"previous":{"title":"160. Intersection of Two Linked Lists","level":"1.2.6","depth":2,"path":"alg/160_Intersection_of_Two_Linked_Lists.md","ref":"alg/160_Intersection_of_Two_Linked_Lists.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"alg/237_Delete_Node_in_a_Linked_List.md","mtime":"2019-01-22T14:47:10.678Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-01-22T19:46:47.959Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
