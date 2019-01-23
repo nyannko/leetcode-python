@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>1. 2Sum · GitBook</title>
+        <title>147. Insertion Sort List · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="15_3Sum.html" />
+    <link rel="next" href="328_Odd_Even_Linked_List.html" />
     
     
-    <link rel="prev" href="../" />
+    <link rel="prev" href="143_Reorder_List.html" />
     
 
     </head>
@@ -103,7 +103,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter active" data-level="1.1.1" data-path="1_2Sum.html">
+        <li class="chapter " data-level="1.1.1" data-path="1_2Sum.html">
             
                 <a href="1_2Sum.html">
             
@@ -408,7 +408,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.14" data-path="147_Insertion_Sort_List.html">
+        <li class="chapter active" data-level="1.2.14" data-path="147_Insertion_Sort_List.html">
             
                 <a href="147_Insertion_Sort_List.html">
             
@@ -508,7 +508,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >1. 2Sum</a>
+        <a href=".." >147. Insertion Sort List</a>
     </h1>
 </div>
 
@@ -523,22 +523,27 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h3 id="1-2sum">1. 2Sum</h3>
-<p>&#x5B57;&#x5178;&#x6CD5;&#xFF0C;&#x5C06;&#x539F;&#x5B57;&#x5178;key&#x548C;value&#x8F6C;&#x6362;&#xFF0C;&#x904D;&#x5386;&#x4E00;&#x6B21;&#x6570;&#x7EC4;&#x5E76;&#x8FD4;&#x56DE;&#x7B2C;&#x4E00;&#x4E2A;&#x6570;&#x5B57;&#x51FA;&#x73B0;&#x7684;index&#x548C;&#x5F53;&#x524D;&#x6570;&#x5B57;&#x7684;index&#x3002;</p>
-<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span>[] twoSum(<span class="hljs-keyword">int</span>[] nums, <span class="hljs-keyword">int</span> target) {
-    Map&lt;Integer, Integer&gt; map = <span class="hljs-keyword">new</span> HashMap&lt;&gt;();
-    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; nums.length; i++) {
-        <span class="hljs-keyword">int</span> j = target - nums[i]; <span class="hljs-comment">// get the key</span>
-        <span class="hljs-keyword">if</span> (map.containsKey(j)) {
-            <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[] {map.get(j), i}; <span class="hljs-comment">//return stored index and current index</span>
-        } <span class="hljs-keyword">else</span> {
-            map.put(nums[i], i); <span class="hljs-comment">// put the current number as key, index as value</span>
-            <span class="hljs-comment">//j &lt;--&gt; nums[i]; map.get(j) &lt;--&gt; i; map(value, index)</span>
+                                <h3 id="147-insertion-sort-list">147. Insertion Sort List</h3>
+<p>&#x8FC7;&#x7A0B;&#x89C1;&#x56FE;</p>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> ListNode <span class="hljs-title">insertionSortList</span><span class="hljs-params">(ListNode head)</span> </span>{
+    ListNode dummy = <span class="hljs-keyword">new</span> ListNode(<span class="hljs-number">0</span>); 
+    ListNode pre = dummy,
+            cur = head,
+            next = <span class="hljs-keyword">null</span>;
+    <span class="hljs-keyword">while</span> (cur != <span class="hljs-keyword">null</span>) {
+        ListNode tmp = cur.next;  <span class="hljs-comment">// store the following value</span>
+        <span class="hljs-keyword">while</span> (pre.next != <span class="hljs-keyword">null</span> &amp;&amp; pre.next.val &lt; cur.val) {
+            pre = pre.next;       <span class="hljs-comment">// move the pointer</span>
         }
+        cur.next = pre.next;      <span class="hljs-comment">// change the pointer</span>
+        pre.next = cur;           <span class="hljs-comment">// change the pointer</span>
+        pre = dummy;              <span class="hljs-comment">// restore pre</span>
+        cur = tmp;                <span class="hljs-comment">// restore cur</span>
     }
-    <span class="hljs-keyword">return</span> <span class="hljs-keyword">null</span>;
+    <span class="hljs-keyword">return</span> dummy.next;
 }
 </code></pre>
+<p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fzh3auvd03j30u80e4795.jpg" width="600"></p>
 
                                 
                                 </section>
@@ -566,12 +571,12 @@
 
             
                 
-                <a href="../" class="navigation navigation-prev " aria-label="Previous page: 🥰Alg">
+                <a href="143_Reorder_List.html" class="navigation navigation-prev " aria-label="Previous page: 143. Reorder List">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="15_3Sum.html" class="navigation navigation-next " aria-label="Next page: 15. 3Sum">
+                <a href="328_Odd_Even_Linked_List.html" class="navigation navigation-next " aria-label="Next page: 328. Odd Even Linked List">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -582,7 +587,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"1. 2Sum","level":"1.1.1","depth":2,"next":{"title":"15. 3Sum","level":"1.1.2","depth":2,"path":"alg/15_3Sum.md","ref":"alg/15_3Sum.md","articles":[]},"previous":{"title":"🥰Alg","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[{"title":"1. 2Sum","level":"1.1.1","depth":2,"path":"alg/1_2Sum.md","ref":"alg/1_2Sum.md","articles":[]},{"title":"15. 3Sum","level":"1.1.2","depth":2,"path":"alg/15_3Sum.md","ref":"alg/15_3Sum.md","articles":[]},{"title":"18. 4Sum","level":"1.1.3","depth":2,"path":"alg/18_4Sum.md","ref":"alg/18_4Sum.md","articles":[]},{"title":"69. Sqrt(x)","level":"1.1.4","depth":2,"path":"alg/69_Sqrtx.md","ref":"alg/69_Sqrtx.md","articles":[]},{"title":"149. Max Points on a Line","level":"1.1.5","depth":2,"path":"alg/149_Max_Points_on_a_Line.md","ref":"alg/149_Max_Points_on_a_Line.md","articles":[]},{"title":"169. Majority Element","level":"1.1.6","depth":2,"path":"alg/169_Majority_Element.md","ref":"alg/169_Majority_Element.md","articles":[]},{"title":"173. Binary Search Tree Iterator","level":"1.1.7","depth":2,"path":"alg/173_Binary_Search_Tree_Iterator.md","ref":"alg/173_Binary_Search_Tree_Iterator.md","articles":[]},{"title":"215. Kth Largest Element in an Array","level":"1.1.8","depth":2,"path":"alg/215_Kth_Largest_Element_in_an_Array.md","ref":"alg/215_Kth_Largest_Element_in_an_Array.md","articles":[]},{"title":"704. Binary Search","level":"1.1.9","depth":2,"path":"alg/704_Binary_Search.md","ref":"alg/704_Binary_Search.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"alg/1_2Sum.md","mtime":"2019-01-20T17:10:48.217Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-01-23T22:59:59.628Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"147. Insertion Sort List","level":"1.2.14","depth":2,"next":{"title":"328. Odd Even Linked List","level":"1.2.15","depth":2,"path":"alg/328_Odd_Even_Linked_List.md","ref":"alg/328_Odd_Even_Linked_List.md","articles":[]},"previous":{"title":"143. Reorder List","level":"1.2.13","depth":2,"path":"alg/143_Reorder_List.md","ref":"alg/143_Reorder_List.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"alg/147_Insertion_Sort_List.md","mtime":"2019-01-23T18:51:59.587Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-01-23T22:59:59.628Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

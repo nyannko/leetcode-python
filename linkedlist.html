@@ -369,7 +369,20 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.11" data-path="alg/234_Palindrome_Linked_List.html">
+        <li class="chapter " data-level="1.2.11" data-path="alg/86_Partition_List.html">
+            
+                <a href="alg/86_Partition_List.html">
+            
+                    
+                    86. Partition List
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.12" data-path="alg/234_Palindrome_Linked_List.html">
             
                 <a href="alg/234_Palindrome_Linked_List.html">
             
@@ -382,12 +395,77 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.12" data-path="alg/86_Partition_List.html">
+        <li class="chapter " data-level="1.2.13" data-path="alg/143_Reorder_List.html">
             
-                <a href="alg/86_Partition_List.html">
+                <a href="alg/143_Reorder_List.html">
             
                     
-                    86. Partition List
+                    143. Reorder List
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.14" data-path="alg/147_Insertion_Sort_List.html">
+            
+                <a href="alg/147_Insertion_Sort_List.html">
+            
+                    
+                    147. Insertion Sort List
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.15" data-path="alg/328_Odd_Even_Linked_List.html">
+            
+                <a href="alg/328_Odd_Even_Linked_List.html">
+            
+                    
+                    328. Odd Even Linked List
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.16" data-path="alg/148_Sort_List.html">
+            
+                <a href="alg/148_Sort_List.html">
+            
+                    
+                    148. Sort List
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.17" data-path="alg/21_Merge_Two_Sorted_Lists.html">
+            
+                <a href="alg/21_Merge_Two_Sorted_Lists.html">
+            
+                    
+                    21. Merge Two Sorted Lists
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.18" data-path="alg/23_Merge_k_Sorted_Lists.html">
+            
+                <a href="alg/23_Merge_k_Sorted_Lists.html">
+            
+                    
+                    23. Merge k Sorted Lists
             
                 </a>
             
@@ -447,19 +525,20 @@
                                 
                                 <h4 id="&#x94FE;&#x8868;">&#x94FE;&#x8868;</h4>
 <ul>
-<li>&#x96BE;&#x70B9;&#xFF1A;&#x8FB9;&#x754C;&#x5224;&#x65AD;</li>
+<li>&#x96BE;&#x70B9;&#xFF1A;&#x8FB9;&#x754C;&#x5224;&#x65AD;&#xFF0C;&#x6307;&#x9488;&#x6307;&#x5411;</li>
 <li><p>&#x64CD;&#x4F5C;&#xFF1A;&#x8FED;&#x4EE3;&#xFF0C;&#x9012;&#x5F52;</p>
 </li>
-<li><p>insertion:</p>
+<li><p>insertion:
+147</p>
 </li>
 <li><p>deletion:
 237, 203, 83, 82</p>
 </li>
 <li><p>partition:
-86</p>
+86, 328</p>
 </li>
 <li><p>reversion: 
-206, 24, </p>
+206, 24</p>
 </li>
 <li><p>find middle, cycle:
 876, 141, 142</p>
@@ -467,13 +546,19 @@
 <li><p>intersection:
 160</p>
 </li>
-<li><p>sort:</p>
+<li><p><strong>merge:</strong> 
+21, 23(&#x4E00;&#x5F00;&#x59CB;&#x7684;impl&#x5F88;&#x6162;)</p>
+</li>
+<li><p><strong>sort:</strong>
+148</p>
+</li>
+<li><p>&#x7EC4;&#x5408;:
+234, 143&#xFF08;&#x8FD9;&#x4E24;&#x9898;&#x524D;&#x4E24;&#x6B65;&#x4E00;&#x6837;&#xFF0C;&#x90FD;&#x662F;&#x5148;&#x5206;&#x5272;&#x518D;&#x53CD;&#x8F6C;&#xFF0C;&#x518D;&#x6BD4;&#x8F83;&#x6216;&#x5408;&#x5E76;&#xFF09;</p>
 </li>
 </ul>
-<ul>
-<li>&#x7EC4;&#x5408;:
-234(&#x56DE;&#x6587;)</li>
-</ul>
+<p>&#x4EC0;&#x4E48;&#x5730;&#x65B9;&#x7528;&#x5B66;&#x5230;&#x8FC7;&#x94FE;&#x8868;&#xFF1F;</p>
+<p>&#x6BD4;&#x5982;hashmap&#x4E2D;&#x7684;&#x6BCF;&#x4E00;&#x4E2A;bucket&#x4E2D;&#x5B58;&#x653E;&#x7684;&#x5BF9;&#x8C61;&#x53EF;&#x4EE5;&#x7528;&#x94FE;&#x8868;&#x8FDE;&#x63A5;&#x5B58;&#x50A8;&#xFF0C;&#x6BD4;&#x5982;&#x5783;&#x573E;&#x6536;&#x96C6;&#x4E2D;&#x7684;freelist&#xFF0C;&#x6BD4;&#x5982;linux&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x7684;inode&#xFF0C;&#x6BD4;&#x5982;&#x5806;&#x4E0A;&#x5BF9;&#x8C61;&#x7684;&#x521B;&#x5EFA;&#xFF0C;&#x6BD4;&#x5982;poll(&#x662F;&#x4E0D;&#x5566;)&#xFF0C;&#x6BD4;&#x5982;&#x56FE;&#xFF0C;&#x8FD8;&#x6709;&#x6BD4;&#x5982;&#x67D0;&#x6B21;&#x4F5C;&#x4E1A;&#x5B58;&#x653E;jobs</p>
+<p><img src="https://ws3.sinaimg.cn/large/006tNc79gy1fzha72q7z9j30uc0a2n31.jpg" width="400"></p>
 
                                 
                                 </section>
@@ -517,7 +602,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Linked List","level":"1.2","depth":1,"next":{"title":"206. Reverse Linked List","level":"1.2.1","depth":2,"path":"alg/206_Reverse_Linked_List.md","ref":"alg/206_Reverse_Linked_List.md","articles":[]},"previous":{"title":"704. Binary Search","level":"1.1.9","depth":2,"path":"alg/704_Binary_Search.md","ref":"alg/704_Binary_Search.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"linkedlist.md","mtime":"2019-01-22T19:17:01.067Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-01-22T19:46:47.959Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Linked List","level":"1.2","depth":1,"next":{"title":"206. Reverse Linked List","level":"1.2.1","depth":2,"path":"alg/206_Reverse_Linked_List.md","ref":"alg/206_Reverse_Linked_List.md","articles":[]},"previous":{"title":"704. Binary Search","level":"1.1.9","depth":2,"path":"alg/704_Binary_Search.md","ref":"alg/704_Binary_Search.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"linkedlist.md","mtime":"2019-01-23T22:45:33.383Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-01-23T22:59:59.628Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
