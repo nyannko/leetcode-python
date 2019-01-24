@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>23. Merge k Sorted Lists · GitBook</title>
+        <title>817. Linked List Components · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,8 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="146_LRU_Cache.html" />
     
-    
-    <link rel="prev" href="21_Merge_Two_Sorted_Lists.html" />
+    <link rel="prev" href="146_LRU_Cache.html" />
     
 
     </head>
@@ -460,7 +458,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.2.18" data-path="23_Merge_k_Sorted_Lists.html">
+        <li class="chapter " data-level="1.2.18" data-path="23_Merge_k_Sorted_Lists.html">
             
                 <a href="23_Merge_k_Sorted_Lists.html">
             
@@ -486,7 +484,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.20" data-path="817_Linked_List_Components.html">
+        <li class="chapter active" data-level="1.2.20" data-path="817_Linked_List_Components.html">
             
                 <a href="817_Linked_List_Components.html">
             
@@ -534,7 +532,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >23. Merge k Sorted Lists</a>
+        <a href=".." >817. Linked List Components</a>
     </h1>
 </div>
 
@@ -549,80 +547,21 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h3 id="23-merge-k-sorted-lists">23. Merge k Sorted Lists</h3>
-<p>recusion</p>
-<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> ListNode <span class="hljs-title">mergeKLists</span><span class="hljs-params">(ListNode[] lists)</span> </span>{
-    <span class="hljs-keyword">return</span> partition(lists, <span class="hljs-number">0</span>, lists.length - <span class="hljs-number">1</span>);
-}
-
-<span class="hljs-function"><span class="hljs-keyword">public</span> ListNode <span class="hljs-title">partition</span><span class="hljs-params">(ListNode[] lists, <span class="hljs-keyword">int</span> l, <span class="hljs-keyword">int</span> r)</span> </span>{
-    <span class="hljs-keyword">if</span> (l == r) <span class="hljs-keyword">return</span> lists[l];
-    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (l &lt; r) {
-        <span class="hljs-keyword">int</span> m = (l + r) &gt;&gt;&gt; <span class="hljs-number">1</span>;
-        ListNode l1 = partition(lists, l, m);
-        ListNode l2 = partition(lists, m + <span class="hljs-number">1</span>, r);
-        <span class="hljs-keyword">return</span> merge(l1, l2);
+                                <h3 id="817-linked-list-components">817. Linked List Components</h3>
+<p>&#x5224;&#x65AD;&#x94FE;&#x8868;&#x4E2D;&#x5143;&#x7D20;&#x662F;&#x5426;&#x5728;set(G)&#x4E2D;&#x5F97;&#x5230;&#x8FDE;&#x901A;&#x5206;&#x91CF;&#x7684;&#x4E2A;&#x6570;&#xFF08;&#x4E0B;&#x4E00;&#x4E2A;&#x8282;&#x70B9;&#x4E3A;null&#x6216;&#x8005;&#x4E0D;&#x5728;set&#x4E2D;&#xFF09;&#x3002;</p>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">numComponents</span><span class="hljs-params">(ListNode head, <span class="hljs-keyword">int</span>[] G)</span> </span>{
+    Set&lt;Integer&gt; set = <span class="hljs-keyword">new</span> HashSet&lt;Integer&gt;();
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; G.length; i++) {
+        set.add(G[i]);
     }
-    <span class="hljs-keyword">return</span> <span class="hljs-keyword">null</span>;
-}
-
-<span class="hljs-function"><span class="hljs-keyword">public</span> ListNode <span class="hljs-title">merge</span><span class="hljs-params">(ListNode l1, ListNode l2)</span> </span>{
-    <span class="hljs-keyword">if</span> (l1 == <span class="hljs-keyword">null</span> || l2 == <span class="hljs-keyword">null</span>) <span class="hljs-keyword">return</span> (l1 != <span class="hljs-keyword">null</span>) ? l1 : l2;
-    <span class="hljs-keyword">if</span> (l1.val &lt; l2.val) {
-        l1.next = merge(l1.next, l2);
-        <span class="hljs-keyword">return</span> l1;
-    } <span class="hljs-keyword">else</span> {
-        l2.next = merge(l1, l2.next);
-        <span class="hljs-keyword">return</span> l2;
-    }
-}
-</code></pre>
-<p>heap</p>
-<p>&#x4F18;&#x5148;&#x961F;&#x5217;&#x91CD;&#x5199;ListNode&#x7684;Comparator&#x4ECE;&#x5C0F;&#x5230;&#x5927;&#x53D6;&#x70B9;&#x3002;</p>
-<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> ListNode <span class="hljs-title">mergeKLists2</span><span class="hljs-params">(ListNode[] lists)</span> </span>{
-    <span class="hljs-keyword">if</span> (lists.length == <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-keyword">null</span>;
-    PriorityQueue&lt;ListNode&gt; q = <span class="hljs-keyword">new</span> PriorityQueue&lt;&gt;(lists.length, <span class="hljs-keyword">new</span> Comparator&lt;ListNode&gt;() {
-        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">compare</span><span class="hljs-params">(ListNode l1, ListNode l2)</span> </span>{
-            <span class="hljs-keyword">if</span> (l1.val &lt; l2.val) {
-                <span class="hljs-keyword">return</span> -<span class="hljs-number">1</span>;
-            } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (l1.val == l2.val) {
-                <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
-            } <span class="hljs-keyword">else</span> {
-                <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;
-            }
+    <span class="hljs-keyword">int</span> res = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">while</span> (head != <span class="hljs-keyword">null</span>) {
+        <span class="hljs-keyword">if</span> (set.contains(head.val) &amp;&amp; (head.next == <span class="hljs-keyword">null</span> || !set.contains(head.next.val))) {
+            res++;
         }
-    });
-
-    ListNode dummy = <span class="hljs-keyword">new</span> ListNode(<span class="hljs-number">0</span>), head = dummy;
-    <span class="hljs-keyword">for</span> (ListNode list : lists) {
-        <span class="hljs-keyword">if</span> (list != <span class="hljs-keyword">null</span>) {
-            q.add(list);
-        }
-    }
-
-    <span class="hljs-keyword">while</span> (!q.isEmpty()) {
-        head.next = q.poll();
         head = head.next;
-
-        <span class="hljs-keyword">if</span> (head.next != <span class="hljs-keyword">null</span>) {
-            q.add(head.next);
-        }
     }
-    <span class="hljs-keyword">return</span> dummy.next;
-}
-</code></pre>
-<p>naive</p>
-<p>&#x4E00;&#x5F00;&#x59CB;&#x7684;&#x5B9E;&#x73B0;&#xFF0C;&#x62FC;&#x4E00;&#x62FC;</p>
-<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> ListNode <span class="hljs-title">mergeKLists</span><span class="hljs-params">(ListNode[] lists)</span> </span>{
-    List&lt;ListNode&gt; newList = <span class="hljs-keyword">new</span> ArrayList&lt;&gt;(Arrays.asList(lists));
-    <span class="hljs-keyword">while</span> (newList.size() &gt;= <span class="hljs-number">2</span>) {
-        ListNode list = merge2List(newList.get(newList.size() - <span class="hljs-number">1</span>), newList.get(newList.size() - <span class="hljs-number">2</span>));
-        newList.add(<span class="hljs-number">0</span>, list);
-        newList.remove(newList.size() - <span class="hljs-number">1</span>);
-        newList.remove(newList.size() - <span class="hljs-number">1</span>);
-    }
-    <span class="hljs-keyword">if</span> (newList.size() == <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> newList.get(<span class="hljs-number">0</span>);
-    <span class="hljs-keyword">return</span> <span class="hljs-keyword">null</span>;
+    <span class="hljs-keyword">return</span> res;
 }
 </code></pre>
 
@@ -652,14 +591,10 @@
 
             
                 
-                <a href="21_Merge_Two_Sorted_Lists.html" class="navigation navigation-prev " aria-label="Previous page: 21. Merge Two Sorted Lists">
+                <a href="146_LRU_Cache.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: 146. LRU Cache">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
-                
-                <a href="146_LRU_Cache.html" class="navigation navigation-next " aria-label="Next page: 146. LRU Cache">
-                    <i class="fa fa-angle-right"></i>
-                </a>
                 
             
         
@@ -668,7 +603,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"23. Merge k Sorted Lists","level":"1.2.18","depth":2,"next":{"title":"146. LRU Cache","level":"1.2.19","depth":2,"path":"alg/146_LRU_Cache.md","ref":"alg/146_LRU_Cache.md","articles":[]},"previous":{"title":"21. Merge Two Sorted Lists","level":"1.2.17","depth":2,"path":"alg/21_Merge_Two_Sorted_Lists.md","ref":"alg/21_Merge_Two_Sorted_Lists.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"alg/23_Merge_k_Sorted_Lists.md","mtime":"2019-01-24T11:28:45.683Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-01-24T20:46:44.193Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"817. Linked List Components","level":"1.2.20","depth":2,"previous":{"title":"146. LRU Cache","level":"1.2.19","depth":2,"path":"alg/146_LRU_Cache.md","ref":"alg/146_LRU_Cache.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"alg/817_Linked_List_Components.md","mtime":"2019-01-24T20:40:14.370Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-01-24T20:46:44.193Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
