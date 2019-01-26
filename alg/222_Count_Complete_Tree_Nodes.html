@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>876. Middle of the Linked List · GitBook</title>
+        <title>222. Count Complete Tree Nodes · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,8 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="141_Linked_List_Cycle.html" />
     
-    
-    <link rel="prev" href="24_Swap_Nodes_in_Pairs.html" />
+    <link rel="prev" href="112_Path_Sum.html" />
     
 
     </head>
@@ -265,7 +263,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.2.3" data-path="876_Middle_of_the_Linked_List.html">
+        <li class="chapter " data-level="1.2.3" data-path="876_Middle_of_the_Linked_List.html">
             
                 <a href="876_Middle_of_the_Linked_List.html">
             
@@ -648,7 +646,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.9" data-path="222_Count_Complete_Tree_Nodes.html">
+        <li class="chapter active" data-level="1.3.9" data-path="222_Count_Complete_Tree_Nodes.html">
             
                 <a href="222_Count_Complete_Tree_Nodes.html">
             
@@ -696,7 +694,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >876. Middle of the Linked List</a>
+        <a href=".." >222. Count Complete Tree Nodes</a>
     </h1>
 </div>
 
@@ -711,17 +709,38 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h3 id="876-middle-of-the-linked-list">876. Middle of the Linked List</h3>
-<p>&#x5FEB;&#x6162;&#x6307;&#x9488;&#x6C42;&#x94FE;&#x8868;&#x4E2D;&#x95F4;&#x503C;&#xFF0C;&#x5947;&#x6570;&#x65F6;<code>fast.next==null</code>&#xFF0C;&#x5076;&#x6570;&#x65F6;<code>fast==null</code></p>
-<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> ListNode <span class="hljs-title">middleNode</span><span class="hljs-params">(ListNode head)</span> </span>{
-    ListNode fast = head, slow = head;
-    <span class="hljs-keyword">while</span> (fast != <span class="hljs-keyword">null</span> &amp;&amp; fast.next != <span class="hljs-keyword">null</span>) {
-        fast = fast.next.next;
-        slow = slow.next;
-    }
-    <span class="hljs-keyword">return</span> slow;
+                                <h3 id="222-count-complete-tree-nodes">222. Count Complete Tree Nodes</h3>
+<p>&#x53EF;&#x4EE5;&#x7528;&#x904D;&#x5386;&#x6CD5;&#x6C42;&#xFF0C;&#x4F46;&#x662F;&#x4E0D;&#x80FD;&#x5224;&#x65AD;&#x662F;&#x4E0D;&#x662F;complete&#xFF0C;&#x4E14;&#x4E3A;O(n)&#x7684;&#x65F6;&#x95F4;&#x590D;&#x6742;&#x5EA6;</p>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">countNodes</span><span class="hljs-params">(TreeNode root)</span> </span>{
+    <span class="hljs-keyword">if</span> (root == <span class="hljs-keyword">null</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">return</span> <span class="hljs-number">1</span> + countNodes(root.left) + countNodes(root.right);
 }
 </code></pre>
+<p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fzken5jkgkj30hs07ojt6.jpg" width="400"></p>
+<p>&#x662F;&#x4E00;&#x4E2A;&#x5F88;&#x8FF7;&#x7684;&#x9012;&#x5F52;&#xFF0C;</p>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">countNodes</span><span class="hljs-params">(TreeNode root)</span> </span>{
+    <span class="hljs-keyword">if</span> (root == <span class="hljs-keyword">null</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">int</span> leftDepth = getDepth(root.left);
+    <span class="hljs-keyword">int</span> rightDepth = getDepth(root.right);
+    <span class="hljs-keyword">if</span> (leftDepth == rightDepth) {
+        <span class="hljs-keyword">return</span> (<span class="hljs-keyword">int</span>) (countNodes(root.right) + Math.pow(<span class="hljs-number">2</span>, leftDepth));
+    }
+    <span class="hljs-keyword">else</span> {
+        <span class="hljs-keyword">return</span> (<span class="hljs-keyword">int</span>) (countNodes(root.left) + Math.pow(<span class="hljs-number">2</span>, rightDepth));
+    }
+}
+
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">getDepth</span><span class="hljs-params">(TreeNode root)</span> </span>{
+    <span class="hljs-keyword">if</span> (root == <span class="hljs-keyword">null</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">return</span> <span class="hljs-number">1</span> + getDepth(root.left);
+}
+</code></pre>
+<p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fzkitc0317j308u06u75m.jpg" width="200"></p>
+<p>&#x8865;&#x4E00;&#x4E0B;&#x4E8C;&#x53C9;&#x6811;&#x7684;&#x6027;&#x8D28;&#xFF1A;</p>
+<p>1.&#x7B2C;i&#x5C42;&#x6709;2^(i-1)&#x4E2A;&#x8282;&#x70B9;&#x3002;&#x5982;&#x7B2C;&#x4E8C;&#x5C42;&#x6709;2^(2-1)=2&#x4E2A;&#x8282;&#x70B9;</p>
+<p>2.&#x6DF1;&#x5EA6;&#x4E3A;k&#x7684;&#x4E8C;&#x53C9;&#x6811;&#x6700;&#x591A;&#x6709;2^k-1&#x4E2A;&#x8282;&#x70B9;&#x3002;&#x5982;&#x4E09;&#x5C42;&#x7684;&#x6811;&#x6700;&#x591A;&#x6709;2^3-1=7&#x4E2A;&#x8282;&#x70B9;</p>
+<p>3.&#x5BF9;&#x4EFB;&#x4F55;&#x4E00;&#x68F5;&#x4E8C;&#x53C9;&#x6811;T, &#x5982;&#x679C;&#x5176;&#x53F6;&#x7ED3;&#x70B9;&#x6570;&#x4E3A;n0, &#x5EA6;&#x4E3A;2&#x7684;&#x7ED3;&#x70B9;&#x6570;&#x4E3A;n2, &#x5219;n0&#xFF1D;n2&#xFF0B;1&#x3002;</p>
+<p>4.&#x5177;&#x6709; n (n&gt;=0) &#x4E2A;&#x7ED3;&#x70B9;&#x7684;&#x5B8C;&#x5168;&#x4E8C;&#x53C9;&#x6811;&#x7684;&#x6DF1;&#x5EA6;&#x4E3A;&#x230A;log(n)&#x230B;+1&#x3002;&#x5982;4&#x4E2A;&#x8282;&#x70B9;&#x7684;&#x6811;&#x6709;&#x230A;log(4)&#x230B;+1=3&#x5C42;&#x3002;</p>
 
                                 
                                 </section>
@@ -749,14 +768,10 @@
 
             
                 
-                <a href="24_Swap_Nodes_in_Pairs.html" class="navigation navigation-prev " aria-label="Previous page: 24. Swap Nodes in Pairs">
+                <a href="112_Path_Sum.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: 112. Path Sum">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
-                
-                <a href="141_Linked_List_Cycle.html" class="navigation navigation-next " aria-label="Next page: 141. Linked List Cycle">
-                    <i class="fa fa-angle-right"></i>
-                </a>
                 
             
         
@@ -765,7 +780,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"876. Middle of the Linked List","level":"1.2.3","depth":2,"next":{"title":"141. Linked List Cycle","level":"1.2.4","depth":2,"path":"alg/141_Linked_List_Cycle.md","ref":"alg/141_Linked_List_Cycle.md","articles":[]},"previous":{"title":"24. Swap Nodes in Pairs","level":"1.2.2","depth":2,"path":"alg/24_Swap_Nodes_in_Pairs.md","ref":"alg/24_Swap_Nodes_in_Pairs.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"alg/876_Middle_of_the_Linked_List.md","mtime":"2019-01-22T13:41:15.641Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-01-26T22:53:21.968Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"222. Count Complete Tree Nodes","level":"1.3.9","depth":2,"previous":{"title":"112. Path Sum","level":"1.3.8","depth":2,"path":"alg/112_Path_Sum.md","ref":"alg/112_Path_Sum.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"alg/222_Count_Complete_Tree_Nodes.md","mtime":"2019-01-26T22:53:11.517Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-01-26T22:53:21.968Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
