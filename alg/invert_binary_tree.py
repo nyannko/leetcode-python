@@ -11,10 +11,9 @@ class Solution:
         while queue:
             # O(1)
             ele = queue.popleft()
-            if ele:
-                ele.right, ele.left = ele.left, ele.right
-                queue.append(ele.left)
-                queue.append(ele.right)
+            ele.right, ele.left = ele.left, ele.right
+            if ele.left: queue.append(ele.left)
+            if ele.right: queue.append(ele.right)
         return root
 
     def invertTree1(self, root):
@@ -25,10 +24,8 @@ class Solution:
     def invertTree2(self, root):
         if not root: return []
         root.left, root.right = root.right, root.left
-        if root.left:
-            self.invertTree(root.left)
-        if root.right:
-            self.invertTree(root.right)
+        self.invertTree(root.left)
+        self.invertTree(root.right)
         return root
 
     def invertTree3(self, root):

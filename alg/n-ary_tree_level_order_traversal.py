@@ -16,14 +16,13 @@ class Solution(object):
         from collections import deque
         if not root: return []
         q = deque([root])
-        res = [[root.val]]
+        res = []
         while q:
             level = []
-            for _ in range(len(q)):
+            for i in range(len(q)):
                 cur = q.popleft()
                 for c in cur.children:
-                    level.append(c.val)
                     q.append(c)
-            if level:
-                res.append(level)
+                level.append(cur.val)
+            res.append(level)
         return res
