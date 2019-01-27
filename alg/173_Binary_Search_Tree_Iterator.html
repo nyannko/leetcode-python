@@ -583,7 +583,20 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.4" data-path="100_Same_Tree.html">
+        <li class="chapter " data-level="1.3.4" data-path="102_Binary_Tree_Level_Order_Traversal.html">
+            
+                <a href="102_Binary_Tree_Level_Order_Traversal.html">
+            
+                    
+                    102. Binary Tree Level Order Traversal
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5" data-path="100_Same_Tree.html">
             
                 <a href="100_Same_Tree.html">
             
@@ -596,7 +609,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.5" data-path="101_Symmetric_Tree.html">
+        <li class="chapter " data-level="1.3.6" data-path="101_Symmetric_Tree.html">
             
                 <a href="101_Symmetric_Tree.html">
             
@@ -609,7 +622,46 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.6" data-path="104_Maximum_Depth_of_Binary_Tree.html">
+        <li class="chapter " data-level="1.3.7" data-path="226_Invert_Binary_Tree.html">
+            
+                <a href="226_Invert_Binary_Tree.html">
+            
+                    
+                    226. Invert Binary Tree
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.8" data-path="617_Merge_Two_Binary_Trees.html">
+            
+                <a href="617_Merge_Two_Binary_Trees.html">
+            
+                    
+                    617. Merge Two Binary Trees
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.9" data-path="872_Leaf-Similar_Trees.html">
+            
+                <a href="872_Leaf-Similar_Trees.html">
+            
+                    
+                    872. Leaf-Similar Trees
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.10" data-path="104_Maximum_Depth_of_Binary_Tree.html">
             
                 <a href="104_Maximum_Depth_of_Binary_Tree.html">
             
@@ -622,7 +674,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.7" data-path="111_Minimum_Depth_of_Binary_Tree.html">
+        <li class="chapter " data-level="1.3.11" data-path="111_Minimum_Depth_of_Binary_Tree.html">
             
                 <a href="111_Minimum_Depth_of_Binary_Tree.html">
             
@@ -635,7 +687,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.8" data-path="112_Path_Sum.html">
+        <li class="chapter " data-level="1.3.12" data-path="112_Path_Sum.html">
             
                 <a href="112_Path_Sum.html">
             
@@ -648,7 +700,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.9" data-path="222_Count_Complete_Tree_Nodes.html">
+        <li class="chapter " data-level="1.3.13" data-path="222_Count_Complete_Tree_Nodes.html">
             
                 <a href="222_Count_Complete_Tree_Nodes.html">
             
@@ -749,9 +801,51 @@
             <span class="hljs-keyword">return</span> <span class="hljs-keyword">False</span>
         <span class="hljs-keyword">return</span> <span class="hljs-keyword">True</span>
 </code></pre>
+<p>java&#x7528;linkedlist&#x505A;&#xFF0C;&#x6CE8;&#x610F;&#x5224;&#x7A7A;&#x4E0D;&#x8981;&#x76F4;&#x63A5;&#x50CF;python&#x4E00;&#x6837;&#x548C;null&#x6BD4;&#x8F83;&#x3002;&#x3002;</p>
+<pre><code class="lang-java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">BSTIterator</span> </span>{
+    <span class="hljs-keyword">private</span> LinkedList&lt;TreeNode&gt; stack;
+    <span class="hljs-keyword">private</span> TreeNode root;
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">BSTIterator</span><span class="hljs-params">(TreeNode root)</span> </span>{
+        stack = <span class="hljs-keyword">new</span> LinkedList&lt;&gt;();
+        <span class="hljs-keyword">this</span>.root = root;
+        <span class="hljs-keyword">while</span> (<span class="hljs-keyword">this</span>.root != <span class="hljs-keyword">null</span>) {
+            stack.push(<span class="hljs-keyword">this</span>.root);
+            <span class="hljs-keyword">this</span>.root = <span class="hljs-keyword">this</span>.root.left;
+        }
+    }
+
+    <span class="hljs-comment">/**
+     * <span class="hljs-doctag">@return</span> the next smallest number
+     */</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">next</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">if</span> (!stack.isEmpty() || root != <span class="hljs-keyword">null</span>) {
+            <span class="hljs-keyword">while</span> (root != <span class="hljs-keyword">null</span>) {
+                stack.push(root);
+                root = root.left;
+            }
+            <span class="hljs-keyword">if</span> (root == <span class="hljs-keyword">null</span>) {
+                TreeNode nextNode = stack.pop();
+                root = nextNode.right;
+                <span class="hljs-keyword">return</span> nextNode.val;
+            }
+        }
+        <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+    }
+
+    <span class="hljs-comment">/**
+     * <span class="hljs-doctag">@return</span> whether we have a next smallest number
+     */</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">hasNext</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">if</span> (stack.isEmpty() &amp;&amp; root == <span class="hljs-keyword">null</span>) {
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
+        }
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;
+    }
+}
+</code></pre>
 <p>&#x4E00;&#x4E2A;&#x4F8B;&#x5B50;&#xFF1A;&#x68C0;&#x67E5;&#x5DE6;&#x8FB9;&#x7684;None&#x540E;pop(1),&#x68C0;&#x67E5;&#x53F3;&#x8FB9;&#x7684;None&#x540E;pop(3)</p>
 <p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fz6s23arddj30io0d4whp.jpg" width="500"></p>
-<p>java&#x7528;stack&#x505A;&#xFF0C;&#x6CE8;&#x610F;&#x5224;&#x7A7A;&#x4E0D;&#x8981;&#x76F4;&#x63A5;&#x50CF;python&#x4E00;&#x6837;&#x548C;null&#x6BD4;&#x8F83;&#x3002;&#x3002;</p>
 <p><a href="https://leetcode.com/problems/binary-tree-inorder-traversal/" target="_blank">inorder&#x7684;&#x9012;&#x5F52;&#x5199;&#x6CD5;</a>&#xFF0C;&#x601D;&#x8DEF;&#x5C31;&#x662F;&#x6309;&#x7167;&#x5DE6;&#x4E2D;&#x53F3;&#x7684;&#x5904;&#x7406;&#x987A;&#x5E8F;(&#x5DE6;&#x8FB9;&#x5904;&#x7406;&#x5B8C;&#x4E86;&#xFF0C;&#x5C06;&#x5DE6;&#x8FB9;&#x7684;&#x8282;&#x70B9;&#x653E;&#x5165;&#x7ED3;&#x679C;&#xFF0C;&#x4E0A;&#x8FF0;&#x56FE;&#x4F8B;&#x4E2D;&#x6309;&#x7167;1111231...&#x7684;&#x987A;&#x5E8F;&#x6267;&#x884C;)</p>
 <pre><code class="lang-python">    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">inorderTraversal</span><span class="hljs-params">(self, root)</span>:</span>
         res = []
@@ -809,7 +903,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"173. Binary Search Tree Iterator","level":"1.1.7","depth":2,"next":{"title":"215. Kth Largest Element in an Array","level":"1.1.8","depth":2,"path":"alg/215_Kth_Largest_Element_in_an_Array.md","ref":"alg/215_Kth_Largest_Element_in_an_Array.md","articles":[]},"previous":{"title":"169. Majority Element","level":"1.1.6","depth":2,"path":"alg/169_Majority_Element.md","ref":"alg/169_Majority_Element.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"alg/173_Binary_Search_Tree_Iterator.md","mtime":"2019-01-19T23:17:47.285Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-01-26T22:53:21.968Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"173. Binary Search Tree Iterator","level":"1.1.7","depth":2,"next":{"title":"215. Kth Largest Element in an Array","level":"1.1.8","depth":2,"path":"alg/215_Kth_Largest_Element_in_an_Array.md","ref":"alg/215_Kth_Largest_Element_in_an_Array.md","articles":[]},"previous":{"title":"169. Majority Element","level":"1.1.6","depth":2,"path":"alg/169_Majority_Element.md","ref":"alg/169_Majority_Element.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"alg/173_Binary_Search_Tree_Iterator.md","mtime":"2019-01-27T17:18:37.640Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-01-27T22:01:52.187Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>18. 4Sum · GitBook</title>
+        <title>102. Binary Tree Level Order Traversal · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="69_Sqrtx.html" />
+    <link rel="next" href="100_Same_Tree.html" />
     
     
-    <link rel="prev" href="15_3Sum.html" />
+    <link rel="prev" href="145_Binary_Tree_Postorder_Traversal.html" />
     
 
     </head>
@@ -129,7 +129,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.1.3" data-path="18_4Sum.html">
+        <li class="chapter " data-level="1.1.3" data-path="18_4Sum.html">
             
                 <a href="18_4Sum.html">
             
@@ -583,7 +583,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.4" data-path="102_Binary_Tree_Level_Order_Traversal.html">
+        <li class="chapter active" data-level="1.3.4" data-path="102_Binary_Tree_Level_Order_Traversal.html">
             
                 <a href="102_Binary_Tree_Level_Order_Traversal.html">
             
@@ -748,7 +748,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >18. 4Sum</a>
+        <a href=".." >102. Binary Tree Level Order Traversal</a>
     </h1>
 </div>
 
@@ -763,41 +763,58 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h3 id="18-4sum">18. 4Sum</h3>
-<p>3Sum&#x5077;&#x61D2;&#x6CD5;.. &#x5916;&#x90E8;&#x589E;&#x52A0;&#x5FAA;&#x73AF;&#xFF0C;&#x5224;&#x65AD;&#x91CD;&#x590D;&#xFF0C;&#x5185;&#x90E8;&#x4FEE;&#x6539;&#x8D77;&#x59CB;&#x503C;&#x3002;</p>
-<pre><code class="lang-java"><span class="hljs-keyword">public</span> List&lt;List&lt;Integer&gt;&gt; FourSum(<span class="hljs-keyword">int</span>[] nums, <span class="hljs-keyword">int</span> target) {
-        List&lt;List&lt;Integer&gt;&gt; res = <span class="hljs-keyword">new</span> ArrayList&lt;&gt;();
-        <span class="hljs-comment">// sort the list</span>
-        Arrays.sort(nums);
-        <span class="hljs-comment">// line 11, 12, 13, 15, 17 are different with 3sum.</span>
-        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>; j &lt; nums.length - <span class="hljs-number">3</span>; j++) {
-            <span class="hljs-keyword">if</span> (j &gt; <span class="hljs-number">0</span> &amp;&amp; nums[j] == nums[j - <span class="hljs-number">1</span>]) <span class="hljs-keyword">continue</span>;
-            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = j + <span class="hljs-number">1</span>; i &lt; nums.length - <span class="hljs-number">2</span>; i++) {
-                <span class="hljs-comment">// skip the same i value</span>
-                <span class="hljs-keyword">if</span> (i &gt; j + <span class="hljs-number">1</span> &amp;&amp; nums[i] == nums[i - <span class="hljs-number">1</span>]) <span class="hljs-keyword">continue</span>;
-                <span class="hljs-comment">// start binary search</span>
-                <span class="hljs-keyword">int</span> tar = target - nums[i] - nums[j];
-                <span class="hljs-keyword">int</span> l = i + <span class="hljs-number">1</span>,
-                        r = nums.length - <span class="hljs-number">1</span>;
-                <span class="hljs-keyword">while</span> (l &lt; r) {
-                    <span class="hljs-keyword">if</span> (nums[l] + nums[r] == tar) {
-                        res.add(Arrays.asList(nums[j], nums[i], nums[l], nums[r]));
-                        l++;
-                        r--;
-                        <span class="hljs-keyword">while</span> (l &lt; r &amp;&amp; nums[l] == nums[l - <span class="hljs-number">1</span>]) l++; <span class="hljs-comment">// skip the same l value</span>
-                        <span class="hljs-keyword">while</span> (l &lt; r &amp;&amp; nums[r] == nums[r + <span class="hljs-number">1</span>]) r--; <span class="hljs-comment">// skip the same r value</span>
-                    } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (nums[l] + nums[r] &lt; tar) {
-                        l++;
-                    } <span class="hljs-keyword">else</span> {
-                        r--;
-                    }
-                }
-            }
+                                <h3 id="102-binary-tree-level-order-traversal">102. Binary Tree Level Order Traversal</h3>
+<p>zigzag&#x548C;II&#x8BB0;&#x5F97;&#x53BB;&#x770B;&#x7B54;&#x6848;&#xFF0C;&#x8FD8;&#x6709;DFS&#x9012;&#x5F52;&#x89E3;&#x6CD5;&#x3002;</p>
+<p>&#x6808;&#x3002;&#x6CE8;&#x610F;List&#x7684;&#x7528;&#x6CD5;&#xFF0C;&#x6BD4;&#x5982;&#x6709;&#x65F6;&#x5019;&#x65F6;deque&#xFF0C;&#x6709;&#x65F6;&#x5019;&#x65F6;linkedlist&#x3002;queue&#x7684;&#x65F6;&#x5019;&#x4E00;&#x822C;&#x7528;offer&#x65B9;&#x6CD5;&#xFF0C;&#x56E0;&#x4E3A;&#x5BB9;&#x91CF;&#x6EE1;&#x7684;&#x65F6;&#x5019;&#x4E0D;&#x4F1A;&#x629B;&#x51FA;&#x5F02;&#x5E38;&#x800C;&#x662F;&#x8FD4;&#x56DE;false&#x3002;</p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> List&lt;List&lt;Integer&gt;&gt; levelOrder(TreeNode root) {
+    Queue&lt;TreeNode&gt; q = <span class="hljs-keyword">new</span> LinkedList&lt;&gt;();
+    List&lt;List&lt;Integer&gt;&gt; res = <span class="hljs-keyword">new</span> LinkedList&lt;&gt;();
+    <span class="hljs-keyword">if</span> (root == <span class="hljs-keyword">null</span>) <span class="hljs-keyword">return</span> res;
+
+    q.offer(root);
+
+    <span class="hljs-keyword">while</span> (!q.isEmpty()) {
+        <span class="hljs-keyword">int</span> levelNum = q.size();
+        List&lt;Integer&gt; subRes = <span class="hljs-keyword">new</span> LinkedList&lt;&gt;();
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; levelNum; i++) {
+            TreeNode node = q.poll();
+            <span class="hljs-keyword">if</span> (node.left != <span class="hljs-keyword">null</span>)  q.offer(node.left);
+            <span class="hljs-keyword">if</span> (node.right != <span class="hljs-keyword">null</span>) q.offer(node.right);
+            subRes.add(node.val);
         }
-        <span class="hljs-keyword">return</span> res;
+        res.add(subRes);
+        <span class="hljs-comment">// res.add(0, subRes); // reverse the order of subRes for leetcode #107</span>
     }
+    <span class="hljs-keyword">return</span> res;
+}
 </code></pre>
-<p>&#x65F6;&#x95F4;&#x590D;&#x6742;&#x5EA6;<code>O(n^3)</code>(for&#x91CC;&#x9762;&#x5957;for&#x518D;while)&#xFF0C;&#x7A7A;&#x95F4;&#x590D;&#x6742;&#x5EA6;<code>O(k)</code></p>
+<p>zigzag&#x90A3;&#x9053;&#x9898;&#x7528;&#x4E86;flag..</p>
+<pre><code class="lang-python">    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">zigzagLevelOrder</span><span class="hljs-params">(self, root)</span>:</span>
+        <span class="hljs-string">&quot;&quot;&quot;
+        :type root: TreeNode
+        :rtype: List[List[int]]
+        &quot;&quot;&quot;</span>
+        res = []
+        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> root: <span class="hljs-keyword">return</span> res
+        queue = [root]
+        flag = <span class="hljs-keyword">False</span>
+
+        <span class="hljs-keyword">while</span> queue:
+            val = []
+            <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> range(len(queue)):
+                node = queue.pop(<span class="hljs-number">0</span>)
+                <span class="hljs-keyword">if</span> node.left: queue.append(node.left)
+                <span class="hljs-keyword">if</span> node.right: queue.append(node.right)
+                val.append(node.val)
+
+            <span class="hljs-keyword">if</span> flag:
+                val.reverse()
+                flag = <span class="hljs-keyword">False</span>
+            <span class="hljs-keyword">else</span>:
+                flag = <span class="hljs-keyword">True</span>
+            res.append(val)
+        <span class="hljs-keyword">return</span> res
+</code></pre>
 
                                 
                                 </section>
@@ -825,12 +842,12 @@
 
             
                 
-                <a href="15_3Sum.html" class="navigation navigation-prev " aria-label="Previous page: 15. 3Sum">
+                <a href="145_Binary_Tree_Postorder_Traversal.html" class="navigation navigation-prev " aria-label="Previous page: 145. Binary Tree Postorder Traversal">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="69_Sqrtx.html" class="navigation navigation-next " aria-label="Next page: 69. Sqrt(x)">
+                <a href="100_Same_Tree.html" class="navigation navigation-next " aria-label="Next page: 100. Same Tree">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -841,7 +858,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"18. 4Sum","level":"1.1.3","depth":2,"next":{"title":"69. Sqrt(x)","level":"1.1.4","depth":2,"path":"alg/69_Sqrtx.md","ref":"alg/69_Sqrtx.md","articles":[]},"previous":{"title":"15. 3Sum","level":"1.1.2","depth":2,"path":"alg/15_3Sum.md","ref":"alg/15_3Sum.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"alg/18_4Sum.md","mtime":"2019-01-20T22:02:34.648Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-01-27T22:01:52.187Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"102. Binary Tree Level Order Traversal","level":"1.3.4","depth":2,"next":{"title":"100. Same Tree","level":"1.3.5","depth":2,"path":"alg/100_Same_Tree.md","ref":"alg/100_Same_Tree.md","articles":[]},"previous":{"title":"145. Binary Tree Postorder Traversal","level":"1.3.3","depth":2,"path":"alg/145_Binary_Tree_Postorder_Traversal.md","ref":"alg/145_Binary_Tree_Postorder_Traversal.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"alg/102_Binary_Tree_Level_Order_Traversal.md","mtime":"2019-01-27T21:33:56.317Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-01-27T22:01:52.187Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
