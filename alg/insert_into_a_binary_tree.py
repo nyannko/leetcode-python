@@ -32,3 +32,21 @@ class Solution(object):
             else:
                 self.insertIntoBST(root.right, val)
         return root
+
+    def insertIntoBST(self, root, val):
+        node = TreeNode(val)
+        cur = root
+        while cur:
+            if cur.val > val:
+                if cur.left:
+                    cur = cur.left
+                else:
+                    cur.left = node
+                    break
+            else:
+                if cur.right:
+                    cur = cur.right
+                else:
+                    cur.right = node
+                    break
+        return root if root else node

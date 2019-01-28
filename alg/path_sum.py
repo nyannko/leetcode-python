@@ -19,13 +19,34 @@ class Solution:
         :type sum: int
         :rtype: List[List[int]]
         """
+        res = []
+        self.dfs(root, [], res, sum)
+        return res
+
+    def dfs(self, root, path, res, sum):
+        if not root: return
+        path.append(root.val)
+        sum -= root.val
+        if not root.left and not root.right and sum == 0:
+            res.append(list(path))
+        self.dfs(root.left, path, res, sum)
+        self.dfs(root.right, path, res, sum)
+        path.pop()
+
+    # slow
+    def pathSum2(self, root, sum):
+        """
+        :type root: TreeNode
+        :type sum: int
+        :rtype: List[List[int]]
+        """
         if not root: return []
         res = []
         path = []
-        self.dfs(sum, root, path, res)
+        self.dfs2(sum, root, path, res)
         return res
 
-    def dfs(self, sum, root, path, res):
+    def dfs2(self, sum, root, path, res):
         if sum == root.val and not root.left and not root.right:
             path.append(root.val)
             # print(path)
@@ -34,6 +55,6 @@ class Solution:
 
         # print(path)
         if root.left:
-            self.dfs(sum - root.val, root.left, list(path) + [root.val], res)
+            self.dfs2(sum - root.val, root.left, list(path) + [root.val], res)
         if root.right:
-            self.dfs(sum - root.val, root.right, list(path) + [root.val], res)
+            self.dfs2(sum - root.val, root.right, list(path) + [root.val], res)
