@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>215. Kth Largest Element in an Array · GitBook</title>
+        <title>236. Lowest Common Ancestor of a Binary Tree · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,8 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="704_Binary_Search.html" />
     
-    
-    <link rel="prev" href="173_Binary_Search_Tree_Iterator.html" />
+    <link rel="prev" href="235_Lowest_Common_Ancestor_of_a_Binary_Search_Tree.html" />
     
 
     </head>
@@ -194,7 +192,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.1.8" data-path="215_Kth_Largest_Element_in_an_Array.html">
+        <li class="chapter " data-level="1.1.8" data-path="215_Kth_Largest_Element_in_an_Array.html">
             
                 <a href="215_Kth_Largest_Element_in_an_Array.html">
             
@@ -791,7 +789,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.20" data-path="236_Lowest_Common_Ancestor_of_a_Binary_Tree.html">
+        <li class="chapter active" data-level="1.3.20" data-path="236_Lowest_Common_Ancestor_of_a_Binary_Tree.html">
             
                 <a href="236_Lowest_Common_Ancestor_of_a_Binary_Tree.html">
             
@@ -839,7 +837,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >215. Kth Largest Element in an Array</a>
+        <a href=".." >236. Lowest Common Ancestor of a Binary Tree</a>
     </h1>
 </div>
 
@@ -854,43 +852,17 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h3 id="215-kth-largest-element-in-an-array">215. Kth Largest Element in an Array</h3>
-<p>1.&#x4F7F;&#x7528;&#x603B;&#x5BB9;&#x91CF;&#x4E3A;<code>k+1</code>&#x7684;&#x4F18;&#x5148;&#x961F;&#x5217;&#x7EF4;&#x62A4;&#x503C;&#x6700;&#x5927;&#x7684;k&#x4E2A;&#x70B9;&#xFF0C;&#x4E00;&#x65E6;&#x603B;&#x6570;&#x91CF;Y&#x8D85;&#x8FC7;k&#xFF0C;&#x79FB;&#x9664;Y&#x4E2D;&#x503C;&#x6700;&#x5C0F;&#x7684;&#x70B9;&#x3002;&#x5806;&#x4E2D;&#x63D2;&#x5165;&#x548C;&#x5220;&#x9664;&#x7684;&#x6700;&#x5DEE;&#x65F6;&#x95F4;&#x4E3A;<code>O(log(k)</code>,<code>log(k)</code>&#x4E3A;&#x5806;&#x7684;&#x9AD8;&#x5EA6;&#xFF0C;&#x53C8;&#x56E0;&#x4E3A;&#x904D;&#x5386;&#x6574;&#x4E2A;&#x6570;&#x7EC4;&#xFF0C;&#x6240;&#x4EE5;&#x65F6;&#x95F4;&#x590D;&#x6742;&#x5EA6;&#x4E3A;<code>n*log(k)</code></p>
-<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">findKthLargest</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] nums, <span class="hljs-keyword">int</span> k)</span> </span>{
-    PriorityQueue&lt;Integer&gt; q = <span class="hljs-keyword">new</span> PriorityQueue&lt;&gt;();
-    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> num : nums) {
-        q.offer(num);
-        <span class="hljs-keyword">if</span> (q.size() &gt; k) {
-            q.poll();
-        }
+                                <h3 id="236-lowest-common-ancestor-of-a-binary-tree">236. Lowest Common Ancestor of a Binary Tree</h3>
+<p>&#x5206;&#x60C5;&#x51B5;&#x8BA8;&#x8BBA;&#xFF0C;&#x7B2C;&#x4E00;&#x53E5;&#x662F;&#x5BF9;&#x4E8E;&#x7A7A;&#x8282;&#x70B9;&#x7684;&#x6761;&#x4EF6;&#xFF08;&#x9012;&#x5F52;&#x51FA;&#x53E3;&#x6761;&#x4EF6;&#xFF09;&#x3002;&#x540E;&#x9762;&#x662F;&#x4E2D;&#x95F4;&#x8282;&#x70B9;&#x7684;&#x60C5;&#x51B5;&#xFF0C;root&#x7684;&#x5DE6;&#x8FB9;&#x548C;&#x53F3;&#x8FB9;&#x63A5;&#x4F4F;&#x8FD4;&#x56DE;&#x503C;&#x4E4B;&#x540E;&#xFF0C;&#x5224;&#x65AD;&#x662F;&#x5426;&#x4E3A;&#x7A7A;&#xFF0C;&#x82E5;&#x4E24;&#x8FB9;&#x90FD;&#x4E3A;&#x7A7A;&#xFF0C;&#x90A3;&#x4E48;&#x8FD4;&#x56DE;root&#x3002;&#x5982;&#x679C;&#x4EFB;&#x610F;&#x4E00;&#x8FB9;&#x6709;&#x503C;&#xFF0C;&#x5C31;&#x8FD4;&#x56DE;&#x6709;&#x503C;&#x7684;&#x4E00;&#x8FB9;&#x3002;</p>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> TreeNode <span class="hljs-title">lowestCommonAncestor</span><span class="hljs-params">(TreeNode root, TreeNode p, TreeNode q)</span> </span>{
+    <span class="hljs-keyword">if</span> (root == <span class="hljs-keyword">null</span> || root == p || root == q) <span class="hljs-keyword">return</span> root;
+    root.left = lowestCommonAncestor(root.left, p, q);
+    root.right = lowestCommonAncestor(root.right, p, q);
+    <span class="hljs-keyword">if</span> (root.left != <span class="hljs-keyword">null</span> &amp;&amp; root.right != <span class="hljs-keyword">null</span>) {
+        <span class="hljs-keyword">return</span> root;
     }
-    <span class="hljs-keyword">return</span> q.poll();
+    <span class="hljs-keyword">return</span> (root.left == <span class="hljs-keyword">null</span>) ? root.right : root.left;
 }
-</code></pre>
-<ul>
-<li><p>&#x4F7F;&#x7528;<code>offer()</code>&#x6216;&#x8005;<code>add()</code>&#x65B9;&#x6CD5;&#x65F6;&#x4F1A;&#x8FDB;&#x884C;&#x6392;&#x5E8F;&#xFF0C;&#x8FD9;&#x91CC;&#x7EF4;&#x62A4;&#x4E00;&#x4E2A;&#x5C0F;&#x5806;&#x3002;<code>poll()</code>&#x65B9;&#x6CD5;&#x79FB;&#x9664;&#x4F18;&#x5148;&#x7EA7;&#x6700;&#x9AD8;&#x7684;&#x70B9;&#xFF0C;&#x8FD9;&#x91CC;&#x662F;&#x6700;&#x5C0F;&#x503C;</p>
-</li>
-<li><p>&#x6700;&#x5927;&#x5806;&#x53EF;&#x4EE5;&#x7528;<code>Collection.reverseOrder()</code>&#x8FD9;&#x4E2A;comparator&#xFF0C;&#x522B;&#x7684;&#x81EA;&#x5B9A;&#x4E49;&#x5BF9;&#x8C61;&#x9700;&#x8981;&#x81EA;&#x5DF1;&#x5B9E;&#x73B0;comparator</p>
-</li>
-</ul>
-<pre><code class="lang-java">PriorityQueue&lt;Integer&gt; q = <span class="hljs-keyword">new</span> PriorityQueue&lt;&gt;(nums.length, Collection.reverseOrder());
-</code></pre>
-<p>&#x4E00;&#x4E2A;&#x4F8B;&#x5B50;</p>
-<pre><code class="lang-java">input: {<span class="hljs-number">3</span>,<span class="hljs-number">2</span>,<span class="hljs-number">1</span>,<span class="hljs-number">5</span>,<span class="hljs-number">6</span>,<span class="hljs-number">4</span>}, <span class="hljs-number">3</span>
-
-Befor pop: [<span class="hljs-number">3</span>]
-After pop: [<span class="hljs-number">3</span>]
-Befor pop: [<span class="hljs-number">2</span>, <span class="hljs-number">3</span>]
-After pop: [<span class="hljs-number">2</span>, <span class="hljs-number">3</span>]
-Befor pop: [<span class="hljs-number">1</span>, <span class="hljs-number">3</span>, <span class="hljs-number">2</span>]
-After pop: [<span class="hljs-number">1</span>, <span class="hljs-number">3</span>, <span class="hljs-number">2</span>]
-Befor pop: [<span class="hljs-number">1</span>, <span class="hljs-number">3</span>, <span class="hljs-number">2</span>, <span class="hljs-number">5</span>]
-After pop: [<span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">5</span>]
-Befor pop: [<span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>]
-After pop: [<span class="hljs-number">3</span>, <span class="hljs-number">6</span>, <span class="hljs-number">5</span>]
-Befor pop: [<span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>]
-After pop: [<span class="hljs-number">4</span>, <span class="hljs-number">6</span>, <span class="hljs-number">5</span>]
-<span class="hljs-keyword">return</span> <span class="hljs-number">4</span>
 </code></pre>
 
                                 
@@ -919,14 +891,10 @@ After pop: [<span class="hljs-number">4</span>, <span class="hljs-number">6</spa
 
             
                 
-                <a href="173_Binary_Search_Tree_Iterator.html" class="navigation navigation-prev " aria-label="Previous page: 173. Binary Search Tree Iterator">
+                <a href="235_Lowest_Common_Ancestor_of_a_Binary_Search_Tree.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: 235. Lowest Common Ancestor of a Binary Search Tree">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
-                
-                <a href="704_Binary_Search.html" class="navigation navigation-next " aria-label="Next page: 704. Binary Search">
-                    <i class="fa fa-angle-right"></i>
-                </a>
                 
             
         
@@ -935,7 +903,7 @@ After pop: [<span class="hljs-number">4</span>, <span class="hljs-number">6</spa
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"215. Kth Largest Element in an Array","level":"1.1.8","depth":2,"next":{"title":"704. Binary Search","level":"1.1.9","depth":2,"path":"alg/704_Binary_Search.md","ref":"alg/704_Binary_Search.md","articles":[]},"previous":{"title":"173. Binary Search Tree Iterator","level":"1.1.7","depth":2,"path":"alg/173_Binary_Search_Tree_Iterator.md","ref":"alg/173_Binary_Search_Tree_Iterator.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"alg/215_Kth_Largest_Element_in_an_Array.md","mtime":"2019-01-15T22:51:50.805Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-01-29T16:20:23.571Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"236. Lowest Common Ancestor of a Binary Tree","level":"1.3.20","depth":2,"previous":{"title":"235. Lowest Common Ancestor of a Binary Search Tree","level":"1.3.19","depth":2,"path":"alg/235_Lowest_Common_Ancestor_of_a_Binary_Search_Tree.md","ref":"alg/235_Lowest_Common_Ancestor_of_a_Binary_Search_Tree.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"alg/236_Lowest_Common_Ancestor_of_a_Binary_Tree.md","mtime":"2019-01-29T16:13:45.010Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-01-29T16:20:23.571Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
