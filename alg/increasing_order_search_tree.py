@@ -1,9 +1,9 @@
 # Definition for a binary tree node.
-# class TreeNode:
-#     def __init__(self, x):
-#         self.val = x
-#         self.left = None
-#         self.right = None
+class TreeNode:
+    def __init__(self, x):
+        self.val = x
+        self.left = None
+        self.right = None
 
 class Solution:
     def increasingBST(self, root, tail=None):
@@ -18,3 +18,9 @@ class Solution:
         root.left = None
         root.right = self.increasingBST(root.right, tail)
         return res
+
+a = Solution()
+b = TreeNode(5)
+b.left = TreeNode(3)
+b.right = TreeNode(6)
+a.increasingBST(b)
