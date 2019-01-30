@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>149. Max Points on a Line · GitBook</title>
+        <title>81. Search in Rotated Sorted Array II · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="169_Majority_Element.html" />
+    <link rel="next" href="../1_linkedlist.html" />
     
     
-    <link rel="prev" href="69_Sqrtx.html" />
+    <link rel="prev" href="704_Binary_Search.html" />
     
 
     </head>
@@ -155,7 +155,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.1.5" data-path="149_Max_Points_on_a_Line.html">
+        <li class="chapter " data-level="1.1.5" data-path="149_Max_Points_on_a_Line.html">
             
                 <a href="149_Max_Points_on_a_Line.html">
             
@@ -220,7 +220,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.1.10" data-path="81_Search_in_Rotated_Sorted_Array_II.html">
+        <li class="chapter active" data-level="1.1.10" data-path="81_Search_in_Rotated_Sorted_Array_II.html">
             
                 <a href="81_Search_in_Rotated_Sorted_Array_II.html">
             
@@ -917,7 +917,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >149. Max Points on a Line</a>
+        <a href=".." >81. Search in Rotated Sorted Array II</a>
     </h1>
 </div>
 
@@ -932,145 +932,8 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h3 id="149-max-points-on-a-line">149. Max Points on a Line</h3>
-<p>&#x8BA1;&#x7B97;&#x4E00;&#x4E2A;&#x5217;&#x8868;&#x4E2D;&#x6700;&#x591A;&#x80FD;&#x6709;&#x51E0;&#x4E2A;&#x70B9;&#x5728;&#x4E00;&#x6761;&#x7EBF;&#x4E0A;&#x3002;</p>
-<p>&#x601D;&#x8DEF;&#x662F;&#x4E24;&#x4E2A;for&#x5FAA;&#x73AF;&#xFF0C;&#x9700;&#x8981;&#x6BD4;&#x8F83;<code>(n - 1) + .. + 2 + 1 = (n - 1) * n/2</code>&#x6B21;&#xFF0C;&#x7528;&#x5B57;&#x5178;&#x8BB0;&#x5F55;&#x4E0B;&#x5404;&#x4E2A;&#x659C;&#x7387;&#xFF08;&#x6216;&#x8005;&#x70B9;&#xFF09;&#x51FA;&#x73B0;&#x7684;&#x6B21;&#x6570;&#x3002;&#x6700;&#x540E;&#x8FD4;&#x56DE;&#x7ED3;&#x679C;&#x4E3A;&#x4E00;&#x6B21;&#x8FED;&#x4EE3;&#x4E2D;&#x6700;&#x591A;&#x7684;&#x70B9;+&#x91CD;&#x590D;&#x7684;&#x70B9;+&#x672C;&#x8EAB;</p>
-<h4 id="python">Python</h4>
-<p>&#x5982;&#x679C;&#x4F7F;&#x7528;&#x8FD9;&#x79CD;&#x65B9;&#x6CD5;&#x7684;&#x8BDD;&#x9700;&#x8981;&#x5728;<code>slope = Decimal(dy * 1.0) / dx if dx != 0 else &apos;infinity&apos;</code>dy&#x524D;&#x9762;&#x52A0;&#x4E0A;decimal&#xFF0C;&#x56E0;&#x4E3A;&#x6D6E;&#x70B9;&#x6570;&#x7CBE;&#x5EA6;&#x53EF;&#x80FD;&#x51FA;&#x73B0;&#x95EE;&#x9898;&#x5BFC;&#x81F4;&#x4E0D;&#x540C;&#x7684;&#x70B9;&#x7B97;&#x51FA;&#x76F8;&#x540C;&#x7684;&#x659C;&#x7387;&#x3002;</p>
-<pre><code class="lang-python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">maxPoints2</span><span class="hljs-params">(self, points)</span>:</span>
-    <span class="hljs-string">&quot;&quot;&quot;
-    :type points: List[Point]
-    :rtype: int
-    &quot;&quot;&quot;</span>
-    <span class="hljs-keyword">if</span> len(points) &lt;= <span class="hljs-number">2</span>: <span class="hljs-keyword">return</span> len(points)
-    result = <span class="hljs-number">0</span>
-    d = defaultdict(int)
-    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(<span class="hljs-number">0</span>, len(points)):
-        d.clear()
-        overlap, cur_max = <span class="hljs-number">0</span>, <span class="hljs-number">0</span>
-        <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> range(i + <span class="hljs-number">1</span>, len(points)):
-            dx, dy = points[j].x - points[i].x, \
-                        points[j].y - points[i].y
-            <span class="hljs-keyword">if</span> dx == <span class="hljs-number">0</span> <span class="hljs-keyword">and</span> dy == <span class="hljs-number">0</span>:
-                overlap += <span class="hljs-number">1</span>
-                <span class="hljs-keyword">continue</span>
-            slope = Decimal(dy * <span class="hljs-number">1.0</span>) / dx <span class="hljs-keyword">if</span> dx != <span class="hljs-number">0</span> <span class="hljs-keyword">else</span> <span class="hljs-string">&apos;infinity&apos;</span>
-            d[slope] += <span class="hljs-number">1</span>
-            cur_max = max(cur_max, d[slope])
-        result = max(result, cur_max + overlap + <span class="hljs-number">1</span>)
-    <span class="hljs-keyword">return</span> result
-</code></pre>
-<p>&#x7B2C;&#x4E8C;&#x79CD;&#x65B9;&#x6CD5;&#x4F7F;&#x7528;&#x6C42;x, y&#x7684;GCD&#x6765;&#x540C;&#x65F6;&#x7F29;&#x5C0F;x&#xFF0C;y&#x7684;&#x8303;&#x56F4;&#x907F;&#x514D;&#x6D6E;&#x70B9;&#x6570;&#x7684;&#x7CBE;&#x5EA6;&#x95EE;&#x9898;&#x3002;</p>
-<pre><code class="lang-python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">maxPoints</span><span class="hljs-params">(self, points)</span>:</span>
-    <span class="hljs-string">&quot;&quot;&quot;
-    :type points: List[Point]
-    :rtype: int
-    &quot;&quot;&quot;</span>
-    <span class="hljs-keyword">if</span> len(points) &lt;= <span class="hljs-number">2</span>: <span class="hljs-keyword">return</span> len(points)
-    d = defaultdict(int)
-    result = <span class="hljs-number">0</span>
-    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(<span class="hljs-number">0</span>, len(points)):
-        d.clear()  <span class="hljs-comment"># clear dict for each round</span>
-        cur_max, overlap = <span class="hljs-number">0</span>, <span class="hljs-number">0</span>
-        <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> range(i + <span class="hljs-number">1</span>, len(points)):
-            dx, dy = points[j].x - points[i].x, \
-                        points[j].y - points[i].y
-            <span class="hljs-keyword">if</span> dx == <span class="hljs-number">0</span> <span class="hljs-keyword">and</span> dy == <span class="hljs-number">0</span>:
-                overlap += <span class="hljs-number">1</span>
-                <span class="hljs-keyword">continue</span>
-            gcd = self.getGCD(dx, dy)  <span class="hljs-comment"># get the common greatest divisor</span>
-            print(<span class="hljs-string">&quot;gcd&quot;</span>, gcd)
-            dx //= gcd
-            dy //= gcd  <span class="hljs-comment"># decrease the x and y at the same time to prevent overflow</span>
-            d[(dx, dy)] += <span class="hljs-number">1</span>
-            cur_max = max(cur_max, d[(dx, dy)])
-        result = max(result, cur_max + overlap + <span class="hljs-number">1</span>)
-
-    <span class="hljs-keyword">return</span> result
-
-<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">getGCD</span><span class="hljs-params">(self, i, j)</span>:</span>
-    <span class="hljs-keyword">if</span> j == <span class="hljs-number">0</span>: <span class="hljs-keyword">return</span> i
-    <span class="hljs-keyword">return</span> self.getGCD(j, i % j)
-</code></pre>
-<p>&#x8FD0;&#x884C;&#x4F8B;&#x5B50;</p>
-<pre><code class="lang-python">input = [[0, 0], [1, 0], [1, 1], [2, 2]]
- ^               
-2|     o   
-1|  o         
- o--o----------------&gt;
- 0  1  2  3  4  5  6
-
-# first iteration
-{(1, 0): 1})
-{(1, 0): 1, (1, 1): 1})
-{(1, 0): 1, (1, 1): 2}) # (1&#xFF0C;1)&#x4E2D;&#x6709;&#x4E24;&#x4E2A;&#x70B9;&#x659C;&#x7387;&#x76F8;&#x7B49; &#x8FD4;&#x56DE;&#x6700;&#x5927;&#x503C;3
-# second iteration
-{(0, 1): 1})
-{(0, 1): 1, (1, 2): 1})
-# third iteration
-{(1, 1): 1})
-</code></pre>
-<h4 id="java">Java</h4>
-<p>&#x4F7F;&#x7528;Java&#x91CD;&#x5199;python&#x7B2C;&#x4E8C;&#x79CD;&#x65B9;&#x6CD5;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x903B;&#x8F91;&#x4E0A;&#x53EA;&#x8981;xy&#x76F8;&#x7B49;<code>point</code>&#x5C31;&#x7B97;&#x76F8;&#x7B49;&#xFF0C;&#x9700;&#x8981;&#x91CD;&#x5199;<code>Point</code>&#x4E2D;&#x7684;<code>equals</code>&#x548C;<code>hashCode</code>&#x65B9;&#x6CD5;&#xFF0C;<code>hashcode</code>&#x65B9;&#x6CD5;&#x5728;&#x6BCF;&#x6B21;&#x5B58;&#x50A8;&#x6216;&#x8005;&#x67E5;&#x627E;map&#x7684;&#x65F6;&#x5019;&#x8BA1;&#x7B97;<code>Point</code>&#x5B58;&#x653E;&#x7684;&#x4F4D;&#x7F6E;&#xFF0C;<code>equals</code>&#x7528;&#x6765;&#x6BD4;&#x8F83;&#x4E24;&#x4E2A;&#x70B9;&#x7684;<code>x</code>,<code>y</code>&#x662F;&#x5426;&#x76F8;&#x7B49;&#x3002;</p>
-<p>&#x8FD8;&#x6709;&#x4E00;&#x79CD;&#x6BD4;&#x8F83;&#x5FEB;&#x7684;&#x65B9;&#x6CD5;&#x6CA1;&#x6709;&#x770B;&#xFF0C;&#x597D;&#x50CF;&#x662F;&#x76F4;&#x63A5;&#x6BD4;&#x8F83;&#x4E58;&#x6CD5;&#x3002;</p>
-<pre><code class="lang-java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Point</span> </span>{
-    <span class="hljs-keyword">int</span> x;
-    <span class="hljs-keyword">int</span> y;
-    Point(<span class="hljs-keyword">int</span> a, <span class="hljs-keyword">int</span> b) {
-        x = a;
-        y = b;
-    }
-
-    <span class="hljs-meta">@Override</span>
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">equals</span><span class="hljs-params">(Object other)</span> </span>{
-        <span class="hljs-keyword">if</span> (other == <span class="hljs-keyword">this</span>) <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;
-        <span class="hljs-keyword">if</span> (!(other <span class="hljs-keyword">instanceof</span> Point)) <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
-        Point o = (Point) other;
-        <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.x == o.x &amp;&amp; <span class="hljs-keyword">this</span>.y == o.y;
-    }
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">hashCode</span><span class="hljs-params">()</span> </span>{
-        <span class="hljs-keyword">return</span> x * <span class="hljs-number">4</span> + y * <span class="hljs-number">3</span>;
-    }
-}
-
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>{
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">maxPoints</span><span class="hljs-params">(Point[] points)</span> </span>{
-        <span class="hljs-keyword">int</span> result = <span class="hljs-number">0</span>;
-        <span class="hljs-keyword">int</span> size = points.length;
-        Map&lt;Point, Integer&gt; map = <span class="hljs-keyword">new</span> HashMap&lt;&gt;();
-        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; size; i++) {
-            <span class="hljs-keyword">int</span> curmax = <span class="hljs-number">0</span>,
-                    overlap = <span class="hljs-number">0</span>;
-            map.clear();
-            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = i + <span class="hljs-number">1</span>; j &lt; size; j++) {
-                <span class="hljs-keyword">int</span> dx = points[j].x - points[i].x,
-                        dy = points[j].y - points[i].y;
-                <span class="hljs-keyword">if</span> (dx == <span class="hljs-number">0</span> &amp;&amp; dy == <span class="hljs-number">0</span>) {
-                    overlap++;
-                    <span class="hljs-keyword">continue</span>;
-                }
-                <span class="hljs-keyword">int</span> gcd = getGCD(dx, dy);
-                dx /= gcd;
-                dy /= gcd;
-                Point t = <span class="hljs-keyword">new</span> Point(dx, dy);
-                <span class="hljs-keyword">if</span> (map.containsKey(t)) {
-                    <span class="hljs-keyword">int</span> count = map.get(t) + <span class="hljs-number">1</span>;
-                    map.put(t, count);
-                } <span class="hljs-keyword">else</span> {
-                    map.put(t, <span class="hljs-number">1</span>);
-                }
-                curmax = Math.max(curmax, map.get(t));
-            }
-            result = Math.max(result, curmax + overlap + <span class="hljs-number">1</span>);
-        }
-        <span class="hljs-keyword">return</span> result;
-    }
-</code></pre>
-<h4 id="ref">Ref</h4>
-<p><a href="https://leetcode.com/problems/max-points-on-a-line/discuss/47113/A-java-solution-with-notes" target="_blank">https://leetcode.com/problems/max-points-on-a-line/discuss/47113/A-java-solution-with-notes</a></p>
-<p><a href="https://leetcode.com/problems/max-points-on-a-line/discuss/47268/Two-concise-python-solutions" target="_blank">https://leetcode.com/problems/max-points-on-a-line/discuss/47268/Two-concise-python-solutions</a></p>
-<p><a href="https://www.geeksforgeeks.org/gcd-in-python/" target="_blank">gcd</a></p>
-<p><a href="https://wiki.sei.cmu.edu/confluence/display/java/MET09-J.+Classes+that+define+an+equals%28%29+method+must+also+define+a+hashCode%28%29+method" target="_blank">hashcode</a></p>
+                                <h3 id="81-search-in-rotated-sorted-array-ii">81. Search in Rotated Sorted Array II</h3>
+<p>&#x6CE8;&#x610F;&#x8FB9;&#x754C;&#x3002;&#x3002;&#x3002;&#x3002;&#x3002;&#x3002;&#x3002;&#x3002;&#x3002;&#x3002;</p>
 
                                 
                                 </section>
@@ -1098,12 +961,12 @@
 
             
                 
-                <a href="69_Sqrtx.html" class="navigation navigation-prev " aria-label="Previous page: 69. Sqrt(x)">
+                <a href="704_Binary_Search.html" class="navigation navigation-prev " aria-label="Previous page: 704. Binary Search">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="169_Majority_Element.html" class="navigation navigation-next " aria-label="Next page: 169. Majority Element">
+                <a href="../1_linkedlist.html" class="navigation navigation-next " aria-label="Next page: Linked List">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1114,7 +977,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"149. Max Points on a Line","level":"1.1.5","depth":2,"next":{"title":"169. Majority Element","level":"1.1.6","depth":2,"path":"alg/169_Majority_Element.md","ref":"alg/169_Majority_Element.md","articles":[]},"previous":{"title":"69. Sqrt(x)","level":"1.1.4","depth":2,"path":"alg/69_Sqrtx.md","ref":"alg/69_Sqrtx.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"alg/149_Max_Points_on_a_Line.md","mtime":"2019-01-13T20:52:00.087Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-01-30T20:09:32.837Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"81. Search in Rotated Sorted Array II","level":"1.1.10","depth":2,"next":{"title":"Linked List","level":"1.2","depth":1,"path":"1_linkedlist.md","ref":"1_linkedlist.md","articles":[{"title":"206. Reverse Linked List","level":"1.2.1","depth":2,"path":"alg/206_Reverse_Linked_List.md","ref":"alg/206_Reverse_Linked_List.md","articles":[]},{"title":"24. Swap Nodes in Pairs","level":"1.2.2","depth":2,"path":"alg/24_Swap_Nodes_in_Pairs.md","ref":"alg/24_Swap_Nodes_in_Pairs.md","articles":[]},{"title":"876. Middle of the Linked List","level":"1.2.3","depth":2,"path":"alg/876_Middle_of_the_Linked_List.md","ref":"alg/876_Middle_of_the_Linked_List.md","articles":[]},{"title":"141. Linked List Cycle","level":"1.2.4","depth":2,"path":"alg/141_Linked_List_Cycle.md","ref":"alg/141_Linked_List_Cycle.md","articles":[]},{"title":"142. Linked List Cycle II","level":"1.2.5","depth":2,"path":"alg/142_Linked_List_Cycle_II.md","ref":"alg/142_Linked_List_Cycle_II.md","articles":[]},{"title":"160. Intersection of Two Linked Lists","level":"1.2.6","depth":2,"path":"alg/160_Intersection_of_Two_Linked_Lists.md","ref":"alg/160_Intersection_of_Two_Linked_Lists.md","articles":[]},{"title":"237. Delete Node in a Linked List","level":"1.2.7","depth":2,"path":"alg/237_Delete_Node_in_a_Linked_List.md","ref":"alg/237_Delete_Node_in_a_Linked_List.md","articles":[]},{"title":"203. Remove Linked List Elements","level":"1.2.8","depth":2,"path":"alg/203_Remove_Linked_List_Elements.md","ref":"alg/203_Remove_Linked_List_Elements.md","articles":[]},{"title":"83. Remove Duplicates from Sorted List","level":"1.2.9","depth":2,"path":"alg/83_Remove_Duplicates_from_Sorted_List.md","ref":"alg/83_Remove_Duplicates_from_Sorted_List.md","articles":[]},{"title":"82. Remove Duplicates from Sorted List II","level":"1.2.10","depth":2,"path":"alg/82_Remove_Duplicates_from_Sorted_List_II.md","ref":"alg/82_Remove_Duplicates_from_Sorted_List_II.md","articles":[]},{"title":"86. Partition List","level":"1.2.11","depth":2,"path":"alg/86_Partition_List.md","ref":"alg/86_Partition_List.md","articles":[]},{"title":"234. Palindrome Linked List","level":"1.2.12","depth":2,"path":"alg/234_Palindrome_Linked_List.md","ref":"alg/234_Palindrome_Linked_List.md","articles":[]},{"title":"143. Reorder List","level":"1.2.13","depth":2,"path":"alg/143_Reorder_List.md","ref":"alg/143_Reorder_List.md","articles":[]},{"title":"147. Insertion Sort List","level":"1.2.14","depth":2,"path":"alg/147_Insertion_Sort_List.md","ref":"alg/147_Insertion_Sort_List.md","articles":[]},{"title":"328. Odd Even Linked List","level":"1.2.15","depth":2,"path":"alg/328_Odd_Even_Linked_List.md","ref":"alg/328_Odd_Even_Linked_List.md","articles":[]},{"title":"148. Sort List","level":"1.2.16","depth":2,"path":"alg/148_Sort_List.md","ref":"alg/148_Sort_List.md","articles":[]},{"title":"21. Merge Two Sorted Lists","level":"1.2.17","depth":2,"path":"alg/21_Merge_Two_Sorted_Lists.md","ref":"alg/21_Merge_Two_Sorted_Lists.md","articles":[]},{"title":"23. Merge k Sorted Lists","level":"1.2.18","depth":2,"path":"alg/23_Merge_k_Sorted_Lists.md","ref":"alg/23_Merge_k_Sorted_Lists.md","articles":[]},{"title":"146. LRU Cache","level":"1.2.19","depth":2,"path":"alg/146_LRU_Cache.md","ref":"alg/146_LRU_Cache.md","articles":[]},{"title":"817. Linked List Components","level":"1.2.20","depth":2,"path":"alg/817_Linked_List_Components.md","ref":"alg/817_Linked_List_Components.md","articles":[]},{"title":"707. Design Linked List","level":"1.2.21","depth":2,"path":"alg/707_Design_Linked_List.md","ref":"alg/707_Design_Linked_List.md","articles":[]},{"title":"19. Remove Nth Node From End of List","level":"1.2.22","depth":2,"path":"alg/19_Remove_Nth_Node_From_End_of_List.md","ref":"alg/19_Remove_Nth_Node_From_End_of_List.md","articles":[]}]},"previous":{"title":"704. Binary Search","level":"1.1.9","depth":2,"path":"alg/704_Binary_Search.md","ref":"alg/704_Binary_Search.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"alg/81_Search_in_Rotated_Sorted_Array_II.md","mtime":"2019-01-30T20:09:27.230Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-01-30T20:09:32.837Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
