@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>897. Increasing Order Search Tree · GitBook</title>
+        <title>108. Convert Sorted Array to Binary Search Tree · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="108_Convert_Sorted_Array_to_Binary_Search_Tree.html" />
+    <link rel="next" href="654_Maximum_Binary_Tree.html" />
     
     
-    <link rel="prev" href="102_Binary_Tree_Level_Order_Traversal.html" />
+    <link rel="prev" href="897_Increasing_Order_Search_Tree.html" />
     
 
     </head>
@@ -622,7 +622,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.4.5" data-path="897_Increasing_Order_Search_Tree.html">
+        <li class="chapter " data-level="1.4.5" data-path="897_Increasing_Order_Search_Tree.html">
             
                 <a href="897_Increasing_Order_Search_Tree.html">
             
@@ -635,7 +635,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4.6" data-path="108_Convert_Sorted_Array_to_Binary_Search_Tree.html">
+        <li class="chapter active" data-level="1.4.6" data-path="108_Convert_Sorted_Array_to_Binary_Search_Tree.html">
             
                 <a href="108_Convert_Sorted_Array_to_Binary_Search_Tree.html">
             
@@ -969,7 +969,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >897. Increasing Order Search Tree</a>
+        <a href=".." >108. Convert Sorted Array to Binary Search Tree</a>
     </h1>
 </div>
 
@@ -984,19 +984,33 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h3 id="897-increasing-order-search-tree">897. Increasing Order Search Tree</h3>
-<p>&#x4E2D;&#x5E8F;&#x904D;&#x5386;&#x5347;&#x7EA7;&#x7248;&#xFF0C;&#x5411;&#x53F3;&#x538B;&#x6241;&#x4E00;&#x4E2A;bst&#xFF0C;&#x5199;&#x4E0D;&#x51FA;&#x7684;&#x3002;&#x601D;&#x8DEF;&#x662F;&#x5DE6;&#x8FB9;&#x7684;&#x4E2D;&#x5E8F;&#x904D;&#x5386;&#x52A0;&#x4E0A;root&#xFF0C;&#x52A0;&#x4E0A;&#x53F3;&#x8FB9;&#x7684;&#x4E2D;&#x5E8F;&#x904D;&#x5386;&#x3002;</p>
-<p>&#x5C31;&#x50CF;&#x8FD9;&#x6837;&#xFF1A;<code>res = root.left ---&gt; root ---&gt; root.right</code>&#xFF0C;&#x7136;&#x540E;&#x518D;&#x770B;&#x770B;&#x9012;&#x5F52;&#x51FD;&#x6570;&#xFF0C;&#x662F;&#x4E0D;&#x662F;&#x5199;&#x7684;&#x5F88;&#x6709;&#x9053;&#x7406;</p>
-<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> TreeNode <span class="hljs-title">increasingBST</span><span class="hljs-params">(TreeNode root)</span> </span>{
-    <span class="hljs-keyword">return</span> dfs(root, <span class="hljs-keyword">null</span>);
+                                <h3 id="108-convert-sorted-array-to-binary-search-tree">108. Convert Sorted Array to Binary Search Tree</h3>
+<p>&#x7531;&#x4E00;&#x4E2A;&#x5DF2;&#x7ECF;&#x6392;&#x5E8F;&#x7684;&#x6570;&#x7EC4;&#x6784;&#x9020;&#x4E8C;&#x53C9;&#x6811;&#xFF0C;&#x5F88;&#x5BB9;&#x6613;&#x5C31;&#x53EF;&#x4EE5;&#x60F3;&#x5230;&#x9012;&#x5F52;&#x4E8C;&#x5206;&#x641C;&#x7D22;&#xFF0C;&#x53EA;&#x662F;&#x591A;&#x4E86;&#x4E00;&#x4E2A;TreeNode&#x7684;&#x8FD4;&#x56DE;&#x503C;&#x3002;&#x601D;&#x8DEF;&#x662F;&#x6BCF;&#x6B21;&#x53D6;&#x4E2D;&#x95F4;&#xFF0C;&#x518D;&#x6784;&#x9020;&#x5DE6;&#x53F3;&#x4E24;&#x8FB9;&#x3002;</p>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> TreeNode <span class="hljs-title">sortedArrayToBST</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] nums)</span> </span>{
+    <span class="hljs-keyword">return</span> dfs(nums, <span class="hljs-number">0</span>, nums.length - <span class="hljs-number">1</span>);
 }
 
-<span class="hljs-function"><span class="hljs-keyword">public</span> TreeNode <span class="hljs-title">dfs</span><span class="hljs-params">(TreeNode root, TreeNode tail)</span> </span>{
-    <span class="hljs-keyword">if</span> (root == <span class="hljs-keyword">null</span>) <span class="hljs-keyword">return</span> tail;
-    TreeNode res = dfs(root.left, root);
-    root.left = <span class="hljs-keyword">null</span>;
-    root.right = dfs(root.right, tail);
-    <span class="hljs-keyword">return</span> res;
+<span class="hljs-function"><span class="hljs-keyword">public</span> TreeNode <span class="hljs-title">dfs</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] nums, <span class="hljs-keyword">int</span> l, <span class="hljs-keyword">int</span> r)</span> </span>{
+    <span class="hljs-keyword">if</span> (l &gt; r) <span class="hljs-keyword">return</span> <span class="hljs-keyword">null</span>;
+    <span class="hljs-keyword">int</span> mid = (l + r) &gt;&gt;&gt; <span class="hljs-number">1</span>;
+    TreeNode root = <span class="hljs-keyword">new</span> TreeNode(nums[mid]);
+    root.left = dfs(nums, l, mid - <span class="hljs-number">1</span>);
+    root.right = dfs(nums, mid + <span class="hljs-number">1</span>, r);
+    <span class="hljs-keyword">return</span> root;
+}
+</code></pre>
+<p>&#x7B2C;&#x4E8C;&#x79CD;&#x8FB9;&#x754C;&#x59FF;&#x52BF;&#xFF0C;&#x540C;&#x4E8C;&#x5206;&#x6CD5;&#x3002;&#x4F46;&#x662F;&#x8FD9;&#x4E24;&#x79CD;&#x65B9;&#x6CD5;&#x6784;&#x9020;&#x51FA;&#x7684;&#x4E8C;&#x53C9;&#x6811;&#x53EF;&#x80FD;&#x662F;&#x4E0D;&#x4E00;&#x6837;&#x7684;&#xFF0C;sorted&#x6570;&#x7EC4;&#x53EA;&#x662F;&#x4EE3;&#x8868;&#x4E86;&#x4E2D;&#x5E8F;&#x904D;&#x5386;&#xFF0C;&#x4E0D;&#x80FD;&#x786E;&#x5B9A;&#x552F;&#x4E00;&#x7684;&#x6811;&#x3002;</p>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> TreeNode <span class="hljs-title">sortedArrayToBST</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] nums)</span> </span>{
+    <span class="hljs-keyword">return</span> dfs(nums, <span class="hljs-number">0</span>, nums.length);
+}
+
+<span class="hljs-function"><span class="hljs-keyword">public</span> TreeNode <span class="hljs-title">dfs</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] nums, <span class="hljs-keyword">int</span> l, <span class="hljs-keyword">int</span> r)</span> </span>{
+    <span class="hljs-keyword">if</span> (l &gt;= r) <span class="hljs-keyword">return</span> <span class="hljs-keyword">null</span>;
+    <span class="hljs-keyword">int</span> mid = (l + r) &gt;&gt;&gt; <span class="hljs-number">1</span>;
+    TreeNode root = <span class="hljs-keyword">new</span> TreeNode(nums[mid]);
+    root.left = dfs(nums, l, mid);
+    root.right = dfs(nums, mid + <span class="hljs-number">1</span>, r);
+    <span class="hljs-keyword">return</span> root;
 }
 </code></pre>
 
@@ -1026,12 +1040,12 @@
 
             
                 
-                <a href="102_Binary_Tree_Level_Order_Traversal.html" class="navigation navigation-prev " aria-label="Previous page: 102. Binary Tree Level Order Traversal">
+                <a href="897_Increasing_Order_Search_Tree.html" class="navigation navigation-prev " aria-label="Previous page: 897. Increasing Order Search Tree">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="108_Convert_Sorted_Array_to_Binary_Search_Tree.html" class="navigation navigation-next " aria-label="Next page: 108. Convert Sorted Array to Binary Search Tree">
+                <a href="654_Maximum_Binary_Tree.html" class="navigation navigation-next " aria-label="Next page: 654. Maximum Binary Tree">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1042,7 +1056,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"897. Increasing Order Search Tree","level":"1.4.5","depth":2,"next":{"title":"108. Convert Sorted Array to Binary Search Tree","level":"1.4.6","depth":2,"path":"alg/108_Convert_Sorted_Array_to_Binary_Search_Tree.md","ref":"alg/108_Convert_Sorted_Array_to_Binary_Search_Tree.md","articles":[]},"previous":{"title":"102. Binary Tree Level Order Traversal","level":"1.4.4","depth":2,"path":"alg/102_Binary_Tree_Level_Order_Traversal.md","ref":"alg/102_Binary_Tree_Level_Order_Traversal.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"alg/897_Increasing_Order_Search_Tree.md","mtime":"2019-01-30T17:57:01.191Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-02-01T22:15:25.687Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"108. Convert Sorted Array to Binary Search Tree","level":"1.4.6","depth":2,"next":{"title":"654. Maximum Binary Tree","level":"1.4.7","depth":2,"path":"alg/654_Maximum_Binary_Tree.md","ref":"alg/654_Maximum_Binary_Tree.md","articles":[]},"previous":{"title":"897. Increasing Order Search Tree","level":"1.4.5","depth":2,"path":"alg/897_Increasing_Order_Search_Tree.md","ref":"alg/897_Increasing_Order_Search_Tree.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"alg/108_Convert_Sorted_Array_to_Binary_Search_Tree.md","mtime":"2019-02-01T20:02:44.080Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-02-01T22:15:25.687Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
