@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>169. Majority Element · GitBook</title>
+        <title>42. Trapping Rain Water · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="173_Binary_Search_Tree_Iterator.html" />
+    <link rel="next" href="15_3Sum.html" />
     
     
-    <link rel="prev" href="149_Max_Points_on_a_Line.html" />
+    <link rel="prev" href="11_Container_With_Most_Water.html" />
     
 
     </head>
@@ -155,7 +155,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.2.4" data-path="169_Majority_Element.html">
+        <li class="chapter " data-level="1.2.4" data-path="169_Majority_Element.html">
             
                 <a href="169_Majority_Element.html">
             
@@ -992,7 +992,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5.6" data-path="42_Trapping_Rain_Water.html">
+        <li class="chapter active" data-level="1.5.6" data-path="42_Trapping_Rain_Water.html">
             
                 <a href="42_Trapping_Rain_Water.html">
             
@@ -1118,7 +1118,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >169. Majority Element</a>
+        <a href=".." >42. Trapping Rain Water</a>
     </h1>
 </div>
 
@@ -1133,53 +1133,27 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h3 id="169-majority-element">169. Majority Element</h3>
-<p>1.Boyer-Moore majority vote algorithm</p>
-<p>O(n) + O(1)</p>
-<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> <span class="hljs-title">majorityElement</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] nums)</span> </span>{
-    <span class="hljs-keyword">int</span> major = <span class="hljs-number">0</span>, count = <span class="hljs-number">0</span>;
-    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> n: nums) {
-        <span class="hljs-keyword">if</span> (count == <span class="hljs-number">0</span>) {
-            count++;
-            major = n;
-        } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (major == n)  {
-            count++;
+                                <h3 id="42-trapping-rain-water">42. Trapping Rain Water</h3>
+<p>&#x6BD4;11&#x9898;&#x66F4;&#x52A0;&#x590D;&#x6742;&#xFF0C;&#x591A;&#x4E86;&#x4E24;&#x4E2A;&#x53D8;&#x91CF;<code>lm, rm</code>&#x5206;&#x522B;&#x7528;&#x6765;&#x6307;&#x4EE3;&#x5DE6;&#x8FB9;&#x7684;&#x6700;&#x5927;&#x9AD8;&#x5EA6;&#x548C;&#x53F3;&#x8FB9;&#x7684;&#x6700;&#x5927;&#x9AD8;&#x5EA6;&#xFF0C;&#x76F8;&#x5F53;&#x4E8E;11&#x9898;&#x7684;<code>height[i], height[j]</code>&#x3002;&#x5728;&#x5927;&#x5FAA;&#x73AF;<code>i &lt; j</code>&#x4E2D;&#xFF0C;&#x5F53;<code>lm &lt; rm</code>&#x65F6;&#xFF0C;<code>i</code>&#x5411;&#x5DE6;&#x8FB9;&#x79FB;&#x52A8;&#x53BB;&#x8BD5;&#x63A2;&#x6709;&#x6CA1;&#x6709;&#x66F4;&#x5927;&#x7684;&#x9AD8;&#x5EA6;&#xFF0C;&#x540C;&#x65F6;&#x6C34;&#x4EE5;&#x5DE6;&#x8FB9;&#x5899;&#x58C1;&#x7684;&#x6700;&#x5927;&#x503C;&#x4E3A;&#x57FA;&#x51C6;&#x589E;&#x52A0;<code>lm - height[i]</code>&#xFF0C;&#x53F3;&#x8FB9;&#x76F8;&#x53CD;&#x3002;</p>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">trap</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] height)</span> </span>{
+    <span class="hljs-keyword">int</span> result = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">int</span> lm = <span class="hljs-number">0</span>, rm = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>, j = height.length - <span class="hljs-number">1</span>;
+    <span class="hljs-keyword">while</span> (i &lt; j) {
+        lm = Math.max(lm, height[i]);
+        rm = Math.max(rm, height[j]);
+        <span class="hljs-keyword">if</span> (lm &lt; rm) {
+            result += lm - height[i];
+            i++;
         } <span class="hljs-keyword">else</span> {
-            count--;
+            result += rm - height[j];
+            j--;
         }
     }
-    <span class="hljs-keyword">return</span> major;
+    <span class="hljs-keyword">return</span> result;
 }
 </code></pre>
-<p>&#x7C89;&#x8272;&#x683C;&#x5B50;&#x4E3A;<code>count=0</code>&#x65F6;&#x6362;&#x4E3B;&#xFF0C;&#x8FD4;&#x56DE;&#x7EFF;&#x8272;&#x683C;&#x5B50;</p>
-<p><img src="https://ws3.sinaimg.cn/large/006tNc79gy1fz5m6vdh8gj312y0bs43x.jpg" width="600"></p>
-<p>2.&#x5B57;&#x5178;</p>
-<p>O(n) + O(n)</p>
-<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">majorityElement3</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] nums)</span> </span>{
-    Map&lt;Integer, Integer&gt; map = <span class="hljs-keyword">new</span> HashMap&lt;&gt;();
-    <span class="hljs-keyword">for</span> (Integer n : nums) {
-        <span class="hljs-keyword">if</span> (map.containsKey(n)) {
-            map.put(n, map.get(n) + <span class="hljs-number">1</span>);
-        } <span class="hljs-keyword">else</span> {
-            map.put(n, <span class="hljs-number">1</span>);
-        }
-        <span class="hljs-keyword">if</span> (map.get(n) &gt; nums.length / <span class="hljs-number">2</span>) {
-            <span class="hljs-keyword">return</span> n;
-        }
-    }
-    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
-}
-</code></pre>
-<p>3.&#x6392;&#x5E8F;+&#x8FD4;&#x56DE;&#x4E2D;&#x95F4;&#x503C; </p>
-<p>O(nlogn) + &#x5927;&#x6982;&#x662F;O(logn)?</p>
-<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">majorityElement</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] nums)</span> </span>{
-    Arrays.sort(nums);
-    <span class="hljs-keyword">return</span> nums[nums.length / <span class="hljs-number">2</span>];
-}
-</code></pre>
-<h3 id="ref">Ref</h3>
-<p><a href="https://en.wikipedia.org/wiki/Boyer%E2%80%93Moore_majority_vote_algorithm" target="_blank">https://en.wikipedia.org/wiki/Boyer%E2%80%93Moore_majority_vote_algorithm</a></p>
-<p><a href="https://gregable.com/2013/10/majority-vote-algorithm-find-majority.html" target="_blank">https://gregable.com/2013/10/majority-vote-algorithm-find-majority.html</a></p>
+<p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fzurr4knunj30di0by40k.jpg" width="300"></p>
 
                                 
                                 </section>
@@ -1207,12 +1181,12 @@
 
             
                 
-                <a href="149_Max_Points_on_a_Line.html" class="navigation navigation-prev " aria-label="Previous page: 149. Max Points on a Line">
+                <a href="11_Container_With_Most_Water.html" class="navigation navigation-prev " aria-label="Previous page: 11. Container With Most Water">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="173_Binary_Search_Tree_Iterator.html" class="navigation navigation-next " aria-label="Next page: 173. Binary Search Tree Iterator">
+                <a href="15_3Sum.html" class="navigation navigation-next " aria-label="Next page: 15. 3Sum">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1223,7 +1197,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"169. Majority Element","level":"1.2.4","depth":2,"next":{"title":"173. Binary Search Tree Iterator","level":"1.2.5","depth":2,"path":"alg/173_Binary_Search_Tree_Iterator.md","ref":"alg/173_Binary_Search_Tree_Iterator.md","articles":[]},"previous":{"title":"149. Max Points on a Line","level":"1.2.3","depth":2,"path":"alg/149_Max_Points_on_a_Line.md","ref":"alg/149_Max_Points_on_a_Line.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"alg/169_Majority_Element.md","mtime":"2019-01-19T23:17:44.357Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-02-04T16:41:37.267Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"42. Trapping Rain Water","level":"1.5.6","depth":2,"next":{"title":"15. 3Sum","level":"1.5.7","depth":2,"path":"alg/15_3Sum.md","ref":"alg/15_3Sum.md","articles":[]},"previous":{"title":"11. Container With Most Water","level":"1.5.5","depth":2,"path":"alg/11_Container_With_Most_Water.md","ref":"alg/11_Container_With_Most_Water.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"alg/42_Trapping_Rain_Water.md","mtime":"2019-02-04T14:39:34.782Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-02-04T16:41:37.267Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>169. Majority Element · GitBook</title>
+        <title>80. Remove Duplicates from Sorted Array II · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,8 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="173_Binary_Search_Tree_Iterator.html" />
     
-    
-    <link rel="prev" href="149_Max_Points_on_a_Line.html" />
+    <link rel="prev" href="26_Remove_Duplicates_from_Sorted_Array.html" />
     
 
     </head>
@@ -155,7 +153,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.2.4" data-path="169_Majority_Element.html">
+        <li class="chapter " data-level="1.2.4" data-path="169_Majority_Element.html">
             
                 <a href="169_Majority_Element.html">
             
@@ -1070,7 +1068,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5.12" data-path="80_Remove_Duplicates_from_Sorted_Array_II.html">
+        <li class="chapter active" data-level="1.5.12" data-path="80_Remove_Duplicates_from_Sorted_Array_II.html">
             
                 <a href="80_Remove_Duplicates_from_Sorted_Array_II.html">
             
@@ -1118,7 +1116,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >169. Majority Element</a>
+        <a href=".." >80. Remove Duplicates from Sorted Array II</a>
     </h1>
 </div>
 
@@ -1133,53 +1131,26 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h3 id="169-majority-element">169. Majority Element</h3>
-<p>1.Boyer-Moore majority vote algorithm</p>
-<p>O(n) + O(1)</p>
-<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> <span class="hljs-title">majorityElement</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] nums)</span> </span>{
-    <span class="hljs-keyword">int</span> major = <span class="hljs-number">0</span>, count = <span class="hljs-number">0</span>;
-    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> n: nums) {
-        <span class="hljs-keyword">if</span> (count == <span class="hljs-number">0</span>) {
-            count++;
-            major = n;
-        } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (major == n)  {
-            count++;
-        } <span class="hljs-keyword">else</span> {
-            count--;
+                                <h3 id="80-remove-duplicates-from-sorted-array-ii">80. Remove Duplicates from Sorted Array II</h3>
+<p>&#x6570;&#x7EC4;&#x6700;&#x591A;&#x5141;&#x8BB8;&#x91CD;&#x590D;&#x4E24;&#x4E2A;&#x6570;&#x5B57;&#xFF0C;&#x5982;&#x679C;&#x6570;&#x7EC4;&#x957F;&#x5EA6;&#x5C0F;&#x4E8E;&#x7B49;&#x4E8E;2&#xFF0C;&#x76F4;&#x63A5;&#x8FD4;&#x56DE;&#x6570;&#x7EC4;&#x957F;&#x5EA6;&#x3002;</p>
+<p>&#x7136;&#x540E;&#x4F9D;&#x7136;&#x662F;&#x6307;&#x9488;&#x6CD5;&#xFF0C;&#x4ECE;2&#x5F00;&#x59CB;&#x904D;&#x5386;&#x3002;<code>i</code>&#x4F5C;&#x4E3A;&#x4E00;&#x4E2A;&#x8BD5;&#x63A2;&#x6307;&#x9488;&#xFF0C;&#x5982;&#x679C;<code>i</code>&#x548C;<code>k-2</code>&#x4E2D;&#x7684;&#x6570;&#x5B57;&#x4E0D;&#x76F8;&#x7B49;&#xFF0C;&#x90A3;&#x4E48;ik&#x4F1A;&#x540C;&#x65F6;&#x524D;&#x8FDB;&#xFF0C;&#x4E00;&#x65E6;<code>i</code>&#x548C;<code>k-2</code>&#x4E2D;&#x7684;&#x6570;&#x5B57;&#x76F8;&#x7B49;&#xFF0C;&#x8BF4;&#x660E;<code>i</code>&#x524D;&#x9762;&#x5DF2;&#x7ECF;&#x6709;&#x4E24;&#x4E2A;&#x76F8;&#x7B49;&#x7684;&#x6570;&#x5B57;&#xFF0C;<code>k</code>&#x5C31;&#x505C;&#x5728;&#x7B2C;&#x4E09;&#x4E2A;&#x6570;&#x5B57;&#x4E0A;&#x7B49;&#x5F85;<code>i</code>&#x627E;&#x5230;&#x65B0;&#x7684;&#x4E0D;&#x540C;&#x7684;&#x6570;&#x5B57;&#x3002;</p>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">removeDuplicates</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] nums)</span> </span>{
+    <span class="hljs-keyword">if</span> (nums.length &lt;= <span class="hljs-number">2</span>) <span class="hljs-keyword">return</span> nums.length;
+    <span class="hljs-keyword">int</span> k = <span class="hljs-number">2</span>;
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">2</span>; i &lt; nums.length; i++) {
+        <span class="hljs-keyword">if</span> (nums[i] != nums[k - <span class="hljs-number">2</span>]) {
+            nums[k] = nums[i];
+            k++;
         }
     }
-    <span class="hljs-keyword">return</span> major;
+    <span class="hljs-keyword">return</span> k;
 }
 </code></pre>
-<p>&#x7C89;&#x8272;&#x683C;&#x5B50;&#x4E3A;<code>count=0</code>&#x65F6;&#x6362;&#x4E3B;&#xFF0C;&#x8FD4;&#x56DE;&#x7EFF;&#x8272;&#x683C;&#x5B50;</p>
-<p><img src="https://ws3.sinaimg.cn/large/006tNc79gy1fz5m6vdh8gj312y0bs43x.jpg" width="600"></p>
-<p>2.&#x5B57;&#x5178;</p>
-<p>O(n) + O(n)</p>
-<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">majorityElement3</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] nums)</span> </span>{
-    Map&lt;Integer, Integer&gt; map = <span class="hljs-keyword">new</span> HashMap&lt;&gt;();
-    <span class="hljs-keyword">for</span> (Integer n : nums) {
-        <span class="hljs-keyword">if</span> (map.containsKey(n)) {
-            map.put(n, map.get(n) + <span class="hljs-number">1</span>);
-        } <span class="hljs-keyword">else</span> {
-            map.put(n, <span class="hljs-number">1</span>);
-        }
-        <span class="hljs-keyword">if</span> (map.get(n) &gt; nums.length / <span class="hljs-number">2</span>) {
-            <span class="hljs-keyword">return</span> n;
-        }
-    }
-    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+<p>&#x7B80;&#x5199;</p>
+<pre><code class="lang-java"><span class="hljs-keyword">if</span> (nums[i] != nums[k]) {
+    nums[++k] = nums[i];
 }
 </code></pre>
-<p>3.&#x6392;&#x5E8F;+&#x8FD4;&#x56DE;&#x4E2D;&#x95F4;&#x503C; </p>
-<p>O(nlogn) + &#x5927;&#x6982;&#x662F;O(logn)?</p>
-<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">majorityElement</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] nums)</span> </span>{
-    Arrays.sort(nums);
-    <span class="hljs-keyword">return</span> nums[nums.length / <span class="hljs-number">2</span>];
-}
-</code></pre>
-<h3 id="ref">Ref</h3>
-<p><a href="https://en.wikipedia.org/wiki/Boyer%E2%80%93Moore_majority_vote_algorithm" target="_blank">https://en.wikipedia.org/wiki/Boyer%E2%80%93Moore_majority_vote_algorithm</a></p>
-<p><a href="https://gregable.com/2013/10/majority-vote-algorithm-find-majority.html" target="_blank">https://gregable.com/2013/10/majority-vote-algorithm-find-majority.html</a></p>
 
                                 
                                 </section>
@@ -1207,14 +1178,10 @@
 
             
                 
-                <a href="149_Max_Points_on_a_Line.html" class="navigation navigation-prev " aria-label="Previous page: 149. Max Points on a Line">
+                <a href="26_Remove_Duplicates_from_Sorted_Array.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: 26. Remove Duplicates from Sorted Array">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
-                
-                <a href="173_Binary_Search_Tree_Iterator.html" class="navigation navigation-next " aria-label="Next page: 173. Binary Search Tree Iterator">
-                    <i class="fa fa-angle-right"></i>
-                </a>
                 
             
         
@@ -1223,7 +1190,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"169. Majority Element","level":"1.2.4","depth":2,"next":{"title":"173. Binary Search Tree Iterator","level":"1.2.5","depth":2,"path":"alg/173_Binary_Search_Tree_Iterator.md","ref":"alg/173_Binary_Search_Tree_Iterator.md","articles":[]},"previous":{"title":"149. Max Points on a Line","level":"1.2.3","depth":2,"path":"alg/149_Max_Points_on_a_Line.md","ref":"alg/149_Max_Points_on_a_Line.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"alg/169_Majority_Element.md","mtime":"2019-01-19T23:17:44.357Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-02-04T16:41:37.267Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"80. Remove Duplicates from Sorted Array II","level":"1.5.12","depth":2,"previous":{"title":"26. Remove Duplicates from Sorted Array","level":"1.5.11","depth":2,"path":"alg/26_Remove_Duplicates_from_Sorted_Array.md","ref":"alg/26_Remove_Duplicates_from_Sorted_Array.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"alg/80_Remove_Duplicates_from_Sorted_Array_II.md","mtime":"2019-02-04T15:46:28.867Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-02-04T16:41:37.267Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
