@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>206. Reverse Linked List · GitBook</title>
+        <title>50. Pow · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="24_Swap_Nodes_in_Pairs.html" />
+    <link rel="next" href="69_Sqrtx.html" />
     
     
-    <link rel="prev" href="../1_linkedlist.html" />
+    <link rel="prev" href="1_2Sum.html" />
     
 
     </head>
@@ -129,7 +129,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.2" data-path="50_Pow.html">
+        <li class="chapter active" data-level="1.2.2" data-path="50_Pow.html">
             
                 <a href="50_Pow.html">
             
@@ -265,7 +265,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter active" data-level="1.3.1" data-path="206_Reverse_Linked_List.html">
+        <li class="chapter " data-level="1.3.1" data-path="206_Reverse_Linked_List.html">
             
                 <a href="206_Reverse_Linked_List.html">
             
@@ -1157,7 +1157,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >206. Reverse Linked List</a>
+        <a href=".." >50. Pow</a>
     </h1>
 </div>
 
@@ -1172,37 +1172,43 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h3 id="206-reverse-linked-list">206. Reverse Linked List</h3>
-<p><strong>1.recursion:</strong></p>
-<p>&#x5206;&#x4E3A;&#x4E09;&#x6B65;&#xFF1A;&#x5B9A;&#x4E49;&#x9012;&#x5F52;&#x51FD;&#x6570;&#x4EE5;&#x53CA;&#x5B83;&#x7684;input&#xFF0C;&#x8003;&#x8651;&#x9012;&#x5F52;&#x5173;&#x7CFB;(&#x6539;&#x6307;&#x9488;)&#xFF0C;&#x8BBE;&#x5B9A;&#x8FD4;&#x56DE;&#x6761;&#x4EF6;(cur&#x4E3A;null&#x7684;&#x65F6;&#x5019;&#x8FD4;&#x56DE;pre)</p>
-<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> ListNode <span class="hljs-title">reverseList</span><span class="hljs-params">(ListNode head)</span> </span>{
-    <span class="hljs-keyword">return</span> dfs(<span class="hljs-keyword">null</span>, head);
+                                <h3 id="50-pow">50. Pow</h3>
+<p>recursive squaring method. &#x76F4;&#x63A5;<code>x * pow(x, n - 1)</code>&#x662F;<code>O(n)</code>&#x7684;&#x590D;&#x6742;&#x5EA6; &#xFF0C;&#x4F1A;&#x53D1;&#x751F;<code>maximum recursion depth exceeded</code>&#xFF0C;&#x5982;&#x6D4B;&#x8BD5;&#x7528;&#x4F8B;<code>1.00001 123456</code>&#xFF0C;&#x6240;&#x4EE5;&#x5BF9;&#x8F93;&#x5165;n&#x8FDB;&#x884C;&#x5947;&#x5076;&#x5224;&#x65AD;&#x3002;</p>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">double</span> <span class="hljs-title">myPow</span><span class="hljs-params">(<span class="hljs-keyword">double</span> x, <span class="hljs-keyword">int</span> n)</span> </span>{
+    <span class="hljs-keyword">if</span> (n &lt; <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>/dfs(x, -n);
+    <span class="hljs-keyword">return</span> dfs(x, n);
 }
 
-<span class="hljs-function"><span class="hljs-keyword">public</span> ListNode <span class="hljs-title">dfs</span><span class="hljs-params">(ListNode pre, ListNode cur)</span> </span>{
-    <span class="hljs-keyword">if</span> (cur == <span class="hljs-keyword">null</span>) <span class="hljs-keyword">return</span> pre;
-    ListNode next_node = cur.next;
-    cur.next = pre;
-    <span class="hljs-keyword">return</span> dfs(cur, next_node);
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">double</span> <span class="hljs-title">dfs</span><span class="hljs-params">(<span class="hljs-keyword">double</span> x, <span class="hljs-keyword">int</span> n)</span> </span>{
+    <span class="hljs-keyword">if</span> (n == <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;
+    <span class="hljs-keyword">if</span> (n == <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> x; <span class="hljs-comment">// &#x8FD9;&#x4E2A;base case&#x6709;&#x65F6;&#x5019;&#x53EF;&#x4EE5;&#x51CF;&#x5C11;&#x4E00;&#x6B21;&#x9012;&#x5F52;</span>
+    <span class="hljs-keyword">double</span> v = dfs(x, n/<span class="hljs-number">2</span>);
+    <span class="hljs-keyword">if</span> (n % <span class="hljs-number">2</span> == <span class="hljs-number">0</span>) {
+        <span class="hljs-keyword">return</span> v * v;
+    } <span class="hljs-keyword">else</span> {
+        <span class="hljs-keyword">return</span> v * v * x;
+    }
 }
 </code></pre>
-<p><img src="https://ws4.sinaimg.cn/large/006tNbRwgy1fyafop09evj30vc0kmjrs.jpg" width="500"></p>
-<p><strong>2.iteration:</strong></p>
-<p>&#x56DB;&#x6B65;&#x89C1;&#x56FE;</p>
-<pre><code class="lang-python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">reverseList</span><span class="hljs-params">(self, head)</span>:</span>
-    <span class="hljs-string">&quot;&quot;&quot;
-    :type head: ListNode
-    :rtype: ListNode
-    &quot;&quot;&quot;</span>
-    pre = <span class="hljs-keyword">None</span>
-    <span class="hljs-keyword">while</span> head:
-        next_node = head.next
-        head.next = pre
-        pre = head
-        head = next_node
-    <span class="hljs-keyword">return</span> pre
+<p>&#x4E00;&#x4E2A;&#x4F8B;&#x5B50;</p>
+<pre><code class="lang-java"><span class="hljs-number">1.00001</span> <span class="hljs-number">123456</span>
+<span class="hljs-number">1.00001</span> <span class="hljs-number">61728</span>
+<span class="hljs-number">1.00001</span> <span class="hljs-number">30864</span>
+<span class="hljs-number">1.00001</span> <span class="hljs-number">15432</span>
+<span class="hljs-number">1.00001</span> <span class="hljs-number">7716</span>
+<span class="hljs-number">1.00001</span> <span class="hljs-number">3858</span>
+<span class="hljs-number">1.00001</span> <span class="hljs-number">1929</span>
+<span class="hljs-number">1.00001</span> <span class="hljs-number">964</span>
+<span class="hljs-number">1.00001</span> <span class="hljs-number">482</span>
+<span class="hljs-number">1.00001</span> <span class="hljs-number">241</span>
+<span class="hljs-number">1.00001</span> <span class="hljs-number">120</span>
+<span class="hljs-number">1.00001</span> <span class="hljs-number">60</span>
+<span class="hljs-number">1.00001</span> <span class="hljs-number">30</span>
+<span class="hljs-number">1.00001</span> <span class="hljs-number">15</span>
+<span class="hljs-number">1.00001</span> <span class="hljs-number">7</span>
+<span class="hljs-number">1.00001</span> <span class="hljs-number">3</span>
+<span class="hljs-number">3.4368447520767935</span>
 </code></pre>
-<p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fzfm98xsfrj30p60jm79i.jpg" width="500"></p>
 
                                 
                                 </section>
@@ -1230,12 +1236,12 @@
 
             
                 
-                <a href="../1_linkedlist.html" class="navigation navigation-prev " aria-label="Previous page: Linked List">
+                <a href="1_2Sum.html" class="navigation navigation-prev " aria-label="Previous page: 1. 2Sum">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="24_Swap_Nodes_in_Pairs.html" class="navigation navigation-next " aria-label="Next page: 24. Swap Nodes in Pairs">
+                <a href="69_Sqrtx.html" class="navigation navigation-next " aria-label="Next page: 69. Sqrt(x)">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1246,7 +1252,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"206. Reverse Linked List","level":"1.3.1","depth":2,"next":{"title":"24. Swap Nodes in Pairs","level":"1.3.2","depth":2,"path":"alg/24_Swap_Nodes_in_Pairs.md","ref":"alg/24_Swap_Nodes_in_Pairs.md","articles":[]},"previous":{"title":"Linked List","level":"1.3","depth":1,"path":"1_linkedlist.md","ref":"1_linkedlist.md","articles":[{"title":"206. Reverse Linked List","level":"1.3.1","depth":2,"path":"alg/206_Reverse_Linked_List.md","ref":"alg/206_Reverse_Linked_List.md","articles":[]},{"title":"24. Swap Nodes in Pairs","level":"1.3.2","depth":2,"path":"alg/24_Swap_Nodes_in_Pairs.md","ref":"alg/24_Swap_Nodes_in_Pairs.md","articles":[]},{"title":"876. Middle of the Linked List","level":"1.3.3","depth":2,"path":"alg/876_Middle_of_the_Linked_List.md","ref":"alg/876_Middle_of_the_Linked_List.md","articles":[]},{"title":"141. Linked List Cycle","level":"1.3.4","depth":2,"path":"alg/141_Linked_List_Cycle.md","ref":"alg/141_Linked_List_Cycle.md","articles":[]},{"title":"142. Linked List Cycle II","level":"1.3.5","depth":2,"path":"alg/142_Linked_List_Cycle_II.md","ref":"alg/142_Linked_List_Cycle_II.md","articles":[]},{"title":"160. Intersection of Two Linked Lists","level":"1.3.6","depth":2,"path":"alg/160_Intersection_of_Two_Linked_Lists.md","ref":"alg/160_Intersection_of_Two_Linked_Lists.md","articles":[]},{"title":"237. Delete Node in a Linked List","level":"1.3.7","depth":2,"path":"alg/237_Delete_Node_in_a_Linked_List.md","ref":"alg/237_Delete_Node_in_a_Linked_List.md","articles":[]},{"title":"203. Remove Linked List Elements","level":"1.3.8","depth":2,"path":"alg/203_Remove_Linked_List_Elements.md","ref":"alg/203_Remove_Linked_List_Elements.md","articles":[]},{"title":"83. Remove Duplicates from Sorted List","level":"1.3.9","depth":2,"path":"alg/83_Remove_Duplicates_from_Sorted_List.md","ref":"alg/83_Remove_Duplicates_from_Sorted_List.md","articles":[]},{"title":"82. Remove Duplicates from Sorted List II","level":"1.3.10","depth":2,"path":"alg/82_Remove_Duplicates_from_Sorted_List_II.md","ref":"alg/82_Remove_Duplicates_from_Sorted_List_II.md","articles":[]},{"title":"86. Partition List","level":"1.3.11","depth":2,"path":"alg/86_Partition_List.md","ref":"alg/86_Partition_List.md","articles":[]},{"title":"234. Palindrome Linked List","level":"1.3.12","depth":2,"path":"alg/234_Palindrome_Linked_List.md","ref":"alg/234_Palindrome_Linked_List.md","articles":[]},{"title":"143. Reorder List","level":"1.3.13","depth":2,"path":"alg/143_Reorder_List.md","ref":"alg/143_Reorder_List.md","articles":[]},{"title":"147. Insertion Sort List","level":"1.3.14","depth":2,"path":"alg/147_Insertion_Sort_List.md","ref":"alg/147_Insertion_Sort_List.md","articles":[]},{"title":"328. Odd Even Linked List","level":"1.3.15","depth":2,"path":"alg/328_Odd_Even_Linked_List.md","ref":"alg/328_Odd_Even_Linked_List.md","articles":[]},{"title":"148. Sort List","level":"1.3.16","depth":2,"path":"alg/148_Sort_List.md","ref":"alg/148_Sort_List.md","articles":[]},{"title":"21. Merge Two Sorted Lists","level":"1.3.17","depth":2,"path":"alg/21_Merge_Two_Sorted_Lists.md","ref":"alg/21_Merge_Two_Sorted_Lists.md","articles":[]},{"title":"23. Merge k Sorted Lists","level":"1.3.18","depth":2,"path":"alg/23_Merge_k_Sorted_Lists.md","ref":"alg/23_Merge_k_Sorted_Lists.md","articles":[]},{"title":"146. LRU Cache","level":"1.3.19","depth":2,"path":"alg/146_LRU_Cache.md","ref":"alg/146_LRU_Cache.md","articles":[]},{"title":"817. Linked List Components","level":"1.3.20","depth":2,"path":"alg/817_Linked_List_Components.md","ref":"alg/817_Linked_List_Components.md","articles":[]},{"title":"707. Design Linked List","level":"1.3.21","depth":2,"path":"alg/707_Design_Linked_List.md","ref":"alg/707_Design_Linked_List.md","articles":[]},{"title":"19. Remove Nth Node From End of List","level":"1.3.22","depth":2,"path":"alg/19_Remove_Nth_Node_From_End_of_List.md","ref":"alg/19_Remove_Nth_Node_From_End_of_List.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"alg/206_Reverse_Linked_List.md","mtime":"2019-01-22T12:09:06.653Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-02-05T15:23:10.472Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"50. Pow","level":"1.2.2","depth":2,"next":{"title":"69. Sqrt(x)","level":"1.2.3","depth":2,"path":"alg/69_Sqrtx.md","ref":"alg/69_Sqrtx.md","articles":[]},"previous":{"title":"1. 2Sum","level":"1.2.1","depth":2,"path":"alg/1_2Sum.md","ref":"alg/1_2Sum.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"alg/50_Pow.md","mtime":"2019-02-05T14:28:27.915Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-02-05T15:23:10.472Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

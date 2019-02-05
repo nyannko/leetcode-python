@@ -60,7 +60,7 @@
     <link rel="next" href="149_Max_Points_on_a_Line.html" />
     
     
-    <link rel="prev" href="1_2Sum.html" />
+    <link rel="prev" href="50_Pow.html" />
     
 
     </head>
@@ -129,7 +129,20 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.2.2" data-path="69_Sqrtx.html">
+        <li class="chapter " data-level="1.2.2" data-path="50_Pow.html">
+            
+                <a href="50_Pow.html">
+            
+                    
+                    50. Pow
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.2.3" data-path="69_Sqrtx.html">
             
                 <a href="69_Sqrtx.html">
             
@@ -142,7 +155,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.3" data-path="149_Max_Points_on_a_Line.html">
+        <li class="chapter " data-level="1.2.4" data-path="149_Max_Points_on_a_Line.html">
             
                 <a href="149_Max_Points_on_a_Line.html">
             
@@ -155,7 +168,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.4" data-path="169_Majority_Element.html">
+        <li class="chapter " data-level="1.2.5" data-path="169_Majority_Element.html">
             
                 <a href="169_Majority_Element.html">
             
@@ -168,7 +181,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.5" data-path="173_Binary_Search_Tree_Iterator.html">
+        <li class="chapter " data-level="1.2.6" data-path="173_Binary_Search_Tree_Iterator.html">
             
                 <a href="173_Binary_Search_Tree_Iterator.html">
             
@@ -181,7 +194,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.6" data-path="704_Binary_Search.html">
+        <li class="chapter " data-level="1.2.7" data-path="704_Binary_Search.html">
             
                 <a href="704_Binary_Search.html">
             
@@ -194,12 +207,38 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.7" data-path="81_Search_in_Rotated_Sorted_Array_II.html">
+        <li class="chapter " data-level="1.2.8" data-path="81_Search_in_Rotated_Sorted_Array_II.html">
             
                 <a href="81_Search_in_Rotated_Sorted_Array_II.html">
             
                     
                     81. Search in Rotated Sorted Array II
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.9" data-path="74_Search_a_2D_Matrix.html">
+            
+                <a href="74_Search_a_2D_Matrix.html">
+            
+                    
+                    74. Search a 2D Matrix
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.10" data-path="240_Search_a_2D_Matrix_II.html">
+            
+                <a href="240_Search_a_2D_Matrix_II.html">
+            
+                    
+                    240. Search a 2D Matrix II
             
                 </a>
             
@@ -1154,8 +1193,7 @@
 
 <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">mySqrt1</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span> </span>{
     <span class="hljs-keyword">if</span> (x &lt; <span class="hljs-number">2</span>) <span class="hljs-keyword">return</span> x;
-    <span class="hljs-keyword">int</span> l = <span class="hljs-number">1</span>,
-            r = x / <span class="hljs-number">2</span> + <span class="hljs-number">1</span>;
+    <span class="hljs-keyword">int</span> l = <span class="hljs-number">1</span>, r = x / <span class="hljs-number">2</span> + <span class="hljs-number">1</span>;
 
     <span class="hljs-keyword">while</span> (l &lt; r) {
         <span class="hljs-keyword">int</span> m = (l + r) &gt;&gt;&gt; <span class="hljs-number">1</span>;
@@ -1171,7 +1209,6 @@
 
 <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">mySqrt3</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span> </span>{
     <span class="hljs-keyword">if</span> (x &lt; <span class="hljs-number">2</span>) <span class="hljs-keyword">return</span> x;
-
     <span class="hljs-keyword">int</span> l = <span class="hljs-number">0</span>, r = x / <span class="hljs-number">2</span>;
 
     <span class="hljs-keyword">while</span> (l &lt;= r) {
@@ -1188,8 +1225,7 @@
 
 <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">mySqrt4</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span> </span>{
     <span class="hljs-keyword">if</span> (x &lt; <span class="hljs-number">2</span>) <span class="hljs-keyword">return</span> x;
-    <span class="hljs-keyword">int</span> l = <span class="hljs-number">1</span>,
-            r = x / <span class="hljs-number">2</span>;
+    <span class="hljs-keyword">int</span> l = <span class="hljs-number">1</span>, r = x / <span class="hljs-number">2</span>;
 
     <span class="hljs-keyword">while</span> (l &lt;= r) {
         <span class="hljs-keyword">int</span> m = (l + r) &gt;&gt;&gt; <span class="hljs-number">1</span>;
@@ -1203,6 +1239,44 @@
     <span class="hljs-keyword">return</span> l - <span class="hljs-number">1</span>;
 }
 </code></pre>
+<p><strong>&#x725B;&#x987F;&#x5F00;&#x65B9;&#x6CD5;(Newton&apos;s method)</strong>&#xFF1A;&#x539F;&#x7406;&#x662F;&#x53D6;&#x4E00;&#x6761;&#x66F2;&#x7EBF;<code>f(x)</code>&#x70B9;<code>x0</code>&#x5904;&#x7684;&#x5207;&#x7EBF;&#xFF0C;&#x5F97;&#x5230;&#x548C;x&#x8F74;&#x76F8;&#x4EA4;&#x540E;&#x65B0;&#x70B9;<code>x1</code>&#xFF0C;&#x518D;&#x53D6;<code>f(x)</code>&#x70B9;<code>x1</code>&#x5904;&#x7684;&#x5207;&#x7EBF;....&#x4EE5;&#x6B64;&#x7C7B;&#x63A8;&#xFF0C;&#x5F97;&#x5230;&#x9012;&#x63A8;&#x516C;&#x5F0F;</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fzv7cmt13jj304o01ga9z.jpg" width="200"></p>
+<p>&#x53D6;&#x4E8C;&#x9636;&#x53EF;&#x5BFC;&#x66F2;&#x7EBF;<code>f(x) = x^2 - num, x = xn</code>&#x5E26;&#x5165;&#x4EE5;&#x4E0A;&#x516C;&#x5F0F;, &#x5F97;&#x5230;&#x8FED;&#x4EE3;&#x516C;&#x5F0F;<code>x(n+1)=(1/2)*(xn+ num/xn)</code></p>
+<pre><code class="lang-python"><span class="hljs-comment"># iteration</span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">sqrt</span><span class="hljs-params">(num)</span>:</span>
+    x = <span class="hljs-number">1.0</span>  <span class="hljs-comment"># &#x53D6;&#x521D;&#x59CB;&#x503C;x0 = 1.0</span>
+    <span class="hljs-keyword">while</span> abs(x * x - num) &gt; <span class="hljs-number">1e-9</span>: <span class="hljs-comment"># &#x8BBE;&#x5B9A;&#x7CBE;&#x5EA6;&#x8303;&#x56F4;</span>
+        x = <span class="hljs-number">0.5</span> * (x + num / x) <span class="hljs-comment"># &#x8FED;&#x4EE3;&#x516C;&#x5F0F;x(n+1) = 1/2 * (x(n) + num / x(n))</span>
+    <span class="hljs-keyword">return</span> x
+
+<span class="hljs-comment"># recursion</span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">sqrt2</span><span class="hljs-params">(x, num)</span>:</span>
+    <span class="hljs-keyword">assert</span> x &gt; <span class="hljs-number">0</span> <span class="hljs-comment"># &#x521D;&#x503C;&#x70B9;x&#x4E0D;&#x4E3A;&#x8D1F;&#x6570;</span>
+    <span class="hljs-keyword">if</span> abs(x ** <span class="hljs-number">2</span> - num) &lt; <span class="hljs-number">1e-9</span>:
+        <span class="hljs-keyword">return</span> x
+    x = <span class="hljs-number">0.5</span> * (x + num / x)
+    <span class="hljs-keyword">return</span> sqrt2(x, num)
+
+<span class="hljs-keyword">print</span> sqrt(<span class="hljs-number">4</span>)
+<span class="hljs-keyword">print</span> sqrt(<span class="hljs-number">16</span>)
+<span class="hljs-keyword">print</span> sqrt(<span class="hljs-number">100</span>)
+<span class="hljs-keyword">print</span> sqrt2(<span class="hljs-number">-1.0</span>, <span class="hljs-number">4</span>) <span class="hljs-comment"># error</span>
+<span class="hljs-keyword">print</span> sqrt2(<span class="hljs-number">1.0</span>, <span class="hljs-number">4</span>)
+<span class="hljs-keyword">print</span> sqrt2(<span class="hljs-number">2.0</span>, <span class="hljs-number">16</span>)
+<span class="hljs-keyword">print</span> sqrt2(<span class="hljs-number">5.0</span>, <span class="hljs-number">100</span>) <span class="hljs-comment"># &#x9009;&#x53D6;&#x4E0D;&#x540C;&#x7684;&#x521D;&#x503C;&#x70B9;x</span>
+</code></pre>
+<p>&#x4E0B;&#x9762;&#x662F;<code>sqrt(100)</code>&#x7684;&#x8FED;&#x4EE3;&#x8FC7;&#x7A0B;, <code>x=1.0</code></p>
+<pre><code class="lang-python"><span class="hljs-number">50.5</span>
+<span class="hljs-number">26.2400990099</span>
+<span class="hljs-number">15.02553012</span>
+<span class="hljs-number">10.840434673</span>
+<span class="hljs-number">10.032578511</span>
+<span class="hljs-number">10.0000528956</span>
+<span class="hljs-number">10.0000000001</span>
+<span class="hljs-number">10.0</span>
+<span class="hljs-number">10.0</span>
+</code></pre>
+<p>&#x8D8A;&#x9760;&#x8FD1;&#x7B54;&#x6848;&#x8BA1;&#x7B97;&#x6B21;&#x6570;&#x8D8A;&#x5C11;&#xFF0C;&#x6BD4;&#x5982;&#x8BF4;100&#x7684;&#x8BDD;&#x662F;10&#x53EA;&#x7528;&#x8BA1;&#x7B97;&#x4E00;&#x6B21;&#xFF0C;&#x4F46;&#x662F;&#x6709;&#x4E9B;&#x70B9;&#x53EF;&#x80FD;&#x6CA1;&#x6709;&#x7B54;&#x6848;&#x5982;&#x6781;&#x503C;&#x70B9;&#x5982;0</p>
 
                                 
                                 </section>
@@ -1230,7 +1304,7 @@
 
             
                 
-                <a href="1_2Sum.html" class="navigation navigation-prev " aria-label="Previous page: 1. 2Sum">
+                <a href="50_Pow.html" class="navigation navigation-prev " aria-label="Previous page: 50. Pow">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
@@ -1246,7 +1320,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"69. Sqrt(x)","level":"1.2.2","depth":2,"next":{"title":"149. Max Points on a Line","level":"1.2.3","depth":2,"path":"alg/149_Max_Points_on_a_Line.md","ref":"alg/149_Max_Points_on_a_Line.md","articles":[]},"previous":{"title":"1. 2Sum","level":"1.2.1","depth":2,"path":"alg/1_2Sum.md","ref":"alg/1_2Sum.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"alg/69_Sqrtx.md","mtime":"2019-01-19T23:19:21.912Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-02-04T16:41:37.267Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"69. Sqrt(x)","level":"1.2.3","depth":2,"next":{"title":"149. Max Points on a Line","level":"1.2.4","depth":2,"path":"alg/149_Max_Points_on_a_Line.md","ref":"alg/149_Max_Points_on_a_Line.md","articles":[]},"previous":{"title":"50. Pow","level":"1.2.2","depth":2,"path":"alg/50_Pow.md","ref":"alg/50_Pow.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"alg/69_Sqrtx.md","mtime":"2019-02-05T00:39:59.315Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-02-05T15:23:10.472Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
