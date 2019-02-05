@@ -21,7 +21,7 @@ class Solution(object):
         if exp == 0:
             return 1
         else:
-            return base * self.recursive(base, exp - 1)
+            return base * self.recursive(base, exp - 1)  # O(n)
 
     def check_power_recursive(self, base, exp):
         if exp < 0:
@@ -42,7 +42,7 @@ class Solution(object):
             res = v * v * base
         return res
 
-    def check_power_recorsive2(self, base, exp):
+    def check_power_recursive2(self, base, exp):
         if exp < 0:
             return 1 / self.power2(base, -exp)
         else:
