@@ -1122,6 +1122,19 @@
             
         </li>
     
+        <li class="chapter " data-level="1.5.13" data-path="905_Sort_Array_By_Parity.html">
+            
+                <a href="905_Sort_Array_By_Parity.html">
+            
+                    
+                    905. Sort Array By Parity
+            
+                </a>
+            
+
+            
+        </li>
+    
 
             </ul>
             
@@ -1173,7 +1186,7 @@
                                 <section class="normal markdown-section">
                                 
                                 <h3 id="50-pow">50. Pow</h3>
-<p>recursive squaring method. &#x76F4;&#x63A5;<code>x * pow(x, n - 1)</code>&#x662F;<code>O(n)</code>&#x7684;&#x590D;&#x6742;&#x5EA6; &#xFF0C;&#x4F1A;&#x53D1;&#x751F;<code>maximum recursion depth exceeded</code>&#xFF0C;&#x5982;&#x6D4B;&#x8BD5;&#x7528;&#x4F8B;<code>1.00001 123456</code>&#xFF0C;&#x6240;&#x4EE5;&#x5BF9;&#x8F93;&#x5165;n&#x8FDB;&#x884C;&#x5947;&#x5076;&#x5224;&#x65AD;&#x3002;</p>
+<p>recursive squaring method. &#x76F4;&#x63A5;<code>x * pow(x, n - 1)</code>&#x662F;<code>O(n)</code>&#x7684;&#x590D;&#x6742;&#x5EA6; &#xFF0C;&#x4F1A;&#x53D1;&#x751F;<code>maximum recursion depth exceeded</code>&#xFF0C;&#x5982;&#x6D4B;&#x8BD5;&#x7528;&#x4F8B;<code>1.00001 123456</code>&#xFF0C;&#x6240;&#x4EE5;&#x5BF9;&#x8F93;&#x5165;n&#x51CF;&#x534A;&#x5904;&#x7406;&#xFF0C;&#x5E76;&#x8FDB;&#x884C;&#x5947;&#x5076;&#x5224;&#x65AD;&#x3002;&#x6BD4;&#x5982;16=4*4&#xFF0C;&#x53EA;&#x8981;&#x5BF9;4&#x8FDB;&#x884C;&#x76F8;&#x4E58;&#x5373;&#x53EF;&#x6C42;&#x51FA;&#x7ED3;&#x679C;&#x3002;</p>
 <pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">double</span> <span class="hljs-title">myPow</span><span class="hljs-params">(<span class="hljs-keyword">double</span> x, <span class="hljs-keyword">int</span> n)</span> </span>{
     <span class="hljs-keyword">if</span> (n &lt; <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>/dfs(x, -n);
     <span class="hljs-keyword">return</span> dfs(x, n);
@@ -1182,8 +1195,8 @@
 <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">double</span> <span class="hljs-title">dfs</span><span class="hljs-params">(<span class="hljs-keyword">double</span> x, <span class="hljs-keyword">int</span> n)</span> </span>{
     <span class="hljs-keyword">if</span> (n == <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;
     <span class="hljs-keyword">if</span> (n == <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> x; <span class="hljs-comment">// &#x8FD9;&#x4E2A;base case&#x6709;&#x65F6;&#x5019;&#x53EF;&#x4EE5;&#x51CF;&#x5C11;&#x4E00;&#x6B21;&#x9012;&#x5F52;</span>
-    <span class="hljs-keyword">double</span> v = dfs(x, n/<span class="hljs-number">2</span>);
-    <span class="hljs-keyword">if</span> (n % <span class="hljs-number">2</span> == <span class="hljs-number">0</span>) {
+    <span class="hljs-keyword">double</span> v = dfs(x, n &gt;&gt;&gt; <span class="hljs-number">1</span>); <span class="hljs-comment">// n/2</span>
+    <span class="hljs-keyword">if</span> ((n &amp; <span class="hljs-number">1</span>) == <span class="hljs-number">0</span>) {  <span class="hljs-comment">// n % 2 == 0 &#x6CE8;&#x610F;&#x4F18;&#x5148;&#x7EA7; &amp; &lt; ==</span>
         <span class="hljs-keyword">return</span> v * v;
     } <span class="hljs-keyword">else</span> {
         <span class="hljs-keyword">return</span> v * v * x;
@@ -1209,7 +1222,10 @@
 <span class="hljs-number">1.00001</span> <span class="hljs-number">3</span>
 <span class="hljs-number">3.4368447520767935</span>
 </code></pre>
-
+<p><code>&gt;&gt;</code>&#x51FA;&#x9519;</p>
+<pre><code>1.00000
+-2147483648
+</code></pre>
                                 
                                 </section>
                             
@@ -1252,7 +1268,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"50. Pow","level":"1.2.2","depth":2,"next":{"title":"69. Sqrt(x)","level":"1.2.3","depth":2,"path":"alg/69_Sqrtx.md","ref":"alg/69_Sqrtx.md","articles":[]},"previous":{"title":"1. 2Sum","level":"1.2.1","depth":2,"path":"alg/1_2Sum.md","ref":"alg/1_2Sum.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"alg/50_Pow.md","mtime":"2019-02-05T14:28:27.915Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-02-05T15:23:10.472Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"50. Pow","level":"1.2.2","depth":2,"next":{"title":"69. Sqrt(x)","level":"1.2.3","depth":2,"path":"alg/69_Sqrtx.md","ref":"alg/69_Sqrtx.md","articles":[]},"previous":{"title":"1. 2Sum","level":"1.2.1","depth":2,"path":"alg/1_2Sum.md","ref":"alg/1_2Sum.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"alg/50_Pow.md","mtime":"2019-02-06T17:20:12.795Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-02-06T17:32:02.995Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

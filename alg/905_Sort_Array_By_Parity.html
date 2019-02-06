@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>328. Odd Even Linked List · GitBook</title>
+        <title>905. Sort Array By Parity · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,8 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="148_Sort_List.html" />
     
-    
-    <link rel="prev" href="147_Insertion_Sort_List.html" />
+    <link rel="prev" href="80_Remove_Duplicates_from_Sorted_Array_II.html" />
     
 
     </head>
@@ -447,7 +445,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.3.15" data-path="328_Odd_Even_Linked_List.html">
+        <li class="chapter " data-level="1.3.15" data-path="328_Odd_Even_Linked_List.html">
             
                 <a href="328_Odd_Even_Linked_List.html">
             
@@ -1122,7 +1120,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5.13" data-path="905_Sort_Array_By_Parity.html">
+        <li class="chapter active" data-level="1.5.13" data-path="905_Sort_Array_By_Parity.html">
             
                 <a href="905_Sort_Array_By_Parity.html">
             
@@ -1170,7 +1168,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >328. Odd Even Linked List</a>
+        <a href=".." >905. Sort Array By Parity</a>
     </h1>
 </div>
 
@@ -1185,23 +1183,37 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h3 id="328-odd-even-linked-list">328. Odd Even Linked List</h3>
-<p>&#x8FD9;&#x91CC;&#x7684;even&#x548C;odd&#x6307;&#x7684;&#x662F;index&#x3002;&#x5947;&#x6570;&#x4F4D;&#x7684;&#x8FDE;&#x6210;&#x4E00;&#x4E2A;&#x94FE;&#x8868;&#xFF0C;&#x5076;&#x6570;&#x4F4D;&#x7684;&#x8FDE;&#x6210;&#x4E00;&#x4E2A;&#x94FE;&#x8868;&#xFF0C;&#x6700;&#x540E;&#x8FD9;&#x4E24;&#x4E2A;&#x94FE;&#x8868;&#x8FDE;&#x4E00;&#x8FDE;&#x3002;</p>
-<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> ListNode <span class="hljs-title">oddEvenList</span><span class="hljs-params">(ListNode head)</span> </span>{
-    <span class="hljs-keyword">if</span> (head == <span class="hljs-keyword">null</span>) <span class="hljs-keyword">return</span> head;
-    ListNode odd = head,
-            even = head.next,
-            evenHead = even;
+                                <h3 id="905-sort-array-by-parity">905. Sort Array By Parity</h3>
+<p>&#x4F7F;&#x4E00;&#x4E2A;&#x6570;&#x7EC4;&#x5076;&#x6570;&#x5728;&#x524D;&#xFF0C;&#x5947;&#x6570;&#x5728;&#x540E;&#x3002; &#x9996;&#x5148;&#x4F7F;&#x7528;while&#x627E;&#x5230;&#x7B2C;&#x4E00;&#x4E2A;&#x5947;&#x6570;&#x548C;&#x7B2C;&#x4E00;&#x4E2A;&#x5076;&#x6570;&#x51FA;&#x73B0;&#x7684;&#x4F4D;&#x7F6E;&#xFF0C;&#x7136;&#x540E;&#x8FDB;&#x884C;&#x4EA4;&#x6362;&#x3002;</p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span>[] sortArrayByParity(<span class="hljs-keyword">int</span>[] A) {
+    <span class="hljs-keyword">int</span> l = <span class="hljs-number">0</span>, r = A.length - <span class="hljs-number">1</span>;
+    <span class="hljs-keyword">while</span> (l &lt; r) {
+        <span class="hljs-keyword">while</span> (l &lt; r &amp;&amp; (A[l] &amp; <span class="hljs-number">1</span>) == <span class="hljs-number">0</span>) l++; <span class="hljs-comment">// even++</span>
+        <span class="hljs-keyword">while</span> (l &lt; r &amp;&amp; (A[r] &amp; <span class="hljs-number">1</span>) == <span class="hljs-number">1</span>) r--; <span class="hljs-comment">// odd--</span>
 
-    <span class="hljs-keyword">while</span> (even != <span class="hljs-keyword">null</span> &amp;&amp; even.next != <span class="hljs-keyword">null</span>) {
-        odd.next = odd.next.next;
-        even.next = even.next.next;
-        odd = odd.next;
-        even = even.next;
+        <span class="hljs-keyword">int</span> tmp = A[l];  <span class="hljs-comment">//swap</span>
+        A[l] = A[r];
+        A[r] = tmp;
     }
-    <span class="hljs-comment">// concat</span>
-    odd.next = evenHead;
-    <span class="hljs-keyword">return</span> head;
+    <span class="hljs-keyword">return</span> A;
+}
+</code></pre>
+<p>&#x5199;&#x6210;&#x5355;&#x72EC;&#x7684;&#x51FD;&#x6570;&#xFF1A;</p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span>[] sortArrayByParity(<span class="hljs-keyword">int</span>[] A) {
+    <span class="hljs-keyword">int</span> l = <span class="hljs-number">0</span>, r = A.length - <span class="hljs-number">1</span>;
+    <span class="hljs-keyword">while</span> (l &lt; r) {
+        <span class="hljs-keyword">while</span> (l &lt; r &amp;&amp; isEven(A[l])) l++;
+        <span class="hljs-keyword">while</span> (l &lt; r &amp;&amp; !isEven(A[r])) r--;
+
+        <span class="hljs-keyword">int</span> tmp = A[l];
+        A[l] = A[r];
+        A[r] = tmp;
+    }
+    <span class="hljs-keyword">return</span> A;
+}
+
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">isEven</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span> </span>{
+    <span class="hljs-keyword">return</span> (n &amp; <span class="hljs-number">1</span>) == <span class="hljs-number">0</span>;
 }
 </code></pre>
 
@@ -1231,14 +1243,10 @@
 
             
                 
-                <a href="147_Insertion_Sort_List.html" class="navigation navigation-prev " aria-label="Previous page: 147. Insertion Sort List">
+                <a href="80_Remove_Duplicates_from_Sorted_Array_II.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: 80. Remove Duplicates from Sorted Array II">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
-                
-                <a href="148_Sort_List.html" class="navigation navigation-next " aria-label="Next page: 148. Sort List">
-                    <i class="fa fa-angle-right"></i>
-                </a>
                 
             
         
@@ -1247,7 +1255,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"328. Odd Even Linked List","level":"1.3.15","depth":2,"next":{"title":"148. Sort List","level":"1.3.16","depth":2,"path":"alg/148_Sort_List.md","ref":"alg/148_Sort_List.md","articles":[]},"previous":{"title":"147. Insertion Sort List","level":"1.3.14","depth":2,"path":"alg/147_Insertion_Sort_List.md","ref":"alg/147_Insertion_Sort_List.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"alg/328_Odd_Even_Linked_List.md","mtime":"2019-01-23T22:42:57.212Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-02-06T17:32:02.995Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"905. Sort Array By Parity","level":"1.5.13","depth":2,"previous":{"title":"80. Remove Duplicates from Sorted Array II","level":"1.5.12","depth":2,"path":"alg/80_Remove_Duplicates_from_Sorted_Array_II.md","ref":"alg/80_Remove_Duplicates_from_Sorted_Array_II.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"alg/905_Sort_Array_By_Parity.md","mtime":"2019-02-06T16:22:05.138Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-02-06T17:32:02.995Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
