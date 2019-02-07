@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>237. Delete Node in a Linked List · GitBook</title>
+        <title>2. Add Two Numbers · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="203_Remove_Linked_List_Elements.html" />
+    <link rel="next" href="415_Add_Strings.html" />
     
     
-    <link rel="prev" href="160_Intersection_of_Two_Linked_Lists.html" />
+    <link rel="prev" href="905_Sort_Array_By_Parity.html" />
     
 
     </head>
@@ -343,7 +343,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.3.7" data-path="237_Delete_Node_in_a_Linked_List.html">
+        <li class="chapter " data-level="1.3.7" data-path="237_Delete_Node_in_a_Linked_List.html">
             
                 <a href="237_Delete_Node_in_a_Linked_List.html">
             
@@ -1135,7 +1135,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5.14" data-path="2_Add_Two_Numbers.html">
+        <li class="chapter active" data-level="1.5.14" data-path="2_Add_Two_Numbers.html">
             
                 <a href="2_Add_Two_Numbers.html">
             
@@ -1228,7 +1228,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >237. Delete Node in a Linked List</a>
+        <a href=".." >2. Add Two Numbers</a>
     </h1>
 </div>
 
@@ -1243,11 +1243,28 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h3 id="237-delete-node-in-a-linked-list">237. Delete Node in a Linked List</h3>
-<p>&#x5220;&#x9664;&#x94FE;&#x8868;&#x4E2D;&#x7684;&#x4E00;&#x4E2A;&#x8282;&#x70B9;&#xFF08;&#x9664;&#x4E86;&#x5C3E;&#x8282;&#x70B9;&#xFF09;&#xFF0C;&#x5C31;&#x662F;&#x4FEE;&#x6539;&#x503C;&#x548C;&#x6307;&#x9488;&#x3002;&#x5982;&#x679C;&#x8981;&#x5220;&#x9664;&#x5C3E;&#x8282;&#x70B9;&#x8FD8;&#x5FC5;&#x987B;&#x77E5;&#x9053;&#x88AB;&#x5220;&#x9664;&#x94FE;&#x8868;&#x7684;&#x6307;&#x9488;&#x3002;</p>
-<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">deleteNode</span><span class="hljs-params">(ListNode node)</span> </span>{
-    node.val = node.next.val;
-    node.next = node.next.next;
+                                <h3 id="2-add-two-numbers">2. Add Two Numbers</h3>
+<pre><code class="lang-java">Input: (<span class="hljs-number">2</span> -&gt; <span class="hljs-number">4</span> -&gt; <span class="hljs-number">3</span>) + (<span class="hljs-number">5</span> -&gt; <span class="hljs-number">6</span> -&gt; <span class="hljs-number">4</span>)
+Output: <span class="hljs-number">7</span> -&gt; <span class="hljs-number">0</span> -&gt; <span class="hljs-number">8</span>
+Explanation: <span class="hljs-number">342</span> + <span class="hljs-number">465</span> = <span class="hljs-number">807</span>.
+</code></pre>
+<p>&#x4E24;&#x4E2A;&#x94FE;&#x8868;&#x76F8;&#x52A0;&#xFF1A;&#x53EF;&#x4EE5;&#x5206;&#x4E3A;&#x6307;&#x9488;&#x64CD;&#x4F5C;&#x548C;&#x503C;&#x64CD;&#x4F5C;&#xFF0C;&#x6307;&#x9488;&#x6709;<code>dummy, head, l1, l2</code>&#xFF0C;&#x5206;&#x522B;&#x4EE3;&#x8868;&#x7ED3;&#x679C;&#xFF0C;l1&#xFF0C;l2&#x94FE;&#x8868;&#xFF0C;&#x503C;&#x64CD;&#x4F5C;&#x5305;&#x62EC;&#x4F59;&#x6570;&#x548C;&#x8FDB;&#x4F4D;&#x95EE;&#x9898;&#xFF0C;&#x4E00;&#x4E2A;&#x662F;%10&#xFF0C;&#x4E00;&#x4E2A;&#x662F;/10&#xFF0C;&#x8FB9;&#x754C;&#x6761;&#x4EF6;&#x5305;&#x62EC;&#x4E09;&#x4E2A;&#xFF0C;&#x8FDB;&#x4F4D;&#x4E3A;1&#x7684;&#x65F6;&#x5019;&#x8FD8;&#x8981;&#x52A0;&#x4E00;&#x6B21;carry&#x3002;</p>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> ListNode <span class="hljs-title">addTwoNumbers</span><span class="hljs-params">(ListNode l1, ListNode l2)</span> </span>{
+    ListNode dummy = <span class="hljs-keyword">new</span> ListNode(<span class="hljs-number">0</span>);
+    ListNode head = dummy;
+    <span class="hljs-keyword">int</span> carry = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">while</span> (l1 != <span class="hljs-keyword">null</span> || l2 != <span class="hljs-keyword">null</span> || carry == <span class="hljs-number">1</span>) {
+        <span class="hljs-keyword">int</span> v1 = (l1 != <span class="hljs-keyword">null</span>) ? l1.val : <span class="hljs-number">0</span>;
+        <span class="hljs-keyword">int</span> v2 = (l2 != <span class="hljs-keyword">null</span>) ? l2.val : <span class="hljs-number">0</span>;
+        <span class="hljs-keyword">int</span> value = v1 + v2 + carry;
+        head.next = <span class="hljs-keyword">new</span> ListNode(value % <span class="hljs-number">10</span>);
+        carry = value / <span class="hljs-number">10</span>;
+
+        <span class="hljs-keyword">if</span> (l1 != <span class="hljs-keyword">null</span>) l1 = l1.next;
+        <span class="hljs-keyword">if</span> (l2 != <span class="hljs-keyword">null</span>) l2 = l2.next;
+        head = head.next;
+    }
+    <span class="hljs-keyword">return</span> dummy.next;
 }
 </code></pre>
 
@@ -1277,12 +1294,12 @@
 
             
                 
-                <a href="160_Intersection_of_Two_Linked_Lists.html" class="navigation navigation-prev " aria-label="Previous page: 160. Intersection of Two Linked Lists">
+                <a href="905_Sort_Array_By_Parity.html" class="navigation navigation-prev " aria-label="Previous page: 905. Sort Array By Parity">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="203_Remove_Linked_List_Elements.html" class="navigation navigation-next " aria-label="Next page: 203. Remove Linked List Elements">
+                <a href="415_Add_Strings.html" class="navigation navigation-next " aria-label="Next page: 415. Add Strings">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1293,7 +1310,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"237. Delete Node in a Linked List","level":"1.3.7","depth":2,"next":{"title":"203. Remove Linked List Elements","level":"1.3.8","depth":2,"path":"alg/203_Remove_Linked_List_Elements.md","ref":"alg/203_Remove_Linked_List_Elements.md","articles":[]},"previous":{"title":"160. Intersection of Two Linked Lists","level":"1.3.6","depth":2,"path":"alg/160_Intersection_of_Two_Linked_Lists.md","ref":"alg/160_Intersection_of_Two_Linked_Lists.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"alg/237_Delete_Node_in_a_Linked_List.md","mtime":"2019-02-06T17:17:15.294Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-02-07T20:56:20.990Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"2. Add Two Numbers","level":"1.5.14","depth":2,"next":{"title":"415. Add Strings","level":"1.5.15","depth":2,"path":"alg/415_Add_Strings.md","ref":"alg/415_Add_Strings.md","articles":[]},"previous":{"title":"905. Sort Array By Parity","level":"1.5.13","depth":2,"path":"alg/905_Sort_Array_By_Parity.md","ref":"alg/905_Sort_Array_By_Parity.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"alg/2_Add_Two_Numbers.md","mtime":"2019-02-06T23:19:18.808Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-02-07T20:56:20.990Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>237. Delete Node in a Linked List · GitBook</title>
+        <title>155. Min Stack · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,8 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="203_Remove_Linked_List_Elements.html" />
     
-    
-    <link rel="prev" href="160_Intersection_of_Two_Linked_Lists.html" />
+    <link rel="prev" href="../4_stack.html" />
     
 
     </head>
@@ -343,7 +341,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.3.7" data-path="237_Delete_Node_in_a_Linked_List.html">
+        <li class="chapter " data-level="1.3.7" data-path="237_Delete_Node_in_a_Linked_List.html">
             
                 <a href="237_Delete_Node_in_a_Linked_List.html">
             
@@ -1180,7 +1178,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.6.1" data-path="155_Min_Stack.html">
+        <li class="chapter active" data-level="1.6.1" data-path="155_Min_Stack.html">
             
                 <a href="155_Min_Stack.html">
             
@@ -1228,7 +1226,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >237. Delete Node in a Linked List</a>
+        <a href=".." >155. Min Stack</a>
     </h1>
 </div>
 
@@ -1243,11 +1241,28 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h3 id="237-delete-node-in-a-linked-list">237. Delete Node in a Linked List</h3>
-<p>&#x5220;&#x9664;&#x94FE;&#x8868;&#x4E2D;&#x7684;&#x4E00;&#x4E2A;&#x8282;&#x70B9;&#xFF08;&#x9664;&#x4E86;&#x5C3E;&#x8282;&#x70B9;&#xFF09;&#xFF0C;&#x5C31;&#x662F;&#x4FEE;&#x6539;&#x503C;&#x548C;&#x6307;&#x9488;&#x3002;&#x5982;&#x679C;&#x8981;&#x5220;&#x9664;&#x5C3E;&#x8282;&#x70B9;&#x8FD8;&#x5FC5;&#x987B;&#x77E5;&#x9053;&#x88AB;&#x5220;&#x9664;&#x94FE;&#x8868;&#x7684;&#x6307;&#x9488;&#x3002;</p>
-<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">deleteNode</span><span class="hljs-params">(ListNode node)</span> </span>{
-    node.val = node.next.val;
-    node.next = node.next.next;
+                                <h3 id="155-min-stack">155. Min Stack</h3>
+<p>&#x8FD9;&#x4E2A;&#x9898;&#x4E00;&#x5F00;&#x59CB;&#x8FD8;&#x662F;&#x6709;&#x70B9;&#x8FF7;&#x7684;&#xFF0C;&#x540E;&#x6765;&#x60F3;&#x6E05;&#x695A;&#x4E86;&#xFF0C;&#x56E0;&#x4E3A;&#x5B83;&#x662F;&#x4E00;&#x4E2A;&#x6808;&#xFF0C;&#x6240;&#x4EE5;pop&#x7684;&#x65F6;&#x5019;&#x4F1A;&#x628A;&#x6808;&#x9876;&#x7684;&#x5143;&#x7D20;&#x4E0D;&#x7BA1;&#x5927;&#x5C0F;&#x90FD;pop&#x51FA;&#x53BB;&#x3002;&#x6BD4;&#x5982;<code>[-3,0,-2],[getMin(),pop(),getMin()]</code>&#x7684;&#x7B54;&#x6848;&#x662F;<code>[-3, -3]</code>&#xFF0C;&#x7B2C;&#x4E8C;&#x6B21;&#x7684;&#x7ED3;&#x679C;&#x662F;<code>-3</code>&#x662F;&#x56E0;&#x4E3A;pop&#x51FA;&#x4E86;&#x6808;&#x9876;&#x5143;&#x7D20;<code>-2</code>&#xFF0C;&#x6240;&#x4EE5;&#x6808;&#x4E2D;&#x53EA;&#x6709;<code>0,-3</code>&#x6BD4;&#x8F83;&#x5927;&#x5C0F;&#x3002;</p>
+<p>&#x6240;&#x4EE5;&#x8FD9;&#x4E2A;&#x601D;&#x8DEF;&#x662F;s1&#x6B63;&#x5E38;&#x7684;push&#x548C;pop&#xFF0C;s2&#x8BB0;&#x5F55;&#x6700;&#x5C0F;&#x503C;&#x5E8F;&#x5217;&#xFF0C;&#x53E6;&#x5916;&#x8BBE;&#x5B9A;push&#x548C;pop&#x6761;&#x4EF6;&#xFF0C;&#x5C0F;&#x4E8E;&#x7B49;&#x4E8E;peek&#x6700;&#x5C0F;&#x503C;push&#xFF0C;&#x548C;s1&#x6808;&#x9876;&#x5143;&#x7D20;&#x4E00;&#x6837;pop&#x3002;</p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> LinkedList&lt;Integer&gt; s1 = <span class="hljs-keyword">new</span> LinkedList&lt;&gt;();
+<span class="hljs-keyword">public</span> LinkedList&lt;Integer&gt; s2 = <span class="hljs-keyword">new</span> LinkedList&lt;&gt;();
+
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">push</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span> </span>{
+    s1.push(x);
+    <span class="hljs-keyword">if</span>(s2.isEmpty() || x &lt;= getMin()) s2.push(x);
+}
+
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">pop</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">if</span> (top() == getMin()) s2.pop();
+    s1.pop();
+}
+
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">top</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">return</span> s1.peek();
+}
+
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">getMin</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">return</span> s2.peek();
 }
 </code></pre>
 
@@ -1277,14 +1292,10 @@
 
             
                 
-                <a href="160_Intersection_of_Two_Linked_Lists.html" class="navigation navigation-prev " aria-label="Previous page: 160. Intersection of Two Linked Lists">
+                <a href="../4_stack.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Stack">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
-                
-                <a href="203_Remove_Linked_List_Elements.html" class="navigation navigation-next " aria-label="Next page: 203. Remove Linked List Elements">
-                    <i class="fa fa-angle-right"></i>
-                </a>
                 
             
         
@@ -1293,7 +1304,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"237. Delete Node in a Linked List","level":"1.3.7","depth":2,"next":{"title":"203. Remove Linked List Elements","level":"1.3.8","depth":2,"path":"alg/203_Remove_Linked_List_Elements.md","ref":"alg/203_Remove_Linked_List_Elements.md","articles":[]},"previous":{"title":"160. Intersection of Two Linked Lists","level":"1.3.6","depth":2,"path":"alg/160_Intersection_of_Two_Linked_Lists.md","ref":"alg/160_Intersection_of_Two_Linked_Lists.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"alg/237_Delete_Node_in_a_Linked_List.md","mtime":"2019-02-06T17:17:15.294Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-02-07T20:56:20.990Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"155. Min Stack","level":"1.6.1","depth":2,"previous":{"title":"Stack","level":"1.6","depth":1,"path":"4_stack.md","ref":"4_stack.md","articles":[{"title":"155. Min Stack","level":"1.6.1","depth":2,"path":"alg/155_Min_Stack.md","ref":"alg/155_Min_Stack.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"alg/155_Min_Stack.md","mtime":"2019-02-07T18:30:08.628Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-02-07T20:56:20.990Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
