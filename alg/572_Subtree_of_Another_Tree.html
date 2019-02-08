@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>42. Trapping Rain Water · GitBook</title>
+        <title>572. Subtree of Another Tree · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="15_3Sum.html" />
+    <link rel="next" href="101_Symmetric_Tree.html" />
     
     
-    <link rel="prev" href="11_Container_With_Most_Water.html" />
+    <link rel="prev" href="100_Same_Tree.html" />
     
 
     </head>
@@ -713,7 +713,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4.12" data-path="572_Subtree_of_Another_Tree.html">
+        <li class="chapter active" data-level="1.4.12" data-path="572_Subtree_of_Another_Tree.html">
             
                 <a href="572_Subtree_of_Another_Tree.html">
             
@@ -1044,7 +1044,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.5.6" data-path="42_Trapping_Rain_Water.html">
+        <li class="chapter " data-level="1.5.6" data-path="42_Trapping_Rain_Water.html">
             
                 <a href="42_Trapping_Rain_Water.html">
             
@@ -1241,7 +1241,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >42. Trapping Rain Water</a>
+        <a href=".." >572. Subtree of Another Tree</a>
     </h1>
 </div>
 
@@ -1256,27 +1256,37 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h3 id="42-trapping-rain-water">42. Trapping Rain Water</h3>
-<p>&#x6BD4;11&#x9898;&#x66F4;&#x52A0;&#x590D;&#x6742;&#xFF0C;&#x591A;&#x4E86;&#x4E24;&#x4E2A;&#x53D8;&#x91CF;<code>lm, rm</code>&#x5206;&#x522B;&#x7528;&#x6765;&#x6307;&#x4EE3;&#x5DE6;&#x8FB9;&#x7684;&#x6700;&#x5927;&#x9AD8;&#x5EA6;&#x548C;&#x53F3;&#x8FB9;&#x7684;&#x6700;&#x5927;&#x9AD8;&#x5EA6;&#xFF0C;&#x76F8;&#x5F53;&#x4E8E;11&#x9898;&#x7684;<code>height[i], height[j]</code>&#x3002;&#x5728;&#x5927;&#x5FAA;&#x73AF;<code>i &lt; j</code>&#x4E2D;&#xFF0C;&#x5F53;<code>lm &lt; rm</code>&#x65F6;&#xFF0C;<code>i</code>&#x5411;&#x5DE6;&#x8FB9;&#x79FB;&#x52A8;&#x53BB;&#x8BD5;&#x63A2;&#x6709;&#x6CA1;&#x6709;&#x66F4;&#x5927;&#x7684;&#x9AD8;&#x5EA6;&#xFF0C;&#x540C;&#x65F6;&#x6C34;&#x4EE5;&#x5DE6;&#x8FB9;&#x5899;&#x58C1;&#x7684;&#x6700;&#x5927;&#x503C;&#x4E3A;&#x57FA;&#x51C6;&#x589E;&#x52A0;<code>lm - height[i]</code>&#xFF0C;&#x53F3;&#x8FB9;&#x76F8;&#x53CD;&#x3002;</p>
-<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">trap</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] height)</span> </span>{
-    <span class="hljs-keyword">int</span> result = <span class="hljs-number">0</span>;
-    <span class="hljs-keyword">int</span> lm = <span class="hljs-number">0</span>, rm = <span class="hljs-number">0</span>;
-    <span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>, j = height.length - <span class="hljs-number">1</span>;
-    <span class="hljs-keyword">while</span> (i &lt; j) {
-        lm = Math.max(lm, height[i]);
-        rm = Math.max(rm, height[j]);
-        <span class="hljs-keyword">if</span> (lm &lt; rm) {
-            result += lm - height[i];
-            i++;
-        } <span class="hljs-keyword">else</span> {
-            result += rm - height[j];
-            j--;
-        }
-    }
-    <span class="hljs-keyword">return</span> result;
+                                <h3 id="572-subtree-of-another-tree">572. Subtree of Another Tree</h3>
+<p>&#x5B8C;&#x5168;&#x76F8;&#x540C;&#x7684;&#x5B50;&#x6811;&#x7ED3;&#x6784;&#xFF1A;</p>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">isSubtree</span><span class="hljs-params">(TreeNode s, TreeNode t)</span> </span>{
+    <span class="hljs-keyword">if</span> (s == <span class="hljs-keyword">null</span> || t == <span class="hljs-keyword">null</span>) <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
+    <span class="hljs-keyword">if</span> (dfs(s, t)) <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;
+    <span class="hljs-keyword">return</span> isSubtree(s.left, t) || isSubtree(s.right, t);
+}
+
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">dfs</span><span class="hljs-params">(TreeNode s, TreeNode t)</span> </span>{
+    <span class="hljs-keyword">if</span> (s == <span class="hljs-keyword">null</span> &amp;&amp; t == <span class="hljs-keyword">null</span>) <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;
+    <span class="hljs-keyword">if</span> (s == <span class="hljs-keyword">null</span> || t == <span class="hljs-keyword">null</span>) <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
+    <span class="hljs-keyword">return</span> (s.val == t.val) &amp;&amp; dfs(s.left, t.left) &amp;&amp; dfs(s.right, t.right);
 }
 </code></pre>
-<p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fzurr4knunj30di0by40k.jpg" width="300"></p>
+<p>&#x90E8;&#x5206;&#x76F8;&#x540C;&#x7684;&#x5B50;&#x6811;&#x7ED3;&#x6784;, &#x5982;</p>
+<pre><code class="lang-javas">[8,8,7,9,2,null,null,null,null,4,7]
+[8,9,2]
+</code></pre>
+<p>&#x533A;&#x522B;&#x70B9;&#x5728;sametree&#x51FD;&#x6570;</p>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">HasSubtree</span><span class="hljs-params">(TreeNode s,TreeNode t)</span> </span>{
+    <span class="hljs-keyword">if</span> (s == <span class="hljs-keyword">null</span> || t == <span class="hljs-keyword">null</span>) <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
+    <span class="hljs-keyword">if</span> (dfs(s, t)) <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;
+    <span class="hljs-keyword">return</span> HasSubtree(s.left, t) || HasSubtree(s.right, t);
+}
+
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">dfs</span><span class="hljs-params">(TreeNode s, TreeNode t)</span> </span>{
+    <span class="hljs-keyword">if</span> (t == <span class="hljs-keyword">null</span>) <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;
+    <span class="hljs-keyword">if</span> (s == <span class="hljs-keyword">null</span>) <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
+    <span class="hljs-keyword">return</span> (s.val == t.val) &amp;&amp; dfs(s.left, t.left) &amp;&amp; dfs(s.right, t.right);
+}
+</code></pre>
 
                                 
                                 </section>
@@ -1304,12 +1314,12 @@
 
             
                 
-                <a href="11_Container_With_Most_Water.html" class="navigation navigation-prev " aria-label="Previous page: 11. Container With Most Water">
+                <a href="100_Same_Tree.html" class="navigation navigation-prev " aria-label="Previous page: 100. Same Tree">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="15_3Sum.html" class="navigation navigation-next " aria-label="Next page: 15. 3Sum">
+                <a href="101_Symmetric_Tree.html" class="navigation navigation-next " aria-label="Next page: 101. Symmetric Tree">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1320,7 +1330,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"42. Trapping Rain Water","level":"1.5.6","depth":2,"next":{"title":"15. 3Sum","level":"1.5.7","depth":2,"path":"alg/15_3Sum.md","ref":"alg/15_3Sum.md","articles":[]},"previous":{"title":"11. Container With Most Water","level":"1.5.5","depth":2,"path":"alg/11_Container_With_Most_Water.md","ref":"alg/11_Container_With_Most_Water.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"alg/42_Trapping_Rain_Water.md","mtime":"2019-02-04T14:39:34.782Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-02-08T22:54:30.118Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"572. Subtree of Another Tree","level":"1.4.12","depth":2,"next":{"title":"101. Symmetric Tree","level":"1.4.13","depth":2,"path":"alg/101_Symmetric_Tree.md","ref":"alg/101_Symmetric_Tree.md","articles":[]},"previous":{"title":"100. Same Tree","level":"1.4.11","depth":2,"path":"alg/100_Same_Tree.md","ref":"alg/100_Same_Tree.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"alg/572_Subtree_of_Another_Tree.md","mtime":"2019-02-08T03:07:57.154Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-02-08T22:54:30.118Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
