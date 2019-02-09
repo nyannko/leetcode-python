@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>817. Linked List Components · GitBook</title>
+        <title>287. Find the Duplicate Number · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="707_Design_Linked_List.html" />
+    <link rel="next" href="../1_linkedlist.html" />
     
     
-    <link rel="prev" href="146_LRU_Cache.html" />
+    <link rel="prev" href="53_Maximum_Subarray.html" />
     
 
     </head>
@@ -272,7 +272,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.13" data-path="287_Find_the_Duplicate_Number.html">
+        <li class="chapter active" data-level="1.2.13" data-path="287_Find_the_Duplicate_Number.html">
             
                 <a href="287_Find_the_Duplicate_Number.html">
             
@@ -551,7 +551,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.3.20" data-path="817_Linked_List_Components.html">
+        <li class="chapter " data-level="1.3.20" data-path="817_Linked_List_Components.html">
             
                 <a href="817_Linked_List_Components.html">
             
@@ -1267,7 +1267,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >817. Linked List Components</a>
+        <a href=".." >287. Find the Duplicate Number</a>
     </h1>
 </div>
 
@@ -1282,21 +1282,50 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h3 id="817-linked-list-components">817. Linked List Components</h3>
-<p>&#x5224;&#x65AD;&#x94FE;&#x8868;&#x4E2D;&#x5143;&#x7D20;&#x662F;&#x5426;&#x5728;set(G)&#x4E2D;&#x5F97;&#x5230;&#x8FDE;&#x901A;&#x5206;&#x91CF;&#x7684;&#x4E2A;&#x6570;&#xFF08;&#x4E0B;&#x4E00;&#x4E2A;&#x8282;&#x70B9;&#x4E3A;null&#x6216;&#x8005;&#x4E0D;&#x5728;set&#x4E2D;&#xFF09;&#x3002;</p>
-<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">numComponents</span><span class="hljs-params">(ListNode head, <span class="hljs-keyword">int</span>[] G)</span> </span>{
-    Set&lt;Integer&gt; set = <span class="hljs-keyword">new</span> HashSet&lt;Integer&gt;();
-    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; G.length; i++) {
-        set.add(G[i]);
-    }
-    <span class="hljs-keyword">int</span> res = <span class="hljs-number">0</span>;
-    <span class="hljs-keyword">while</span> (head != <span class="hljs-keyword">null</span>) {
-        <span class="hljs-keyword">if</span> (set.contains(head.val) &amp;&amp; (head.next == <span class="hljs-keyword">null</span> || !set.contains(head.next.val))) {
-            res++;
+                                <h3 id="287-find-the-duplicate-number">287. Find the Duplicate Number</h3>
+<p>&#x5BFB;&#x627E;&#x957F;&#x5EA6;&#x4E3A;<code>n+1</code>&#x6570;&#x7EC4;&#x4E2D;&#x53EA;&#x91CD;&#x590D;&#x51FA;&#x73B0;&#x4E00;&#x6B21;&#x7684;&#x6570;&#x5B57;&#xFF0C;&#x6570;&#x7EC4;&#x8303;&#x56F4;&#x5728;[1, n]</p>
+<p>&#x9E3D;&#x5DE2;&#x539F;&#x7406;/&#x62BD;&#x5C49;&#x539F;&#x7406;+&#x4E8C;&#x5206;&#x6CD5;&#xFF0C;&#x7B97;&#x51FA;&#x4E2D;&#x4F4D;index&#xFF1A;mid&#xFF0C;&#x5BF9;&#x5C0F;&#x4E8E;&#x7B49;&#x4E0E;mid&#x7684;&#x6570;&#x5B57;&#x8FDB;&#x884C;&#x7EDF;&#x8BA1;&#xFF0C;&#x82E5;&#x5927;&#x4E8E;mid&#xFF0C;&#x8BF4;&#x660E;&#x5DE6;&#x8FB9;&#x6709;&#x91CD;&#x590D;&#x7684;&#x6570;&#x5B57;&#xFF08;&#x53EF;&#x4EE5;&#x60F3;&#x6210;&#x539F;&#x6765;&#x5E94;&#x8BE5;&#x662F;&#x76F8;&#x7B49;&#x7684;&#xFF0C;&#x4F46;&#x662F;&#x6709;&#x91CD;&#x590D;&#x7684;&#x6570;&#x5B57;&#x6240;&#x4EE5;&#x8D85;&#x8FC7;&#x4E86;&#x9650;&#x5236;&#xFF09;&#xFF0C;&#x5219;&#x79FB;&#x52A8;&#x53F3;&#x6307;&#x9488;&#x4E3A;r&#x3002;&#x65F6;&#x95F4;<code>o(nlogn)</code>&#xFF0C;&#x7A7A;&#x95F4;<code>o(1)</code></p>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">findDuplicate</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] nums)</span> </span>{
+    <span class="hljs-keyword">int</span> l = <span class="hljs-number">0</span>,  r = nums.length;
+    <span class="hljs-keyword">while</span> (l &lt; r) {
+        <span class="hljs-keyword">int</span> mid = (l + r) &gt;&gt;&gt; <span class="hljs-number">1</span>;
+        <span class="hljs-keyword">int</span> count = <span class="hljs-number">0</span>;
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> num : nums) {
+            <span class="hljs-keyword">if</span> (num &lt;= mid) count++;  <span class="hljs-comment">// count number &lt;= mid</span>
         }
-        head = head.next;
+        <span class="hljs-keyword">if</span> (count &lt;= mid) l = mid + <span class="hljs-number">1</span>;
+        <span class="hljs-keyword">else</span> r = mid;
     }
-    <span class="hljs-keyword">return</span> res;
+    <span class="hljs-keyword">return</span> l;
+}
+</code></pre>
+<p><img src="https://ws3.sinaimg.cn/large/006tNc79gy1g00t99hobqj30g807kq4k.jpg" width="350"></p>
+<p><strong>&#x5FEB;&#x6162;&#x6307;&#x9488;</strong>&#xFF0C;&#x540C;&#x94FE;&#x8868;cycle&#x68C0;&#x6D4B;#142&#xFF0C;&#x627E;entry point, &#x8FD9;&#x79CD;&#x89E3;&#x6CD5;&#x9650;&#x5236;&#x5F88;&#x5927;&#xFF0C;&#x5FC5;&#x987B;&#x540C;&#x65F6;&#x6EE1;&#x8DB3;<code>n+1</code>&#x957F;&#x5EA6;&#xFF0C;<code>[1, n]</code>&#x7684;&#x5927;&#x5C0F;&#x8303;&#x56F4;&#xFF08;&#x4E0D;&#x80FD;&#x662F;0&#xFF09;&#xFF0C;&#x5426;&#x5219;&#x51FA;&#x754C;&#xFF0C;&#x5982;&#x6D4B;&#x8BD5;&#x7528;&#x4F8B;<code>[0, 2, 2, 4, 5, 6]</code>&#xFF0C;&#x524D;&#x9762;&#x4E00;&#x79CD;&#x89E3;&#x6CD5;&#x53EF;&#x4EE5;&#x6709;0&#xFF0C;set&#x89E3;&#x6CD5;&#x90FD;&#x9002;&#x7528;&#x3002;</p>
+<p><a href="http://keithschwarz.com/interesting/code/?dir=find-duplicate" target="_blank">http://keithschwarz.com/interesting/code/?dir=find-duplicate</a></p>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">findDuplicate</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] nums)</span> </span>{
+    <span class="hljs-keyword">if</span> (nums.length &lt;= <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> -<span class="hljs-number">1</span>;
+    <span class="hljs-keyword">int</span> slow = <span class="hljs-number">0</span>, fast = <span class="hljs-number">0</span>, entry = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">while</span> (<span class="hljs-keyword">true</span>) {
+        slow = nums[slow];
+        fast = nums[nums[fast]];
+        <span class="hljs-keyword">if</span> (slow == fast) {
+            <span class="hljs-keyword">while</span> (entry != slow) {
+                entry = nums[entry];
+                slow = nums[slow];
+            }
+            <span class="hljs-keyword">return</span> entry;
+        }
+    }
+}
+</code></pre>
+<p>&#x5982;&#x679C;&#x4E0D;&#x8003;&#x8651;&#x957F;&#x5EA6;&#x548C;&#x8303;&#x56F4;&#xFF0C;&#x53EF;&#x4EE5;&#x8BBE;&#x7F6E;set&#x5E76;&#x53BB;&#x91CD;&#xFF0C;&#x65F6;&#x95F4;&#x7A7A;&#x95F4;&#x5747;&#x4E3A;<code>O(n)</code>.</p>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">findDuplicate</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] nums)</span> </span>{
+    HashSet&lt;Integer&gt; set = <span class="hljs-keyword">new</span> HashSet&lt;&gt;();
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> num : nums) {
+        <span class="hljs-keyword">if</span> (set.contains(num)) <span class="hljs-keyword">return</span> num;
+        set.add(num);
+    }
+    <span class="hljs-keyword">return</span> -<span class="hljs-number">1</span>;
 }
 </code></pre>
 
@@ -1326,12 +1355,12 @@
 
             
                 
-                <a href="146_LRU_Cache.html" class="navigation navigation-prev " aria-label="Previous page: 146. LRU Cache">
+                <a href="53_Maximum_Subarray.html" class="navigation navigation-prev " aria-label="Previous page: 53. Maximum Subarray">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="707_Design_Linked_List.html" class="navigation navigation-next " aria-label="Next page: 707. Design Linked List">
+                <a href="../1_linkedlist.html" class="navigation navigation-next " aria-label="Next page: Linked List">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1342,7 +1371,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"817. Linked List Components","level":"1.3.20","depth":2,"next":{"title":"707. Design Linked List","level":"1.3.21","depth":2,"path":"alg/707_Design_Linked_List.md","ref":"alg/707_Design_Linked_List.md","articles":[]},"previous":{"title":"146. LRU Cache","level":"1.3.19","depth":2,"path":"alg/146_LRU_Cache.md","ref":"alg/146_LRU_Cache.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"alg/817_Linked_List_Components.md","mtime":"2019-01-24T20:40:14.370Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-02-09T22:50:42.566Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"287. Find the Duplicate Number","level":"1.2.13","depth":2,"next":{"title":"Linked List","level":"1.3","depth":1,"path":"1_linkedlist.md","ref":"1_linkedlist.md","articles":[{"title":"206. Reverse Linked List","level":"1.3.1","depth":2,"path":"alg/206_Reverse_Linked_List.md","ref":"alg/206_Reverse_Linked_List.md","articles":[]},{"title":"24. Swap Nodes in Pairs","level":"1.3.2","depth":2,"path":"alg/24_Swap_Nodes_in_Pairs.md","ref":"alg/24_Swap_Nodes_in_Pairs.md","articles":[]},{"title":"876. Middle of the Linked List","level":"1.3.3","depth":2,"path":"alg/876_Middle_of_the_Linked_List.md","ref":"alg/876_Middle_of_the_Linked_List.md","articles":[]},{"title":"141. Linked List Cycle","level":"1.3.4","depth":2,"path":"alg/141_Linked_List_Cycle.md","ref":"alg/141_Linked_List_Cycle.md","articles":[]},{"title":"142. Linked List Cycle II","level":"1.3.5","depth":2,"path":"alg/142_Linked_List_Cycle_II.md","ref":"alg/142_Linked_List_Cycle_II.md","articles":[]},{"title":"160. Intersection of Two Linked Lists","level":"1.3.6","depth":2,"path":"alg/160_Intersection_of_Two_Linked_Lists.md","ref":"alg/160_Intersection_of_Two_Linked_Lists.md","articles":[]},{"title":"237. Delete Node in a Linked List","level":"1.3.7","depth":2,"path":"alg/237_Delete_Node_in_a_Linked_List.md","ref":"alg/237_Delete_Node_in_a_Linked_List.md","articles":[]},{"title":"203. Remove Linked List Elements","level":"1.3.8","depth":2,"path":"alg/203_Remove_Linked_List_Elements.md","ref":"alg/203_Remove_Linked_List_Elements.md","articles":[]},{"title":"83. Remove Duplicates from Sorted List","level":"1.3.9","depth":2,"path":"alg/83_Remove_Duplicates_from_Sorted_List.md","ref":"alg/83_Remove_Duplicates_from_Sorted_List.md","articles":[]},{"title":"82. Remove Duplicates from Sorted List II","level":"1.3.10","depth":2,"path":"alg/82_Remove_Duplicates_from_Sorted_List_II.md","ref":"alg/82_Remove_Duplicates_from_Sorted_List_II.md","articles":[]},{"title":"86. Partition List","level":"1.3.11","depth":2,"path":"alg/86_Partition_List.md","ref":"alg/86_Partition_List.md","articles":[]},{"title":"234. Palindrome Linked List","level":"1.3.12","depth":2,"path":"alg/234_Palindrome_Linked_List.md","ref":"alg/234_Palindrome_Linked_List.md","articles":[]},{"title":"143. Reorder List","level":"1.3.13","depth":2,"path":"alg/143_Reorder_List.md","ref":"alg/143_Reorder_List.md","articles":[]},{"title":"147. Insertion Sort List","level":"1.3.14","depth":2,"path":"alg/147_Insertion_Sort_List.md","ref":"alg/147_Insertion_Sort_List.md","articles":[]},{"title":"328. Odd Even Linked List","level":"1.3.15","depth":2,"path":"alg/328_Odd_Even_Linked_List.md","ref":"alg/328_Odd_Even_Linked_List.md","articles":[]},{"title":"148. Sort List","level":"1.3.16","depth":2,"path":"alg/148_Sort_List.md","ref":"alg/148_Sort_List.md","articles":[]},{"title":"21. Merge Two Sorted Lists","level":"1.3.17","depth":2,"path":"alg/21_Merge_Two_Sorted_Lists.md","ref":"alg/21_Merge_Two_Sorted_Lists.md","articles":[]},{"title":"23. Merge k Sorted Lists","level":"1.3.18","depth":2,"path":"alg/23_Merge_k_Sorted_Lists.md","ref":"alg/23_Merge_k_Sorted_Lists.md","articles":[]},{"title":"146. LRU Cache","level":"1.3.19","depth":2,"path":"alg/146_LRU_Cache.md","ref":"alg/146_LRU_Cache.md","articles":[]},{"title":"817. Linked List Components","level":"1.3.20","depth":2,"path":"alg/817_Linked_List_Components.md","ref":"alg/817_Linked_List_Components.md","articles":[]},{"title":"707. Design Linked List","level":"1.3.21","depth":2,"path":"alg/707_Design_Linked_List.md","ref":"alg/707_Design_Linked_List.md","articles":[]},{"title":"19. Remove Nth Node From End of List","level":"1.3.22","depth":2,"path":"alg/19_Remove_Nth_Node_From_End_of_List.md","ref":"alg/19_Remove_Nth_Node_From_End_of_List.md","articles":[]}]},"previous":{"title":"53. Maximum Subarray","level":"1.2.12","depth":2,"path":"alg/53_Maximum_Subarray.md","ref":"alg/53_Maximum_Subarray.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"alg/287_Find_the_Duplicate_Number.md","mtime":"2019-02-09T21:17:04.581Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-02-09T22:50:42.566Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
