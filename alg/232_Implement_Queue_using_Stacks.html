@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>701. Insert into a Binary Search Tree · GitBook</title>
+        <title>232. Implement Queue using Stacks · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="450_Delete_Node_in_a_BST.html" />
+    <link rel="next" href="225_Implement_Stack_using_Queues.html" />
     
     
-    <link rel="prev" href="700_Search_in_a_Binary_Search_Tree.html" />
+    <link rel="prev" href="155_Min_Stack.html" />
     
 
     </head>
@@ -934,7 +934,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.4.26" data-path="701_Insert_into_a_Binary_Search_Tree.html">
+        <li class="chapter " data-level="1.4.26" data-path="701_Insert_into_a_Binary_Search_Tree.html">
             
                 <a href="701_Insert_into_a_Binary_Search_Tree.html">
             
@@ -1232,7 +1232,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6.2" data-path="232_Implement_Queue_using_Stacks.html">
+        <li class="chapter active" data-level="1.6.2" data-path="232_Implement_Queue_using_Stacks.html">
             
                 <a href="232_Implement_Queue_using_Stacks.html">
             
@@ -1390,7 +1390,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >701. Insert into a Binary Search Tree</a>
+        <a href=".." >232. Implement Queue using Stacks</a>
     </h1>
 </div>
 
@@ -1405,60 +1405,59 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h3 id="701-insert-into-a-binary-search-tree">701. Insert into a Binary Search Tree</h3>
-<p>&#x57FA;&#x7840;&#x9012;&#x5F52;&#xFF0C;root&#x5DE6;&#x8FB9;&#x53F3;&#x8FB9;&#x8981;&#x63A5;&#x4F4F;&#x9012;&#x5F52;&#x7684;&#x8FD4;&#x56DE;&#x503C;&#x3002;</p>
-<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> TreeNode <span class="hljs-title">insertIntoBST</span><span class="hljs-params">(TreeNode root, <span class="hljs-keyword">int</span> val)</span> </span>{
-    <span class="hljs-keyword">if</span> (root == <span class="hljs-keyword">null</span>) <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> TreeNode(val);
+                                <h3 id="232-implement-queue-using-stacks">232. Implement Queue using Stacks</h3>
+<p>&#x4E24;&#x4E2A;&#x6808;&#x505A;&#x6CD5;&#xFF0C;&#x6CE8;&#x610F;peek&#x548C;pop&#x65B9;&#x6CD5;&#x3002;&#x8003;&#x8651;&#x4E24;&#x79CD;&#x60C5;&#x51B5;&#xFF0C;</p>
+<ol>
+<li><p>push(1), push(2), push(3), peek() &#xFF1A;&#x4E00;&#x6B21;&#x6027;&#x5728;s1&#x4E2D;push<code>1,2,3</code>&#xFF0C;&#x518D;pop(), &#x8981;&#x628A;s1&#x4E2D;&#x7684;&#x5143;&#x7D20;&#x8F6C;&#x79FB;&#x5230;s2&#x4E2D;&#x53BB;&#x3002;</p>
+</li>
+<li><p>push(1), push(2) ,peek(), push(3), peek()&#xFF1A;&#x5982;&#x679C;peek&#x8F6C;&#x79FB;&#x4E86;&#xFF0C;&#x90A3;&#x4E48;s2&#x4E2D;&#x60C5;&#x51B5;&#x4E3A;<code>3,1,2</code>&#xFF0C;&#x7B2C;&#x4E8C;&#x6B21;&#x8C03;&#x7528;peek&#x5C31;&#x4F1A;&#x5F97;&#x5230;3&#xFF0C;&#x6240;&#x4EE5;&#x8C03;&#x7528;peek&#x65F6;&#x5FC5;&#x987B;&#x6EE1;&#x8DB3;s2&#x4E3A;&#x7A7A;&#x7684;&#x6761;&#x4EF6;&#x3002;</p>
+</li>
+</ol>
+<p>&#x6839;&#x636E;&#x60C5;&#x51B5;&#x4E00;&#x53EF;&#x4EE5;&#x5199;&#x51FA;while&#x5FAA;&#x73AF;&#xFF0C;s1-&gt;s2&#x8F6C;&#x79FB;&#x5143;&#x7D20;&#x3002;</p>
+<pre><code class="lang-java"><span class="hljs-keyword">while</span> (!s1.isEmpty()) {
+    s2.push(elemnts from s1);
+}
+</code></pre>
+<p>&#x6839;&#x636E;&#x60C5;&#x51B5;&#x4E8C;&#x7ED9;while&#x5FAA;&#x73AF;&#x52A0;&#x4E0A;&#x9650;&#x5236;&#x6761;&#x4EF6;, s1-&gt;s2&#x65F6;&#xFF0C;s2&#x5FC5;&#x987B;&#x4E3A;&#x7A7A;&#x3002;</p>
+<pre><code class="lang-java"><span class="hljs-keyword">if</span> (s2.isEmpty()) {
+    <span class="hljs-keyword">while</span> () {...}
+}
+</code></pre>
+<pre><code class="lang-java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyQueue</span> </span>{
+    LinkedList&lt;Integer&gt; s1;
+    LinkedList&lt;Integer&gt; s2;
 
-    <span class="hljs-keyword">if</span> (root.val &gt; val) {
-        root.left = insertIntoBST(root.left, val);
+    <span class="hljs-comment">/** Initialize your data structure here. */</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">MyQueue</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">this</span>.s1 = <span class="hljs-keyword">new</span> LinkedList&lt;&gt;();
+        <span class="hljs-keyword">this</span>.s2 = <span class="hljs-keyword">new</span> LinkedList&lt;&gt;();
     }
-    <span class="hljs-keyword">else</span> {
-        root.right = insertIntoBST(root.right, val);
+
+    <span class="hljs-comment">/** Push element x to the back of queue. */</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">push</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span> </span>{
+        <span class="hljs-keyword">this</span>.s1.push(x);
     }
-    <span class="hljs-keyword">return</span> root;
-}
-</code></pre>
-<p>&#x7B49;&#x4EF7;&#x7684;&#x5199;&#x6CD5;&#xFF1A;&#x628A;<code>if (root == null) return new TreeNode(val);</code>&#x66FF;&#x6362;&#x6210;&#x4E24;&#x53E5;&#x5224;&#x65AD;&#x3002;</p>
-<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> TreeNode <span class="hljs-title">insertIntoBST</span><span class="hljs-params">(TreeNode root, <span class="hljs-keyword">int</span> val)</span> </span>{
-    <span class="hljs-keyword">if</span> (root.val &gt; val) {
-        <span class="hljs-keyword">if</span> (root.left == <span class="hljs-keyword">null</span>) {
-            root.left = <span class="hljs-keyword">new</span> TreeNode(val);
-        } <span class="hljs-keyword">else</span> {
-            root.left = insertIntoBST(root.left, val);
-        }
-    } <span class="hljs-keyword">else</span> {
-        <span class="hljs-keyword">if</span> (root.right == <span class="hljs-keyword">null</span>) {
-            root.right = <span class="hljs-keyword">new</span> TreeNode(val);
-        } <span class="hljs-keyword">else</span> {
-            root.right = insertIntoBST(root.right, val);
-        }
+
+    <span class="hljs-comment">/** Removes the element from in front of queue and returns that element. */</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">pop</span><span class="hljs-params">()</span> </span>{
+        peek();
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.s2.pop();
     }
-    <span class="hljs-keyword">return</span> root;
-}
-</code></pre>
-<p>iteration&#xFF0C;&#x76F8;&#x5F53;&#x4E8E;&#x63D2;&#x5165;&#x94FE;&#x8868;&#xFF0C;&#x5FEB;&#x4F46;&#x4EE3;&#x7801;&#x591A;&#x4E14;&#x4E71;&#x3002;</p>
-<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> TreeNode <span class="hljs-title">insertIntoBST</span><span class="hljs-params">(TreeNode root, <span class="hljs-keyword">int</span> val)</span> </span>{
-    TreeNode node = <span class="hljs-keyword">new</span> TreeNode(val),
-                cur = root;
-    <span class="hljs-keyword">while</span> (cur != <span class="hljs-keyword">null</span>) {
-        <span class="hljs-keyword">if</span> (cur.val &gt; val) {
-            <span class="hljs-keyword">if</span> (cur.left != <span class="hljs-keyword">null</span>) {
-                cur = cur.left;
-            } <span class="hljs-keyword">else</span> {
-                cur.left = node;
-                <span class="hljs-keyword">break</span>;
-            }
-        } <span class="hljs-keyword">else</span> {
-            <span class="hljs-keyword">if</span> (cur.right != <span class="hljs-keyword">null</span>) {
-                cur = cur.right;
-            } <span class="hljs-keyword">else</span> {
-                cur.right = node;
-                <span class="hljs-keyword">break</span>;
+
+    <span class="hljs-comment">/** Get the front element. */</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">peek</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.s2.isEmpty()) {
+            <span class="hljs-keyword">while</span> (!<span class="hljs-keyword">this</span>.s1.isEmpty()) {
+                <span class="hljs-keyword">this</span>.s2.push(<span class="hljs-keyword">this</span>.s1.pop()); <span class="hljs-comment">// transfer elements to l2</span>
             }
         }
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.s2.peek();
     }
-    <span class="hljs-keyword">return</span> root;
+
+    <span class="hljs-comment">/** Returns whether the queue is empty. */</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">empty</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> s1.isEmpty() &amp;&amp; s2.isEmpty();
+    }
 }
 </code></pre>
 
@@ -1488,12 +1487,12 @@
 
             
                 
-                <a href="700_Search_in_a_Binary_Search_Tree.html" class="navigation navigation-prev " aria-label="Previous page: 700. Search in a Binary Search Tree">
+                <a href="155_Min_Stack.html" class="navigation navigation-prev " aria-label="Previous page: 155. Min Stack">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="450_Delete_Node_in_a_BST.html" class="navigation navigation-next " aria-label="Next page: 450. Delete Node in a BST">
+                <a href="225_Implement_Stack_using_Queues.html" class="navigation navigation-next " aria-label="Next page: 225. Implement Stack using Queues">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1504,7 +1503,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"701. Insert into a Binary Search Tree","level":"1.4.26","depth":2,"next":{"title":"450. Delete Node in a BST","level":"1.4.27","depth":2,"path":"alg/450_Delete_Node_in_a_BST.md","ref":"alg/450_Delete_Node_in_a_BST.md","articles":[]},"previous":{"title":"700. Search in a Binary Search Tree","level":"1.4.25","depth":2,"path":"alg/700_Search_in_a_Binary_Search_Tree.md","ref":"alg/700_Search_in_a_Binary_Search_Tree.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"alg/701_Insert_into_a_Binary_Search_Tree.md","mtime":"2019-01-28T19:34:29.120Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-02-10T22:37:05.158Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"232. Implement Queue using Stacks","level":"1.6.2","depth":2,"next":{"title":"225. Implement Stack using Queues","level":"1.6.3","depth":2,"path":"alg/225_Implement_Stack_using_Queues.md","ref":"alg/225_Implement_Stack_using_Queues.md","articles":[]},"previous":{"title":"155. Min Stack","level":"1.6.1","depth":2,"path":"alg/155_Min_Stack.md","ref":"alg/155_Min_Stack.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"alg/232_Implement_Queue_using_Stacks.md","mtime":"2019-02-10T02:20:35.851Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-02-10T22:37:05.158Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>其他 · GitBook</title>
+        <title>Bit manipulation · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="alg/215_Kth_Largest_Element_in_an_Array.html" />
+    <link rel="next" href="alg/191_Number_of_1_Bits.html" />
     
     
-    <link rel="prev" href="./" />
+    <link rel="prev" href="alg/225_Implement_Stack_using_Queues.html" />
     
 
     </head>
@@ -102,7 +102,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.2" data-path="others.html">
+        <li class="chapter " data-level="1.2" data-path="others.html">
             
                 <a href="others.html">
             
@@ -1263,7 +1263,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.7" data-path="5_bitmanipulation.html">
+        <li class="chapter active" data-level="1.7" data-path="5_bitmanipulation.html">
             
                 <a href="5_bitmanipulation.html">
             
@@ -1390,7 +1390,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >其他</a>
+        <a href="." >Bit manipulation</a>
     </h1>
 </div>
 
@@ -1405,198 +1405,48 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h3 id="&#x5176;&#x4ED6;">&#x5176;&#x4ED6;</h3>
-<h4 id="&#x4E00;&#x4E9B;&#x9012;&#x5F52;">&#x4E00;&#x4E9B;&#x9012;&#x5F52;</h4>
-<p><strong>&#x6C49;&#x8BFA;&#x5854;</strong>&#xFF1A;&#x53EF;&#x4EE5;&#x5BF9;&#x6BD4;&#x4E8C;&#x53C9;&#x6811;&#x7684;&#x4E2D;&#x5E8F;&#x904D;&#x5386;&#xFF0C;&#x5206;&#x4E3A;&#x4E09;&#x6B65;:</p>
-<ol>
-<li>&#x628A;A&#x4E2D;&#x7684;(n-1)&#x4E2A;&#x76D8;&#x79FB;&#x52A8;&#x5230;B</li>
-<li>&#x628A;A&#x4E2D;&#x6700;&#x4E0B;&#x9762;&#x7684;&#x76D8;&#x5B50;&#x79FB;&#x52A8;&#x5230;C</li>
-<li>&#x628A;B&#x4E2D;(n-1)&#x4E2A;&#x76D8;&#x79FB;&#x52A8;&#x5230;C</li>
-</ol>
-<pre><code class="lang-python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">hanoi</span><span class="hljs-params">(n, a, b, c)</span>:</span>
-    <span class="hljs-keyword">if</span> n == <span class="hljs-number">1</span>:
-        <span class="hljs-keyword">print</span> a, <span class="hljs-string">&quot;--&gt;&quot;</span> ,c
-    <span class="hljs-keyword">else</span>:
-        hanoi(n - <span class="hljs-number">1</span>, a, c, b)
-        hanoi(<span class="hljs-number">1</span>, a, b, c)
-        hanoi(n - <span class="hljs-number">1</span>, b, a, c)
-
-hanoi(<span class="hljs-number">3</span>, <span class="hljs-string">&apos;A&apos;</span>, <span class="hljs-string">&apos;B&apos;</span>, <span class="hljs-string">&apos;C&apos;</span>)
-</code></pre>
-<p><img src="https://ws3.sinaimg.cn/large/006tNc79gy1fzqi0vp28ij308q0dwgna.jpg" width="200"></p>
-<p><strong>&#x6B27;&#x51E0;&#x91CC;&#x5F97;&#x7B97;&#x6CD5;(Euclidean algorithm)</strong></p>
-<p>&#x6700;&#x5927;&#x516C;&#x7EA6;&#x6570;&#x548C;&#x6700;&#x5C0F;&#x516C;&#x500D;&#x6570;</p>
-<pre><code class="lang-python"><span class="hljs-comment"># iteration</span>
-<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">gcd</span><span class="hljs-params">(a, b)</span>:</span>
-    <span class="hljs-keyword">if</span> a &lt;= <span class="hljs-number">0</span> <span class="hljs-keyword">or</span> b &lt;= <span class="hljs-number">0</span>: <span class="hljs-keyword">return</span>
-    <span class="hljs-keyword">while</span> b &gt; <span class="hljs-number">0</span>:
-        factor = a / b
-        c, d = b, a - factor * b
-        <span class="hljs-keyword">print</span> <span class="hljs-string">&quot;{} / {} = {} x {} + {}&quot;</span>.format(a, b, factor, c, d)
-        a, b = c, d
-    <span class="hljs-keyword">return</span> a
-
-<span class="hljs-comment"># recursion</span>
-<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">gcd2</span><span class="hljs-params">(a, b)</span>:</span>
-    <span class="hljs-keyword">if</span> a &lt;= <span class="hljs-number">0</span> <span class="hljs-keyword">or</span> b &lt;= <span class="hljs-number">0</span>: <span class="hljs-keyword">return</span>
-    <span class="hljs-keyword">if</span> b == <span class="hljs-number">0</span>: <span class="hljs-keyword">return</span> a
-    <span class="hljs-keyword">return</span> gcd2(b, a % b)
-
-<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">lcm</span><span class="hljs-params">(a, b)</span>:</span>
-    <span class="hljs-keyword">return</span> a * b / gcd2(a, b) <span class="hljs-comment"># lcm = a * b / gcd</span>
-
-<span class="hljs-comment"># test</span>
-res1 = gcd(<span class="hljs-number">1251</span>, <span class="hljs-number">375</span>)
-<span class="hljs-keyword">print</span> res1, (gcd2(<span class="hljs-number">1251</span>, <span class="hljs-number">375</span>) == res1) <span class="hljs-comment"># 3</span>
-<span class="hljs-comment"># print gcd(1071, 462)</span>
-<span class="hljs-comment"># print gcd(47, 30)</span>
-
-<span class="hljs-comment"># a      b         a&apos;    b&apos;</span>
-<span class="hljs-comment"># 1251 / 375 = 3 x 375 + 126</span>
-<span class="hljs-comment"># 375 / 126 = 2 x 126 + 123</span>
-<span class="hljs-comment"># 126 / 123 = 1 x 123 + 3</span>
-<span class="hljs-comment"># 123 / 3 = 41 x 3 + 0</span>
-<span class="hljs-comment"># 3 True</span>
-</code></pre>
-<p><strong>&#x725B;&#x987F;&#x5F00;&#x65B9;&#x6CD5;(Newton&apos;s method)</strong>&#xFF1A;&#x539F;&#x7406;&#x662F;&#x53D6;&#x4E00;&#x6761;&#x66F2;&#x7EBF;<code>f(x)</code>&#x70B9;<code>x0</code>&#x5904;&#x7684;&#x5207;&#x7EBF;&#xFF0C;&#x5F97;&#x5230;&#x548C;x&#x8F74;&#x76F8;&#x4EA4;&#x540E;&#x65B0;&#x70B9;<code>x1</code>&#xFF0C;&#x518D;&#x53D6;<code>f(x)</code>&#x70B9;<code>x1</code>&#x5904;&#x7684;&#x5207;&#x7EBF;....&#x4EE5;&#x6B64;&#x7C7B;&#x63A8;&#xFF0C;&#x5F97;&#x5230;&#x9012;&#x63A8;&#x516C;&#x5F0F;</p>
-<p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fzv7cmt13jj304o01ga9z.jpg" width="200"></p>
-<p>&#x53D6;&#x4E8C;&#x9636;&#x53EF;&#x5BFC;&#x66F2;&#x7EBF;<code>f(x) = x^2 - num, x = xn</code>&#x5E26;&#x5165;&#x4EE5;&#x4E0A;&#x516C;&#x5F0F;, &#x5F97;&#x5230;&#x8FED;&#x4EE3;&#x516C;&#x5F0F;<code>x(n+1)=(1/2)*(xn+ num/xn)</code></p>
-<pre><code class="lang-python"><span class="hljs-comment"># iteration</span>
-<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">sqrt</span><span class="hljs-params">(num)</span>:</span>
-    x = <span class="hljs-number">1.0</span>  <span class="hljs-comment"># &#x53D6;&#x521D;&#x59CB;&#x503C;x0 = 1.0</span>
-    <span class="hljs-keyword">while</span> abs(x * x - num) &gt; <span class="hljs-number">1e-9</span>:
-        x = <span class="hljs-number">0.5</span> * (x + num / x) <span class="hljs-comment"># &#x8FED;&#x4EE3;&#x516C;&#x5F0F;x(n+1) = 1/2 * (x(n) + num / x(n))</span>
-    <span class="hljs-keyword">return</span> x
-
-<span class="hljs-comment"># recursion</span>
-<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">sqrt2</span><span class="hljs-params">(x, num)</span>:</span>
-    <span class="hljs-keyword">assert</span> x &gt; <span class="hljs-number">0</span> <span class="hljs-comment"># &#x521D;&#x503C;&#x70B9;x&#x4E0D;&#x4E3A;&#x8D1F;&#x6570;</span>
-    <span class="hljs-keyword">if</span> abs(x**<span class="hljs-number">2</span> - num) &lt; <span class="hljs-number">1e-9</span>:
-        <span class="hljs-keyword">return</span> x
-    x = <span class="hljs-number">0.5</span> * (x + num / x)
-    <span class="hljs-keyword">return</span> sqrt2(x, num)
-
-<span class="hljs-keyword">print</span> sqrt(<span class="hljs-number">4</span>)
-<span class="hljs-keyword">print</span> sqrt(<span class="hljs-number">16</span>)
-<span class="hljs-keyword">print</span> sqrt(<span class="hljs-number">100</span>)
-<span class="hljs-keyword">print</span> sqrt2(<span class="hljs-number">-1.0</span>, <span class="hljs-number">4</span>) <span class="hljs-comment"># error</span>
-<span class="hljs-keyword">print</span> sqrt2(<span class="hljs-number">1.0</span>, <span class="hljs-number">4</span>)
-<span class="hljs-keyword">print</span> sqrt2(<span class="hljs-number">2.0</span>, <span class="hljs-number">16</span>)
-<span class="hljs-keyword">print</span> sqrt2(<span class="hljs-number">5.0</span>, <span class="hljs-number">100</span>) <span class="hljs-comment"># &#x9009;&#x53D6;&#x4E0D;&#x540C;&#x7684;&#x521D;&#x503C;&#x70B9;x</span>
-</code></pre>
-<p>&#x4E0B;&#x9762;&#x662F;<code>sqrt(100)</code>&#x7684;&#x8FED;&#x4EE3;&#x8FC7;&#x7A0B;, <code>x=1.0</code></p>
-<pre><code class="lang-python"><span class="hljs-number">50.5</span>
-<span class="hljs-number">26.2400990099</span>
-<span class="hljs-number">15.02553012</span>
-<span class="hljs-number">10.840434673</span>
-<span class="hljs-number">10.032578511</span>
-<span class="hljs-number">10.0000528956</span>
-<span class="hljs-number">10.0000000001</span>
-<span class="hljs-number">10.0</span>
-<span class="hljs-number">10.0</span>
-</code></pre>
-<p>&#x8D8A;&#x9760;&#x8FD1;&#x7B54;&#x6848;&#x8BA1;&#x7B97;&#x6B21;&#x6570;&#x8D8A;&#x5C11;&#xFF0C;&#x6BD4;&#x5982;&#x8BF4;100&#x7684;&#x8BDD;&#x662F;10&#x53EA;&#x7528;&#x8BA1;&#x7B97;&#x4E00;&#x6B21;&#xFF0C;&#x4F46;&#x662F;&#x6709;&#x4E9B;&#x70B9;&#x53EF;&#x80FD;&#x6CA1;&#x6709;&#x7B54;&#x6848;&#x5982;&#x6781;&#x503C;&#x70B9;&#x5982;0</p>
-<p><strong>Pow</strong>:&#x76F4;&#x63A5;<code>x * pow(x, n - 1)</code>&#x662F;<code>O(n)</code>&#x7684;&#x590D;&#x6742;&#x5EA6; &#xFF0C;&#x4F1A;&#x53D1;&#x751F;<code>maximum recursion depth exceeded</code>&#xFF0C;&#x6240;&#x4EE5;&#x5BF9;&#x8F93;&#x5165;n&#x8FDB;&#x884C;&#x51CF;&#x534A;+&#x5947;&#x5076;&#x5224;&#x65AD;&#x3002;</p>
-<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">double</span> <span class="hljs-title">myPow</span><span class="hljs-params">(<span class="hljs-keyword">double</span> x, <span class="hljs-keyword">int</span> n)</span> </span>{
-    <span class="hljs-keyword">if</span> (n &lt; <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>/dfs(x, -n);
-    <span class="hljs-keyword">return</span> dfs(x, n);
-}
-
-<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">double</span> <span class="hljs-title">dfs</span><span class="hljs-params">(<span class="hljs-keyword">double</span> x, <span class="hljs-keyword">int</span> n)</span> </span>{
-    <span class="hljs-keyword">if</span> (n == <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;
-    <span class="hljs-keyword">if</span> (n == <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> x;  <span class="hljs-comment">// &#x8FD9;&#x4E2A;base case&#x6709;&#x65F6;&#x5019;&#x53EF;&#x4EE5;&#x51CF;&#x5C11;&#x4E00;&#x6B21;&#x9012;&#x5F52;</span>
-    <span class="hljs-keyword">double</span> v = dfs(x, n/<span class="hljs-number">2</span>);
-    <span class="hljs-keyword">if</span> (n % <span class="hljs-number">2</span> == <span class="hljs-number">0</span>) {
-        <span class="hljs-keyword">return</span> v * v;
-    } <span class="hljs-keyword">else</span> {
-        <span class="hljs-keyword">return</span> v * v * x;
-    }
-}
-</code></pre>
-<p><strong>&#x7EA6;&#x745F;&#x592B;&#x73AF;</strong>&#xFF1A;k:&#x6570;&#x5230;&#x7684;&#x4EBA;&#x6D88;&#x5931;&#xFF0C;n:&#x603B;&#x4EBA;&#x6570;&#xFF0C;&#x6C42;&#x6700;&#x540E;&#x5269;&#x4E0B;&#x7684;&#x4EBA;&#x7684;&#x4F4D;&#x7F6E;</p>
-<pre><code class="lang-python"><span class="hljs-keyword">from</span> collections <span class="hljs-keyword">import</span> OrderedDict
-
-<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">josephus</span><span class="hljs-params">(k, n)</span>:</span>
-    <span class="hljs-keyword">if</span> n == <span class="hljs-number">1</span>: <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>  <span class="hljs-comment"># &#x53EA;&#x6709;&#x4E00;&#x4E2A;&#x4EBA;&#x7684;&#x65F6;&#x5019;&#x5FC5;&#x987B;&#x4E0D;&#x4F1A;&#x6D88;&#x5931;</span>
-    res = josephus(k, n - <span class="hljs-number">1</span>) <span class="hljs-comment"># n-1&#x4EBA;&#x4E2D;&#x5E78;&#x5B58;&#x8005;&#x7684;&#x4F4D;&#x7F6E;</span>
-    <span class="hljs-keyword">return</span> (res + k) % n <span class="hljs-comment"># &#x8FED;&#x4EE3;&#x516C;&#x5F0F;, &#x5E78;&#x5B58;&#x8005;&#x7684;&#x4F4D;&#x7F6E;+k&#x4E5F;&#x4F1A;&#x5E78;&#x5B58;</span>
-
-d = OrderedDict()
-<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(<span class="hljs-number">1</span>, <span class="hljs-number">1000</span>):
-    ans = josephus(<span class="hljs-number">2</span>, i)
-    <span class="hljs-keyword">if</span> ans == <span class="hljs-number">1</span>:
-        d[i] = ans
-<span class="hljs-keyword">print</span> d <span class="hljs-comment"># [(1, 1), (2, 1), (4, 1), (8, 1), (16, 1), (32, 1), (64, 1), (128, 1), (256, 1), (512, 1)]</span>
-<span class="hljs-comment"># &#x89C4;&#x5F8B;: k = 2&#x65F6;&#xFF0C;&#x4EBA;&#x6570;&#x4E3A;2^n&#x7684;&#x5E78;&#x5B58;&#x8005;&#x5728;&#x4F4D;&#x7F6E;0</span>
-<span class="hljs-keyword">print</span> josephus(<span class="hljs-number">3</span>, <span class="hljs-number">5</span>)  <span class="hljs-comment"># 3</span>
-<span class="hljs-keyword">print</span> josephus(<span class="hljs-number">100</span>, <span class="hljs-number">2</span>)<span class="hljs-comment"># 0</span>
-</code></pre>
-<h4 id="&#x65F6;&#x95F4;&#x590D;&#x6742;&#x5EA6;on">&#x65F6;&#x95F4;&#x590D;&#x6742;&#x5EA6;O(n)</h4>
-<p>O(n)&#x8861;&#x91CF;&#x4E86;&#x7B97;&#x6CD5;&#x7684;&#x589E;&#x957F;&#x66F2;&#x7EBF;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x7A0B;&#x5E8F;&#x8FD0;&#x884C;&#x65F6;&#x95F4;&#x548C;&#x8F93;&#x5165;&#x5927;&#x5C0F;&#x7684;&#x5173;&#x7CFB;&#x3002;</p>
+                                <h4 id="bit-manipulation">Bit manipulation</h4>
+<p>&#x96BE;&#x70B9;&#xFF1A;&#x4E8C;&#x8FDB;&#x5236;&#x8FD0;&#x7B97;&#x7684;&#x610F;&#x4E49;&#xFF0C;&#x6570;&#x5B57;&#x7684;&#x8303;&#x56F4;</p>
+<p>&#x64CD;&#x4F5C;&#xFF1A;&#x79FB;&#x4F4D;&#xFF0C;&#x4E00;&#x5143;&#x64CD;&#x4F5C;&#x7B26;</p>
 <ul>
-<li>&#x8BBE;f(n)&#x548C;g(n)&#x4E3A;&#x4E24;&#x4E2A;&#x51FD;&#x6570;&#xFF0C;f(n)=O(g(n))&#x6210;&#x7ACB;&#x7684;&#x6761;&#x4EF6;&#x662F;&#xFF1A;</li>
+<li>&#x6570;&#x5B57;&#x7684;&#x4F4D;&#x6570;&#x548C;&#x8303;&#x56F4;</li>
 </ul>
-<p><code>&#x5982;&#x679C;&#x5B58;&#x5728;&#x4E00;&#x4E2A;**&#x5E38;&#x6570;c**&gt;0, n&gt;=n0&gt;=1&#xFF0C;&#x4F7F;&#x5F97;f(n)&lt;=c*g(n)&#xFF0C;&#x4E14;n&gt;=n0</code></p>
-<p>&#x8BC1;&#x660E;2n+10&#x7684;&#x65F6;&#x95F4;&#x590D;&#x6742;&#x5EA6;&#x662F;O(n): <code>2n+10 &lt;= cn&#xFF0C;&#x5B58;&#x5728;c=3,n0=10&#x4F7F;&#x5F97;&#x7B49;&#x5F0F;&#x6210;&#x7ACB;</code></p>
-<ul>
-<li>&#x7B80;&#x5355;&#x7A0B;&#x5E8F;&#x5206;&#x6790;&#xFF1A;</li>
-</ul>
-<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">double</span> <span class="hljs-title">max</span><span class="hljs-params">(<span class="hljs-keyword">double</span>[] nums)</span> </span>{<span class="hljs-comment">// array size = n</span>
-    <span class="hljs-keyword">int</span> size = nums.length;             <span class="hljs-comment">// 2 ops</span>
-    <span class="hljs-keyword">double</span> max = nums[<span class="hljs-number">0</span>];               <span class="hljs-comment">// 2 ops</span>
-    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt; size; i++) {    <span class="hljs-comment">// 2 * (n - 1) ops</span>
-        <span class="hljs-keyword">if</span> (nums[i] &gt; max) {            <span class="hljs-comment">// 2 * (n - 1) ops</span>
-            max = nums[i];              <span class="hljs-comment">// 0 to (n - 1) ops</span>
-        }
-    }
-    <span class="hljs-keyword">return</span> max;                         <span class="hljs-comment">// 1 op</span>
-}                                       <span class="hljs-comment">// total: 5n ---&gt; runs in O(n)</span>
+<p>&#x53EF;&#x76F4;&#x63A5;&#x5728;java&#x5E38;&#x89C1;&#x5305;&#x88C5;&#x7C7B;&#x4E2D;&#x8C03;&#x7528;<code>MIN_VALUE</code>&#x548C;<code>MAX_VALUE</code>&#x8FDB;&#x884C;&#x67E5;&#x770B;&#x3002;&#x4F46;&#x662F;&#x5E38;&#x8BC6;&#x8FD8;&#x662F;&#x9700;&#x8981;&#x4E00;&#x4E9B;&#x8BB0;&#x5FC6;&#x3002;&#x6EA2;&#x51FA;&#x4E4B;&#x540E;&#x4F1A;&#x5728;min&#x548C;max&#x503C;&#x4E2D;&#x76F8;&#x4E92;&#x8F6C;&#x6362;&#x3002;</p>
+<pre><code class="lang-java">&#x57FA;&#x672C;&#x7C7B;&#x578B;&#xFF1A;<span class="hljs-keyword">byte</span> &#x4E8C;&#x8FDB;&#x5236;&#x4F4D;&#x6570;&#xFF1A;<span class="hljs-number">8</span>
+&#x5305;&#x88C5;&#x7C7B;&#xFF1A;java.lang.Byte
+&#x6700;&#x5C0F;&#x503C;&#xFF1A;Byte.MIN_VALUE=-<span class="hljs-number">128</span> <span class="hljs-comment">// 0x80000000;</span>
+&#x6700;&#x5927;&#x503C;&#xFF1A;Byte.MAX_VALUE=<span class="hljs-number">127</span>  <span class="hljs-comment">// 0x7fffffff;</span>
+
+&#x57FA;&#x672C;&#x7C7B;&#x578B;&#xFF1A;<span class="hljs-keyword">short</span> &#x4E8C;&#x8FDB;&#x5236;&#x4F4D;&#x6570;&#xFF1A;<span class="hljs-number">16</span>
+&#x5305;&#x88C5;&#x7C7B;&#xFF1A;java.lang.Short
+&#x6700;&#x5C0F;&#x503C;&#xFF1A;Short.MIN_VALUE=-<span class="hljs-number">32768</span>
+&#x6700;&#x5927;&#x503C;&#xFF1A;Short.MAX_VALUE=<span class="hljs-number">32767</span>
+
+&#x57FA;&#x672C;&#x7C7B;&#x578B;&#xFF1A;<span class="hljs-keyword">int</span> &#x4E8C;&#x8FDB;&#x5236;&#x4F4D;&#x6570;&#xFF1A;<span class="hljs-number">32</span>
+&#x5305;&#x88C5;&#x7C7B;&#xFF1A;java.lang.Integer
+&#x6700;&#x5C0F;&#x503C;&#xFF1A;Integer.MIN_VALUE=-<span class="hljs-number">2147483648</span>
+&#x6700;&#x5927;&#x503C;&#xFF1A;Integer.MAX_VALUE=<span class="hljs-number">2147483647</span>
+
+&#x57FA;&#x672C;&#x7C7B;&#x578B;&#xFF1A;<span class="hljs-keyword">long</span> &#x4E8C;&#x8FDB;&#x5236;&#x4F4D;&#x6570;&#xFF1A;<span class="hljs-number">64</span>
+&#x5305;&#x88C5;&#x7C7B;&#xFF1A;java.lang.Long
+&#x6700;&#x5C0F;&#x503C;&#xFF1A;Long.MIN_VALUE=-<span class="hljs-number">9223372036854775808</span>
+&#x6700;&#x5927;&#x503C;&#xFF1A;Long.MAX_VALUE=<span class="hljs-number">9223372036854775807</span>
+
+&#x57FA;&#x672C;&#x7C7B;&#x578B;&#xFF1A;<span class="hljs-keyword">float</span> &#x4E8C;&#x8FDB;&#x5236;&#x4F4D;&#x6570;&#xFF1A;<span class="hljs-number">32</span>
+&#x5305;&#x88C5;&#x7C7B;&#xFF1A;java.lang.Float
+&#x6700;&#x5C0F;&#x503C;&#xFF1A;Float.MIN_VALUE=<span class="hljs-number">1.4E-45</span>
+&#x6700;&#x5927;&#x503C;&#xFF1A;Float.MAX_VALUE=<span class="hljs-number">3.4028235E38</span>
+
+&#x57FA;&#x672C;&#x7C7B;&#x578B;&#xFF1A;<span class="hljs-keyword">double</span> &#x4E8C;&#x8FDB;&#x5236;&#x4F4D;&#x6570;&#xFF1A;<span class="hljs-number">64</span>
+&#x5305;&#x88C5;&#x7C7B;&#xFF1A;java.lang.Double
+&#x6700;&#x5C0F;&#x503C;&#xFF1A;Double.MIN_VALUE=<span class="hljs-number">4.9E-324</span>
+&#x6700;&#x5927;&#x503C;&#xFF1A;Double.MAX_VALUE=<span class="hljs-number">1.7976931348623157E308</span>
+
+&#x57FA;&#x672C;&#x7C7B;&#x578B;&#xFF1A;<span class="hljs-keyword">char</span> &#x4E8C;&#x8FDB;&#x5236;&#x4F4D;&#x6570;&#xFF1A;<span class="hljs-number">16</span>
+&#x5305;&#x88C5;&#x7C7B;&#xFF1A;java.lang.Character
+&#x6700;&#x5C0F;&#x503C;&#xFF1A;Character.MIN_VALUE=<span class="hljs-number">0</span>
+&#x6700;&#x5927;&#x503C;&#xFF1A;Character.MAX_VALUE=<span class="hljs-number">65535</span>
 </code></pre>
-<ul>
-<li>&#x7B80;&#x5355;&#x9012;&#x5F52;&#x7A0B;&#x5E8F;&#x5206;&#x6790;&#xFF1A;</li>
-</ul>
-<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">fac</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span> </span>{ <span class="hljs-comment">// n &gt;= 0</span>
-    <span class="hljs-keyword">if</span> (n == <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;
-    <span class="hljs-keyword">return</span> n * fac(n - <span class="hljs-number">1</span>);
-}
-</code></pre>
-<pre><code>T(n) = T(n - 1) + b
-T(0) = c
-</code></pre><p>&#x63A8;&#x51FA;&#x901A;&#x9879;&#x516C;&#x5F0F;<code>T(n) = c + nb</code>&#xFF0C;&#x6240;&#x4EE5;&#x65F6;&#x95F4;&#x590D;&#x6742;&#x5EA6;&#x4E3A;<code>O(n)</code></p>
-<p>&#x5176;&#x4ED6;&#x7B80;&#x5355;&#x63A8;&#x8BBA;&#xFF1A;&#x9012;&#x5F52;&#x8F93;&#x5165;<code>T(n) = T(n/2) + c</code>&#x7684;&#x65F6;&#x95F4;&#x590D;&#x6742;&#x5EA6;&#x4E3A;<code>O(logn)</code>, <code>T(n) = 2T(n - 1) + c</code>&#x65F6;&#x95F4;&#x590D;&#x6742;&#x5EA6;&#x4E3A;<code>O(2^n)</code>&#xFF0C;&#x5982;&#x524D;&#x9762;&#x7684;&#x6C49;&#x8BFA;&#x5854;</p>
-<h4 id="&#x4EE3;&#x7801;&#x8FD0;&#x884C;&#x65F6;&#x95F4;">&#x4EE3;&#x7801;&#x8FD0;&#x884C;&#x65F6;&#x95F4;</h4>
-<pre><code class="lang-python"><span class="hljs-meta">&gt;&gt;&gt; </span>timeit(<span class="hljs-string">&apos;x.append(1)&apos;</span>,<span class="hljs-string">&apos;x=[]&apos;</span>, number = <span class="hljs-number">10000</span>)
-<span class="hljs-number">0.0014090538024902344</span>
-</code></pre>
-<h4 id="&#x5E38;&#x89C1;&#x6392;&#x5E8F;">&#x5E38;&#x89C1;&#x6392;&#x5E8F;</h4>
-<p>&#x9009;&#x62E9;&#x6392;&#x5E8F;&#xFF1A;&#x4ECE;&#x540E;&#x9762;&#x62CE;&#x51FA;&#x4E00;&#x4E2A;&#x6700;&#x5C0F;&#x503C;&#x4E0E;&#x524D;&#x9762;&#x5143;&#x7D20;&#x4EA4;&#x6362;&#x3002;&#x6BD4;&#x5982;&#x4EBA;&#x773C;&#x6392;&#x5217;&#x6709;&#x9650;&#x6570;&#x636E;&#xFF08;&#x53EF;&#x4EE5;&#x4E00;&#x773C;&#x770B;&#x51FA;&#x6700;&#x5C0F;&#x503C;&#x7684;&#x8BDD;&#xFF0C;&#x5982;1, 10, 7, 8&#xFF09;</p>
-<pre><code class="lang-python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">selectionSort</span><span class="hljs-params">(nums)</span>:</span>
-    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(<span class="hljs-number">0</span>, len(nums)):
-        min = i
-        <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> range(i + <span class="hljs-number">1</span>, len(nums)):
-            <span class="hljs-keyword">if</span> nums[j] &lt; nums[min]:
-                min = j <span class="hljs-comment"># find the place of the min value in range(i + 1, len(nums))</span>
-        nums[i], num[min] = nums[min], nums[i] <span class="hljs-comment"># swap current value with min value</span>
-</code></pre>
-<p>&#x63D2;&#x5165;&#x6392;&#x5E8F;&#xFF1A;&#x5148;&#x4ECE;&#x540E;&#x9762;&#x62CE;&#x51FA;&#x4E00;&#x4E2A;&#x5143;&#x7D20;&#x548C;&#x524D;&#x9762;&#x5DF2;&#x7ECF;&#x6392;&#x597D;&#x5E8F;&#x7684;&#x8FDB;&#x884C;&#x6BD4;&#x8F83;&#xFF0C;&#x5982;&#x6253;&#x724C;&#x7684;&#x65F6;&#x5019;&#x6478;&#x724C;&#x3002;</p>
-<pre><code class="lang-python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">insertionSort</span><span class="hljs-params">(nums)</span>:</span>
-    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(<span class="hljs-number">1</span>, len(nums)):
-        key = nums[i]
-        j = i - <span class="hljs-number">1</span>
-        <span class="hljs-keyword">while</span> j &gt;= <span class="hljs-number">0</span> <span class="hljs-keyword">and</span> nums[j] &gt; key: // bigger number shift to right
-            nums[j + <span class="hljs-number">1</span>] = nums[j]
-            j -= <span class="hljs-number">1</span>
-        nums[j + <span class="hljs-number">1</span>] = key
-</code></pre>
-<p>&#x5192;&#x6CE1;&#x6392;&#x5E8F;&#xFF1A;i&#x4EE3;&#x8868;&#x9700;&#x8981;&#x8FDB;&#x884C;&#x4E24;&#x4E24;&#x6392;&#x5E8F;&#x7684;&#x6570;&#x5B57;(&#x6240;&#x4EE5;&#x8FB9;&#x754C;&#x662F;&#x6570;&#x7EC4;&#x957F;&#x5EA6;&#x51CF;&#x53BB;&#x4E00;)&#xFF0C;j&#x4EE3;&#x8868;&#x5269;&#x4E0B;&#x7684;&#x9700;&#x8981;&#x6392;&#x5E8F;&#x7684;&#x6570;&#x5B57;&#x3002;</p>
-<pre><code class="lang-python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">bubbleSort</span><span class="hljs-params">(nums)</span>:</span>
-    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(<span class="hljs-number">0</span>, len(nums) - <span class="hljs-number">1</span>):
-        <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> range(<span class="hljs-number">0</span>, len(nums) - <span class="hljs-number">1</span> - i):
-            <span class="hljs-keyword">if</span> nums[j] &gt; nums[j + <span class="hljs-number">1</span>]:
-                nums[j], nums[j + <span class="hljs-number">1</span>] = nums[j + <span class="hljs-number">1</span>], nums[j]
-</code></pre>
-<p>&#x6876;&#x6392;&#x5E8F;&#xFF1A;&#x6D17;&#x6251;&#x514B;&#x724C;&#xFF0C;&#x5148;&#x6309;&#x82B1;&#x8272;&#x5206;&#x6210;&#x56DB;&#x5806;&#xFF0C;&#x518D;&#x6392;</p>
-<p>Merge Sort:&#x9002;&#x5408;&#x94FE;&#x8868;</p>
 
                                 
                                 </section>
@@ -1624,12 +1474,12 @@ T(0) = c
 
             
                 
-                <a href="./" class="navigation navigation-prev " aria-label="Previous page: 🥰Alg">
+                <a href="alg/225_Implement_Stack_using_Queues.html" class="navigation navigation-prev " aria-label="Previous page: 225. Implement Stack using Queues">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="alg/215_Kth_Largest_Element_in_an_Array.html" class="navigation navigation-next " aria-label="Next page: 215. Kth Largest Element in an Array">
+                <a href="alg/191_Number_of_1_Bits.html" class="navigation navigation-next " aria-label="Next page: 191. Number of 1 Bits">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1640,7 +1490,7 @@ T(0) = c
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"其他","level":"1.2","depth":1,"next":{"title":"215. Kth Largest Element in an Array","level":"1.2.1","depth":2,"path":"alg/215_Kth_Largest_Element_in_an_Array.md","ref":"alg/215_Kth_Largest_Element_in_an_Array.md","articles":[]},"previous":{"title":"🥰Alg","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"others.md","mtime":"2019-02-10T06:50:41.758Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-02-10T22:37:05.158Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Bit manipulation","level":"1.7","depth":1,"next":{"title":"191. Number of 1 Bits","level":"1.7.1","depth":2,"path":"alg/191_Number_of_1_Bits.md","ref":"alg/191_Number_of_1_Bits.md","articles":[]},"previous":{"title":"225. Implement Stack using Queues","level":"1.6.3","depth":2,"path":"alg/225_Implement_Stack_using_Queues.md","ref":"alg/225_Implement_Stack_using_Queues.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"5_bitmanipulation.md","mtime":"2019-02-10T06:43:21.989Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-02-10T22:37:05.158Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>701. Insert into a Binary Search Tree · GitBook</title>
+        <title>191. Number of 1 Bits · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="450_Delete_Node_in_a_BST.html" />
+    <link rel="next" href="461_Hamming_Distance.html" />
     
     
-    <link rel="prev" href="700_Search_in_a_Binary_Search_Tree.html" />
+    <link rel="prev" href="../5_bitmanipulation.html" />
     
 
     </head>
@@ -934,7 +934,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.4.26" data-path="701_Insert_into_a_Binary_Search_Tree.html">
+        <li class="chapter " data-level="1.4.26" data-path="701_Insert_into_a_Binary_Search_Tree.html">
             
                 <a href="701_Insert_into_a_Binary_Search_Tree.html">
             
@@ -1277,7 +1277,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.7.1" data-path="191_Number_of_1_Bits.html">
+        <li class="chapter active" data-level="1.7.1" data-path="191_Number_of_1_Bits.html">
             
                 <a href="191_Number_of_1_Bits.html">
             
@@ -1390,7 +1390,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >701. Insert into a Binary Search Tree</a>
+        <a href=".." >191. Number of 1 Bits</a>
     </h1>
 </div>
 
@@ -1405,61 +1405,56 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h3 id="701-insert-into-a-binary-search-tree">701. Insert into a Binary Search Tree</h3>
-<p>&#x57FA;&#x7840;&#x9012;&#x5F52;&#xFF0C;root&#x5DE6;&#x8FB9;&#x53F3;&#x8FB9;&#x8981;&#x63A5;&#x4F4F;&#x9012;&#x5F52;&#x7684;&#x8FD4;&#x56DE;&#x503C;&#x3002;</p>
-<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> TreeNode <span class="hljs-title">insertIntoBST</span><span class="hljs-params">(TreeNode root, <span class="hljs-keyword">int</span> val)</span> </span>{
-    <span class="hljs-keyword">if</span> (root == <span class="hljs-keyword">null</span>) <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> TreeNode(val);
-
-    <span class="hljs-keyword">if</span> (root.val &gt; val) {
-        root.left = insertIntoBST(root.left, val);
+                                <h3 id="191-number-of-1-bits">191. Number of 1 Bits</h3>
+<p>&#x8BA1;&#x7B97;&#x4E00;&#x4E32;&#x4E8C;&#x8FDB;&#x5236;&#x4E2D;1&#x7684;&#x4E2A;&#x6570;</p>
+<p>&#x79FB;&#x4F4D;&#x6CD5;&#xFF0C;&#x6839;&#x636E;&#x6700;&#x53F3;&#x8FB9;&#x4E00;&#x4F4D;&#x662F;1&#x7684;&#x5947;&#x6570;<code>n &amp; 1 = 1</code>&#x7684;&#x6027;&#x8D28;&#xFF0C;&#x6BCF;&#x6B21;&#x628A;n&#x53F3;&#x79FB;&#x4E00;&#x4F4D;&#xFF0C;&#x7D2F;&#x52A0;<code>n &amp; 1</code>&#x7684;&#x548C;&#xFF0C;&#x6700;&#x540E;&#x7B97;&#x51FA;&#x6765;&#x7684;&#x5C31;&#x662F;1&#x7684;&#x4E2A;&#x6570;&#x3002;</p>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">hammingWeight</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span> </span>{
+    <span class="hljs-keyword">int</span> res = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">while</span> (n != <span class="hljs-number">0</span>) {
+        res += (n &amp; <span class="hljs-number">1</span>);
+        n &gt;&gt;&gt;= <span class="hljs-number">1</span>;
     }
-    <span class="hljs-keyword">else</span> {
-        root.right = insertIntoBST(root.right, val);
-    }
-    <span class="hljs-keyword">return</span> root;
+    <span class="hljs-keyword">return</span> res;
 }
 </code></pre>
-<p>&#x7B49;&#x4EF7;&#x7684;&#x5199;&#x6CD5;&#xFF1A;&#x628A;<code>if (root == null) return new TreeNode(val);</code>&#x66FF;&#x6362;&#x6210;&#x4E24;&#x53E5;&#x5224;&#x65AD;&#x3002;</p>
-<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> TreeNode <span class="hljs-title">insertIntoBST</span><span class="hljs-params">(TreeNode root, <span class="hljs-keyword">int</span> val)</span> </span>{
-    <span class="hljs-keyword">if</span> (root.val &gt; val) {
-        <span class="hljs-keyword">if</span> (root.left == <span class="hljs-keyword">null</span>) {
-            root.left = <span class="hljs-keyword">new</span> TreeNode(val);
-        } <span class="hljs-keyword">else</span> {
-            root.left = insertIntoBST(root.left, val);
-        }
-    } <span class="hljs-keyword">else</span> {
-        <span class="hljs-keyword">if</span> (root.right == <span class="hljs-keyword">null</span>) {
-            root.right = <span class="hljs-keyword">new</span> TreeNode(val);
-        } <span class="hljs-keyword">else</span> {
-            root.right = insertIntoBST(root.right, val);
-        }
-    }
-    <span class="hljs-keyword">return</span> root;
+<p>&#x5982;&#x679C;n&#x8F93;&#x5165;&#x7684;&#x662F;&#x8D1F;&#x6570;&#xFF0C;&#x9700;&#x8981;&#x6CE8;&#x610F;&#x4E0B;<code>&gt;&gt;&gt;</code>&#x548C;<code>&gt;&gt;</code>&#x7684;&#x533A;&#x522B;:</p>
+<ul>
+<li><code>&gt;&gt;</code>&#x662F;&#x5E26;&#x7740;&#x7B26;&#x53F7;&#x7684;&#x53F3;&#x79FB;&#xFF0C;&#x5DE6;&#x8FB9;&#x7531;&#x4E8E;&#x79FB;&#x4F4D;&#x7A7A;&#x7F3A;&#x51FA;&#x6765;&#x7684;&#x6570;&#x5B57;&#x4F1A;&#x7531;&#x8FD9;&#x4E2A;&#x6570;&#x5B57;&#x7684;&#x7B26;&#x53F7;&#x4F4D;&#x8865;&#x5168;&#xFF08;&#x6574;&#x6570;&#x8865;<code>0</code>&#x8D1F;&#x6570;&#x8865;<code>1</code>&#xFF09;&#xFF0C;&#x6240;&#x4EE5;&#x8D1F;&#x6570;&#x6700;&#x7EC8;&#x4F1A;&#x53D8;&#x6210;<code>-1</code>&#xFF0C;&#x4E3E;&#x4F8B;&#x6765;&#x8BF4;: <code>-1</code>&#x7684;&#x4E8C;&#x8FDB;&#x5236;&#x662F;<code>11111111 11111111 11111111 11111111</code>&#x5982;&#x679C;&#x9009;&#x62E9;&#x6709;&#x7B26;&#x53F7;&#x53F3;&#x79FB;&#xFF0C;&#x90A3;&#x4E48;&#x79FB;&#x6765;&#x79FB;&#x53BB;&#x8FD8;&#x662F;&#x5B83;&#x672C;&#x6765;&#x7684;&#x6570;&#x5B57;<code>-1</code>&#xFF0C;&#x7ED3;&#x679C;&#x6C38;&#x8FDC;&#x4E0D;&#x662F;<code>0</code>&#xFF0C;&#x5C31;&#x4F1A;&#x4EA7;&#x751F;&#x6B7B;&#x5FAA;&#x73AF;&#x3002;&#x8D1F;&#x6570;&#x7684;&#x4E8C;&#x8FDB;&#x5236;&#x662F;&#x8865;&#x7801;..</li>
+</ul>
+<pre><code class="lang-java">-<span class="hljs-number">1073741824</span>
+-<span class="hljs-number">536870912</span>
+-<span class="hljs-number">268435456</span>
+-<span class="hljs-number">134217728</span>
+-<span class="hljs-number">67108864</span>
+-<span class="hljs-number">33554432</span>
+-<span class="hljs-number">16777216</span>
+...
+-<span class="hljs-number">1</span>
+-<span class="hljs-number">1</span>
+...
+</code></pre>
+<ul>
+<li><code>&gt;&gt;&gt;</code>&#x662F;&#x65E0;&#x7B26;&#x53F7;&#x53F3;&#x79FB;&#xFF0C;&#x53F3;&#x8FB9;&#x8865;<code>0</code>&#xFF0C;&#x5BF9;&#x4E8E;<code>-1</code>&#x6765;&#x8BF4;<code>11111111 11111111 11111111 11111111</code>&#x4F1A;&#x53D8;&#x6210;<code>2^31</code>&#x4E5F;&#x5C31;&#x662F;<code>2147483647</code>&#xFF0C;&#x901A;&#x8FC7;&#x5FAA;&#x73AF;&#xFF0C;&#x6700;&#x7EC8;&#x53EF;&#x4EE5;&#x5230;&#x8FBE;<code>0</code></li>
+</ul>
+<p>&#x8C03;&#x5E93;&#x6CD5;</p>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">hammingWeight</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span> </span>{
+    <span class="hljs-keyword">return</span> Integer.bitCount(n);
 }
 </code></pre>
-<p>iteration&#xFF0C;&#x76F8;&#x5F53;&#x4E8E;&#x63D2;&#x5165;&#x94FE;&#x8868;&#xFF0C;&#x5FEB;&#x4F46;&#x4EE3;&#x7801;&#x591A;&#x4E14;&#x4E71;&#x3002;</p>
-<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> TreeNode <span class="hljs-title">insertIntoBST</span><span class="hljs-params">(TreeNode root, <span class="hljs-keyword">int</span> val)</span> </span>{
-    TreeNode node = <span class="hljs-keyword">new</span> TreeNode(val),
-                cur = root;
-    <span class="hljs-keyword">while</span> (cur != <span class="hljs-keyword">null</span>) {
-        <span class="hljs-keyword">if</span> (cur.val &gt; val) {
-            <span class="hljs-keyword">if</span> (cur.left != <span class="hljs-keyword">null</span>) {
-                cur = cur.left;
-            } <span class="hljs-keyword">else</span> {
-                cur.left = node;
-                <span class="hljs-keyword">break</span>;
-            }
-        } <span class="hljs-keyword">else</span> {
-            <span class="hljs-keyword">if</span> (cur.right != <span class="hljs-keyword">null</span>) {
-                cur = cur.right;
-            } <span class="hljs-keyword">else</span> {
-                cur.right = node;
-                <span class="hljs-keyword">break</span>;
-            }
-        }
-    }
-    <span class="hljs-keyword">return</span> root;
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> <span class="hljs-title">bitCount</span><span class="hljs-params">(<span class="hljs-keyword">int</span> i)</span> </span>{
+    <span class="hljs-comment">// HD, Figure 5-2</span>
+    i = i - ((i &gt;&gt;&gt; <span class="hljs-number">1</span>) &amp; <span class="hljs-number">0x55555555</span>);
+    i = (i &amp; <span class="hljs-number">0x33333333</span>) + ((i &gt;&gt;&gt; <span class="hljs-number">2</span>) &amp; <span class="hljs-number">0x33333333</span>);
+    i = (i + (i &gt;&gt;&gt; <span class="hljs-number">4</span>)) &amp; <span class="hljs-number">0x0f0f0f0f</span>;
+    i = i + (i &gt;&gt;&gt; <span class="hljs-number">8</span>);
+    i = i + (i &gt;&gt;&gt; <span class="hljs-number">16</span>);
+    <span class="hljs-keyword">return</span> i &amp; <span class="hljs-number">0x3f</span>;
 }
+</code></pre>
+<p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1g01bam2w0gj30zl0u0qes.jpg" width="600"></p>
+<p><a href="https://doc.lagout.org/security/Hackers%20Delight.pdf" target="_blank">https://doc.lagout.org/security/Hackers%20Delight.pdf</a></p>
+<p>python&#x5B57;&#x7B26;&#x4E32;</p>
+<pre><code class="lang-python"><span class="hljs-keyword">return</span> [c <span class="hljs-keyword">for</span> c <span class="hljs-keyword">in</span> bin(n)[<span class="hljs-number">2</span>:]].count(<span class="hljs-string">&apos;1&apos;</span>)
 </code></pre>
 
                                 
@@ -1488,12 +1483,12 @@
 
             
                 
-                <a href="700_Search_in_a_Binary_Search_Tree.html" class="navigation navigation-prev " aria-label="Previous page: 700. Search in a Binary Search Tree">
+                <a href="../5_bitmanipulation.html" class="navigation navigation-prev " aria-label="Previous page: Bit manipulation">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="450_Delete_Node_in_a_BST.html" class="navigation navigation-next " aria-label="Next page: 450. Delete Node in a BST">
+                <a href="461_Hamming_Distance.html" class="navigation navigation-next " aria-label="Next page: 461. Hamming Distance">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1504,7 +1499,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"701. Insert into a Binary Search Tree","level":"1.4.26","depth":2,"next":{"title":"450. Delete Node in a BST","level":"1.4.27","depth":2,"path":"alg/450_Delete_Node_in_a_BST.md","ref":"alg/450_Delete_Node_in_a_BST.md","articles":[]},"previous":{"title":"700. Search in a Binary Search Tree","level":"1.4.25","depth":2,"path":"alg/700_Search_in_a_Binary_Search_Tree.md","ref":"alg/700_Search_in_a_Binary_Search_Tree.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"alg/701_Insert_into_a_Binary_Search_Tree.md","mtime":"2019-01-28T19:34:29.120Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-02-10T22:37:05.158Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"191. Number of 1 Bits","level":"1.7.1","depth":2,"next":{"title":"461. Hamming Distance","level":"1.7.2","depth":2,"path":"alg/461_Hamming_Distance.md","ref":"alg/461_Hamming_Distance.md","articles":[]},"previous":{"title":"Bit manipulation","level":"1.7","depth":1,"path":"5_bitmanipulation.md","ref":"5_bitmanipulation.md","articles":[{"title":"191. Number of 1 Bits","level":"1.7.1","depth":2,"path":"alg/191_Number_of_1_Bits.md","ref":"alg/191_Number_of_1_Bits.md","articles":[]},{"title":"461. Hamming Distance","level":"1.7.2","depth":2,"path":"alg/461_Hamming_Distance.md","ref":"alg/461_Hamming_Distance.md","articles":[]},{"title":"136. Single Number","level":"1.7.3","depth":2,"path":"alg/136_Single_Number.md","ref":"alg/136_Single_Number.md","articles":[]},{"title":"137. Single Number II","level":"1.7.4","depth":2,"path":"alg/137_Single_Number_II.md","ref":"alg/137_Single_Number_II.md","articles":[]},{"title":"260. Single Number III","level":"1.7.5","depth":2,"path":"alg/260_Single_Number_III.md","ref":"alg/260_Single_Number_III.md","articles":[]},{"title":"231. Power of Two","level":"1.7.6","depth":2,"path":"alg/231_Power_of_Two.md","ref":"alg/231_Power_of_Two.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"alg/191_Number_of_1_Bits.md","mtime":"2019-02-10T06:31:12.955Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-02-10T22:37:05.158Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
