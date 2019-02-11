@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>344. Reverse String · GitBook</title>
+        <title>8. String to Integer · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="27_Remove_Element.html" />
+    <link rel="next" href="349_Intersection_of_Two_Arrays.html" />
     
     
-    <link rel="prev" href="18_4Sum.html" />
+    <link rel="prev" href="287_Find_the_Duplicate_Number.html" />
     
 
     </head>
@@ -285,7 +285,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.14" data-path="8_String_to_Integer.html">
+        <li class="chapter active" data-level="1.2.14" data-path="8_String_to_Integer.html">
             
                 <a href="8_String_to_Integer.html">
             
@@ -1148,7 +1148,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.5.8" data-path="344_Reverse_String.html">
+        <li class="chapter " data-level="1.5.8" data-path="344_Reverse_String.html">
             
                 <a href="344_Reverse_String.html">
             
@@ -1429,7 +1429,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >344. Reverse String</a>
+        <a href=".." >8. String to Integer</a>
     </h1>
 </div>
 
@@ -1444,28 +1444,76 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h3 id="344-reverse-string">344. Reverse String</h3>
-<p>&#x5DE6;&#x53F3;&#x4EA4;&#x6362;</p>
-<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">reverseString</span><span class="hljs-params">(<span class="hljs-keyword">char</span>[] s)</span> </span>{
-    <span class="hljs-keyword">int</span> l = <span class="hljs-number">0</span>, r = s.length - <span class="hljs-number">1</span>;
-    <span class="hljs-keyword">while</span> (l &lt; r) {
-        <span class="hljs-keyword">char</span> tmp = s[l];
-        s[l++] = s[r];
-        s[r--] = tmp;
+                                <h3 id="8-string-to-integer">8. String to Integer</h3>
+<ul>
+<li>&#x68C0;&#x67E5;&#x7A7A;&#x5B57;&#x7B26;&#x4E32;</li>
+<li>&#x8BBE;&#x7F6E;&#x904D;&#x5386;&#x6307;&#x9488;<code>index</code></li>
+<li>&#x53BB;&#x6389;&#x524D;&#x9762;&#x7684;&#x7A7A;&#x683C;&#xFF0C;&#x6CE8;&#x610F;&#x4E2D;&#x95F4;&#x4E0D;&#x7528;&#x53BB;&#x6389;&#xFF0C;&#x5982;<code>+0 123</code>&#xFF0C;&#x4E0D;&#x662F;&#x6574;&#x6570;</li>
+<li>&#x8FB9;&#x754C;&#x68C0;&#x67E5;&#x540E;&#xFF0C;&#x68C0;&#x67E5;&#x7A7A;&#x683C;&#x4E4B;&#x540E;&#x7684;&#x7B2C;&#x4E00;&#x4E2A;&#x7B26;&#x53F7;&#x4F4D;&#xFF08;&#x5982;&#x679C;&#x5B58;&#x5728;&#xFF09;</li>
+<li>&#x8FDB;&#x5165;&#x5FAA;&#x73AF;&#xFF0C;&#x5224;&#x65AD;&#x662F;&#x5426;&#x4E3A;&#x6570;&#x5B57;&#xFF0C;&#x5224;&#x65AD;&#x662F;&#x5426;&#x6EA2;&#x51FA;</li>
+<li>&#x8FD4;&#x56DE;<code>sign * res</code></li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> <span class="hljs-title">myAtoi3</span><span class="hljs-params">(String str)</span> </span>{
+    <span class="hljs-comment">// check null and empty</span>
+    <span class="hljs-keyword">if</span> (str == <span class="hljs-keyword">null</span> || str.isEmpty()) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+
+    <span class="hljs-keyword">int</span> index = <span class="hljs-number">0</span>, sign = <span class="hljs-number">1</span>, res = <span class="hljs-number">0</span>;
+    <span class="hljs-comment">// this while loop can be replaced as str = str.trim();</span>
+    <span class="hljs-keyword">while</span> (index &lt; str.length() &amp;&amp; str.charAt(index) == <span class="hljs-string">&apos; &apos;</span>) {
+        index++;
     }
+
+    <span class="hljs-comment">// check boundary</span>
+    <span class="hljs-keyword">if</span> (index == str.length()) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+
+    <span class="hljs-keyword">if</span> (str.charAt(index) == <span class="hljs-string">&apos;+&apos;</span> || str.charAt(index) == <span class="hljs-string">&apos;-&apos;</span>) {
+        sign = (str.charAt(index) == <span class="hljs-string">&apos;-&apos;</span>) ? -<span class="hljs-number">1</span> : <span class="hljs-number">1</span>;
+        index++;
+    }
+
+    <span class="hljs-keyword">while</span> (index &lt; str.length()) {
+        <span class="hljs-keyword">int</span> digit = str.charAt(index) - <span class="hljs-string">&apos;0&apos;</span>;
+        <span class="hljs-keyword">if</span> (digit &lt; <span class="hljs-number">0</span> || digit &gt; <span class="hljs-number">9</span>) <span class="hljs-keyword">break</span>;
+
+        <span class="hljs-comment">// check overflow</span>
+        <span class="hljs-keyword">if</span> (Integer.MAX_VALUE / <span class="hljs-number">10</span> == res &amp;&amp; Integer.MAX_VALUE % <span class="hljs-number">10</span> &lt; digit || Integer.MAX_VALUE / <span class="hljs-number">10</span> &lt; res)
+            <span class="hljs-keyword">return</span> (sign == -<span class="hljs-number">1</span>) ? Integer.MIN_VALUE : Integer.MAX_VALUE;
+
+        res = res * <span class="hljs-number">10</span> + digit;
+        index++;
+    }
+    <span class="hljs-keyword">return</span> sign * res;
 }
 </code></pre>
-<p>recursion:</p>
-<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">reverseString</span><span class="hljs-params">(<span class="hljs-keyword">char</span>[] s)</span> </span>{
-    dfs(s, <span class="hljs-number">0</span>, s.length - <span class="hljs-number">1</span>);
-}
+<p>&#x6362;&#x6210;char array</p>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> <span class="hljs-title">myAtoi</span><span class="hljs-params">(String str)</span> </span>{
+    <span class="hljs-keyword">int</span> index = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">char</span>[] c = str.toCharArray();
+    <span class="hljs-keyword">if</span> (c.length == <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 
-<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">dfs</span><span class="hljs-params">(<span class="hljs-keyword">char</span>[] s, <span class="hljs-keyword">int</span> l, <span class="hljs-keyword">int</span> r)</span> </span>{
-    <span class="hljs-keyword">if</span> (l &gt;= r) <span class="hljs-keyword">return</span>;
-    <span class="hljs-keyword">char</span> tmp = s[l];
-    s[l] = s[r];
-    s[r] = tmp;
-    dfs(s, l + <span class="hljs-number">1</span>, r - <span class="hljs-number">1</span>);
+    <span class="hljs-keyword">while</span> (index &lt; c.length &amp;&amp; c[index] == <span class="hljs-string">&apos; &apos;</span>)
+        index++;
+    <span class="hljs-keyword">if</span> (index == c.length) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+
+    <span class="hljs-comment">// check sign</span>
+    <span class="hljs-keyword">int</span> sign = <span class="hljs-number">1</span>;
+    <span class="hljs-keyword">if</span> (c[index] == <span class="hljs-string">&apos;-&apos;</span> || c[index] == <span class="hljs-string">&apos;+&apos;</span>) {
+        sign = c[index] == <span class="hljs-string">&apos;-&apos;</span> ? -<span class="hljs-number">1</span> : <span class="hljs-number">1</span>;
+        index++;
+    }
+
+    <span class="hljs-keyword">int</span> res = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">for</span> (; index &lt; c.length; index++) {
+        <span class="hljs-keyword">int</span> digit = c[index] - <span class="hljs-string">&apos;0&apos;</span>;
+        <span class="hljs-keyword">if</span> (digit &lt; <span class="hljs-number">0</span> || digit &gt; <span class="hljs-number">9</span>) <span class="hljs-keyword">break</span>; <span class="hljs-comment">// not a digit</span>
+
+        <span class="hljs-comment">// check overflow: &amp;&amp; &gt; ||</span>
+        <span class="hljs-keyword">if</span> ((Integer.MAX_VALUE / <span class="hljs-number">10</span> == res &amp;&amp; Integer.MAX_VALUE % <span class="hljs-number">10</span> &lt; digit) || Integer.MAX_VALUE / <span class="hljs-number">10</span> &lt; res)
+            <span class="hljs-keyword">return</span> sign == <span class="hljs-number">1</span> ? Integer.MAX_VALUE : Integer.MIN_VALUE;
+
+        res = res * <span class="hljs-number">10</span> + digit;
+    }
+    <span class="hljs-keyword">return</span> res * sign;
 }
 </code></pre>
 
@@ -1495,12 +1543,12 @@
 
             
                 
-                <a href="18_4Sum.html" class="navigation navigation-prev " aria-label="Previous page: 18. 4Sum">
+                <a href="287_Find_the_Duplicate_Number.html" class="navigation navigation-prev " aria-label="Previous page: 287. Find the Duplicate Number">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="27_Remove_Element.html" class="navigation navigation-next " aria-label="Next page: 27. Remove Element">
+                <a href="349_Intersection_of_Two_Arrays.html" class="navigation navigation-next " aria-label="Next page: 349. Intersection of Two Arrays">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1511,7 +1559,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"344. Reverse String","level":"1.5.8","depth":2,"next":{"title":"27. Remove Element","level":"1.5.9","depth":2,"path":"alg/27_Remove_Element.md","ref":"alg/27_Remove_Element.md","articles":[]},"previous":{"title":"18. 4Sum","level":"1.5.7","depth":2,"path":"alg/18_4Sum.md","ref":"alg/18_4Sum.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"alg/344_Reverse_String.md","mtime":"2019-02-05T14:00:36.096Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-02-11T22:44:10.017Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"8. String to Integer","level":"1.2.14","depth":2,"next":{"title":"349. Intersection of Two Arrays","level":"1.2.15","depth":2,"path":"alg/349_Intersection_of_Two_Arrays.md","ref":"alg/349_Intersection_of_Two_Arrays.md","articles":[]},"previous":{"title":"287. Find the Duplicate Number","level":"1.2.13","depth":2,"path":"alg/287_Find_the_Duplicate_Number.md","ref":"alg/287_Find_the_Duplicate_Number.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"alg/8_String_to_Integer.md","mtime":"2019-02-11T16:07:31.136Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-02-11T22:44:10.017Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

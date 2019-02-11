@@ -285,6 +285,45 @@
             
         </li>
     
+        <li class="chapter " data-level="1.2.14" data-path="8_String_to_Integer.html">
+            
+                <a href="8_String_to_Integer.html">
+            
+                    
+                    8. String to Integer
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.15" data-path="349_Intersection_of_Two_Arrays.html">
+            
+                <a href="349_Intersection_of_Two_Arrays.html">
+            
+                    
+                    349. Intersection of Two Arrays
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.16" data-path="350_Intersection_of_Two_Arrays_II.html">
+            
+                <a href="350_Intersection_of_Two_Arrays_II.html">
+            
+                    
+                    350. Intersection of Two Arrays II
+            
+                </a>
+            
+
+            
+        </li>
+    
 
             </ul>
             
@@ -1406,6 +1445,10 @@
                                 <section class="normal markdown-section">
                                 
                                 <h3 id="260-single-number-iii">260. Single Number III</h3>
+<p>&#x5728;&#x4E00;&#x5806;&#x51FA;&#x73B0;&#x4E8C;&#x7684;&#x6570;&#x5B57;&#x4E2D;&#x8FD4;&#x56DE;&#x4E24;&#x4E2A;&#x53EA;&#x51FA;&#x73B0;&#x4E00;&#x6B21;&#x7684;&#x6570;&#x5B57;&#x3002;</p>
+<pre><code class="lang-java">Input:  [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">1</span>,<span class="hljs-number">3</span>,<span class="hljs-number">2</span>,<span class="hljs-number">5</span>]
+Output: [<span class="hljs-number">3</span>,<span class="hljs-number">5</span>]
+</code></pre>
 <p>&#x4F7F;&#x7528;two sum&#x7684;&#x65B9;&#x6CD5;&#x5F02;&#x6216;&#xFF0C;&#x6162;&#x6162;</p>
 <pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span>[] singleNumber(<span class="hljs-keyword">int</span>[] nums) {
     <span class="hljs-keyword">int</span> sum = <span class="hljs-number">0</span>;
@@ -1419,6 +1462,26 @@
         <span class="hljs-keyword">if</span> (set.contains(other)) <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[] {num, other};
     }
     <span class="hljs-keyword">return</span> <span class="hljs-keyword">null</span>;
+}
+</code></pre>
+<p>&#x6240;&#x6709;&#x7684;&#x6570;&#x5B57;xor&#x4E4B;&#x540E;&#x7684;&#x4E8C;&#x8FDB;&#x5236;sum&#x7ED3;&#x679C;&#x81F3;&#x5C11;&#x4F1A;&#x6709;&#x4E00;&#x4F4D;&#x88AB;&#x7F6E;1&#xFF0C;&#x7136;&#x540E;&#x627E;&#x5230;sum&#x4E2D;&#x6700;&#x540E;&#x4E00;&#x4F4D;&#x88AB;&#x7F6E;1&#x7684;&#x4F4D;&#x4F5C;&#x4E3A;mask&#xFF0C;&#x7136;&#x540E;&#x4F7F;&#x7528;&#x8FD9;&#x4E2A;mask&#x904D;&#x5386;&#x6574;&#x4E2A;&#x6570;&#x7EC4;&#xFF0C;&#x8BA1;&#x7B97;<code>res = mask ^ num</code>&#xFF0C;&#x5F53;res&#x5206;&#x522B;&#x4E3A;0&#x548C;&#x5176;&#x4ED6;&#x6570;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x628A;&#x8FD9;&#x4E24;&#x4E2A;&#x6570;&#x5B57;&#x7B5B;&#x9009;&#x51FA;&#x6765;&#x3002;</p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span>[] singleNumber(<span class="hljs-keyword">int</span>[] nums) {
+    <span class="hljs-keyword">int</span> diff = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> num : nums) {
+        diff ^= num;
+    }
+
+    <span class="hljs-keyword">int</span> mask = (diff &amp; -diff);
+
+    <span class="hljs-keyword">int</span>[] res = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[<span class="hljs-number">2</span>];
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> num : nums) {
+        <span class="hljs-keyword">if</span> ((num &amp; mask) == <span class="hljs-number">0</span>) { 
+            res[<span class="hljs-number">0</span>] ^= num;
+        } <span class="hljs-keyword">else</span> {
+            res[<span class="hljs-number">1</span>] ^= num;
+        }
+    }
+    <span class="hljs-keyword">return</span> res;
 }
 </code></pre>
 
@@ -1464,7 +1527,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"260. Single Number III","level":"1.7.5","depth":2,"next":{"title":"231. Power of Two","level":"1.7.6","depth":2,"path":"alg/231_Power_of_Two.md","ref":"alg/231_Power_of_Two.md","articles":[]},"previous":{"title":"137. Single Number II","level":"1.7.4","depth":2,"path":"alg/137_Single_Number_II.md","ref":"alg/137_Single_Number_II.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"alg/260_Single_Number_III.md","mtime":"2019-02-10T07:41:37.674Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-02-10T22:37:05.158Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"260. Single Number III","level":"1.7.5","depth":2,"next":{"title":"231. Power of Two","level":"1.7.6","depth":2,"path":"alg/231_Power_of_Two.md","ref":"alg/231_Power_of_Two.md","articles":[]},"previous":{"title":"137. Single Number II","level":"1.7.4","depth":2,"path":"alg/137_Single_Number_II.md","ref":"alg/137_Single_Number_II.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"alg/260_Single_Number_III.md","mtime":"2019-02-10T23:33:43.704Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-02-11T22:44:10.017Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
