@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>160. Intersection of Two Linked Lists · GitBook</title>
+        <title>200. Number of Islands · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,8 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="237_Delete_Node_in_a_Linked_List.html" />
+    <link rel="next" href="../5_bitmanipulation.html" />
     
-    
-    <link rel="prev" href="142_Linked_List_Cycle_II.html" />
     
 
     </head>
@@ -408,7 +406,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.3.6" data-path="160_Intersection_of_Two_Linked_Lists.html">
+        <li class="chapter " data-level="1.3.6" data-path="160_Intersection_of_Two_Linked_Lists.html">
             
                 <a href="160_Intersection_of_Two_Linked_Lists.html">
             
@@ -1329,7 +1327,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.7.1" data-path="200_Number_of_Islands.html">
+        <li class="chapter active" data-level="1.7.1" data-path="200_Number_of_Islands.html">
             
                 <a href="200_Number_of_Islands.html">
             
@@ -1487,7 +1485,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >160. Intersection of Two Linked Lists</a>
+        <a href=".." >200. Number of Islands</a>
     </h1>
 </div>
 
@@ -1502,21 +1500,67 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h3 id="160-intersection-of-two-linked-lists">160. Intersection of Two Linked Lists</h3>
-<p>&#x7531;&#x4E8E;&#x7B2C;&#x4E00;&#x6B21;&#x904D;&#x5386;&#x53EF;&#x80FD;&#x56E0;&#x4E3A;&#x4E0D;&#x7B49;&#x957F;&#x627E;&#x4E0D;&#x5230;&#x4EA4;&#x70B9;&#xFF0C;&#x5728;&#x904D;&#x5386;&#x5B8C;&#x4E4B;&#x540E;&#x9700;&#x8981;&#x8BA9;&#x94FE;&#x8868;&#x7684;&#x5C3E;&#x90E8;&#x7B49;&#x4E8E;&#x5BF9;&#x65B9;&#x7684;&#x5934;&#x8282;&#x70B9;&#xFF0C;&#x76F4;&#x5230;&#x627E;&#x5230;&#x4EA4;&#x70B9;&#x8DF3;&#x51FA;&#x5FAA;&#x73AF;&#x3002;</p>
-<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> ListNode <span class="hljs-title">getIntersectionNode</span><span class="hljs-params">(ListNode headA, ListNode headB)</span> </span>{
-    <span class="hljs-keyword">if</span> (headA == <span class="hljs-keyword">null</span> || headB == <span class="hljs-keyword">null</span>) <span class="hljs-keyword">return</span> <span class="hljs-keyword">null</span>;
+                                <h3 id="200-number-of-islands">200. Number of Islands</h3>
+<p>DFS&#xFF0C;&#x65F6;&#x95F4;&#x590D;&#x6742;&#x5EA6;<code>O(m * n)</code>&#xFF0C;&#x6570;&#x636E;&#x8FC7;&#x5927;&#x6808;&#x6709;&#x9650;&#x5236;&#x3002;</p>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">numIslands</span><span class="hljs-params">(<span class="hljs-keyword">char</span>[][] grid)</span> </span>{
+    <span class="hljs-keyword">if</span> (grid == <span class="hljs-keyword">null</span> || grid.length == <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 
-    ListNode nodeA = headA,
-             nodeB = headB;
-    <span class="hljs-keyword">while</span> (headA != headB) {
-        headA = (headA == <span class="hljs-keyword">null</span>) ? nodeB : headA.next;
-        headB = (headB == <span class="hljs-keyword">null</span>) ? nodeA : headB.next;
+    <span class="hljs-keyword">int</span> count = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; grid.length; i++) {
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>; j &lt; grid[<span class="hljs-number">0</span>].length; j++) {
+            <span class="hljs-keyword">if</span> (grid[i][j] == <span class="hljs-string">&apos;1&apos;</span>) {
+                dfs(grid, i, j);
+                count++;
+            }
+        }
     }
-    <span class="hljs-keyword">return</span> headA;
+    <span class="hljs-keyword">return</span> count;
+}
+
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">record</span><span class="hljs-params">(<span class="hljs-keyword">char</span>[][] grid, <span class="hljs-keyword">int</span> i, <span class="hljs-keyword">int</span> j)</span> </span>{
+    <span class="hljs-keyword">if</span> (i &gt;= grid.length || i &lt; <span class="hljs-number">0</span> || j &gt;= grid[<span class="hljs-number">0</span>].length || j &lt; <span class="hljs-number">0</span> || grid[i][j] == <span class="hljs-string">&apos;0&apos;</span>) <span class="hljs-keyword">return</span>;
+    grid[i][j] = <span class="hljs-string">&apos;0&apos;</span>;
+    dfs(grid, i + <span class="hljs-number">1</span>, j);
+    dfs(grid, i - <span class="hljs-number">1</span>, j);
+    dfs(grid, i, j + <span class="hljs-number">1</span>);
+    dfs(grid, i, j - <span class="hljs-number">1</span>);
 }
 </code></pre>
-<p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fzfqqwh9tqj30iu076q4f.jpg" width="300"></p>
+<p><img src="https://ws1.sinaimg.cn/large/006tNbRwgy1fy6vovv8jej30us0b6dg1.jpg" width="600"></p>
+<p>BFS</p>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">numIslands</span><span class="hljs-params">(<span class="hljs-keyword">char</span>[][] grid)</span> </span>{
+    <span class="hljs-keyword">if</span> (grid == <span class="hljs-keyword">null</span> || grid.length == <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">int</span> count = <span class="hljs-number">0</span>;
+    Queue&lt;Integer&gt; queue = <span class="hljs-keyword">new</span> LinkedList&lt;&gt;();
+    <span class="hljs-keyword">int</span>[] dx = {<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, -<span class="hljs-number">1</span>};
+    <span class="hljs-keyword">int</span>[] dy = {<span class="hljs-number">1</span>, -<span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>};
+    <span class="hljs-keyword">int</span> row = grid.length; 
+    <span class="hljs-keyword">int</span> col = grid[<span class="hljs-number">0</span>].length;
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; row; i++) {
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>; j &lt; col; j++) {
+            <span class="hljs-keyword">if</span> (grid[i][j] == <span class="hljs-string">&apos;1&apos;</span>) {
+                count++;
+                grid[i][j] = <span class="hljs-string">&apos;0&apos;</span>;
+                queue.offer(i * col + j);
+
+                <span class="hljs-keyword">while</span> (!queue.isEmpty()) {
+                    <span class="hljs-keyword">int</span> curNode = queue.poll();
+                    <span class="hljs-keyword">int</span> x = curNode / col;
+                    <span class="hljs-keyword">int</span> y = curNode % col;
+                    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> k = <span class="hljs-number">0</span>; k &lt; <span class="hljs-number">4</span>; k++) {
+                        <span class="hljs-keyword">int</span> newx = x + dx[k];
+                        <span class="hljs-keyword">int</span> newy = y + dy[k];
+                        <span class="hljs-keyword">if</span> (newx &lt; <span class="hljs-number">0</span> || newx &gt;= row || newy &lt; <span class="hljs-number">0</span> || newy &gt;= col || grid[newx][newy] != <span class="hljs-string">&apos;1&apos;</span>)
+                            <span class="hljs-keyword">continue</span>;
+                        grid[newx][newy] = <span class="hljs-string">&apos;0&apos;</span>;
+                        queue.offer(newx * col + newy);
+                    }
+                }
+            }
+        }
+    }
+    <span class="hljs-keyword">return</span> count;
+</code></pre>
 
                                 
                                 </section>
@@ -1544,12 +1588,8 @@
 
             
                 
-                <a href="142_Linked_List_Cycle_II.html" class="navigation navigation-prev " aria-label="Previous page: 142. Linked List Cycle II">
-                    <i class="fa fa-angle-left"></i>
-                </a>
                 
-                
-                <a href="237_Delete_Node_in_a_Linked_List.html" class="navigation navigation-next " aria-label="Next page: 237. Delete Node in a Linked List">
+                <a href="../5_bitmanipulation.html" class="navigation navigation-next navigation-unique" aria-label="Next page: Bit manipulation">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1560,7 +1600,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"160. Intersection of Two Linked Lists","level":"1.3.6","depth":2,"next":{"title":"237. Delete Node in a Linked List","level":"1.3.7","depth":2,"path":"alg/237_Delete_Node_in_a_Linked_List.md","ref":"alg/237_Delete_Node_in_a_Linked_List.md","articles":[]},"previous":{"title":"142. Linked List Cycle II","level":"1.3.5","depth":2,"path":"alg/142_Linked_List_Cycle_II.md","ref":"alg/142_Linked_List_Cycle_II.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"alg/160_Intersection_of_Two_Linked_Lists.md","mtime":"2019-01-22T14:43:02.696Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-02-13T20:31:06.448Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"200. Number of Islands","level":"1.7.1","depth":2,"next":{"title":"Bit manipulation","level":"1.8","depth":1,"path":"5_bitmanipulation.md","ref":"5_bitmanipulation.md","articles":[{"title":"191. Number of 1 Bits","level":"1.8.1","depth":2,"path":"alg/191_Number_of_1_Bits.md","ref":"alg/191_Number_of_1_Bits.md","articles":[]},{"title":"461. Hamming Distance","level":"1.8.2","depth":2,"path":"alg/461_Hamming_Distance.md","ref":"alg/461_Hamming_Distance.md","articles":[]},{"title":"136. Single Number","level":"1.8.3","depth":2,"path":"alg/136_Single_Number.md","ref":"alg/136_Single_Number.md","articles":[]},{"title":"137. Single Number II","level":"1.8.4","depth":2,"path":"alg/137_Single_Number_II.md","ref":"alg/137_Single_Number_II.md","articles":[]},{"title":"260. Single Number III","level":"1.8.5","depth":2,"path":"alg/260_Single_Number_III.md","ref":"alg/260_Single_Number_III.md","articles":[]},{"title":"231. Power of Two","level":"1.8.6","depth":2,"path":"alg/231_Power_of_Two.md","ref":"alg/231_Power_of_Two.md","articles":[]},{"title":"7. Reverse Integer","level":"1.8.7","depth":2,"path":"alg/7_Reverse_Integer.md","ref":"alg/7_Reverse_Integer.md","articles":[]}]},"previous":{"title":"DFS & BFS","level":"1.7","depth":1,"ref":"","articles":[{"title":"200. Number of Islands","level":"1.7.1","depth":2,"path":"alg/200_Number_of_Islands.md","ref":"alg/200_Number_of_Islands.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"alg/200_Number_of_Islands.md","mtime":"2019-02-13T20:29:05.588Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-02-13T20:31:06.448Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
