@@ -1073,6 +1073,19 @@
             
         </li>
     
+        <li class="chapter " data-level="1.4.33" data-path="230_Kth_Smallest_Element_in_a_BST.html">
+            
+                <a href="230_Kth_Smallest_Element_in_a_BST.html">
+            
+                    
+                    230. Kth Smallest Element in a BST
+            
+                </a>
+            
+
+            
+        </li>
+    
 
             </ul>
             
@@ -1371,6 +1384,19 @@
             
         </li>
     
+        <li class="chapter " data-level="1.6.5" data-path="239_Sliding_Window_Maximum.html">
+            
+                <a href="239_Sliding_Window_Maximum.html">
+            
+                    
+                    239. Sliding Window Maximum
+            
+                </a>
+            
+
+            
+        </li>
+    
 
             </ul>
             
@@ -1396,6 +1422,19 @@
             
                     
                     200. Number of Islands
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="79_Word_Search.html">
+            
+                <a href="79_Word_Search.html">
+            
+                    
+                    79. Word Search
             
                 </a>
             
@@ -1513,19 +1552,6 @@
             
         </li>
     
-        <li class="chapter " data-level="1.8.8" data-path="230_Kth_Smallest_Element_in_a_BST.html">
-            
-                <a href="230_Kth_Smallest_Element_in_a_BST.html">
-            
-                    
-                    230. Kth Smallest Element in a BST
-            
-                </a>
-            
-
-            
-        </li>
-    
 
             </ul>
             
@@ -1627,7 +1653,32 @@
 <pre><code>index 0 1 .. 58
       A B .. z
 count 0 0 .. 0
+</code></pre><p>&#x6C42;&#x6D41;&#x4E2D;&#x7B2C;&#x4E00;&#x4E2A;&#x53EA;&#x51FA;&#x73B0;&#x4E00;&#x6B21;&#x7684;&#x5B57;&#x7B26;&#xFF0C;&#x7528;stringbuffer&#x3002;&#x5982;&#x679C;&#x662F;string&#x5FC5;&#x987B;&#x521D;&#x59CB;&#x5316;&#x4E3A;&quot;&quot;&#xFF0C;&#x56E0;&#x4E3A;&#x5982;&#x679C;&#x4E00;&#x4E2A;string&#x6307;&#x5411;&#x6CA1;&#x6709;&#x5206;&#x914D;&#x5185;&#x5B58;&#x7A7A;&#x95F4;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4F1A;&#x6253;&#x5370;&#x51FA;&quot;null&quot;&#x5B57;&#x7B26;&#x4E32;</p>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> String <span class="hljs-title">valueOf</span><span class="hljs-params">(Object obj)</span> </span>{
+    <span class="hljs-keyword">return</span> (obj == <span class="hljs-keyword">null</span>) ? <span class="hljs-string">&quot;null&quot;</span> : obj.toString();
+}
 </code></pre>
+<pre><code class="lang-java"><span class="hljs-comment">//Insert one char from stringstream</span>
+<span class="hljs-keyword">char</span>[] hash = <span class="hljs-keyword">new</span> <span class="hljs-keyword">char</span>[<span class="hljs-number">256</span>];
+<span class="hljs-comment">//StringBuffer s=new StringBuffer();</span>
+String s = <span class="hljs-string">&quot;&quot;</span>; <span class="hljs-comment">// &#x5FC5;&#x987B;&#x521D;&#x59CB;&#x5316;&#x3002;&#x3002;&#x5426;&#x5219;&#x662F;null</span>
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Insert</span><span class="hljs-params">(<span class="hljs-keyword">char</span> ch)</span>
+</span>{
+    s += ch;
+    <span class="hljs-comment">//s.append(ch);</span>
+    hash[ch]++;
+}
+<span class="hljs-comment">//return the first appearence once char in current stringstream</span>
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">char</span> <span class="hljs-title">FirstAppearingOnce</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-comment">//char[] str=s.toString().toCharArray();</span>
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; s.length(); i++) {
+        <span class="hljs-keyword">if</span> (hash[s.charAt(i)] == <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> s.charAt(i);
+    }
+    <span class="hljs-keyword">return</span> <span class="hljs-string">&apos;#&apos;</span>;
+}
+</code></pre>
+
                                 
                                 </section>
                             
@@ -1662,7 +1713,7 @@ count 0 0 .. 0
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"387. First Unique Character in a String","level":"1.9.1","depth":2,"previous":{"title":"HashTable","level":"1.9","depth":1,"ref":"","articles":[{"title":"387. First Unique Character in a String","level":"1.9.1","depth":2,"path":"alg/387_First_Unique_Character_in_a_String.md","ref":"alg/387_First_Unique_Character_in_a_String.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"alg/387_First_Unique_Character_in_a_String.md","mtime":"2019-02-17T22:14:46.954Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-02-17T22:59:32.848Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"387. First Unique Character in a String","level":"1.9.1","depth":2,"previous":{"title":"HashTable","level":"1.9","depth":1,"ref":"","articles":[{"title":"387. First Unique Character in a String","level":"1.9.1","depth":2,"path":"alg/387_First_Unique_Character_in_a_String.md","ref":"alg/387_First_Unique_Character_in_a_String.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"alg/387_First_Unique_Character_in_a_String.md","mtime":"2019-02-18T16:00:05.812Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-02-18T22:41:46.652Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

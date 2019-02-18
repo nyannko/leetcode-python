@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>19. Remove Nth Node From End of List · GitBook</title>
+        <title>79. Word Search · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="../2_tree.html" />
+    <link rel="next" href="../5_bitmanipulation.html" />
     
     
-    <link rel="prev" href="707_Design_Linked_List.html" />
+    <link rel="prev" href="200_Number_of_Islands.html" />
     
 
     </head>
@@ -629,7 +629,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.3.22" data-path="19_Remove_Nth_Node_From_End_of_List.html">
+        <li class="chapter " data-level="1.3.22" data-path="19_Remove_Nth_Node_From_End_of_List.html">
             
                 <a href="19_Remove_Nth_Node_From_End_of_List.html">
             
@@ -1433,7 +1433,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.7.2" data-path="79_Word_Search.html">
+        <li class="chapter active" data-level="1.7.2" data-path="79_Word_Search.html">
             
                 <a href="79_Word_Search.html">
             
@@ -1623,7 +1623,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >19. Remove Nth Node From End of List</a>
+        <a href=".." >79. Word Search</a>
     </h1>
 </div>
 
@@ -1638,69 +1638,129 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h3 id="19-remove-nth-node-from-end-of-list">19. Remove Nth Node From End of List</h3>
-<p>naive&#x65B9;&#x6CD5;&#xFF0C;&#x8981;&#x7B97;&#x4E24;&#x6B21;&#xFF0C;&#x6B63;&#x6570;=&#x603B;&#x6570;(length)+1-&#x5012;&#x6570;(n)&#xFF0C;&#x6240;&#x4EE5;&#x8D70;&#x5230;&#x5012;&#x6570;&#x524D;&#x9762;&#x4E00;&#x4E2A;&#x8282;&#x70B9;&#x4E5F;&#x5C31;&#x662F;<code>length-n</code>&#x4FEE;&#x6539;&#x6307;&#x9488;&#x6307;&#x5411;&#x3002;</p>
-<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> ListNode <span class="hljs-title">removeNthFromEnd</span><span class="hljs-params">(ListNode head, <span class="hljs-keyword">int</span> n)</span> </span>{
-    <span class="hljs-keyword">if</span> (head == <span class="hljs-keyword">null</span> || n == <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-keyword">null</span>; <span class="hljs-comment">// &#x6CE8;&#x610F;head&#x4E3A;&#x7A7A;&#x6216;&#x8005;list&#x4E3A;0&#x8FD4;&#x56DE;null</span>
-    ListNode dummy = <span class="hljs-keyword">new</span> ListNode(<span class="hljs-number">0</span>);
-    dummy.next = head;
-    ListNode res = dummy;
-
-    <span class="hljs-comment">// compute length</span>
-    <span class="hljs-keyword">int</span> length = <span class="hljs-number">0</span>;
-    ListNode l1 = head;
-    <span class="hljs-keyword">while</span> (l1 != <span class="hljs-keyword">null</span>) {
-        length++;
-        l1 = l1.next;
+                                <h3 id="79-word-search">79. Word Search</h3>
+<p>board&#x4E3A;&#x4E8C;&#x7EF4;&#x6570;&#x7EC4;&#x7684;&#x60C5;&#x51B5;&#xFF1A;</p>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">exist</span><span class="hljs-params">(<span class="hljs-keyword">char</span>[][] board, String word)</span> </span>{
+    <span class="hljs-keyword">if</span> (board == <span class="hljs-keyword">null</span> || board.length == <span class="hljs-number">0</span> || word == <span class="hljs-keyword">null</span>) <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
+    <span class="hljs-keyword">char</span>[] words = word.toCharArray();
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; board.length; i++) {
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>; j &lt; board[<span class="hljs-number">0</span>].length; j++) {
+            <span class="hljs-keyword">if</span> (dfs(board, i, j, words, <span class="hljs-number">0</span>)) <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;
+        }
     }
-    <span class="hljs-keyword">if</span> (n &gt; length) <span class="hljs-keyword">return</span> <span class="hljs-keyword">null</span>; <span class="hljs-comment">// &#x5982;&#x679C;&#x8981;&#x627E;&#x7684;&#x5012;&#x6570;&#x6570;&#x5B57;&#x5927;&#x4E8E;&#x94FE;&#x8868;&#x7684;&#x603B;&#x957F;&#x5EA6;&#xFF0C;&#x8FD4;&#x56DE;&#x7A7A;</span>
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
+}
 
-    <span class="hljs-comment">// forward steps</span>
-    <span class="hljs-keyword">int</span> step = length - n;
-    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; step; i++) {
-        dummy = dummy.next;
-    }
-    dummy.next = dummy.next.next;
-    <span class="hljs-keyword">return</span> res.next;
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">dfs</span><span class="hljs-params">(<span class="hljs-keyword">char</span>[][] board, <span class="hljs-keyword">int</span> i, <span class="hljs-keyword">int</span> j, <span class="hljs-keyword">char</span>[] words, <span class="hljs-keyword">int</span> k)</span> </span>{
+    <span class="hljs-keyword">if</span> (k == words.length) <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;
+    <span class="hljs-keyword">if</span> (i &lt; <span class="hljs-number">0</span> || j &lt; <span class="hljs-number">0</span> || i &gt;= board.length || j &gt;= board[<span class="hljs-number">0</span>].length || board[i][j] != words[k])
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
+    <span class="hljs-comment">// char tmp = board[i][j];</span>
+    <span class="hljs-comment">// board[i][j] = &apos;#&apos;;</span>
+    board[i][j] ^= <span class="hljs-number">256</span>;
+    <span class="hljs-keyword">boolean</span> res = dfs(board, i + <span class="hljs-number">1</span>, j, words, k + <span class="hljs-number">1</span>) ||
+        dfs(board, i - <span class="hljs-number">1</span>, j, words, k + <span class="hljs-number">1</span>) ||
+        dfs(board, i, j + <span class="hljs-number">1</span>, words, k + <span class="hljs-number">1</span>) ||
+        dfs(board, i, j - <span class="hljs-number">1</span>, words, k + <span class="hljs-number">1</span>);
+    board[i][j] ^= <span class="hljs-number">256</span>;
+    <span class="hljs-comment">// board[i][j] = tmp;</span>
+    <span class="hljs-keyword">return</span> res;
 }
 </code></pre>
-<p>&#x9AD8;&#x7968;&#x7B54;&#x6848;&#x6539;&#x5199;&#xFF1A;&#x5FEB;&#x6162;&#x6307;&#x9488;</p>
-<pre><code class="lang-python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">removeNthFromEnd</span><span class="hljs-params">(self, head, n)</span>:</span>
-    <span class="hljs-string">&quot;&quot;&quot;
-    :type head: ListNode
-    :type n: int
-    :rtype: ListNode
-    &quot;&quot;&quot;</span>
-    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> head <span class="hljs-keyword">or</span> <span class="hljs-keyword">not</span> n: <span class="hljs-keyword">return</span> <span class="hljs-keyword">None</span> 
-    dummy = ListNode(<span class="hljs-number">0</span>)
-    dummy.next = head
-    fast, slow = dummy, dummy
+<p>matrix&#x4E3A;&#x4E00;&#x7EF4;&#x6570;&#x7EC4;&#xFF0C;&#x76F4;&#x63A5;&#x5728;matrix&#x6570;&#x7EC4;&#x4E0A;&#x8FDB;&#x884C;&#x4FEE;&#x6539;&#xFF0C;&#x7528;&#x4E34;&#x65F6;&#x53D8;&#x91CF;&#x4FDD;&#x5B58;&#x6216;&#x8005;&#x5F02;&#x6216;256&#xFF0C;&#x505A;&#x5B8C;&#x4E00;&#x6B21;dfs&#x4E4B;&#x540E;&#x5C06;matrix&#x4E2D;&#x7684;&#x5B57;&#x6BCD;&#x590D;&#x539F;&#x3002;</p>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">hasPath</span><span class="hljs-params">(<span class="hljs-keyword">char</span>[] matrix, <span class="hljs-keyword">int</span> rows, <span class="hljs-keyword">int</span> cols, <span class="hljs-keyword">char</span>[] str)</span>
+</span>{
+    <span class="hljs-keyword">if</span> (matrix == <span class="hljs-keyword">null</span> || matrix.length == <span class="hljs-number">0</span> || str == <span class="hljs-keyword">null</span> || str.length == <span class="hljs-number">0</span>) 
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; rows; i++) {
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>; j &lt; cols; j++) {
+            <span class="hljs-keyword">if</span> (dfs(matrix, rows, cols, i, j, str, <span class="hljs-number">0</span>)) <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;
+        }
+    }
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
+}
 
-    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(n + <span class="hljs-number">1</span>):
-        <span class="hljs-keyword">if</span> fast.next:
-            fast = fast.next
-        <span class="hljs-keyword">else</span>: 
-            <span class="hljs-keyword">return</span> <span class="hljs-keyword">None</span>
-
-    <span class="hljs-keyword">while</span> fast:
-        fast = fast.next
-        slow = slow.next
-
-    slow.next = slow.next.next
-    <span class="hljs-keyword">return</span> dummy.next
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">dfs</span><span class="hljs-params">(<span class="hljs-keyword">char</span>[] matrix, <span class="hljs-keyword">int</span> rows, <span class="hljs-keyword">int</span> cols, <span class="hljs-keyword">int</span> i, <span class="hljs-keyword">int</span> j, <span class="hljs-keyword">char</span>[] str, <span class="hljs-keyword">int</span> k)</span> </span>{
+    <span class="hljs-keyword">int</span> index = i * cols + j; <span class="hljs-comment">// index&#x662F;&#x5B57;&#x6BCD;&#x5728;&#x4E00;&#x884C;matrix&#x4E2D;&#x7684;&#x4F4D;&#x7F6E;</span>
+    <span class="hljs-keyword">if</span> (str.length == k) <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;  <span class="hljs-comment">// in the front</span>
+    <span class="hljs-keyword">if</span> (i &lt; <span class="hljs-number">0</span> || i &gt;= rows || j &lt; <span class="hljs-number">0</span> || j &gt;= cols || matrix[index] != str[k])
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
+    <span class="hljs-comment">// 1.&#x4E34;&#x65F6;&#x53D8;&#x91CF;</span>
+    <span class="hljs-comment">// char tmp = matrix[index];</span>
+    <span class="hljs-comment">// matrix[index] = &apos;-&apos;;</span>
+    <span class="hljs-comment">// 2.&#x5F02;&#x6216;&#x4FEE;&#x6539;</span>
+    matrix[index] ^= <span class="hljs-number">256</span>;
+    <span class="hljs-keyword">boolean</span> res = dfs(matrix, rows, cols,i - <span class="hljs-number">1</span>, j, str, k + <span class="hljs-number">1</span>)||
+        dfs(matrix,rows, cols, i + <span class="hljs-number">1</span>, j, str, k + <span class="hljs-number">1</span>) ||
+        dfs(matrix,rows, cols, i, j - <span class="hljs-number">1</span>, str, k + <span class="hljs-number">1</span>) ||
+        dfs(matrix, rows, cols,i, j + <span class="hljs-number">1</span>, str, k + <span class="hljs-number">1</span>);
+    matrix[index] ^= <span class="hljs-number">256</span>;
+    <span class="hljs-comment">// matrix[index] = tmp;</span>
+    <span class="hljs-keyword">return</span> res;
+}
 </code></pre>
-<p>&#x8FB9;&#x754C;&#x5982;&#x56FE;&#xFF0C;&#x53EF;&#x4EE5;&#x5199;&#x6210;&#x4E24;&#x79CD;&#x60C5;&#x51B5;</p>
-<p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fzyhpno89qj30ri0q246h.jpg" width="400"></p>
-<p>&#x7B2C;&#x4E8C;&#x79CD;&#xFF1A;</p>
-<pre><code class="lang-python"><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(n):
-    <span class="hljs-keyword">if</span> fast.next:
-        fast = fast.next
-    <span class="hljs-keyword">else</span>: 
-        <span class="hljs-keyword">return</span> <span class="hljs-keyword">None</span>
+<p>&#x8BBE;&#x7F6E;flag(visited)&#x6570;&#x7EC4;&#xFF1A;</p>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">hasPath</span><span class="hljs-params">(<span class="hljs-keyword">char</span>[] matrix, <span class="hljs-keyword">int</span> rows, <span class="hljs-keyword">int</span> cols, <span class="hljs-keyword">char</span>[] str)</span>
+</span>{
+    <span class="hljs-keyword">if</span> (matrix == <span class="hljs-keyword">null</span> || matrix.length == <span class="hljs-number">0</span> || str == <span class="hljs-keyword">null</span> || str.length == <span class="hljs-number">0</span>) 
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
+    <span class="hljs-keyword">boolean</span>[] flag = <span class="hljs-keyword">new</span> <span class="hljs-keyword">boolean</span>[matrix.length];
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; rows; i++) {
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>; j &lt; cols; j++) {
+            <span class="hljs-keyword">if</span> (dfs(matrix, rows, cols, i, j, str, <span class="hljs-number">0</span>, flag)) <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;
+        }
+    }
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
+}
 
-<span class="hljs-keyword">while</span> fast.next:
-    fast = fast.next
-    slow = slow.next
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">dfs</span><span class="hljs-params">(<span class="hljs-keyword">char</span>[] matrix, <span class="hljs-keyword">int</span> rows, <span class="hljs-keyword">int</span> cols, <span class="hljs-keyword">int</span> i, <span class="hljs-keyword">int</span> j, <span class="hljs-keyword">char</span>[] str, <span class="hljs-keyword">int</span> k, <span class="hljs-keyword">boolean</span>[] flag)</span> </span>{
+    <span class="hljs-keyword">int</span> index = i * cols + j;
+    <span class="hljs-keyword">if</span> (str.length == k) <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;
+    <span class="hljs-keyword">if</span> (i &lt; <span class="hljs-number">0</span> || i &gt;= rows || j &lt; <span class="hljs-number">0</span> || j &gt;= cols || matrix[index] != str[k] || flag[index]) 
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
+    flag[index] = <span class="hljs-keyword">true</span>;
+    <span class="hljs-keyword">boolean</span> res = dfs(matrix, rows, cols,i - <span class="hljs-number">1</span>, j, str, k + <span class="hljs-number">1</span>, flag)||
+        dfs(matrix,rows, cols, i + <span class="hljs-number">1</span>, j, str, k + <span class="hljs-number">1</span>, flag) ||
+        dfs(matrix,rows, cols, i, j - <span class="hljs-number">1</span>, str, k + <span class="hljs-number">1</span>, flag) ||
+        dfs(matrix, rows, cols,i, j + <span class="hljs-number">1</span>, str, k + <span class="hljs-number">1</span>, flag);
+    flag[index] = <span class="hljs-keyword">false</span>;
+    <span class="hljs-keyword">return</span> res;
+}
+</code></pre>
+<p>&#x673A;&#x5668;&#x4EBA;&#x7684;&#x8FD0;&#x52A8;&#x8303;&#x56F4;&#xFF1A;</p>
+<p>&#x5730;&#x4E0A;&#x6709;&#x4E00;&#x4E2A;m&#x884C;&#x548C;n&#x5217;&#x7684;&#x65B9;&#x683C;&#x3002;&#x4E00;&#x4E2A;&#x673A;&#x5668;&#x4EBA;&#x4ECE;&#x5750;&#x6807;0,0&#x7684;&#x683C;&#x5B50;&#x5F00;&#x59CB;&#x79FB;&#x52A8;&#xFF0C;&#x6BCF;&#x4E00;&#x6B21;&#x53EA;&#x80FD;&#x5411;&#x5DE6;&#xFF0C;&#x53F3;&#xFF0C;&#x4E0A;&#xFF0C;&#x4E0B;&#x56DB;&#x4E2A;&#x65B9;&#x5411;&#x79FB;&#x52A8;&#x4E00;&#x683C;&#xFF0C;&#x4F46;&#x662F;&#x4E0D;&#x80FD;&#x8FDB;&#x5165;&#x884C;&#x5750;&#x6807;&#x548C;&#x5217;&#x5750;&#x6807;&#x7684;&#x6570;&#x4F4D;&#x4E4B;&#x548C;&#x5927;&#x4E8E;k&#x7684;&#x683C;&#x5B50;&#x3002; &#x4F8B;&#x5982;&#xFF0C;&#x5F53;k&#x4E3A;18&#x65F6;&#xFF0C;&#x673A;&#x5668;&#x4EBA;&#x80FD;&#x591F;&#x8FDB;&#x5165;&#x65B9;&#x683C;&#xFF08;35,37&#xFF09;&#xFF0C;&#x56E0;&#x4E3A;3+5+3+7 = 18&#x3002;&#x4F46;&#x662F;&#xFF0C;&#x5B83;&#x4E0D;&#x80FD;&#x8FDB;&#x5165;&#x65B9;&#x683C;&#xFF08;35,38&#xFF09;&#xFF0C;&#x56E0;&#x4E3A;3+5+3+8 = 19&#x3002;&#x8BF7;&#x95EE;&#x8BE5;&#x673A;&#x5668;&#x4EBA;&#x80FD;&#x591F;&#x8FBE;&#x5230;&#x591A;&#x5C11;&#x4E2A;&#x683C;&#x5B50;&#xFF1F;</p>
+<p>&#x601D;&#x8DEF;&#xFF1A;</p>
+<ol>
+<li>&#x8BBE;&#x7F6E;&#x4E00;&#x4E2A;visited&#x6570;&#x7EC4;&#x8BB0;&#x5F55;&#x8BBF;&#x95EE;&#x8FC7;&#x7684;&#x4F4D;&#x7F6E;&#x3002;</li>
+<li>&#x9012;&#x5F52;&#x7EC8;&#x6B62;&#x6761;&#x4EF6;&#xFF1A;&#x8D85;&#x51FA;&#x8FB9;&#x754C; or &#x5DF2;&#x7ECF;&#x8BBF;&#x95EE;&#x8FC7; or &#x8D85;&#x51FA;&#x5750;&#x6807;&#x9608;&#x503C;</li>
+<li>&#x6807;&#x8BB0;</li>
+<li>dfs + 1</li>
+</ol>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">movingCount</span><span class="hljs-params">(<span class="hljs-keyword">int</span> threshold, <span class="hljs-keyword">int</span> rows, <span class="hljs-keyword">int</span> cols)</span>
+</span>{
+    <span class="hljs-keyword">boolean</span>[][] visited = <span class="hljs-keyword">new</span> <span class="hljs-keyword">boolean</span>[rows][cols];
+    <span class="hljs-keyword">return</span> dfs(threshold, rows, cols, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, visited);
+}
+
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">dfs</span><span class="hljs-params">(<span class="hljs-keyword">int</span> threshold, <span class="hljs-keyword">int</span> rows, <span class="hljs-keyword">int</span> cols, <span class="hljs-keyword">int</span> i, <span class="hljs-keyword">int</span> j, <span class="hljs-keyword">boolean</span>[][] visited)</span> </span>{
+    <span class="hljs-keyword">if</span> (i &lt; <span class="hljs-number">0</span> || j &lt; <span class="hljs-number">0</span> || i &gt;=rows || j &gt;= cols || visited[i][j] || getSum(i) + getSum(j) &gt; threshold) 
+        <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+    visited[i][j] = <span class="hljs-keyword">true</span>;
+    <span class="hljs-keyword">return</span> dfs(threshold, rows, cols, i - <span class="hljs-number">1</span>, j, visited) +
+        dfs(threshold, rows, cols, i + <span class="hljs-number">1</span>, j, visited) +
+        dfs(threshold, rows, cols, i, j - <span class="hljs-number">1</span>, visited) + 
+        dfs(threshold, rows, cols, i, j + <span class="hljs-number">1</span>, visited) + <span class="hljs-number">1</span>;
+}
+
+<span class="hljs-comment">// &#x5F97;&#x5230;&#x884C;&#x6216;&#x8005;&#x5217;&#x6BCF;&#x4F4D;&#x7684;&#x548C;</span>
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">getSum</span><span class="hljs-params">(<span class="hljs-keyword">int</span> t)</span></span>{
+    <span class="hljs-keyword">int</span> sum = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">while</span> (t != <span class="hljs-number">0</span>){
+        sum += t % <span class="hljs-number">10</span>;
+        t /= <span class="hljs-number">10</span>;
+    }
+    <span class="hljs-keyword">return</span>  sum;
+}
 </code></pre>
 
                                 
@@ -1729,12 +1789,12 @@
 
             
                 
-                <a href="707_Design_Linked_List.html" class="navigation navigation-prev " aria-label="Previous page: 707. Design Linked List">
+                <a href="200_Number_of_Islands.html" class="navigation navigation-prev " aria-label="Previous page: 200. Number of Islands">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="../2_tree.html" class="navigation navigation-next " aria-label="Next page: Tree">
+                <a href="../5_bitmanipulation.html" class="navigation navigation-next " aria-label="Next page: Bit manipulation">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1745,7 +1805,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"19. Remove Nth Node From End of List","level":"1.3.22","depth":2,"next":{"title":"Tree","level":"1.4","depth":1,"path":"2_tree.md","ref":"2_tree.md","articles":[{"title":"144. Binary Tree Preorder Traversal","level":"1.4.1","depth":2,"path":"alg/144_Binary_Tree_Preorder_Traversal.md","ref":"alg/144_Binary_Tree_Preorder_Traversal.md","articles":[]},{"title":"94. Binary Tree Inorder Traversal","level":"1.4.2","depth":2,"path":"alg/94_Binary_Tree_Inorder_Traversal.md","ref":"alg/94_Binary_Tree_Inorder_Traversal.md","articles":[]},{"title":"145. Binary Tree Postorder Traversal","level":"1.4.3","depth":2,"path":"alg/145_Binary_Tree_Postorder_Traversal.md","ref":"alg/145_Binary_Tree_Postorder_Traversal.md","articles":[]},{"title":"102. Binary Tree Level Order Traversal","level":"1.4.4","depth":2,"path":"alg/102_Binary_Tree_Level_Order_Traversal.md","ref":"alg/102_Binary_Tree_Level_Order_Traversal.md","articles":[]},{"title":"103. Binary Tree Zigzag Level Order Traversal","level":"1.4.5","depth":2,"path":"alg/103_Binary_Tree_Zigzag_Level_Order_Traversal.md","ref":"alg/103_Binary_Tree_Zigzag_Level_Order_Traversal.md","articles":[]},{"title":"637. Average of Levels in Binary Tree","level":"1.4.6","depth":2,"path":"alg/637_Average_of_Levels_in_Binary_Tree.md","ref":"alg/637_Average_of_Levels_in_Binary_Tree.md","articles":[]},{"title":"114. Flatten Binary Tree to Linked List","level":"1.4.7","depth":2,"path":"alg/114_Flatten_Binary_Tree_to_Linked_List.md","ref":"alg/114_Flatten_Binary_Tree_to_Linked_List.md","articles":[]},{"title":"897. Increasing Order Search Tree","level":"1.4.8","depth":2,"path":"alg/897_Increasing_Order_Search_Tree.md","ref":"alg/897_Increasing_Order_Search_Tree.md","articles":[]},{"title":"108. Convert Sorted Array to Binary Search Tree","level":"1.4.9","depth":2,"path":"alg/108_Convert_Sorted_Array_to_Binary_Search_Tree.md","ref":"alg/108_Convert_Sorted_Array_to_Binary_Search_Tree.md","articles":[]},{"title":"654. Maximum Binary Tree","level":"1.4.10","depth":2,"path":"alg/654_Maximum_Binary_Tree.md","ref":"alg/654_Maximum_Binary_Tree.md","articles":[]},{"title":"105. Construct Binary Tree from Preorder and Inorder Traversal","level":"1.4.11","depth":2,"path":"alg/105_Construct_Binary_Tree_from_Preorder_and_Inorder_Traversal.md","ref":"alg/105_Construct_Binary_Tree_from_Preorder_and_Inorder_Traversal.md","articles":[]},{"title":"106. Construct Binary Tree from Inorder and Postorder Traversal","level":"1.4.12","depth":2,"path":"alg/106_Construct_Binary_Tree_from_Inorder_and_Postorder_Traversal.md","ref":"alg/106_Construct_Binary_Tree_from_Inorder_and_Postorder_Traversal.md","articles":[]},{"title":"100. Same Tree","level":"1.4.13","depth":2,"path":"alg/100_Same_Tree.md","ref":"alg/100_Same_Tree.md","articles":[]},{"title":"572. Subtree of Another Tree","level":"1.4.14","depth":2,"path":"alg/572_Subtree_of_Another_Tree.md","ref":"alg/572_Subtree_of_Another_Tree.md","articles":[]},{"title":"101. Symmetric Tree","level":"1.4.15","depth":2,"path":"alg/101_Symmetric_Tree.md","ref":"alg/101_Symmetric_Tree.md","articles":[]},{"title":"226. Invert Binary Tree","level":"1.4.16","depth":2,"path":"alg/226_Invert_Binary_Tree.md","ref":"alg/226_Invert_Binary_Tree.md","articles":[]},{"title":"617. Merge Two Binary Trees","level":"1.4.17","depth":2,"path":"alg/617_Merge_Two_Binary_Trees.md","ref":"alg/617_Merge_Two_Binary_Trees.md","articles":[]},{"title":"872. Leaf-Similar Trees","level":"1.4.18","depth":2,"path":"alg/872_Leaf-Similar_Trees.md","ref":"alg/872_Leaf-Similar_Trees.md","articles":[]},{"title":"104. Maximum Depth of Binary Tree","level":"1.4.19","depth":2,"path":"alg/104_Maximum_Depth_of_Binary_Tree.md","ref":"alg/104_Maximum_Depth_of_Binary_Tree.md","articles":[]},{"title":"111. Minimum Depth of Binary Tree","level":"1.4.20","depth":2,"path":"alg/111_Minimum_Depth_of_Binary_Tree.md","ref":"alg/111_Minimum_Depth_of_Binary_Tree.md","articles":[]},{"title":"110. Balanced Binary Tree","level":"1.4.21","depth":2,"path":"alg/110_Balanced_Binary_Tree.md","ref":"alg/110_Balanced_Binary_Tree.md","articles":[]},{"title":"222. Count Complete Tree Nodes","level":"1.4.22","depth":2,"path":"alg/222_Count_Complete_Tree_Nodes.md","ref":"alg/222_Count_Complete_Tree_Nodes.md","articles":[]},{"title":"257. Binary Tree Paths","level":"1.4.23","depth":2,"path":"alg/257_Binary_Tree_Paths.md","ref":"alg/257_Binary_Tree_Paths.md","articles":[]},{"title":"129. Sum Root to Leaf Numbers","level":"1.4.24","depth":2,"path":"alg/129_Sum_Root_to_Leaf_Numbers.md","ref":"alg/129_Sum_Root_to_Leaf_Numbers.md","articles":[]},{"title":"112. Path Sum","level":"1.4.25","depth":2,"path":"alg/112_Path_Sum.md","ref":"alg/112_Path_Sum.md","articles":[]},{"title":"113. Path Sum II","level":"1.4.26","depth":2,"path":"alg/113_Path_Sum_II.md","ref":"alg/113_Path_Sum_II.md","articles":[]},{"title":"700. Search in a Binary Search Tree","level":"1.4.27","depth":2,"path":"alg/700_Search_in_a_Binary_Search_Tree.md","ref":"alg/700_Search_in_a_Binary_Search_Tree.md","articles":[]},{"title":"701. Insert into a Binary Search Tree","level":"1.4.28","depth":2,"path":"alg/701_Insert_into_a_Binary_Search_Tree.md","ref":"alg/701_Insert_into_a_Binary_Search_Tree.md","articles":[]},{"title":"450. Delete Node in a BST","level":"1.4.29","depth":2,"path":"alg/450_Delete_Node_in_a_BST.md","ref":"alg/450_Delete_Node_in_a_BST.md","articles":[]},{"title":"98. Validate Binary Search Tree","level":"1.4.30","depth":2,"path":"alg/98_Validate_Binary_Search_Tree.md","ref":"alg/98_Validate_Binary_Search_Tree.md","articles":[]},{"title":"235. Lowest Common Ancestor of a Binary Search Tree","level":"1.4.31","depth":2,"path":"alg/235_Lowest_Common_Ancestor_of_a_Binary_Search_Tree.md","ref":"alg/235_Lowest_Common_Ancestor_of_a_Binary_Search_Tree.md","articles":[]},{"title":"236. Lowest Common Ancestor of a Binary Tree","level":"1.4.32","depth":2,"path":"alg/236_Lowest_Common_Ancestor_of_a_Binary_Tree.md","ref":"alg/236_Lowest_Common_Ancestor_of_a_Binary_Tree.md","articles":[]},{"title":"230. Kth Smallest Element in a BST","level":"1.4.33","depth":2,"path":"alg/230_Kth_Smallest_Element_in_a_BST.md","ref":"alg/230_Kth_Smallest_Element_in_a_BST.md","articles":[]}]},"previous":{"title":"707. Design Linked List","level":"1.3.21","depth":2,"path":"alg/707_Design_Linked_List.md","ref":"alg/707_Design_Linked_List.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"alg/19_Remove_Nth_Node_From_End_of_List.md","mtime":"2019-02-15T17:54:48.521Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-02-18T22:41:46.652Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"79. Word Search","level":"1.7.2","depth":2,"next":{"title":"Bit manipulation","level":"1.8","depth":1,"path":"5_bitmanipulation.md","ref":"5_bitmanipulation.md","articles":[{"title":"191. Number of 1 Bits","level":"1.8.1","depth":2,"path":"alg/191_Number_of_1_Bits.md","ref":"alg/191_Number_of_1_Bits.md","articles":[]},{"title":"461. Hamming Distance","level":"1.8.2","depth":2,"path":"alg/461_Hamming_Distance.md","ref":"alg/461_Hamming_Distance.md","articles":[]},{"title":"136. Single Number","level":"1.8.3","depth":2,"path":"alg/136_Single_Number.md","ref":"alg/136_Single_Number.md","articles":[]},{"title":"137. Single Number II","level":"1.8.4","depth":2,"path":"alg/137_Single_Number_II.md","ref":"alg/137_Single_Number_II.md","articles":[]},{"title":"260. Single Number III","level":"1.8.5","depth":2,"path":"alg/260_Single_Number_III.md","ref":"alg/260_Single_Number_III.md","articles":[]},{"title":"231. Power of Two","level":"1.8.6","depth":2,"path":"alg/231_Power_of_Two.md","ref":"alg/231_Power_of_Two.md","articles":[]},{"title":"371. Sum of Two Integers","level":"1.8.7","depth":2,"path":"alg/371_Sum_of_Two_Integers.md","ref":"alg/371_Sum_of_Two_Integers.md","articles":[]}]},"previous":{"title":"200. Number of Islands","level":"1.7.1","depth":2,"path":"alg/200_Number_of_Islands.md","ref":"alg/200_Number_of_Islands.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"alg/79_Word_Search.md","mtime":"2019-02-18T19:54:42.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-02-18T22:41:46.652Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
