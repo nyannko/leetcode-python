@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>74. Search a 2D Matrix · GitBook</title>
+        <title>32. Longest Valid Parentheses · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,8 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="240_Search_a_2D_Matrix_II.html" />
     
-    
-    <link rel="prev" href="81_Search_in_Rotated_Sorted_Array_II.html" />
+    <link rel="prev" href="239_Sliding_Window_Maximum.html" />
     
 
     </head>
@@ -259,7 +257,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.2.12" data-path="74_Search_a_2D_Matrix.html">
+        <li class="chapter " data-level="1.2.12" data-path="74_Search_a_2D_Matrix.html">
             
                 <a href="74_Search_a_2D_Matrix.html">
             
@@ -1414,7 +1412,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6.6" data-path="32_Longest_Valid_Parentheses.html">
+        <li class="chapter active" data-level="1.6.6" data-path="32_Longest_Valid_Parentheses.html">
             
                 <a href="32_Longest_Valid_Parentheses.html">
             
@@ -1649,7 +1647,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >74. Search a 2D Matrix</a>
+        <a href=".." >32. Longest Valid Parentheses</a>
     </h1>
 </div>
 
@@ -1664,57 +1662,25 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h3 id="74-search-a-2d-matrix">74. Search a 2D Matrix</h3>
-<pre><code class="lang-java">matrix = [
-  [<span class="hljs-number">1</span>,   <span class="hljs-number">3</span>,  <span class="hljs-number">5</span>,  <span class="hljs-number">7</span>],
-  [<span class="hljs-number">10</span>, <span class="hljs-number">11</span>, <span class="hljs-number">16</span>, <span class="hljs-number">20</span>],
-  [<span class="hljs-number">23</span>, <span class="hljs-number">30</span>, <span class="hljs-number">34</span>, <span class="hljs-number">50</span>]
-]
-target = <span class="hljs-number">3</span>
-</code></pre>
-<p>&#x5BF9;&#x6BCF;&#x4E00;&#x884C;&#x8FDB;&#x884C;&#x4E00;&#x6B21;&#x4E8C;&#x5206;&#x6CD5;</p>
-<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">searchMatrix</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[][] matrix, <span class="hljs-keyword">int</span> target)</span> </span>{
-    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; matrix.length; i++) {
-        <span class="hljs-keyword">int</span> l = <span class="hljs-number">0</span>, r = matrix[i].length;
-        <span class="hljs-keyword">while</span> (l &lt; r) {
-            <span class="hljs-keyword">int</span> mid = (l + r) &gt;&gt;&gt; <span class="hljs-number">1</span>;
-            <span class="hljs-keyword">if</span> (target == matrix[i][mid]) {
-                <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;
-            } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (matrix[i][mid] &lt; target){
-                l = mid + <span class="hljs-number">1</span>;
-            } <span class="hljs-keyword">else</span> {
-                r = mid;
-            }
-        }
-    }
-    <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
-}
-</code></pre>
-<p>&#x56E0;&#x4E3A;&#x5E76;&#x6210;&#x4E00;&#x6574;&#x884C;&#x4E4B;&#x540E;&#x7684;&#x6570;&#x5B57;&#x521A;&#x597D;&#x4E5F;&#x662F;<strong>&#x6709;&#x5E8F;</strong>&#x7684;&#xFF0C;&#x6240;&#x4EE5;&#x53EF;&#x4EE5;&#x628A;&#x6574;&#x4E2A;&#x77E9;&#x9635;&#x770B;&#x6210;&#x4E00;&#x884C;&#x8FDB;&#x884C;&#x6392;&#x5217;</p>
-<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">searchMatrix</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[][] matrix, <span class="hljs-keyword">int</span> target)</span> </span>{
-    <span class="hljs-keyword">if</span> (matrix.length == <span class="hljs-number">0</span> || matrix[<span class="hljs-number">0</span>].length == <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
-    <span class="hljs-keyword">int</span> row = matrix.length, col = matrix[<span class="hljs-number">0</span>].length;
-    <span class="hljs-keyword">int</span> l = <span class="hljs-number">0</span>, r = row * col;
-    <span class="hljs-keyword">while</span> (l &lt; r) {
-        <span class="hljs-keyword">int</span> mid = (l + r) &gt;&gt; <span class="hljs-number">1</span>;
-        <span class="hljs-keyword">int</span> mid_value = matrix[mid / col][mid % col];
-        <span class="hljs-keyword">if</span> (mid_value == target) {
-            <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;
-        }
-        <span class="hljs-keyword">if</span> (mid_value &lt; target) {
-            l = mid + <span class="hljs-number">1</span>;
-
+                                <h3 id="32-longest-valid-parentheses">32. Longest Valid Parentheses</h3>
+<p>&#x76F4;&#x63A5;&#x5728;stack&#x4E2D;push&#x62EC;&#x53F7;&#x7684;&#x8BDD;&#x4E0D;&#x53EF;&#x4EE5;&#x5206;&#x8FA8;&#x7559;&#x5728;&#x6808;&#x4E2D;&#x7684;&#x62EC;&#x53F7;&#x7684;index&#xFF0C;&#x6240;&#x4EE5;push&#x6BCF;&#x4E2A;&#x7B26;&#x53F7;&#x7684;index&#x3002;</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tKfTcgy1g0fx2vg1r9j30a007w752.jpg" width="400"></p>
+<p>&#x6808;&#x4E2D;&#x9700;&#x8981;&#x7559;&#x4E00;&#x4E2A;-1&#x6765;&#x8BA1;&#x7B97;&#x90FD;&#x662F;&#x5B8C;&#x6574;&#x62EC;&#x53F7;&#x7684;&#x72B6;&#x51B5;&#xFF0C;&#x56E0;&#x4E3A;-1&#x4E00;&#x76F4;&#x5728;&#x6808;&#x4E2D;&#x6240;&#x4EE5;&#x9700;&#x8981;stack.size() &gt; 1&#xFF0C;&#x5426;&#x5219;&#x4F1A;&#x6EA2;&#x51FA;&#x3002;</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tKfTcgy1g0fx752fovj30ak07i0tp.jpg" width="400"></p>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">longestValidParentheses</span><span class="hljs-params">(String s)</span> </span>{
+    <span class="hljs-keyword">int</span> res = <span class="hljs-number">0</span>;
+    LinkedList&lt;Integer&gt; stack = <span class="hljs-keyword">new</span> LinkedList&lt;&gt;();
+    stack.push(-<span class="hljs-number">1</span>);
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; s.length(); i++) {
+        <span class="hljs-keyword">if</span> (s.charAt(i) == <span class="hljs-string">&apos;)&apos;</span> &amp;&amp; stack.size() &gt; <span class="hljs-number">1</span> &amp;&amp; s.charAt(stack.peek()) == <span class="hljs-string">&apos;(&apos;</span>) {
+            stack.pop(); <span class="hljs-comment">// pop &apos;(&apos; index in the stack</span>
+            res = Math.max(res, i - stack.peek());
         } <span class="hljs-keyword">else</span> {
-            r = mid;
+            stack.push(i);
         }
     }
-    <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
+    <span class="hljs-keyword">return</span> res;
 }
-</code></pre>
-<p><code>mid_value</code>&#x7684;&#x5750;&#x6807;&#x8BA1;&#x7B97;&#xFF1A;<code>row=mid/col</code>, <code>col=mid%col</code></p>
-<pre><code class="lang-java">mid: <span class="hljs-number">6</span> mid_value: <span class="hljs-number">16</span>
-mid: <span class="hljs-number">3</span> mid_value: <span class="hljs-number">7</span>
-mid: <span class="hljs-number">1</span> mid_value: <span class="hljs-number">3</span>
 </code></pre>
 
                                 
@@ -1743,14 +1709,10 @@ mid: <span class="hljs-number">1</span> mid_value: <span class="hljs-number">3</
 
             
                 
-                <a href="81_Search_in_Rotated_Sorted_Array_II.html" class="navigation navigation-prev " aria-label="Previous page: 81. Search in Rotated Sorted Array II">
+                <a href="239_Sliding_Window_Maximum.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: 239. Sliding Window Maximum">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
-                
-                <a href="240_Search_a_2D_Matrix_II.html" class="navigation navigation-next " aria-label="Next page: 240. Search a 2D Matrix II">
-                    <i class="fa fa-angle-right"></i>
-                </a>
                 
             
         
@@ -1759,7 +1721,7 @@ mid: <span class="hljs-number">1</span> mid_value: <span class="hljs-number">3</
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"74. Search a 2D Matrix","level":"1.2.12","depth":2,"next":{"title":"240. Search a 2D Matrix II","level":"1.2.13","depth":2,"path":"alg/240_Search_a_2D_Matrix_II.md","ref":"alg/240_Search_a_2D_Matrix_II.md","articles":[]},"previous":{"title":"81. Search in Rotated Sorted Array II","level":"1.2.11","depth":2,"path":"alg/81_Search_in_Rotated_Sorted_Array_II.md","ref":"alg/81_Search_in_Rotated_Sorted_Array_II.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"alg/74_Search_a_2D_Matrix.md","mtime":"2019-02-05T22:42:36.369Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-02-22T21:54:03.075Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"32. Longest Valid Parentheses","level":"1.6.6","depth":2,"next":{"title":"DFS & BFS","level":"1.7","depth":1,"ref":"","articles":[{"title":"200. Number of Islands","level":"1.7.1","depth":2,"path":"alg/200_Number_of_Islands.md","ref":"alg/200_Number_of_Islands.md","articles":[]},{"title":"79. Word Search","level":"1.7.2","depth":2,"path":"alg/79_Word_Search.md","ref":"alg/79_Word_Search.md","articles":[]}]},"previous":{"title":"239. Sliding Window Maximum","level":"1.6.5","depth":2,"path":"alg/239_Sliding_Window_Maximum.md","ref":"alg/239_Sliding_Window_Maximum.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"alg/32_Longest_Valid_Parentheses.md","mtime":"2019-02-22T21:50:39.373Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-02-22T21:54:03.075Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
