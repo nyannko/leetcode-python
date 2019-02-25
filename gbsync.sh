@@ -1,3 +1,4 @@
+set -e
 gitbook build
 cd $HOME/github/leetcode-python/
 git co gh-pages 
