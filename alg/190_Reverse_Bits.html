@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>110. Balanced Binary Tree · GitBook</title>
+        <title>190. Reverse Bits · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="222_Count_Complete_Tree_Nodes.html" />
+    <link rel="next" href="191_Number_of_1_Bits.html" />
     
     
-    <link rel="prev" href="111_Minimum_Depth_of_Binary_Tree.html" />
+    <link rel="prev" href="../5_bitmanipulation.html" />
     
 
     </head>
@@ -986,7 +986,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.5.21" data-path="110_Balanced_Binary_Tree.html">
+        <li class="chapter " data-level="1.5.21" data-path="110_Balanced_Binary_Tree.html">
             
                 <a href="110_Balanced_Binary_Tree.html">
             
@@ -1595,7 +1595,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.9.1" data-path="190_Reverse_Bits.html">
+        <li class="chapter active" data-level="1.9.1" data-path="190_Reverse_Bits.html">
             
                 <a href="190_Reverse_Bits.html">
             
@@ -1779,7 +1779,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >110. Balanced Binary Tree</a>
+        <a href=".." >190. Reverse Bits</a>
     </h1>
 </div>
 
@@ -1794,40 +1794,36 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h3 id="110-balanced-binary-tree">110. Balanced Binary Tree</h3>
-<p>&#x7B2C;&#x4E00;&#x79CD;&#x9012;&#x5F52;&#xFF1A;&#x5728;<code>isBalanced</code>&#x4E2D;&#xFF0C;&#x5BF9;&#x4E8E;&#x4E00;&#x4E2A;root&#x8282;&#x70B9;&#xFF0C;&#x7528;<code>getDepth</code>&#x9012;&#x5F52;&#x6C42;&#x51FA;&#x5B83;&#x5DE6;&#x53F3;&#x4E24;&#x8FB9;&#x7684;&#x9AD8;&#x5EA6;&#xFF0C;&#x518D;&#x5728;<code>isBalanced</code>&#x51FD;&#x6570;&#x4E2D;&#x8FDB;&#x884C;&#x9012;&#x5F52;&#x3002;</p>
-<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">isBalanced</span><span class="hljs-params">(TreeNode root)</span> </span>{
-    <span class="hljs-keyword">if</span> (root == <span class="hljs-keyword">null</span>) <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;
-    <span class="hljs-keyword">int</span> ll = getDepth(root.left);
-    <span class="hljs-keyword">int</span> lr = getDepth(root.right);
-    <span class="hljs-keyword">return</span> Math.abs(ll - lr) &lt;= <span class="hljs-number">1</span> &amp;&amp; isBalanced(root.left) &amp;&amp; isBalanced(root.right);
+                                <h3 id="190-reverse-bits">190. Reverse Bits</h3>
+<p>&#x4F8B;: <code>0011</code> --&gt; <code>11000000000000000000000000000000</code>&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x7B80;&#x5355;&#x7684;<code>1100</code></p>
+<p>&#x5982;&#x679C;&#x4E0D;&#x8003;&#x8651;&#x4F4D;&#x6570;&#x7684;&#x8BDD;&#x5C31;&#x662F;&#x4E00;&#x4E2A;&#x4E8C;&#x8FDB;&#x5236;&#x8F6C;&#x6210;&#x5341;&#x8FDB;&#x5236;&#x7684;&#x7A0B;&#x5E8F;:</p>
+<pre><code class="lang-java">res = <span class="hljs-number">0</span>;
+<span class="hljs-keyword">while</span> (n &gt; <span class="hljs-number">0</span>) {
+    res = res * <span class="hljs-number">2</span> + n % <span class="hljs-number">2</span>;
+    n /= <span class="hljs-number">2</span>;
 }
-
-<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">getDepth</span><span class="hljs-params">(TreeNode root)</span> </span>{
-    <span class="hljs-keyword">if</span> (root == <span class="hljs-keyword">null</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
-    <span class="hljs-keyword">return</span> Math.max(getDepth(root.left), getDepth(root.right)) + <span class="hljs-number">1</span>;
-}
+<span class="hljs-keyword">return</span> res;
 </code></pre>
-<p>&#x7B2C;&#x4E8C;&#x79CD;&#xFF1A;&#x628A;&#x6240;&#x6709;&#x903B;&#x8F91;&#x5199;&#x5728;<code>getDepth</code>&#x4E2D;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x5728;&#x6C42;&#x9AD8;&#x5EA6;&#x7684;&#x540C;&#x65F6;&#x8FDB;&#x884C;&#x5224;&#x65AD;&#x5C42;&#x6570;&#x662F;&#x5426;&#x5927;&#x4E8E;1&#xFF0C;&#x53EA;&#x9700;&#x8981;&#x5BF9;&#x8282;&#x70B9;&#x8FDB;&#x884C;&#x4E00;&#x6B21;&#x904D;&#x5386;&#x3002;</p>
-<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">isBalanced</span><span class="hljs-params">(TreeNode root)</span> </span>{
-    <span class="hljs-keyword">if</span> (getDepth(root) == -<span class="hljs-number">1</span>) {
-        <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
+<p>&#x8F6C;&#x6362;&#x6210;&#x4F4D;&#x64CD;&#x4F5C;&#x7684;&#x8BDD;&#x5C31;&#x662F;&#x628A;&#x91CC;&#x9762;&#x7684;&#x4E58;&#x9664;&#x6A21;&#x66FF;&#x6362;&#x6210;&#x4E00;&#x5143;&#x8FD0;&#x7B97;&#x7B26;</p>
+<p>&#x8F93;&#x5165;<code>n</code>&#x662F;&#x4E00;&#x4E2A;&#x65E0;&#x7B26;&#x53F7;&#x6574;&#x6570;&#xFF0C;&#x53D6;&#x503C;&#x8303;&#x56F4;&#x5728;<code>0~4294967295</code>&#xFF0C;&#x7528;&#x666E;&#x901A;&#x7684;int&#x4F1A;&#x6EA2;&#x51FA;</p>
+<p>java 8 &#x4E2D;&#x65E0;&#x7B26;&#x53F7;&#x6574;&#x6570;&#x548C;&#x6574;&#x6570;&#x4E4B;&#x95F4;&#x7684;&#x8F6C;&#x6362;:</p>
+<pre><code class="lang-java">String bs = <span class="hljs-string">&quot;11111111111111111111111111111101&quot;</span>;
+<span class="hljs-keyword">int</span> num = Integer.parseUnsignedInt(bs, <span class="hljs-number">2</span>);
+System.out.println(Integer.toUnsignedString(num)); <span class="hljs-comment">// &#x8F93;&#x51FA;&#x7684;&#x662F;&#x5B57;&#x7B26;&#x4E32;</span>
+</code></pre>
+<p>&#x56E0;&#x4E3A;32&#x4F4D;&#x7684;&#x4E8C;&#x8FDB;&#x5236;&#x53EF;&#x80FD;&#x662F;&#x6574;&#x6570;&#x6EA2;&#x51FA;&#xFF0C;&#x7136;&#x540E;&#x8FD8;&#x6D89;&#x53CA;&#x5230;&#x4E00;&#x4E2A;&#x53F3;&#x79FB;&#x548C;&#x9664;2&#x7684;&#x5173;&#x7CFB;&#xFF0C;&#x5B83;&#x4EEC;&#x4F1A;&#x6709;&#x533A;&#x522B;&#x662F;&#x56E0;&#x4E3A;int&#x6EA2;&#x51FA;&#x4F1A;&#x53D8;&#x6210;&#x8D1F;&#x6570;</p>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">reverseBits</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span> </span>{
+    <span class="hljs-keyword">int</span> res = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">32</span>; i++) {
+        res &lt;&lt;= <span class="hljs-number">1</span>; <span class="hljs-comment">// &#x76F8;&#x5F53;&#x4E8E;*2</span>
+        <span class="hljs-keyword">if</span> ((n &amp; <span class="hljs-number">1</span>) == <span class="hljs-number">1</span>) res++;
+        n &gt;&gt;= <span class="hljs-number">1</span>;
+        <span class="hljs-comment">// n /= 2; // &#x4F7F;&#x7528; test 11111111111111111111111111111101 &#x7684;&#x65F6;&#x5019;&#x53F3;&#x79FB;&#x548C;&#x9664;&#x4E8C;&#x7ED3;&#x679C;&#x662F;&#x4E0D;&#x4E00;&#x6837;&#x7684;, &#x9664;2&#x4F1A;&#x6BD4;&#x53F3;&#x79FB;&#x7ED3;&#x679C;&#x591A;1, &#x56E0;&#x4E3A;&#x4E2D;&#x95F4;&#x6EA2;&#x51FA;&#x53D8;&#x6210;&#x8D1F;&#x6570;</span>
     }
-    <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;
-}
-
-<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">getDepth</span><span class="hljs-params">(TreeNode root)</span> </span>{
-    <span class="hljs-keyword">if</span> (root == <span class="hljs-keyword">null</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
-    <span class="hljs-keyword">int</span> ll = getDepth(root.left);
-    <span class="hljs-keyword">int</span> lr = getDepth(root.right);
-    <span class="hljs-keyword">if</span> (Math.abs(ll - lr) &gt; <span class="hljs-number">1</span> || ll == -<span class="hljs-number">1</span> || lr == -<span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> -<span class="hljs-number">1</span>;
-    <span class="hljs-keyword">return</span> Math.max(ll, lr) + <span class="hljs-number">1</span>;
+    <span class="hljs-keyword">return</span> res;
 }
 </code></pre>
-<p>&#x8FD9;&#x91CC;&#x8FD9;&#x4E2A;&#x6761;&#x4EF6;&#x662F;&#x7528;&#x6765;&#x5224;&#x65AD;&#x5982;&#x679C;&#x8FD4;&#x56DE;&#x7684;root&#x4E2D;&#x5DE6;&#x53F3;&#x4E24;&#x4E2A;&#x8282;&#x70B9;&#x7684;&#x9AD8;&#x5EA6;&#x82E5;&#x6709;&#x4E00;&#x4E2A;&#x4E3A;-1&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x5B83;&#x4E0D;&#x662F;&#x5E73;&#x8861;&#x4E8C;&#x53C9;&#x6811;&#xFF0C;&#x90A3;&#x4E48;root&#x4E5F;&#x8FD4;&#x56DE;-1&#xFF0C;&#x6574;&#x4E2A;&#x6811;&#x90FD;&#x4E0D;&#x662F;&#x5E73;&#x8861;&#x4E8C;&#x53C9;&#x6811;&#x3002;</p>
-<pre><code class="lang-java"><span class="hljs-keyword">if</span> (Math.abs(ll - lr) &gt; <span class="hljs-number">1</span> || ll == -<span class="hljs-number">1</span> || lr == -<span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> -<span class="hljs-number">1</span>;
-</code></pre>
-<p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fzp6bkym3jj30be09w0u1.jpg" width="300"></p>
+<p>&#x611F;&#x89C9;&#x86EE;&#x96BE;&#x7684;&#x5C45;&#x7136;&#x662F;easy</p>
 
                                 
                                 </section>
@@ -1855,12 +1851,12 @@
 
             
                 
-                <a href="111_Minimum_Depth_of_Binary_Tree.html" class="navigation navigation-prev " aria-label="Previous page: 111. Minimum Depth of Binary Tree">
+                <a href="../5_bitmanipulation.html" class="navigation navigation-prev " aria-label="Previous page: Bit manipulation">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="222_Count_Complete_Tree_Nodes.html" class="navigation navigation-next " aria-label="Next page: 222. Count Complete Tree Nodes">
+                <a href="191_Number_of_1_Bits.html" class="navigation navigation-next " aria-label="Next page: 191. Number of 1 Bits">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1871,7 +1867,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"110. Balanced Binary Tree","level":"1.5.21","depth":2,"next":{"title":"222. Count Complete Tree Nodes","level":"1.5.22","depth":2,"path":"alg/222_Count_Complete_Tree_Nodes.md","ref":"alg/222_Count_Complete_Tree_Nodes.md","articles":[]},"previous":{"title":"111. Minimum Depth of Binary Tree","level":"1.5.20","depth":2,"path":"alg/111_Minimum_Depth_of_Binary_Tree.md","ref":"alg/111_Minimum_Depth_of_Binary_Tree.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"alg/110_Balanced_Binary_Tree.md","mtime":"2019-01-30T18:30:35.953Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-03-14T22:46:30.087Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"190. Reverse Bits","level":"1.9.1","depth":2,"next":{"title":"191. Number of 1 Bits","level":"1.9.2","depth":2,"path":"alg/191_Number_of_1_Bits.md","ref":"alg/191_Number_of_1_Bits.md","articles":[]},"previous":{"title":"Bit manipulation","level":"1.9","depth":1,"path":"5_bitmanipulation.md","ref":"5_bitmanipulation.md","articles":[{"title":"190. Reverse Bits","level":"1.9.1","depth":2,"path":"alg/190_Reverse_Bits.md","ref":"alg/190_Reverse_Bits.md","articles":[]},{"title":"191. Number of 1 Bits","level":"1.9.2","depth":2,"path":"alg/191_Number_of_1_Bits.md","ref":"alg/191_Number_of_1_Bits.md","articles":[]},{"title":"461. Hamming Distance","level":"1.9.3","depth":2,"path":"alg/461_Hamming_Distance.md","ref":"alg/461_Hamming_Distance.md","articles":[]},{"title":"136. Single Number","level":"1.9.4","depth":2,"path":"alg/136_Single_Number.md","ref":"alg/136_Single_Number.md","articles":[]},{"title":"137. Single Number II","level":"1.9.5","depth":2,"path":"alg/137_Single_Number_II.md","ref":"alg/137_Single_Number_II.md","articles":[]},{"title":"260. Single Number III","level":"1.9.6","depth":2,"path":"alg/260_Single_Number_III.md","ref":"alg/260_Single_Number_III.md","articles":[]},{"title":"231. Power of Two","level":"1.9.7","depth":2,"path":"alg/231_Power_of_Two.md","ref":"alg/231_Power_of_Two.md","articles":[]},{"title":"371. Sum of Two Integers","level":"1.9.8","depth":2,"path":"alg/371_Sum_of_Two_Integers.md","ref":"alg/371_Sum_of_Two_Integers.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"alg/190_Reverse_Bits.md","mtime":"2019-03-14T22:43:56.740Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-03-14T22:46:30.087Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

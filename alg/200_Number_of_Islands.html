@@ -1593,7 +1593,20 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.9.1" data-path="191_Number_of_1_Bits.html">
+        <li class="chapter " data-level="1.9.1" data-path="190_Reverse_Bits.html">
+            
+                <a href="190_Reverse_Bits.html">
+            
+                    
+                    190. Reverse Bits
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2" data-path="191_Number_of_1_Bits.html">
             
                 <a href="191_Number_of_1_Bits.html">
             
@@ -1606,7 +1619,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9.2" data-path="461_Hamming_Distance.html">
+        <li class="chapter " data-level="1.9.3" data-path="461_Hamming_Distance.html">
             
                 <a href="461_Hamming_Distance.html">
             
@@ -1619,7 +1632,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9.3" data-path="136_Single_Number.html">
+        <li class="chapter " data-level="1.9.4" data-path="136_Single_Number.html">
             
                 <a href="136_Single_Number.html">
             
@@ -1632,7 +1645,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9.4" data-path="137_Single_Number_II.html">
+        <li class="chapter " data-level="1.9.5" data-path="137_Single_Number_II.html">
             
                 <a href="137_Single_Number_II.html">
             
@@ -1645,7 +1658,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9.5" data-path="260_Single_Number_III.html">
+        <li class="chapter " data-level="1.9.6" data-path="260_Single_Number_III.html">
             
                 <a href="260_Single_Number_III.html">
             
@@ -1658,7 +1671,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9.6" data-path="231_Power_of_Two.html">
+        <li class="chapter " data-level="1.9.7" data-path="231_Power_of_Two.html">
             
                 <a href="231_Power_of_Two.html">
             
@@ -1671,7 +1684,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9.7" data-path="371_Sum_of_Two_Integers.html">
+        <li class="chapter " data-level="1.9.8" data-path="371_Sum_of_Two_Integers.html">
             
                 <a href="371_Sum_of_Two_Integers.html">
             
@@ -1840,6 +1853,71 @@
     }
     <span class="hljs-keyword">return</span> count;
 </code></pre>
+<p> &#x4E00;&#x9053;&#x9762;&#x8BD5;&#x9898;&#xFF0C;&#x659C;&#x5BF9;&#x89D2;&#x4E5F;&#x7B97;&#x8FDE;&#x901A;&#xFF0C;&#x5E76;&#x4E14;&#x8BA1;&#x7B97;&#x6700;&#x5927;&#x4E2A;&#x6570;&#x3002;</p>
+<pre><code class="lang-java"><span class="hljs-keyword">import</span> java.util.Arrays;
+<span class="hljs-keyword">import</span> java.util.Scanner;
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Team</span> </span>{
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>{
+        Scanner in = <span class="hljs-keyword">new</span> Scanner(System.in);
+        in.useDelimiter(<span class="hljs-string">&quot;[,\n]&quot;</span>); <span class="hljs-comment">// use comma and newline delimiter</span>
+        <span class="hljs-keyword">int</span> row = in.nextInt(), col = in.nextInt();
+        <span class="hljs-keyword">char</span>[][] board = <span class="hljs-keyword">new</span> <span class="hljs-keyword">char</span>[row][col];
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; row; i++) {
+            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>; j &lt; col; j++) {
+                board[i][j] = in.next().charAt(<span class="hljs-number">0</span>);
+            }
+        }
+        in.close();
+        System.out.println(<span class="hljs-string">&quot;Input row: &quot;</span> + row + <span class="hljs-string">&quot; col: &quot;</span> + col);
+        System.out.println(Arrays.deepToString(board));
+        numberOfTeam(board);
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">numberOfTeam</span><span class="hljs-params">(<span class="hljs-keyword">char</span>[][] board)</span> </span>{
+        <span class="hljs-keyword">if</span> (board == <span class="hljs-keyword">null</span> || board.length == <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span>;
+        <span class="hljs-keyword">int</span> count = <span class="hljs-number">0</span>;
+        <span class="hljs-keyword">int</span> depth = <span class="hljs-number">0</span>;
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; board.length; i++) {
+            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>; j &lt; board[<span class="hljs-number">0</span>].length; j++) {
+                <span class="hljs-keyword">if</span> (board[i][j] == <span class="hljs-string">&apos;1&apos;</span>) {
+                    depth = Math.max(depth, dfs(board, i, j));
+                    count++;
+                }
+            }
+        }
+        System.out.println(<span class="hljs-string">&quot;The number of the team: &quot;</span> + count);
+        System.out.println(<span class="hljs-string">&quot;The number of people in the largest team: &quot;</span> + depth);
+        System.out.println(count + <span class="hljs-string">&quot;,&quot;</span> + depth);
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> <span class="hljs-title">dfs</span><span class="hljs-params">(<span class="hljs-keyword">char</span>[][] board, <span class="hljs-keyword">int</span> i, <span class="hljs-keyword">int</span> j)</span> </span>{
+        <span class="hljs-keyword">if</span> (i &lt; <span class="hljs-number">0</span> || i &gt;= board.length || j &lt; <span class="hljs-number">0</span> || j &gt;= board[<span class="hljs-number">0</span>].length || board[i][j] == <span class="hljs-string">&apos;0&apos;</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+        board[i][j] = <span class="hljs-string">&apos;0&apos;</span>;
+        <span class="hljs-keyword">return</span> <span class="hljs-number">1</span> + dfs(board, i + <span class="hljs-number">1</span>, j)
+                + dfs(board, i - <span class="hljs-number">1</span>, j)
+                + dfs(board, i, j + <span class="hljs-number">1</span>)
+                + dfs(board, i, j - <span class="hljs-number">1</span>)
+                + dfs(board, i + <span class="hljs-number">1</span>, j + <span class="hljs-number">1</span>)
+                + dfs(board, i + <span class="hljs-number">1</span>, j - <span class="hljs-number">1</span>)
+                + dfs(board, i - <span class="hljs-number">1</span>, j + <span class="hljs-number">1</span>)
+                + dfs(board, i - <span class="hljs-number">1</span>, j - <span class="hljs-number">1</span>);
+    }
+    <span class="hljs-comment">//test case, 6, 8</span>
+<span class="hljs-comment">//            10,10</span>
+<span class="hljs-comment">//            0,0,0,0,0,0,0,0,0,0</span>
+<span class="hljs-comment">//            0,0,0,1,1,0,1,0,0,0</span>
+<span class="hljs-comment">//            0,1,0,0,0,0,0,1,0,1</span>
+<span class="hljs-comment">//            1,0,0,0,0,0,0,0,1,1</span>
+<span class="hljs-comment">//            0,0,0,1,1,1,0,0,0,1</span>
+<span class="hljs-comment">//            0,0,0,0,0,0,1,0,1,1</span>
+<span class="hljs-comment">//            0,1,1,0,0,0,0,0,0,0</span>
+<span class="hljs-comment">//            0,0,0,1,0,1,0,0,0,0</span>
+<span class="hljs-comment">//            0,0,1,0,0,1,0,0,0,0</span>
+<span class="hljs-comment">//            0,1,0,0,0,0,0,0,0,0</span>
+}
+</code></pre>
 
                                 
                                 </section>
@@ -1879,7 +1957,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"200. Number of Islands","level":"1.8.1","depth":2,"next":{"title":"79. Word Search","level":"1.8.2","depth":2,"path":"alg/79_Word_Search.md","ref":"alg/79_Word_Search.md","articles":[]},"previous":{"title":"DFS & BFS","level":"1.8","depth":1,"ref":"","articles":[{"title":"200. Number of Islands","level":"1.8.1","depth":2,"path":"alg/200_Number_of_Islands.md","ref":"alg/200_Number_of_Islands.md","articles":[]},{"title":"79. Word Search","level":"1.8.2","depth":2,"path":"alg/79_Word_Search.md","ref":"alg/79_Word_Search.md","articles":[]},{"title":"36. Valid Sudoku","level":"1.8.3","depth":2,"path":"alg/36_Valid_Sudoku.md","ref":"alg/36_Valid_Sudoku.md","articles":[]},{"title":"37. Sudoku Solver","level":"1.8.4","depth":2,"path":"alg/37_Sudoku_Solver.md","ref":"alg/37_Sudoku_Solver.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"alg/200_Number_of_Islands.md","mtime":"2019-02-13T20:29:05.588Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-03-05T22:48:32.134Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"200. Number of Islands","level":"1.8.1","depth":2,"next":{"title":"79. Word Search","level":"1.8.2","depth":2,"path":"alg/79_Word_Search.md","ref":"alg/79_Word_Search.md","articles":[]},"previous":{"title":"DFS & BFS","level":"1.8","depth":1,"ref":"","articles":[{"title":"200. Number of Islands","level":"1.8.1","depth":2,"path":"alg/200_Number_of_Islands.md","ref":"alg/200_Number_of_Islands.md","articles":[]},{"title":"79. Word Search","level":"1.8.2","depth":2,"path":"alg/79_Word_Search.md","ref":"alg/79_Word_Search.md","articles":[]},{"title":"36. Valid Sudoku","level":"1.8.3","depth":2,"path":"alg/36_Valid_Sudoku.md","ref":"alg/36_Valid_Sudoku.md","articles":[]},{"title":"37. Sudoku Solver","level":"1.8.4","depth":2,"path":"alg/37_Sudoku_Solver.md","ref":"alg/37_Sudoku_Solver.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"alg/200_Number_of_Islands.md","mtime":"2019-03-14T21:38:43.627Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-03-14T22:46:30.087Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
