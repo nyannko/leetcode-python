@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Stack · GitBook</title>
+        <title>笔试 · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,8 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="alg/155_Min_Stack.html" />
     
-    
-    <link rel="prev" href="alg/189_Rotate_Array.html" />
+    <link rel="prev" href="alg/705_Design_HashSet.html" />
     
 
     </head>
@@ -1426,7 +1424,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.7" data-path="4_stack.html">
+        <li class="chapter " data-level="1.7" data-path="4_stack.html">
             
                 <a href="4_stack.html">
             
@@ -1775,7 +1773,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.11" data-path="test.html">
+        <li class="chapter active" data-level="1.11" data-path="test.html">
             
                 <a href="test.html">
             
@@ -1818,7 +1816,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >Stack</a>
+        <a href="." >笔试</a>
     </h1>
 </div>
 
@@ -1833,22 +1831,60 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h3 id="stack">Stack</h3>
-<p>&#x96BE;&#x70B9;&#xFF1A;&#x5165;&#x6808;&#x51FA;&#x6808;&#x6761;&#x4EF6;&#x7684;&#x5224;&#x65AD;&#x3002;</p>
-<p>&#x7ED9;&#x51FA;&#x6808;&#x7684;&#x538B;&#x5165;&#x5E8F;&#x5217;<code>12345</code>&#xFF0C;&#x5224;&#x65AD;&#x5F39;&#x51FA;&#x5E8F;&#x5217;<code>45231</code>&#x662F;&#x5426;&#x6B63;&#x786E;: &#x4F7F;&#x7528;&#x8F85;&#x52A9;&#x6808;stack&#x538B;&#x5165;pushA&#x5E8F;&#x5217;&#xFF0C;stack&#x6808;&#x9876;&#x5143;&#x7D20;&#x548C;popA[popIndex]&#x8FDB;&#x884C;&#x6BD4;&#x8F83;&#x3002;&#x6700;&#x540E;&#x68C0;&#x67E5;stack&#x662F;&#x5426;&#x4E3A;&#x7A7A;&#x3002;</p>
-<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>{
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">IsPopOrder</span><span class="hljs-params">(<span class="hljs-keyword">int</span> [] pushA,<span class="hljs-keyword">int</span> [] popA)</span> </span>{
-        <span class="hljs-keyword">if</span> (pushA.length == <span class="hljs-number">0</span> || popA.length == <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
-        LinkedList&lt;Integer&gt; stack = <span class="hljs-keyword">new</span> LinkedList&lt;&gt;();
-        <span class="hljs-keyword">int</span> popIndex = <span class="hljs-number">0</span>;
-        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; popA.length; i++) {
-            stack.push(pushA[i]);
-            <span class="hljs-keyword">while</span> (!stack.isEmpty() &amp;&amp; popA[popIndex] == stack.peek()) {
-                stack.pop();
-                popIndex++;
+                                <p>&#x4E8C;&#x5206;&#x6CD5;</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tKfTcgy1g18u4zct55j30ro0uktc3.jpg" width="900"></p>
+<p>&#x7528;&#x4E00;&#x7EC4;&#x7EF3;&#x5B50;&#x7684;&#x957F;&#x5EA6;&#x5206;&#x522B;&#x9664;&#x4EE5;&#x6700;&#x957F;&#x7EF3;&#x5B50;&#x7684;&#x4E00;&#x534A;&#xFF0C;&#x5982;&#x679C;&#x5F97;&#x5230;&#x7684;&#x7EF3;&#x5B50;&#x603B;&#x548C;&#x5C0F;&#x4E8E;&#x76EE;&#x6807;&#xFF0C;&#x90A3;&#x4E48;&#x5C31;&#x51CF;&#x5C0F;&#x6BCF;&#x4E2A;&#x5355;&#x4F4D;&#x7684;&#x957F;&#x5EA6;<code>right = mid</code>&#xFF0C;&#x53CD;&#x4E4B;&#xFF0C;&#x589E;&#x52A0;&#x6BCF;&#x4E2A;&#x5355;&#x4F4D;&#x7684;&#x957F;&#x5EA6;<code>left = mid</code>&#xFF0C;&#x5F53;left&#x548C;right&#x7684;&#x5DEE;&#x503C;&#x5728;&#x63A5;&#x8FD1;0&#x7684;&#x67D0;&#x4E2A;&#x8303;&#x56F4;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x505C;&#x6B62;&#x5FAA;&#x73AF;&#x3002;</p>
+<pre><code class="lang-java"><span class="hljs-keyword">import</span> java.util.Scanner;
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Main</span> </span>{
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>{
+        Scanner in = <span class="hljs-keyword">new</span> Scanner(System.in);
+        <span class="hljs-keyword">int</span> n = in.nextInt();
+        <span class="hljs-keyword">int</span> target = in.nextInt();
+        <span class="hljs-keyword">int</span>[] strings = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[n];
+        <span class="hljs-keyword">int</span> max = <span class="hljs-number">0</span>;
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++) {
+            strings[i] = in.nextInt();
+            <span class="hljs-keyword">if</span> (strings[i] &gt; max) max = strings[i];
+        }
+        <span class="hljs-keyword">double</span> res = binarySearch(strings, <span class="hljs-number">0.0</span>, max, target);
+        System.out.println(res);
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">double</span> <span class="hljs-title">binarySearch</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] strings, <span class="hljs-keyword">double</span> left, <span class="hljs-keyword">double</span> right, <span class="hljs-keyword">int</span> target)</span> </span>{
+        <span class="hljs-keyword">while</span> (Math.abs(left - right) &gt; <span class="hljs-number">1e-6</span>) {
+            <span class="hljs-keyword">double</span> mid = (left + right) / <span class="hljs-number">2</span>;
+            <span class="hljs-keyword">int</span> count = <span class="hljs-number">0</span>;
+            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> len : strings) {
+                count += (<span class="hljs-keyword">int</span>) (len / mid);
+            }
+            <span class="hljs-keyword">if</span> (count &lt; target) {
+                right = mid;
+            } <span class="hljs-keyword">else</span> {
+                left = mid;
             }
         }
-        <span class="hljs-keyword">return</span> stack.isEmpty();
+        <span class="hljs-keyword">return</span> left;
+    }
+}
+</code></pre>
+<p><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1g18va1n93sj30rw0pw775.jpg" alt=""></p>
+<pre><code class="lang-java"><span class="hljs-keyword">import</span> java.util.Scanner;
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Changes</span> </span>{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>{
+        Scanner in = <span class="hljs-keyword">new</span> Scanner(System.in);
+        <span class="hljs-keyword">int</span> cost = in.nextInt();
+        in.close();
+        <span class="hljs-keyword">int</span> remaining = <span class="hljs-number">1024</span> - cost;
+        <span class="hljs-keyword">int</span> res = <span class="hljs-number">0</span>;
+        <span class="hljs-keyword">int</span>[] changes = {<span class="hljs-number">64</span>, <span class="hljs-number">16</span>, <span class="hljs-number">4</span>, <span class="hljs-number">1</span>};
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; changes.length; i++) {
+            res += remaining / changes[i];
+            remaining = remaining % changes[i];
+        }
+        System.out.println(res);
     }
 }
 </code></pre>
@@ -1879,14 +1915,10 @@
 
             
                 
-                <a href="alg/189_Rotate_Array.html" class="navigation navigation-prev " aria-label="Previous page: 189. Rotate Array">
+                <a href="alg/705_Design_HashSet.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: 705. Design HashSet">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
-                
-                <a href="alg/155_Min_Stack.html" class="navigation navigation-next " aria-label="Next page: 155. Min Stack">
-                    <i class="fa fa-angle-right"></i>
-                </a>
                 
             
         
@@ -1895,7 +1927,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Stack","level":"1.7","depth":1,"next":{"title":"155. Min Stack","level":"1.7.1","depth":2,"path":"alg/155_Min_Stack.md","ref":"alg/155_Min_Stack.md","articles":[]},"previous":{"title":"189. Rotate Array","level":"1.6.16","depth":2,"path":"alg/189_Rotate_Array.md","ref":"alg/189_Rotate_Array.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"4_stack.md","mtime":"2019-02-13T20:06:09.124Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-03-19T22:53:54.539Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"笔试","level":"1.11","depth":1,"previous":{"title":"705. Design HashSet","level":"1.10.2","depth":2,"path":"alg/705_Design_HashSet.md","ref":"alg/705_Design_HashSet.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"test.md","mtime":"2019-03-19T22:40:15.414Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-03-19T22:53:54.539Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
