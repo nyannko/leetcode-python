@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>236. Lowest Common Ancestor of a Binary Tree · GitBook</title>
+        <title>3. Longest Substring Without Repeating Characters · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="230_Kth_Smallest_Element_in_a_BST.html" />
+    <link rel="next" href="../test.html" />
     
     
-    <link rel="prev" href="235_Lowest_Common_Ancestor_of_a_Binary_Search_Tree.html" />
+    <link rel="prev" href="705_Design_HashSet.html" />
     
 
     </head>
@@ -1168,7 +1168,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.5.33" data-path="236_Lowest_Common_Ancestor_of_a_Binary_Tree.html">
+        <li class="chapter " data-level="1.5.33" data-path="236_Lowest_Common_Ancestor_of_a_Binary_Tree.html">
             
                 <a href="236_Lowest_Common_Ancestor_of_a_Binary_Tree.html">
             
@@ -1783,7 +1783,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.10.3" data-path="3_Longest_Substring_Without_Repeating_Characters.html">
+        <li class="chapter active" data-level="1.10.3" data-path="3_Longest_Substring_Without_Repeating_Characters.html">
             
                 <a href="3_Longest_Substring_Without_Repeating_Characters.html">
             
@@ -1844,7 +1844,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >236. Lowest Common Ancestor of a Binary Tree</a>
+        <a href=".." >3. Longest Substring Without Repeating Characters</a>
     </h1>
 </div>
 
@@ -1859,19 +1859,21 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h3 id="236-lowest-common-ancestor-of-a-binary-tree">236. Lowest Common Ancestor of a Binary Tree</h3>
-<p>&#x5206;&#x60C5;&#x51B5;&#x8BA8;&#x8BBA;&#xFF0C;&#x7B2C;&#x4E00;&#x53E5;&#x662F;&#x5BF9;&#x4E8E;&#x7A7A;&#x8282;&#x70B9;&#x7684;&#x6761;&#x4EF6;&#xFF08;&#x9012;&#x5F52;&#x51FA;&#x53E3;&#x6761;&#x4EF6;&#xFF09;&#x3002;&#x540E;&#x9762;&#x662F;&#x4E2D;&#x95F4;&#x8282;&#x70B9;&#x7684;&#x60C5;&#x51B5;&#xFF0C;root&#x7684;&#x5DE6;&#x8FB9;&#x548C;&#x53F3;&#x8FB9;&#x63A5;&#x4F4F;&#x8FD4;&#x56DE;&#x503C;&#x4E4B;&#x540E;&#xFF0C;&#x5224;&#x65AD;&#x662F;&#x5426;&#x4E3A;&#x7A7A;&#xFF0C;&#x82E5;&#x4E24;&#x8FB9;&#x90FD;&#x4E0D;&#x4E3A;&#x7A7A;&#xFF0C;&#x90A3;&#x4E48;&#x8FD4;&#x56DE;root&#x3002;&#x5982;&#x679C;&#x4EFB;&#x610F;&#x4E00;&#x8FB9;&#x6709;&#x503C;&#xFF0C;&#x5C31;&#x8FD4;&#x56DE;&#x6709;&#x503C;&#x7684;&#x4E00;&#x8FB9;&#x3002;</p>
-<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> TreeNode <span class="hljs-title">lowestCommonAncestor</span><span class="hljs-params">(TreeNode root, TreeNode p, TreeNode q)</span> </span>{
-    <span class="hljs-keyword">if</span> (root == <span class="hljs-keyword">null</span> || root == p || root == q) <span class="hljs-keyword">return</span> root;
-    root.left = lowestCommonAncestor(root.left, p, q);
-    root.right = lowestCommonAncestor(root.right, p, q);
-    <span class="hljs-keyword">if</span> (root.left != <span class="hljs-keyword">null</span> &amp;&amp; root.right != <span class="hljs-keyword">null</span>) {
-        <span class="hljs-keyword">return</span> root;
+                                <h3 id="3-longest-substring-without-repeating-characters">3. Longest Substring Without Repeating Characters</h3>
+<p>&#x4E00;&#x6B21;&#x904D;&#x5386;&#xFF0C;&#x4F7F;&#x7528;&#x4E00;&#x4E2A;<code>hashtable&lt;character, index&gt;</code>&#x8BB0;&#x5F55;&#x6BCF;&#x4E2A;&#x5B57;&#x6BCD;&#x6700;&#x8FD1;&#x51FA;&#x73B0;&#x7684;index&#x3002;</p>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">lengthOfLongestSubstring</span><span class="hljs-params">(String s)</span> </span>{
+    <span class="hljs-keyword">int</span> length = s.length();
+    <span class="hljs-keyword">int</span> res = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">int</span>[] index = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[<span class="hljs-number">256</span>];
+    <span class="hljs-keyword">int</span> start = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> end = <span class="hljs-number">0</span>; end &lt; length; end++) {
+        start = Math.max(start, index[s.charAt(end)]);
+        res = Math.max(res, end - start + <span class="hljs-number">1</span>);
+        index[s.charAt(end)] = end + <span class="hljs-number">1</span>;
     }
-    <span class="hljs-keyword">return</span> (root.left == <span class="hljs-keyword">null</span>) ? root.right : root.left;
+    <span class="hljs-keyword">return</span> res;
 }
 </code></pre>
-<p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fzqi8kxzyqj308y0940u5.jpg" width="300"></p>
 
                                 
                                 </section>
@@ -1899,12 +1901,12 @@
 
             
                 
-                <a href="235_Lowest_Common_Ancestor_of_a_Binary_Search_Tree.html" class="navigation navigation-prev " aria-label="Previous page: 235. Lowest Common Ancestor of a Binary Search Tree">
+                <a href="705_Design_HashSet.html" class="navigation navigation-prev " aria-label="Previous page: 705. Design HashSet">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="230_Kth_Smallest_Element_in_a_BST.html" class="navigation navigation-next " aria-label="Next page: 230. Kth Smallest Element in a BST">
+                <a href="../test.html" class="navigation navigation-next " aria-label="Next page: 笔试">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1915,7 +1917,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"236. Lowest Common Ancestor of a Binary Tree","level":"1.5.33","depth":2,"next":{"title":"230. Kth Smallest Element in a BST","level":"1.5.34","depth":2,"path":"alg/230_Kth_Smallest_Element_in_a_BST.md","ref":"alg/230_Kth_Smallest_Element_in_a_BST.md","articles":[]},"previous":{"title":"235. Lowest Common Ancestor of a Binary Search Tree","level":"1.5.32","depth":2,"path":"alg/235_Lowest_Common_Ancestor_of_a_Binary_Search_Tree.md","ref":"alg/235_Lowest_Common_Ancestor_of_a_Binary_Search_Tree.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"alg/236_Lowest_Common_Ancestor_of_a_Binary_Tree.md","mtime":"2019-01-31T22:08:06.621Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-03-22T22:56:55.357Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"3. Longest Substring Without Repeating Characters","level":"1.10.3","depth":2,"next":{"title":"笔试","level":"1.11","depth":1,"path":"test.md","ref":"test.md","articles":[]},"previous":{"title":"705. Design HashSet","level":"1.10.2","depth":2,"path":"alg/705_Design_HashSet.md","ref":"alg/705_Design_HashSet.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"alg/3_Longest_Substring_Without_Repeating_Characters.md","mtime":"2019-03-22T22:56:24.422Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-03-22T22:56:55.357Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

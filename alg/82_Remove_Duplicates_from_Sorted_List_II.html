@@ -1090,7 +1090,20 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5.27" data-path="700_Search_in_a_Binary_Search_Tree.html">
+        <li class="chapter " data-level="1.5.27" data-path="124_Binary_Tree_Maximum_Path_Sum.html">
+            
+                <a href="124_Binary_Tree_Maximum_Path_Sum.html">
+            
+                    
+                    124. Binary Tree Maximum Path Sum
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.28" data-path="700_Search_in_a_Binary_Search_Tree.html">
             
                 <a href="700_Search_in_a_Binary_Search_Tree.html">
             
@@ -1103,7 +1116,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5.28" data-path="701_Insert_into_a_Binary_Search_Tree.html">
+        <li class="chapter " data-level="1.5.29" data-path="701_Insert_into_a_Binary_Search_Tree.html">
             
                 <a href="701_Insert_into_a_Binary_Search_Tree.html">
             
@@ -1116,7 +1129,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5.29" data-path="450_Delete_Node_in_a_BST.html">
+        <li class="chapter " data-level="1.5.30" data-path="450_Delete_Node_in_a_BST.html">
             
                 <a href="450_Delete_Node_in_a_BST.html">
             
@@ -1129,7 +1142,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5.30" data-path="98_Validate_Binary_Search_Tree.html">
+        <li class="chapter " data-level="1.5.31" data-path="98_Validate_Binary_Search_Tree.html">
             
                 <a href="98_Validate_Binary_Search_Tree.html">
             
@@ -1142,7 +1155,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5.31" data-path="235_Lowest_Common_Ancestor_of_a_Binary_Search_Tree.html">
+        <li class="chapter " data-level="1.5.32" data-path="235_Lowest_Common_Ancestor_of_a_Binary_Search_Tree.html">
             
                 <a href="235_Lowest_Common_Ancestor_of_a_Binary_Search_Tree.html">
             
@@ -1155,7 +1168,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5.32" data-path="236_Lowest_Common_Ancestor_of_a_Binary_Tree.html">
+        <li class="chapter " data-level="1.5.33" data-path="236_Lowest_Common_Ancestor_of_a_Binary_Tree.html">
             
                 <a href="236_Lowest_Common_Ancestor_of_a_Binary_Tree.html">
             
@@ -1168,7 +1181,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5.33" data-path="230_Kth_Smallest_Element_in_a_BST.html">
+        <li class="chapter " data-level="1.5.34" data-path="230_Kth_Smallest_Element_in_a_BST.html">
             
                 <a href="230_Kth_Smallest_Element_in_a_BST.html">
             
@@ -1181,7 +1194,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5.34" data-path="199_Binary_Tree_Right_Side_View.html">
+        <li class="chapter " data-level="1.5.35" data-path="199_Binary_Tree_Right_Side_View.html">
             
                 <a href="199_Binary_Tree_Right_Side_View.html">
             
@@ -1770,6 +1783,19 @@
             
         </li>
     
+        <li class="chapter " data-level="1.10.3" data-path="3_Longest_Substring_Without_Repeating_Characters.html">
+            
+                <a href="3_Longest_Substring_Without_Repeating_Characters.html">
+            
+                    
+                    3. Longest Substring Without Repeating Characters
+            
+                </a>
+            
+
+            
+        </li>
+    
 
             </ul>
             
@@ -1785,25 +1811,6 @@
                 </a>
             
 
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="1.11.1" data-path="124_Binary_Tree_Maximum_Path_Sum.html">
-            
-                <a href="124_Binary_Tree_Maximum_Path_Sum.html">
-            
-                    
-                    124. Binary Tree Maximum Path Sum
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-            </ul>
             
         </li>
     
@@ -1853,23 +1860,22 @@
                                 <section class="normal markdown-section">
                                 
                                 <h3 id="82-remove-duplicates-from-sorted-list-ii">82. Remove Duplicates from Sorted List II</h3>
-<p>dummy node&#x6CD5;&#x8DF3;&#x8FC7;&#x91CD;&#x590D;node</p>
+<p>&#x53BB;&#x6389;&#x6709;&#x5E8F;&#x94FE;&#x8868;&#x4E2D;&#x7684;&#x5168;&#x90E8;&#x91CD;&#x590D;&#x5143;&#x7D20;&#xFF0C;&#x5982;<code>[1,1,1,2,3] -&gt; [2,3]</code>&#x3002;&#x8BBE;&#x7F6E;dummy node&#xFF0C;&#x53CC;&#x6307;&#x9488;&#x8DF3;&#x8FC7;&#x91CD;&#x590D;node</p>
 <pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> ListNode <span class="hljs-title">deleteDuplicates</span><span class="hljs-params">(ListNode head)</span> </span>{
     ListNode dummy = <span class="hljs-keyword">new</span> ListNode(<span class="hljs-number">0</span>);
     dummy.next = head;
     ListNode pre = dummy;
-    ListNode cur = head;
 
-    <span class="hljs-keyword">while</span> (cur != <span class="hljs-keyword">null</span>) {
-        <span class="hljs-keyword">while</span> (cur.next != <span class="hljs-keyword">null</span> &amp;&amp; cur.next.val == cur.val) {
-            cur = cur.next;
+    <span class="hljs-keyword">while</span> (head != <span class="hljs-keyword">null</span>) {
+        <span class="hljs-keyword">while</span> (head.next != <span class="hljs-keyword">null</span> &amp;&amp; head.val == head.next.val) {
+            head = head.next;
         }
-        <span class="hljs-keyword">if</span>(pre.next == cur) {
+        <span class="hljs-keyword">if</span> (pre.next != head) {   <span class="hljs-comment">// there are some duplicated values in between</span>
+            pre.next = head.next;
+        } <span class="hljs-keyword">else</span> {                  <span class="hljs-comment">// no duplicate values</span>
             pre = pre.next;
-        } <span class="hljs-keyword">else</span> {
-            pre.next = cur.next;
         }
-        cur = cur.next;
+        head = head.next;
     }
     <span class="hljs-keyword">return</span> dummy.next;
 }
@@ -1917,7 +1923,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"82. Remove Duplicates from Sorted List II","level":"1.4.10","depth":2,"next":{"title":"86. Partition List","level":"1.4.11","depth":2,"path":"alg/86_Partition_List.md","ref":"alg/86_Partition_List.md","articles":[]},"previous":{"title":"83. Remove Duplicates from Sorted List","level":"1.4.9","depth":2,"path":"alg/83_Remove_Duplicates_from_Sorted_List.md","ref":"alg/83_Remove_Duplicates_from_Sorted_List.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"alg/82_Remove_Duplicates_from_Sorted_List_II.md","mtime":"2019-01-22T19:45:00.296Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-03-20T22:52:32.103Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"82. Remove Duplicates from Sorted List II","level":"1.4.10","depth":2,"next":{"title":"86. Partition List","level":"1.4.11","depth":2,"path":"alg/86_Partition_List.md","ref":"alg/86_Partition_List.md","articles":[]},"previous":{"title":"83. Remove Duplicates from Sorted List","level":"1.4.9","depth":2,"path":"alg/83_Remove_Duplicates_from_Sorted_List.md","ref":"alg/83_Remove_Duplicates_from_Sorted_List.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"alg/82_Remove_Duplicates_from_Sorted_List_II.md","mtime":"2019-03-22T22:34:42.885Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-03-22T22:56:55.357Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
