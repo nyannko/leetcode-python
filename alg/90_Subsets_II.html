@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>18. 4Sum · GitBook</title>
+        <title>90. Subsets II · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="344_Reverse_String.html" />
+    <link rel="next" href="40_Combination_Sum_II.html" />
     
     
-    <link rel="prev" href="15_3Sum.html" />
+    <link rel="prev" href="47_Permutations_II.html" />
     
 
     </head>
@@ -1317,7 +1317,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.6.7" data-path="18_4Sum.html">
+        <li class="chapter " data-level="1.6.7" data-path="18_4Sum.html">
             
                 <a href="18_4Sum.html">
             
@@ -1641,7 +1641,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.8.6" data-path="90_Subsets_II.html">
+        <li class="chapter active" data-level="1.8.6" data-path="90_Subsets_II.html">
             
                 <a href="90_Subsets_II.html">
             
@@ -1961,7 +1961,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >18. 4Sum</a>
+        <a href=".." >90. Subsets II</a>
     </h1>
 </div>
 
@@ -1976,41 +1976,37 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h3 id="18-4sum">18. 4Sum</h3>
-<p>3Sum&#x5077;&#x61D2;&#x6CD5;.. &#x5916;&#x90E8;&#x589E;&#x52A0;&#x5FAA;&#x73AF;&#xFF0C;&#x5224;&#x65AD;&#x91CD;&#x590D;&#xFF0C;&#x5185;&#x90E8;&#x4FEE;&#x6539;&#x8D77;&#x59CB;&#x503C;&#x3002;</p>
-<pre><code class="lang-java"><span class="hljs-keyword">public</span> List&lt;List&lt;Integer&gt;&gt; FourSum(<span class="hljs-keyword">int</span>[] nums, <span class="hljs-keyword">int</span> target) {
-        List&lt;List&lt;Integer&gt;&gt; res = <span class="hljs-keyword">new</span> ArrayList&lt;&gt;();
-        <span class="hljs-comment">// sort the list</span>
-        Arrays.sort(nums);
-        <span class="hljs-comment">// line 11, 12, 13, 15, 17 are different with 3sum.</span>
-        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>; j &lt; nums.length - <span class="hljs-number">3</span>; j++) {
-            <span class="hljs-keyword">if</span> (j &gt; <span class="hljs-number">0</span> &amp;&amp; nums[j] == nums[j - <span class="hljs-number">1</span>]) <span class="hljs-keyword">continue</span>;
-            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = j + <span class="hljs-number">1</span>; i &lt; nums.length - <span class="hljs-number">2</span>; i++) {
-                <span class="hljs-comment">// skip the same i value</span>
-                <span class="hljs-keyword">if</span> (i &gt; j + <span class="hljs-number">1</span> &amp;&amp; nums[i] == nums[i - <span class="hljs-number">1</span>]) <span class="hljs-keyword">continue</span>;
-                <span class="hljs-comment">// start binary search</span>
-                <span class="hljs-keyword">int</span> tar = target - nums[i] - nums[j];
-                <span class="hljs-keyword">int</span> l = i + <span class="hljs-number">1</span>,
-                        r = nums.length - <span class="hljs-number">1</span>;
-                <span class="hljs-keyword">while</span> (l &lt; r) {
-                    <span class="hljs-keyword">if</span> (nums[l] + nums[r] == tar) {
-                        res.add(Arrays.asList(nums[j], nums[i], nums[l], nums[r]));
-                        l++;
-                        r--;
-                        <span class="hljs-keyword">while</span> (l &lt; r &amp;&amp; nums[l] == nums[l - <span class="hljs-number">1</span>]) l++; <span class="hljs-comment">// skip the same l value</span>
-                        <span class="hljs-keyword">while</span> (l &lt; r &amp;&amp; nums[r] == nums[r + <span class="hljs-number">1</span>]) r--; <span class="hljs-comment">// skip the same r value</span>
-                    } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (nums[l] + nums[r] &lt; tar) {
-                        l++;
-                    } <span class="hljs-keyword">else</span> {
-                        r--;
-                    }
-                }
-            }
-        }
-        <span class="hljs-keyword">return</span> res;
-    }
+                                <h3 id="90-subsets-ii">90. Subsets II</h3>
+<p>&#x53BB;&#x91CD;&#x5224;&#x65AD;&#xFF0C;<code>sort</code>&#x548C;<code>if (i &gt; pointer &amp;&amp; nums[i] == nums[i - 1]) continue;</code>&#x5373;&#x53EF;</p>
+<pre><code class="lang-java">Input: [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">2</span>]
+Output:
+[
+  [<span class="hljs-number">2</span>],
+  [<span class="hljs-number">1</span>],
+  [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">2</span>],
+  [<span class="hljs-number">2</span>,<span class="hljs-number">2</span>],
+  [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>],
+  []
+]
 </code></pre>
-<p>&#x65F6;&#x95F4;&#x590D;&#x6742;&#x5EA6;<code>O(n^3)</code>(for&#x91CC;&#x9762;&#x5957;for&#x518D;while)&#xFF0C;&#x7A7A;&#x95F4;&#x590D;&#x6742;&#x5EA6;<code>O(1)</code></p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> List&lt;List&lt;Integer&gt;&gt; subsetsWithDup(<span class="hljs-keyword">int</span>[] nums) {
+    List&lt;List&lt;Integer&gt;&gt; res = <span class="hljs-keyword">new</span> ArrayList&lt;&gt;();
+    List&lt;Integer&gt; path = <span class="hljs-keyword">new</span> ArrayList&lt;&gt;();
+    Arrays.sort(nums);
+    dfs(nums, path, res, <span class="hljs-number">0</span>);
+    <span class="hljs-keyword">return</span> res;
+}
+
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">dfs</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] nums, List&lt;Integer&gt; path, List&lt;List&lt;Integer&gt;&gt; res, <span class="hljs-keyword">int</span> pointer)</span> </span>{
+    res.add(<span class="hljs-keyword">new</span> ArrayList&lt;&gt;(path));
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = pointer; i &lt; nums.length; i++) {
+        <span class="hljs-keyword">if</span> (i &gt; pointer &amp;&amp; nums[i] == nums[i - <span class="hljs-number">1</span>]) <span class="hljs-keyword">continue</span>;
+        path.add(nums[i]);
+        dfs(nums, path, res, i + <span class="hljs-number">1</span>);
+        path.remove(path.size() - <span class="hljs-number">1</span>);
+    }
+}
+</code></pre>
 
                                 
                                 </section>
@@ -2038,12 +2034,12 @@
 
             
                 
-                <a href="15_3Sum.html" class="navigation navigation-prev " aria-label="Previous page: 15. 3Sum">
+                <a href="47_Permutations_II.html" class="navigation navigation-prev " aria-label="Previous page: 47. Permutations II">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="344_Reverse_String.html" class="navigation navigation-next " aria-label="Next page: 344. Reverse String">
+                <a href="40_Combination_Sum_II.html" class="navigation navigation-next " aria-label="Next page: 40. Combination Sum II">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -2054,7 +2050,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"18. 4Sum","level":"1.6.7","depth":2,"next":{"title":"344. Reverse String","level":"1.6.8","depth":2,"path":"alg/344_Reverse_String.md","ref":"alg/344_Reverse_String.md","articles":[]},"previous":{"title":"15. 3Sum","level":"1.6.6","depth":2,"path":"alg/15_3Sum.md","ref":"alg/15_3Sum.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"alg/18_4Sum.md","mtime":"2019-02-09T19:47:00.441Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-04-07T21:55:06.540Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"90. Subsets II","level":"1.8.6","depth":2,"next":{"title":"40. Combination Sum II","level":"1.8.7","depth":2,"path":"alg/40_Combination_Sum_II.md","ref":"alg/40_Combination_Sum_II.md","articles":[]},"previous":{"title":"47. Permutations II","level":"1.8.5","depth":2,"path":"alg/47_Permutations_II.md","ref":"alg/47_Permutations_II.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"alg/90_Subsets_II.md","mtime":"2019-04-07T14:54:56.921Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-04-07T21:55:06.540Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

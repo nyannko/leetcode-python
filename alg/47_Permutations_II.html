@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="200_Number_of_Islands.html" />
+    <link rel="next" href="90_Subsets_II.html" />
     
     
-    <link rel="prev" href="46_Permutations.html" />
+    <link rel="prev" href="39_Combination_Sum.html" />
     
 
     </head>
@@ -1576,33 +1576,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.8.1" data-path="78_Subsets.html">
-            
-                <a href="78_Subsets.html">
-            
-                    
-                    78. Subsets
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.8.2" data-path="39_Combination_Sum.html">
-            
-                <a href="39_Combination_Sum.html">
-            
-                    
-                    39. Combination Sum
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.8.3" data-path="46_Permutations.html">
+        <li class="chapter " data-level="1.8.1" data-path="46_Permutations.html">
             
                 <a href="46_Permutations.html">
             
@@ -1615,7 +1589,46 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.8.4" data-path="47_Permutations_II.html">
+        <li class="chapter " data-level="1.8.2" data-path="78_Subsets.html">
+            
+                <a href="78_Subsets.html">
+            
+                    
+                    78. Subsets
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.3" data-path="77_Combinations.html">
+            
+                <a href="77_Combinations.html">
+            
+                    
+                    77. Combinations
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4" data-path="39_Combination_Sum.html">
+            
+                <a href="39_Combination_Sum.html">
+            
+                    
+                    39. Combination Sum
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.8.5" data-path="47_Permutations_II.html">
             
                 <a href="47_Permutations_II.html">
             
@@ -1628,7 +1641,33 @@
             
         </li>
     
-        <li class="chapter " data-level="1.8.5" data-path="200_Number_of_Islands.html">
+        <li class="chapter " data-level="1.8.6" data-path="90_Subsets_II.html">
+            
+                <a href="90_Subsets_II.html">
+            
+                    
+                    90. Subsets II
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.7" data-path="40_Combination_Sum_II.html">
+            
+                <a href="40_Combination_Sum_II.html">
+            
+                    
+                    40. Combination Sum II
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.8" data-path="200_Number_of_Islands.html">
             
                 <a href="200_Number_of_Islands.html">
             
@@ -1641,7 +1680,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.8.6" data-path="79_Word_Search.html">
+        <li class="chapter " data-level="1.8.9" data-path="79_Word_Search.html">
             
                 <a href="79_Word_Search.html">
             
@@ -1654,7 +1693,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.8.7" data-path="36_Valid_Sudoku.html">
+        <li class="chapter " data-level="1.8.10" data-path="36_Valid_Sudoku.html">
             
                 <a href="36_Valid_Sudoku.html">
             
@@ -1667,7 +1706,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.8.8" data-path="37_Sudoku_Solver.html">
+        <li class="chapter " data-level="1.8.11" data-path="37_Sudoku_Solver.html">
             
                 <a href="37_Sudoku_Solver.html">
             
@@ -1890,25 +1929,6 @@
             
 
             
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="1.11.1" data-path="77_Combinations.html">
-            
-                <a href="77_Combinations.html">
-            
-                    
-                    77. Combinations
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-            </ul>
-            
         </li>
     
 
@@ -1957,6 +1977,33 @@
                                 <section class="normal markdown-section">
                                 
                                 <h3 id="47-permutations-ii">47. Permutations II</h3>
+<p>&#x6709;&#x91CD;&#x590D;&#x6570;&#x5B57;&#x7684;&#x6392;&#x5217;&#xFF0C;&#x96BE;&#x70B9;&#x5728;&#x53BB;&#x91CD;&#x5224;&#x65AD;&#x3002;&#x9996;&#x5148;&#x9700;&#x8981;&#x5BF9;&#x6570;&#x7EC4;&#x8FDB;&#x884C;&#x6392;&#x5E8F;&#xFF0C;&#x7136;&#x540E;&#x8BBE;&#x7F6E;&#x4E00;&#x4E2A;&#x548C;&#x539F;&#x6570;&#x7EC4;&#x7B49;&#x957F;&#x7684;boolean&#x6570;&#x7EC4;&#xFF0C;&#x5224;&#x65AD;&#x4E24;&#x79CD;&#x60C5;&#x51B5;&#x4E0B;&#x662F;&#x5426;&#x9700;&#x8981;&#x8DF3;&#x8FC7;&#x91CD;&#x590D;&#x6570;&#x5B57;&#xFF0C;1.&#x672C;&#x6570;&#x5B57;&#x662F;&#x5426;&#x88AB;&#x7528;&#x8FC7; 2.&#x5982;&#x679C;&#x548C;&#x524D;&#x9762;&#x7684;&#x6570;&#x5B57;&#x76F8;&#x7B49;&#xFF0C;&#x4F46;&#x662F;&#x5B83;&#x6CA1;&#x6709;&#x88AB;&#x7528;&#x8FC7;&#xFF0C;&#x5C31;&#x76F4;&#x63A5;&#x8DF3;&#x8FC7;&#x5F53;&#x524D;&#x6570;&#x5B57;&#xFF0C;&#x56E0;&#x4E3A;&#x8FD9;&#x79CD;&#x53EF;&#x80FD;&#x6027;&#x5DF2;&#x7ECF;&#x88AB;&#x6DFB;&#x52A0;&#x8FC7;&#x3002;</p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> List&lt;List&lt;Integer&gt;&gt; permuteUnique(<span class="hljs-keyword">int</span>[] nums) {
+    List&lt;List&lt;Integer&gt;&gt; res = <span class="hljs-keyword">new</span> ArrayList&lt;&gt;();
+    List&lt;Integer&gt; path = <span class="hljs-keyword">new</span> ArrayList&lt;&gt;();
+    <span class="hljs-keyword">boolean</span>[] used = <span class="hljs-keyword">new</span> <span class="hljs-keyword">boolean</span>[nums.length];
+    Arrays.sort(nums);
+    dfs(nums, path, res, used);
+    <span class="hljs-keyword">return</span> res;
+}
+
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">dfs</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] nums, List&lt;Integer&gt; path, List&lt;List&lt;Integer&gt;&gt; res, <span class="hljs-keyword">boolean</span>[] used)</span> </span>{
+    <span class="hljs-keyword">if</span> (path.size() == nums.length) {
+        res.add(<span class="hljs-keyword">new</span> ArrayList&lt;&gt;(path));
+        <span class="hljs-keyword">return</span>;
+    }
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; nums.length; i++) {
+        <span class="hljs-keyword">if</span> (used[i]) <span class="hljs-keyword">continue</span>; <span class="hljs-comment">// if this num has used before, do not use it again</span>
+        <span class="hljs-keyword">if</span> (i &gt; <span class="hljs-number">0</span> &amp;&amp; nums[i] == nums[i - <span class="hljs-number">1</span>] &amp;&amp; !used[i - <span class="hljs-number">1</span>]) <span class="hljs-keyword">continue</span>;
+        <span class="hljs-comment">// if two nums are the same, and the previous one does not used, then do not use this num</span>
+        used[i] = <span class="hljs-keyword">true</span>;
+        path.add(nums[i]);
+        dfs(nums, path, res, used);
+        used[i] = <span class="hljs-keyword">false</span>;
+        path.remove(path.size() - <span class="hljs-number">1</span>);
+    }
+}
+</code></pre>
 
                                 
                                 </section>
@@ -1984,12 +2031,12 @@
 
             
                 
-                <a href="46_Permutations.html" class="navigation navigation-prev " aria-label="Previous page: 46. Permutations">
+                <a href="39_Combination_Sum.html" class="navigation navigation-prev " aria-label="Previous page: 39. Combination Sum">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="200_Number_of_Islands.html" class="navigation navigation-next " aria-label="Next page: 200. Number of Islands">
+                <a href="90_Subsets_II.html" class="navigation navigation-next " aria-label="Next page: 90. Subsets II">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -2000,7 +2047,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"47. Permutations II","level":"1.8.4","depth":2,"next":{"title":"200. Number of Islands","level":"1.8.5","depth":2,"path":"alg/200_Number_of_Islands.md","ref":"alg/200_Number_of_Islands.md","articles":[]},"previous":{"title":"46. Permutations","level":"1.8.3","depth":2,"path":"alg/46_Permutations.md","ref":"alg/46_Permutations.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"alg/47_Permutations_II.md","mtime":"2019-04-02T19:50:39.476Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-04-06T21:53:20.358Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"47. Permutations II","level":"1.8.5","depth":2,"next":{"title":"90. Subsets II","level":"1.8.6","depth":2,"path":"alg/90_Subsets_II.md","ref":"alg/90_Subsets_II.md","articles":[]},"previous":{"title":"39. Combination Sum","level":"1.8.4","depth":2,"path":"alg/39_Combination_Sum.md","ref":"alg/39_Combination_Sum.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"alg/47_Permutations_II.md","mtime":"2019-04-07T14:53:37.385Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-04-07T21:55:06.540Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
