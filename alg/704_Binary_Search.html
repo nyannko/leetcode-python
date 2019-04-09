@@ -441,6 +441,19 @@
             
         </li>
     
+        <li class="chapter " data-level="1.3.25" data-path="Heap_Sort.html">
+            
+                <a href="Heap_Sort.html">
+            
+                    
+                    🌝Heap Sort
+            
+                </a>
+            
+
+            
+        </li>
+    
 
             </ul>
             
@@ -1628,7 +1641,20 @@
             
         </li>
     
-        <li class="chapter " data-level="1.8.5" data-path="47_Permutations_II.html">
+        <li class="chapter " data-level="1.8.5" data-path="216_Combination_Sum_III.html">
+            
+                <a href="216_Combination_Sum_III.html">
+            
+                    
+                    216. Combination Sum III
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.6" data-path="47_Permutations_II.html">
             
                 <a href="47_Permutations_II.html">
             
@@ -1641,7 +1667,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.8.6" data-path="90_Subsets_II.html">
+        <li class="chapter " data-level="1.8.7" data-path="90_Subsets_II.html">
             
                 <a href="90_Subsets_II.html">
             
@@ -1654,7 +1680,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.8.7" data-path="40_Combination_Sum_II.html">
+        <li class="chapter " data-level="1.8.8" data-path="40_Combination_Sum_II.html">
             
                 <a href="40_Combination_Sum_II.html">
             
@@ -1667,7 +1693,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.8.8" data-path="200_Number_of_Islands.html">
+        <li class="chapter " data-level="1.8.9" data-path="200_Number_of_Islands.html">
             
                 <a href="200_Number_of_Islands.html">
             
@@ -1680,7 +1706,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.8.9" data-path="79_Word_Search.html">
+        <li class="chapter " data-level="1.8.10" data-path="79_Word_Search.html">
             
                 <a href="79_Word_Search.html">
             
@@ -1693,7 +1719,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.8.10" data-path="36_Valid_Sudoku.html">
+        <li class="chapter " data-level="1.8.11" data-path="36_Valid_Sudoku.html">
             
                 <a href="36_Valid_Sudoku.html">
             
@@ -1706,7 +1732,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.8.11" data-path="37_Sudoku_Solver.html">
+        <li class="chapter " data-level="1.8.12" data-path="37_Sudoku_Solver.html">
             
                 <a href="37_Sudoku_Solver.html">
             
@@ -2038,23 +2064,23 @@
     <span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>
 </code></pre>
 <p>&#x4E00;&#x6837;&#x7684;java&#x9012;&#x5F52;&#x5199;&#x6CD5;:</p>
-<pre><code class="lang-java">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">search</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] nums, <span class="hljs-keyword">int</span> target)</span> </span>{
-        <span class="hljs-keyword">int</span> l = <span class="hljs-number">0</span>, r = nums.length;
-        <span class="hljs-keyword">return</span> dfs(nums, l, r, target);
-    }
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">search</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] nums, <span class="hljs-keyword">int</span> target)</span> </span>{
+    <span class="hljs-keyword">int</span> l = <span class="hljs-number">0</span>, r = nums.length;
+    <span class="hljs-keyword">return</span> dfs(nums, l, r, target);
+}
 
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">dfs</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] nums, <span class="hljs-keyword">int</span> l, <span class="hljs-keyword">int</span> r, <span class="hljs-keyword">int</span> target)</span> </span>{
-        <span class="hljs-keyword">if</span> (l &gt;= r) {
-            <span class="hljs-keyword">return</span> -<span class="hljs-number">1</span>;
-        }
-        <span class="hljs-keyword">int</span> m = l + (r - l) / <span class="hljs-number">2</span>;
-        <span class="hljs-keyword">if</span> (nums[m] == target) <span class="hljs-keyword">return</span> m;
-        <span class="hljs-keyword">if</span> (nums[m] &gt; target) {
-            <span class="hljs-keyword">return</span> dfs(nums, l, m, target);
-        } <span class="hljs-keyword">else</span> {
-            <span class="hljs-keyword">return</span> dfs(nums, m + <span class="hljs-number">1</span>, r, target);
-        }
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">dfs</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] nums, <span class="hljs-keyword">int</span> l, <span class="hljs-keyword">int</span> r, <span class="hljs-keyword">int</span> target)</span> </span>{
+    <span class="hljs-keyword">if</span> (l &gt;= r) {
+        <span class="hljs-keyword">return</span> -<span class="hljs-number">1</span>;
     }
+    <span class="hljs-keyword">int</span> m = l + (r - l) / <span class="hljs-number">2</span>;
+    <span class="hljs-keyword">if</span> (nums[m] == target) <span class="hljs-keyword">return</span> m;
+    <span class="hljs-keyword">if</span> (nums[m] &gt; target) {
+        <span class="hljs-keyword">return</span> dfs(nums, l, m, target);
+    } <span class="hljs-keyword">else</span> {
+        <span class="hljs-keyword">return</span> dfs(nums, m + <span class="hljs-number">1</span>, r, target);
+    }
+}
 </code></pre>
 <p><strong>&#x6B63;&#x786E;&#x5199;&#x6CD5;&#x4E8C;&#xFF1A;&#x5C0F;&#x4E8E;&#x7B49;&#x4E8E;&#x52A0;&#x76F4;&#x63A5;&#x8FD4;&#x56DE;(len(num) - 1; l &lt;= r; mid - 1)</strong></p>
 <pre><code class="lang-python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">bs</span><span class="hljs-params">(nums, target)</span>:</span>
@@ -2067,23 +2093,23 @@
     <span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>
 </code></pre>
 <p>&#x4E00;&#x6837;&#x7684;java&#x9012;&#x5F52;&#x5199;&#x6CD5;:</p>
-<pre><code class="lang-java">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">search</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] nums, <span class="hljs-keyword">int</span> target)</span> </span>{
-        <span class="hljs-keyword">int</span> l = <span class="hljs-number">0</span>, r = nums.length - <span class="hljs-number">1</span>;
-        <span class="hljs-keyword">return</span> dfs(nums, l, r, target);
-    }
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">search</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] nums, <span class="hljs-keyword">int</span> target)</span> </span>{
+    <span class="hljs-keyword">int</span> l = <span class="hljs-number">0</span>, r = nums.length - <span class="hljs-number">1</span>;
+    <span class="hljs-keyword">return</span> dfs(nums, l, r, target);
+}
 
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">dfs</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] nums, <span class="hljs-keyword">int</span> l, <span class="hljs-keyword">int</span> r, <span class="hljs-keyword">int</span> target)</span> </span>{
-        <span class="hljs-keyword">if</span> (l &gt; r) {
-            <span class="hljs-keyword">return</span> -<span class="hljs-number">1</span>;
-        }
-        <span class="hljs-keyword">int</span> m = l + (r - l) / <span class="hljs-number">2</span>;
-        <span class="hljs-keyword">if</span> (nums[m] == target) <span class="hljs-keyword">return</span> m;
-        <span class="hljs-keyword">if</span> (nums[m] &gt; target) {
-            <span class="hljs-keyword">return</span> dfs(nums, l, m - <span class="hljs-number">1</span>, target);
-        } <span class="hljs-keyword">else</span> {
-            <span class="hljs-keyword">return</span> dfs(nums, m + <span class="hljs-number">1</span>, r, target);
-        }
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">dfs</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] nums, <span class="hljs-keyword">int</span> l, <span class="hljs-keyword">int</span> r, <span class="hljs-keyword">int</span> target)</span> </span>{
+    <span class="hljs-keyword">if</span> (l &gt; r) {
+        <span class="hljs-keyword">return</span> -<span class="hljs-number">1</span>;
     }
+    <span class="hljs-keyword">int</span> m = l + (r - l) / <span class="hljs-number">2</span>;
+    <span class="hljs-keyword">if</span> (nums[m] == target) <span class="hljs-keyword">return</span> m;
+    <span class="hljs-keyword">if</span> (nums[m] &gt; target) {
+        <span class="hljs-keyword">return</span> dfs(nums, l, m - <span class="hljs-number">1</span>, target);
+    } <span class="hljs-keyword">else</span> {
+        <span class="hljs-keyword">return</span> dfs(nums, m + <span class="hljs-number">1</span>, r, target);
+    }
+}
 </code></pre>
 <p>&#x6EA2;&#x51FA;&#xFF1A;</p>
 <p>&#x5DF2;&#x77E5; <code>x&gt;l&gt;=0</code>&#xFF0C; <code>x&gt;h&gt;=0</code>&#xFF0C; <code>h+l&gt;x</code>&#xFF0C;&#x7531;&#x5176;&#x4E2D;&#x7684;<code>h&lt;x</code>&#x548C;<code>-l&lt;0</code>&#x5F97;<code>h-l&lt;x</code>&#xFF0C;&#x6240;&#x4EE5;h-l&#x4E0D;&#x4F1A;&#x6EA2;&#x51FA;&#xFF0C;&#x53C8;&#x56E0;&#x4E3A;<code>l&lt;x</code>&#xFF0C;&#x6240;&#x4EE5;<code>l+(h-l)/2</code>&#x4E0D;&#x4F1A;&#x6EA2;&#x51FA;&#x3002;</p>
@@ -2159,7 +2185,7 @@ a=[<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"704. Binary Search","level":"1.3.16","depth":2,"next":{"title":"81. Search in Rotated Sorted Array II","level":"1.3.17","depth":2,"path":"alg/81_Search_in_Rotated_Sorted_Array_II.md","ref":"alg/81_Search_in_Rotated_Sorted_Array_II.md","articles":[]},"previous":{"title":"173. Binary Search Tree Iterator","level":"1.3.15","depth":2,"path":"alg/173_Binary_Search_Tree_Iterator.md","ref":"alg/173_Binary_Search_Tree_Iterator.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"alg/704_Binary_Search.md","mtime":"2019-03-22T20:07:22.335Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-04-07T21:55:06.540Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"704. Binary Search","level":"1.3.16","depth":2,"next":{"title":"81. Search in Rotated Sorted Array II","level":"1.3.17","depth":2,"path":"alg/81_Search_in_Rotated_Sorted_Array_II.md","ref":"alg/81_Search_in_Rotated_Sorted_Array_II.md","articles":[]},"previous":{"title":"173. Binary Search Tree Iterator","level":"1.3.15","depth":2,"path":"alg/173_Binary_Search_Tree_Iterator.md","ref":"alg/173_Binary_Search_Tree_Iterator.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"alg/704_Binary_Search.md","mtime":"2019-04-09T20:53:08.415Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-04-09T22:00:24.060Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
