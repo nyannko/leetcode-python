@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>78. Subsets · GitBook</title>
+        <title>Longest Common Sequence · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="77_Combinations.html" />
+    <link rel="next" href="215_Kth_Largest_Element_in_an_Array.html" />
     
     
-    <link rel="prev" href="46_Permutations.html" />
+    <link rel="prev" href="Merge_Sort.html" />
     
 
     </head>
@@ -181,7 +181,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4.4" data-path="LongestCommonSequence.html">
+        <li class="chapter active" data-level="1.4.4" data-path="LongestCommonSequence.html">
             
                 <a href="LongestCommonSequence.html">
             
@@ -1641,7 +1641,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.9.2" data-path="78_Subsets.html">
+        <li class="chapter " data-level="1.9.2" data-path="78_Subsets.html">
             
                 <a href="78_Subsets.html">
             
@@ -2026,7 +2026,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >78. Subsets</a>
+        <a href=".." >Longest Common Sequence</a>
     </h1>
 </div>
 
@@ -2041,21 +2041,75 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h3 id="78-subsets">78. Subsets</h3>
-<p>&#x8BBE;&#x5B9A;&#x5217;&#x8868;path&#x8BB0;&#x5F55;&#x8DEF;&#x8FC7;&#x7684;&#x503C;&#xFF0C;&#x4F7F;&#x7528;loop&#x548C;pointer&#x786E;&#x5B9A;subset&#x5F00;&#x59CB;&#x7684;&#x4F4D;&#x7F6E;&#xFF0C;dfs&#x5B8C;&#x4E4B;&#x540E;pop&#x6700;&#x540E;&#x4E00;&#x4E2A;&#x503C;&#x3002;</p>
-<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> List&lt;List&lt;Integer&gt;&gt; subsets(<span class="hljs-keyword">int</span>[] nums) {
-    List&lt;List&lt;Integer&gt;&gt; res = <span class="hljs-keyword">new</span> ArrayList&lt;&gt;();
-    List&lt;Integer&gt; path = <span class="hljs-keyword">new</span> ArrayList&lt;&gt;();
-    dfs(nums, path, res, <span class="hljs-number">0</span>);
-    <span class="hljs-keyword">return</span> res;
-}
+                                <h3 id="longest-common-sequence">Longest Common Sequence</h3>
+<p>&#x6700;&#x957F;&#x516C;&#x5171;&#x5B50;&#x5E8F;&#x5217;&#xFF08;&#x4E0D;&#x8FDE;&#x7EED;&#xFF09;&#x7684;&#x957F;&#x5EA6;</p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">LongestCommonSequence</span> </span>{
 
-<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">dfs</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] nums, List&lt;Integer&gt; path, List&lt;List&lt;Integer&gt;&gt; res, <span class="hljs-keyword">int</span> pointer)</span> </span>{
-    res.add(<span class="hljs-keyword">new</span> ArrayList&lt;&gt;(path));
-    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = pointer; i &lt; nums.length; i++) {
-        path.add(nums[i]);
-        dfs(nums, path, res, i + <span class="hljs-number">1</span>);
-        path.remove(path.size() - <span class="hljs-number">1</span>);
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> <span class="hljs-title">lcs1</span><span class="hljs-params">(<span class="hljs-keyword">char</span>[] A, <span class="hljs-keyword">char</span>[] B, <span class="hljs-keyword">int</span> m, <span class="hljs-keyword">int</span> n)</span> </span>{
+        <span class="hljs-keyword">if</span> (m == <span class="hljs-number">0</span> || n == <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+        <span class="hljs-keyword">if</span> (A[m - <span class="hljs-number">1</span>] == B[n - <span class="hljs-number">1</span>]) {
+            <span class="hljs-keyword">return</span> <span class="hljs-number">1</span> + lcs1(A, B, m - <span class="hljs-number">1</span>, n - <span class="hljs-number">1</span>);
+        } <span class="hljs-keyword">else</span> {
+            <span class="hljs-keyword">return</span> Math.max(lcs1(A, B, m - <span class="hljs-number">1</span>, n), lcs1(A, B, m, n - <span class="hljs-number">1</span>));
+        }
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> <span class="hljs-title">lcs</span><span class="hljs-params">(String A, String B, <span class="hljs-keyword">int</span> i, <span class="hljs-keyword">int</span> j)</span> </span>{
+        <span class="hljs-keyword">if</span> (i == <span class="hljs-number">0</span> || j == <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+        <span class="hljs-keyword">if</span> (A.charAt(i - <span class="hljs-number">1</span>) == B.charAt(j - <span class="hljs-number">1</span>)) {
+            <span class="hljs-keyword">return</span> <span class="hljs-number">1</span> + lcs(A, B, i - <span class="hljs-number">1</span>, j - <span class="hljs-number">1</span>);
+        } <span class="hljs-keyword">else</span> {
+            <span class="hljs-keyword">return</span> Math.max(lcs(A, B, i - <span class="hljs-number">1</span>, j), lcs(A, B, i, j - <span class="hljs-number">1</span>));
+        }
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> <span class="hljs-title">lcstring</span><span class="hljs-params">(String A, String B)</span> </span>{
+        <span class="hljs-keyword">int</span> lenA = A.length();
+        <span class="hljs-keyword">int</span> lenB = B.length();
+        <span class="hljs-keyword">int</span>[][] L = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[lenA + <span class="hljs-number">1</span>][lenB + <span class="hljs-number">1</span>];
+        <span class="hljs-keyword">int</span> result = <span class="hljs-number">0</span>;
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt;= lenA; i++) {
+            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>; j &lt;= lenB; j++) {
+                <span class="hljs-keyword">if</span> (i == <span class="hljs-number">0</span> || j == <span class="hljs-number">0</span>) {
+                    L[i][j] = <span class="hljs-number">0</span>;
+                } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (A.charAt(i - <span class="hljs-number">1</span>) == B.charAt(j - <span class="hljs-number">1</span>)) {
+                    L[i][j] = <span class="hljs-number">1</span> + L[i - <span class="hljs-number">1</span>][j - <span class="hljs-number">1</span>];
+                    result = Math.max(result, L[i][j]);
+                } <span class="hljs-keyword">else</span> {
+                    L[i][j] = <span class="hljs-number">0</span>;
+                }
+            }
+        }
+        <span class="hljs-keyword">return</span> result;
+    }
+
+    <span class="hljs-comment">// O(mn)</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> <span class="hljs-title">lcsdp</span><span class="hljs-params">(String A, String B)</span> </span>{
+        <span class="hljs-keyword">int</span> lenA = A.length();
+        <span class="hljs-keyword">int</span> lenB = B.length();
+        <span class="hljs-keyword">int</span>[][] L = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[lenA + <span class="hljs-number">1</span>][lenB + <span class="hljs-number">1</span>];
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt;= lenA; i++) {
+            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>; j &lt;= lenB; j++) {
+                <span class="hljs-keyword">if</span> (i == <span class="hljs-number">0</span> || j == <span class="hljs-number">0</span>) L[i][j] = <span class="hljs-number">0</span>;
+                <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (A.charAt(i - <span class="hljs-number">1</span>) == B.charAt(j - <span class="hljs-number">1</span>)) L[i][j] = <span class="hljs-number">1</span> + L[i - <span class="hljs-number">1</span>][j - <span class="hljs-number">1</span>];
+                <span class="hljs-keyword">else</span> L[i][j] = Math.max(L[i - <span class="hljs-number">1</span>][j], L[i][j - <span class="hljs-number">1</span>]);
+            }
+        }
+        <span class="hljs-keyword">return</span> L[lenA][lenB];
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>{
+        String s1 = <span class="hljs-string">&quot;AGGTAB&quot;</span>;
+        String s2 = <span class="hljs-string">&quot;GXTXAYB&quot;</span>;
+
+        <span class="hljs-keyword">char</span>[] X = s1.toCharArray();
+        <span class="hljs-keyword">char</span>[] Y = s2.toCharArray();
+        System.out.println(lcs1(X, Y, X.length, Y.length)); 
+        System.out.println(lcs(<span class="hljs-string">&quot;AGGTAB&quot;</span>, <span class="hljs-string">&quot;GXTXAYB&quot;</span>, X.length, Y.length));
+
+        System.out.println(lcsdp(s1, s2));
+        System.out.println(lcstring(<span class="hljs-string">&quot;abcdxyz&quot;</span>, <span class="hljs-string">&quot;xyzabcd&quot;</span>));
+        <span class="hljs-comment">// lcs dp output: 4 4 4 4 </span>
     }
 }
 </code></pre>
@@ -2086,12 +2140,12 @@
 
             
                 
-                <a href="46_Permutations.html" class="navigation navigation-prev " aria-label="Previous page: 46. Permutations">
+                <a href="Merge_Sort.html" class="navigation navigation-prev " aria-label="Previous page: 🌝Merge Sort">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="77_Combinations.html" class="navigation navigation-next " aria-label="Next page: 77. Combinations">
+                <a href="215_Kth_Largest_Element_in_an_Array.html" class="navigation navigation-next " aria-label="Next page: 215. Kth Largest Element in an Array">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -2102,7 +2156,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"78. Subsets","level":"1.9.2","depth":2,"next":{"title":"77. Combinations","level":"1.9.3","depth":2,"path":"alg/77_Combinations.md","ref":"alg/77_Combinations.md","articles":[]},"previous":{"title":"46. Permutations","level":"1.9.1","depth":2,"path":"alg/46_Permutations.md","ref":"alg/46_Permutations.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"alg/78_Subsets.md","mtime":"2019-04-02T20:35:08.360Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-04-12T21:48:49.096Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Longest Common Sequence","level":"1.4.4","depth":2,"next":{"title":"215. Kth Largest Element in an Array","level":"1.4.5","depth":2,"path":"alg/215_Kth_Largest_Element_in_an_Array.md","ref":"alg/215_Kth_Largest_Element_in_an_Array.md","articles":[]},"previous":{"title":"🌝Merge Sort","level":"1.4.3","depth":2,"path":"alg/Merge_Sort.md","ref":"alg/Merge_Sort.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"alg/LongestCommonSequence.md","mtime":"2019-04-12T20:39:37.676Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-04-12T21:48:49.096Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
