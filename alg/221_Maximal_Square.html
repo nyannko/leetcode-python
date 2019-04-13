@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>876. Middle of the Linked List · GitBook</title>
+        <title>221. Maximal Square · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,8 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="141_Linked_List_Cycle.html" />
     
-    
-    <link rel="prev" href="24_Swap_Nodes_in_Pairs.html" />
+    <link rel="prev" href="LongestCommonSequence.html" />
     
 
     </head>
@@ -538,7 +536,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.5.3" data-path="876_Middle_of_the_Linked_List.html">
+        <li class="chapter " data-level="1.5.3" data-path="876_Middle_of_the_Linked_List.html">
             
                 <a href="876_Middle_of_the_Linked_List.html">
             
@@ -2010,7 +2008,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.13.2" data-path="221_Maximal_Square.html">
+        <li class="chapter active" data-level="1.13.2" data-path="221_Maximal_Square.html">
             
                 <a href="221_Maximal_Square.html">
             
@@ -2058,7 +2056,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >876. Middle of the Linked List</a>
+        <a href=".." >221. Maximal Square</a>
     </h1>
 </div>
 
@@ -2073,15 +2071,23 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h3 id="876-middle-of-the-linked-list">876. Middle of the Linked List</h3>
-<p>&#x5FEB;&#x6162;&#x6307;&#x9488;&#x6C42;&#x94FE;&#x8868;&#x4E2D;&#x95F4;&#x503C;&#xFF0C;&#x5947;&#x6570;&#x65F6;<code>fast.next==null</code>&#xFF0C;&#x5076;&#x6570;&#x65F6;<code>fast==null</code></p>
-<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> ListNode <span class="hljs-title">middleNode</span><span class="hljs-params">(ListNode head)</span> </span>{
-    ListNode fast = head, slow = head;
-    <span class="hljs-keyword">while</span> (fast != <span class="hljs-keyword">null</span> &amp;&amp; fast.next != <span class="hljs-keyword">null</span>) {
-        fast = fast.next.next;
-        slow = slow.next;
+                                <h3 id="221-maximal-square">221. Maximal Square</h3>
+<p>dp[i][j]&#x4EE3;&#x8868;&#x5F53;&#x524D;&#x6700;&#x5927;&#x8FB9;&#x957F;: &#x5DE6;&#x8FB9;&#xFF0C;&#x4E0A;&#x9762;&#xFF0C;&#x5DE6;&#x659C;&#x5BF9;&#x89D2;&#x7EBF;&#x7684;&#x6700;&#x5C0F;&#x503C;&#x52A0;1&#xFF0C;res&#x4E2D;&#x5B58;&#x50A8;&#x5F53;&#x524D;&#x6700;&#x5927;&#x8FB9;&#x957F;</p>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> <span class="hljs-title">maximalSquare</span><span class="hljs-params">(<span class="hljs-keyword">char</span>[][] matrix)</span> </span>{
+    <span class="hljs-keyword">if</span> (matrix == <span class="hljs-keyword">null</span> || matrix.length == <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">int</span> res = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">int</span> row = matrix.length;
+    <span class="hljs-keyword">int</span> col = matrix[<span class="hljs-number">0</span>].length;
+    <span class="hljs-keyword">int</span>[][] dp = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[row + <span class="hljs-number">1</span>][col + <span class="hljs-number">1</span>];
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= row; i++) {
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">1</span>; j &lt;= col; j++) {
+            <span class="hljs-keyword">if</span> (matrix[i - <span class="hljs-number">1</span>][j - <span class="hljs-number">1</span>] == <span class="hljs-string">&apos;1&apos;</span>) {
+                dp[i][j] = Math.min(Math.min(dp[i - <span class="hljs-number">1</span>][j], dp[i][j - <span class="hljs-number">1</span>]), dp[i - <span class="hljs-number">1</span>][j - <span class="hljs-number">1</span>]) + <span class="hljs-number">1</span>;
+                res = Math.max(res, dp[i][j]);
+            }
+        }
     }
-    <span class="hljs-keyword">return</span> slow;
+    <span class="hljs-keyword">return</span> res * res;
 }
 </code></pre>
 
@@ -2111,14 +2117,10 @@
 
             
                 
-                <a href="24_Swap_Nodes_in_Pairs.html" class="navigation navigation-prev " aria-label="Previous page: 24. Swap Nodes in Pairs">
+                <a href="LongestCommonSequence.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Longest Common Sequence">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
-                
-                <a href="141_Linked_List_Cycle.html" class="navigation navigation-next " aria-label="Next page: 141. Linked List Cycle">
-                    <i class="fa fa-angle-right"></i>
-                </a>
                 
             
         
@@ -2127,7 +2129,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"876. Middle of the Linked List","level":"1.5.3","depth":2,"next":{"title":"141. Linked List Cycle","level":"1.5.4","depth":2,"path":"alg/141_Linked_List_Cycle.md","ref":"alg/141_Linked_List_Cycle.md","articles":[]},"previous":{"title":"24. Swap Nodes in Pairs","level":"1.5.2","depth":2,"path":"alg/24_Swap_Nodes_in_Pairs.md","ref":"alg/24_Swap_Nodes_in_Pairs.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"alg/876_Middle_of_the_Linked_List.md","mtime":"2019-01-22T13:41:15.641Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-04-13T21:59:07.543Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"221. Maximal Square","level":"1.13.2","depth":2,"previous":{"title":"Longest Common Sequence","level":"1.13.1","depth":2,"path":"alg/LongestCommonSequence.md","ref":"alg/LongestCommonSequence.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"alg/221_Maximal_Square.md","mtime":"2019-04-13T21:58:57.962Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-04-13T21:59:07.543Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
