@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>226. Invert Binary Tree · GitBook</title>
+        <title>343. Integer Break · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="617_Merge_Two_Binary_Trees.html" />
+    <link rel="next" href="120_Triangle.html" />
     
     
-    <link rel="prev" href="101_Symmetric_Tree.html" />
+    <link rel="prev" href="221_Maximal_Square.html" />
     
 
     </head>
@@ -999,7 +999,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.6.16" data-path="226_Invert_Binary_Tree.html">
+        <li class="chapter " data-level="1.6.16" data-path="226_Invert_Binary_Tree.html">
             
                 <a href="226_Invert_Binary_Tree.html">
             
@@ -2023,7 +2023,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.13.4" data-path="343_Integer_Break.html">
+        <li class="chapter active" data-level="1.13.4" data-path="343_Integer_Break.html">
             
                 <a href="343_Integer_Break.html">
             
@@ -2084,7 +2084,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >226. Invert Binary Tree</a>
+        <a href=".." >343. Integer Break</a>
     </h1>
 </div>
 
@@ -2099,55 +2099,54 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h3 id="226-invert-binary-tree">226. Invert Binary Tree</h3>
-<p>naive&#x9012;&#x5F52;</p>
-<pre><code class="lang-python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">invertTree</span><span class="hljs-params">(self, root)</span>:</span>
-    <span class="hljs-string">&quot;&quot;&quot;
-    :type root: TreeNode
-    :rtype: TreeNode
-    &quot;&quot;&quot;</span>
-    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> root: <span class="hljs-keyword">return</span> 
-    root.left, root.right = root.right, root.left
-    self.invertTree(root.left)
-    self.invertTree(root.right)
-    <span class="hljs-keyword">return</span> root
-</code></pre>
-<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> TreeNode <span class="hljs-title">invertTree</span><span class="hljs-params">(TreeNode root)</span> </span>{
-    <span class="hljs-keyword">if</span> (root == <span class="hljs-keyword">null</span>) <span class="hljs-keyword">return</span> <span class="hljs-keyword">null</span>;
-    TreeNode tmp = root.left;
-    root.left = invertTree(root.right);
-    root.right = invertTree(tmp);
-    <span class="hljs-keyword">return</span> root;
-}
-</code></pre>
-<p>&#x6CA1;&#x6709;&#x8FD4;&#x56DE;&#x503C;&#xFF0C;&#x5148;&#x4EA4;&#x6362;&#x540E;&#x9012;&#x5F52;</p>
-<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Mirror</span><span class="hljs-params">(TreeNode root)</span> </span>{
-    <span class="hljs-keyword">if</span> (root == <span class="hljs-keyword">null</span>) <span class="hljs-keyword">return</span>;
-    TreeNode tmp = root.left;
-    root.left = root.right;
-    root.right = tmp;
-    Mirror(root.left);
-    Mirror(root.right);
-}
-</code></pre>
-<p>BFS:</p>
-<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> TreeNode <span class="hljs-title">invertTree</span><span class="hljs-params">(TreeNode root)</span> </span>{
-    <span class="hljs-keyword">if</span> (root == <span class="hljs-keyword">null</span>) <span class="hljs-keyword">return</span> <span class="hljs-keyword">null</span>;
-    Queue&lt;TreeNode&gt; q = <span class="hljs-keyword">new</span> LinkedList&lt;&gt;();
-    q.offer(root);
-
-    <span class="hljs-keyword">while</span> (!q.isEmpty()) {
-        TreeNode node = q.poll();
-        TreeNode tmp = node.right;
-        node.right = node.left;
-        node.left = tmp;
-
-        <span class="hljs-keyword">if</span> (node.left != <span class="hljs-keyword">null</span>) q.offer(node.left);
-        <span class="hljs-keyword">if</span> (node.right != <span class="hljs-keyword">null</span>) q.offer(node.right);
+                                <h3 id="343-integer-break">343. Integer Break</h3>
+<p>&#x628A;&#x4E00;&#x4E2A;&#x6574;&#x6570;&#x5206;&#x6210;&#x81F3;&#x5C11;&#x4E24;&#x4EFD;&#xFF0C;&#x627E;&#x51FA;&#x5B83;&#x4EEC;&#x4E58;&#x79EF;&#x6700;&#x5927;&#x503C;</p>
+<p>&#x9012;&#x5F52;&#xFF1A;</p>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">integerBreak</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span> </span>{
+    <span class="hljs-keyword">if</span> (n == <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;
+    <span class="hljs-keyword">int</span> res = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt; n; i++) {
+        res = Math.max(Math.max(res, i * (n - i)), i * integerBreak(n - i));
     }
-    <span class="hljs-keyword">return</span> root;
+    <span class="hljs-keyword">return</span> res;
 }
 </code></pre>
+<p>memo:</p>
+<pre><code class="lang-java"><span class="hljs-keyword">int</span>[] memo;
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">integerBreak</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span> </span>{
+    memo = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[n + <span class="hljs-number">1</span>];
+    Arrays.fill(memo, -<span class="hljs-number">1</span>);
+    ib(n);
+    <span class="hljs-keyword">return</span> memo[n];
+}
+
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">ib</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span> </span>{
+    <span class="hljs-keyword">if</span> (n == <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;
+    <span class="hljs-keyword">if</span> (memo[n] != -<span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> memo[n];
+    <span class="hljs-keyword">int</span> res = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt; n; i++) {
+        res = Math.max(Math.max(i * ib(n - i), i * (n - i)), res);
+    }
+    memo[n] = res;
+    <span class="hljs-keyword">return</span> res;
+}
+</code></pre>
+<p>&#x9012;&#x5F52;&#x6811;&#xFF1A;</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1g241a12putj30h00f0n12.jpg" width="400"></p>
+<p>dp:</p>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">integerBreak</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span> </span>{
+    <span class="hljs-keyword">int</span>[] memo = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[n + <span class="hljs-number">1</span>];
+    memo[<span class="hljs-number">1</span>] = <span class="hljs-number">1</span>;
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">2</span>; i &lt; n + <span class="hljs-number">1</span>; i++) {
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">1</span>; j &lt; i; j++) {
+            memo[i] = Math.max(Math.max(j * (i - j), memo[i]), j * memo[i - j]);
+        }
+    }
+    <span class="hljs-keyword">return</span> memo[n];
+}
+</code></pre>
+<p>&#x5176;&#x4E2D;i,j&#x53D8;&#x91CF;&#x7684;&#x542B;&#x4E49;&#xFF1A;</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1g24166vxtnj30fg0aadhv.jpg" width="400"></p>
 
                                 
                                 </section>
@@ -2175,12 +2174,12 @@
 
             
                 
-                <a href="101_Symmetric_Tree.html" class="navigation navigation-prev " aria-label="Previous page: 101. Symmetric Tree">
+                <a href="221_Maximal_Square.html" class="navigation navigation-prev " aria-label="Previous page: 221. Maximal Square">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="617_Merge_Two_Binary_Trees.html" class="navigation navigation-next " aria-label="Next page: 617. Merge Two Binary Trees">
+                <a href="120_Triangle.html" class="navigation navigation-next " aria-label="Next page: 120. Triangle">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -2191,7 +2190,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"226. Invert Binary Tree","level":"1.6.16","depth":2,"next":{"title":"617. Merge Two Binary Trees","level":"1.6.17","depth":2,"path":"alg/617_Merge_Two_Binary_Trees.md","ref":"alg/617_Merge_Two_Binary_Trees.md","articles":[]},"previous":{"title":"101. Symmetric Tree","level":"1.6.15","depth":2,"path":"alg/101_Symmetric_Tree.md","ref":"alg/101_Symmetric_Tree.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"alg/226_Invert_Binary_Tree.md","mtime":"2019-03-23T20:12:23.040Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-04-15T21:59:20.482Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"343. Integer Break","level":"1.13.4","depth":2,"next":{"title":"120. Triangle","level":"1.13.5","depth":2,"path":"alg/120_Triangle.md","ref":"alg/120_Triangle.md","articles":[]},"previous":{"title":"221. Maximal Square","level":"1.13.3","depth":2,"path":"alg/221_Maximal_Square.md","ref":"alg/221_Maximal_Square.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"alg/343_Integer_Break.md","mtime":"2019-04-15T21:39:57.121Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-04-15T21:59:20.482Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
