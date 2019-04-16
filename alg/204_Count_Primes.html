@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>3. Longest Substring Without Repeating Characters · GitBook</title>
+        <title>204. Count Primes · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,8 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="532_K-diff_Pairs_in_an_Array.html" />
     
-    
-    <link rel="prev" href="705_Design_HashSet.html" />
+    <link rel="prev" href="120_Triangle.html" />
     
 
     </head>
@@ -1926,7 +1924,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.11.3" data-path="3_Longest_Substring_Without_Repeating_Characters.html">
+        <li class="chapter " data-level="1.11.3" data-path="3_Longest_Substring_Without_Repeating_Characters.html">
             
                 <a href="3_Longest_Substring_Without_Repeating_Characters.html">
             
@@ -2049,7 +2047,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.13.6" data-path="204_Count_Primes.html">
+        <li class="chapter active" data-level="1.13.6" data-path="204_Count_Primes.html">
             
                 <a href="204_Count_Primes.html">
             
@@ -2097,7 +2095,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >3. Longest Substring Without Repeating Characters</a>
+        <a href=".." >204. Count Primes</a>
     </h1>
 </div>
 
@@ -2112,20 +2110,18 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h3 id="3-longest-substring-without-repeating-characters">3. Longest Substring Without Repeating Characters</h3>
-<p>&#x4E00;&#x6B21;&#x904D;&#x5386;&#xFF0C;&#x4F7F;&#x7528;&#x4E00;&#x4E2A;<code>hashtable&lt;character, index&gt;</code>&#x8BB0;&#x5F55;&#x6BCF;&#x4E2A;&#x5B57;&#x6BCD;&#x6700;&#x8FD1;&#x51FA;&#x73B0;&#x7684;index&#x3002;start&#x4EE3;&#x8868;&#x7684;&#x662F;&#x6700;&#x8FD1;&#x4E00;&#x4E2A;&#x6CA1;&#x6709;&#x91CD;&#x590D;&#x7684;&#x5B57;&#x6BCD;&#x51FA;&#x73B0;&#x7684;&#x4F4D;&#x7F6E;&#xFF0C;&#x5982;<code>abca</code>&#xFF0C;&#x5F53;&#x6307;&#x9488;&#x6307;&#x5411;&#x7B2C;&#x4E8C;&#x4E2A;a&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x53D6;&#x51FA;&#x6765;&#x7684;index&#x4E3A;<code>1</code>&#xFF0C;&#x4EE3;&#x8868;&#x4ECE;b&#x5F00;&#x59CB;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x3002;&#x7136;&#x540E;&#x8BA1;&#x7B97;<code>end - start + 1</code>&#x7684;&#x610F;&#x601D;&#x5C31;&#x662F;<code>bca</code>&#x5B57;&#x7B26;&#x4E32;&#x7684;&#x957F;&#x5EA6;&#x3002;</p>
-<p>&#x4E4B;&#x6240;&#x4EE5;&#x8981;&#x8FD9;&#x6837;&#x5199;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x5199;&#x6210;<code>end-start, index[s.charAt(end)] = end</code>&#x7684;&#x539F;&#x56E0;&#x662F;&#xFF0C;&#x5F53;&#x5B57;&#x7B26;&#x4E32;&#x4E0D;&#x5B58;&#x5728;&#x91CD;&#x590D;&#x5B57;&#x7B26;&#x65F6;&#xFF0C;&#x8981;&#x5C06;&#x5F53;&#x524D;&#x6307;&#x9488;&#x6307;&#x5411;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x7B97;&#x5165;&#x3002;</p>
-<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">lengthOfLongestSubstring</span><span class="hljs-params">(String s)</span> </span>{
-    <span class="hljs-keyword">int</span> length = s.length();
-    <span class="hljs-keyword">int</span> res = <span class="hljs-number">0</span>;
-    <span class="hljs-keyword">int</span>[] index = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[<span class="hljs-number">256</span>];
-    <span class="hljs-keyword">int</span> start = <span class="hljs-number">0</span>;
-    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> end = <span class="hljs-number">0</span>; end &lt; length; end++) {
-        start = Math.max(start, index[s.charAt(end)]);
-        res = Math.max(res, end - start + <span class="hljs-number">1</span>);
-        index[s.charAt(end)] = end + <span class="hljs-number">1</span>; <span class="hljs-comment">// &#x6700;&#x8FD1;&#x4E00;&#x4E2A;&#x4E0D;&#x91CD;&#x590D;&#x6570;&#x5B57;&#x7684;index</span>
+                                <h3 id="204-count-primes">204. Count Primes</h3>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">countPrimes</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span> </span>{
+    <span class="hljs-keyword">boolean</span>[] notPrime = <span class="hljs-keyword">new</span> <span class="hljs-keyword">boolean</span>[n];
+    <span class="hljs-keyword">int</span> count = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">2</span>; i &lt; n; i++) {
+        <span class="hljs-keyword">if</span> (notPrime[i]) <span class="hljs-keyword">continue</span>;
+        count++;
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">2</span>; i * j &lt; n; j++) {
+            notPrime[i * j] = <span class="hljs-keyword">true</span>;
+        }
     }
-    <span class="hljs-keyword">return</span> res;
+    <span class="hljs-keyword">return</span> count;
 }
 </code></pre>
 
@@ -2155,14 +2151,10 @@
 
             
                 
-                <a href="705_Design_HashSet.html" class="navigation navigation-prev " aria-label="Previous page: 705. Design HashSet">
+                <a href="120_Triangle.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: 120. Triangle">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
-                
-                <a href="532_K-diff_Pairs_in_an_Array.html" class="navigation navigation-next " aria-label="Next page: 532. K-diff Pairs in an Array">
-                    <i class="fa fa-angle-right"></i>
-                </a>
                 
             
         
@@ -2171,7 +2163,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"3. Longest Substring Without Repeating Characters","level":"1.11.3","depth":2,"next":{"title":"532. K-diff Pairs in an Array","level":"1.11.4","depth":2,"path":"alg/532_K-diff_Pairs_in_an_Array.md","ref":"alg/532_K-diff_Pairs_in_an_Array.md","articles":[]},"previous":{"title":"705. Design HashSet","level":"1.11.2","depth":2,"path":"alg/705_Design_HashSet.md","ref":"alg/705_Design_HashSet.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"alg/3_Longest_Substring_Without_Repeating_Characters.md","mtime":"2019-03-22T23:50:17.233Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-04-16T21:59:06.637Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"204. Count Primes","level":"1.13.6","depth":2,"previous":{"title":"120. Triangle","level":"1.13.5","depth":2,"path":"alg/120_Triangle.md","ref":"alg/120_Triangle.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"alg/204_Count_Primes.md","mtime":"2019-04-16T21:58:54.991Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-04-16T21:59:06.637Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
