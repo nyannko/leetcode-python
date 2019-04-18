@@ -2111,19 +2111,60 @@
                                 <section class="normal markdown-section">
                                 
                                 <h3 id="204-count-primes">204. Count Primes</h3>
+<p>&#x8D28;&#x6570;&#x5B9A;&#x4E49;: &#x5728;&#x5927;&#x4E8E;1&#x7684;&#x81EA;&#x7136;&#x6570;&#x4E2D;&#xFF0C;&#x9664;&#x4E86;1&#x548C;&#x5B83;&#x672C;&#x8EAB;&#x4EE5;&#x5916;&#x4E0D;&#x518D;&#x6709;&#x5176;&#x4ED6;&#x56E0;&#x6570;</p>
 <pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">countPrimes</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span> </span>{
     <span class="hljs-keyword">boolean</span>[] notPrime = <span class="hljs-keyword">new</span> <span class="hljs-keyword">boolean</span>[n];
     <span class="hljs-keyword">int</span> count = <span class="hljs-number">0</span>;
     <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">2</span>; i &lt; n; i++) {
-        <span class="hljs-keyword">if</span> (notPrime[i]) <span class="hljs-keyword">continue</span>;
-        count++;
+        <span class="hljs-keyword">if</span> (notPrime[i]) <span class="hljs-keyword">continue</span>; 
+        count++;  <span class="hljs-comment">// find the first prime in the remaning nums</span>
         <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">2</span>; i * j &lt; n; j++) {
-            notPrime[i * j] = <span class="hljs-keyword">true</span>;
+            notPrime[i * j] = <span class="hljs-keyword">true</span>; <span class="hljs-comment">// delete all the multiples of this prime</span>
         }
     }
     <span class="hljs-keyword">return</span> count;
 }
 </code></pre>
+<p>1.&#x8FD4;&#x56DE;&#x524D;10&#x4E2A;&#x8D28;&#x6570;&#xFF1A;&#x6700;&#x76F4;&#x63A5;&#x7684;&#x8BD5;&#x9664;&#x6CD5;[2, n - 1]&#xFF0C;&#x5728;&#x81EA;&#x7136;&#x6570;&#x4E2D;&#x5224;&#x65AD;&#x4E00;&#x4E2A;&#x6570;&#x662F;&#x5426;&#x4E3A;&#x8D28;&#x6570;&#xFF0C;<code>O(n^2)</code>:</p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span>[] countPrimes(<span class="hljs-keyword">int</span> n) {
+    <span class="hljs-keyword">int</span>[] res = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[n];
+    <span class="hljs-keyword">int</span> pointer = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">int</span> num = <span class="hljs-number">2</span>;
+    <span class="hljs-keyword">while</span> (pointer &lt; n) {
+        <span class="hljs-keyword">if</span> (isPrime(num)) {
+            res[pointer] = num;
+            pointer++;
+        }
+        num++;
+    }
+    <span class="hljs-keyword">return</span> res;
+}
+
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">isPrime</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span> </span>{
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">2</span>; i &lt; n; i++) {
+        <span class="hljs-keyword">if</span> ((n % i) == <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
+    }
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;
+}
+</code></pre>
+<p>2.&#x51CF;&#x5C0F;&#x8BD5;&#x9664;&#x8303;&#x56F4;&#xFF0C;&#x56E0;&#x4E3A;&#x8D28;&#x56E0;&#x6570;&#x5C0F;&#x4E8E;&#x7B49;&#x4E8E;n/2&#xFF1A;</p>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">isPrime</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span> </span>{
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">2</span>; i &lt; (n + <span class="hljs-number">1</span>) / <span class="hljs-number">2</span>; i++) {
+        <span class="hljs-keyword">if</span> ((n % i) == <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
+    }
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;
+}
+</code></pre>
+<p>3.&#x7EA6;&#x6570;&#x6210;&#x5BF9;&#x51FA;&#x73B0;&#xFF0C;&#x5E76;&#x4E14;&#x4E00;&#x4E2A;&#x5728;<code>sqrt(n)</code>&#x524D;&#x9762;&#x3002;&#x4E00;&#x4E2A;&#x5728;<code>sqrt(n)</code>&#x540E;&#x9762;&#xFF0C;&#x6240;&#x4EE5;&#x53EA;&#x7528;&#x5224;&#x65AD;&#x5230;&#x6839;&#x53F7;n&#xFF1A;</p>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">isPrime</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span> </span>{
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">2</span>; i &lt;= Math.sqrt(n) ; i++) {
+        <span class="hljs-keyword">if</span> ((n % i) == <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
+    }
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;
+}
+</code></pre>
+<p>4.<a href="https://zh.wikipedia.org/wiki/&#x57C3;&#x62C9;&#x6258;&#x65AF;&#x7279;&#x5C3C;&#x7B5B;&#x6CD5;" target="_blank">Eratosthenes&#x57C3;&#x62C9;&#x6258;&#x65AF;&#x7279;&#x5C3C;&#x7B5B;&#x6CD5;</a></p>
+<p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1g27h17mvyag30cd0a9q6x.gif" width="400"></p>
 
                                 
                                 </section>
@@ -2163,7 +2204,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"204. Count Primes","level":"1.13.6","depth":2,"previous":{"title":"120. Triangle","level":"1.13.5","depth":2,"path":"alg/120_Triangle.md","ref":"alg/120_Triangle.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"alg/204_Count_Primes.md","mtime":"2019-04-16T21:58:54.991Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-04-16T21:59:06.637Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"204. Count Primes","level":"1.13.6","depth":2,"previous":{"title":"120. Triangle","level":"1.13.5","depth":2,"path":"alg/120_Triangle.md","ref":"alg/120_Triangle.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"alg/204_Count_Primes.md","mtime":"2019-04-18T21:49:33.048Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-04-18T21:49:55.997Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
