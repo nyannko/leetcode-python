@@ -2062,6 +2062,19 @@
             
         </li>
     
+        <li class="chapter " data-level="1.13.7" data-path="62_Unique_Paths.html">
+            
+                <a href="62_Unique_Paths.html">
+            
+                    
+                    62. Unique Paths
+            
+                </a>
+            
+
+            
+        </li>
+    
 
             </ul>
             
@@ -2114,7 +2127,7 @@
                                 
                                 <h3 id="343-integer-break">343. Integer Break</h3>
 <p>&#x628A;&#x4E00;&#x4E2A;&#x6574;&#x6570;&#x5206;&#x6210;&#x81F3;&#x5C11;&#x4E24;&#x4EFD;&#xFF0C;&#x627E;&#x51FA;&#x5B83;&#x4EEC;&#x4E58;&#x79EF;&#x6700;&#x5927;&#x503C;</p>
-<p>&#x9012;&#x5F52;&#xFF1A;</p>
+<p>1.&#x9012;&#x5F52;&#xFF1A;</p>
 <pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">integerBreak</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span> </span>{
     <span class="hljs-keyword">if</span> (n == <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;
     <span class="hljs-keyword">int</span> res = <span class="hljs-number">0</span>;
@@ -2124,7 +2137,7 @@
     <span class="hljs-keyword">return</span> res;
 }
 </code></pre>
-<p>memo:</p>
+<p>2.memo:</p>
 <pre><code class="lang-java"><span class="hljs-keyword">int</span>[] memo;
 <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">integerBreak</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span> </span>{
     memo = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[n + <span class="hljs-number">1</span>];
@@ -2146,7 +2159,7 @@
 </code></pre>
 <p>&#x9012;&#x5F52;&#x6811;&#xFF1A;</p>
 <p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1g241a12putj30h00f0n12.jpg" width="400"></p>
-<p>dp:</p>
+<p>3.dp:</p>
 <pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">integerBreak</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span> </span>{
     <span class="hljs-keyword">int</span>[] memo = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[n + <span class="hljs-number">1</span>];
     memo[<span class="hljs-number">1</span>] = <span class="hljs-number">1</span>;
@@ -2203,7 +2216,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"343. Integer Break","level":"1.13.4","depth":2,"next":{"title":"120. Triangle","level":"1.13.5","depth":2,"path":"alg/120_Triangle.md","ref":"alg/120_Triangle.md","articles":[]},"previous":{"title":"221. Maximal Square","level":"1.13.3","depth":2,"path":"alg/221_Maximal_Square.md","ref":"alg/221_Maximal_Square.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"alg/343_Integer_Break.md","mtime":"2019-04-15T21:39:57.121Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-04-18T21:49:55.997Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"343. Integer Break","level":"1.13.4","depth":2,"next":{"title":"120. Triangle","level":"1.13.5","depth":2,"path":"alg/120_Triangle.md","ref":"alg/120_Triangle.md","articles":[]},"previous":{"title":"221. Maximal Square","level":"1.13.3","depth":2,"path":"alg/221_Maximal_Square.md","ref":"alg/221_Maximal_Square.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"alg/343_Integer_Break.md","mtime":"2019-04-20T21:45:23.397Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-04-20T21:49:26.967Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
