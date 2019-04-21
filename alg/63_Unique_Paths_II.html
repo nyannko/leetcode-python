@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>169. Majority Element · GitBook</title>
+        <title>63. Unique Paths II · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,8 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="173_Binary_Search_Tree_Iterator.html" />
     
-    
-    <link rel="prev" href="149_Max_Points_on_a_Line.html" />
+    <link rel="prev" href="62_Unique_Paths.html" />
     
 
     </head>
@@ -337,7 +335,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.4.16" data-path="169_Majority_Element.html">
+        <li class="chapter " data-level="1.4.16" data-path="169_Majority_Element.html">
             
                 <a href="169_Majority_Element.html">
             
@@ -2075,7 +2073,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.13.8" data-path="63_Unique_Paths_II.html">
+        <li class="chapter active" data-level="1.13.8" data-path="63_Unique_Paths_II.html">
             
                 <a href="63_Unique_Paths_II.html">
             
@@ -2123,7 +2121,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >169. Majority Element</a>
+        <a href=".." >63. Unique Paths II</a>
     </h1>
 </div>
 
@@ -2138,60 +2136,37 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h3 id="169-majority-element">169. Majority Element</h3>
-<p>&#x6570;&#x7EC4;&#x4E2D;&#x8D85;&#x8FC7;&#x4E00;&#x534A;&#x7684;&#x6570;&#x5B57;</p>
-<p>1.Boyer-Moore majority vote algorithm</p>
-<p>O(n) + O(1)</p>
-<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> <span class="hljs-title">majorityElement</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] nums)</span> </span>{
-    <span class="hljs-keyword">int</span> major = <span class="hljs-number">0</span>, count = <span class="hljs-number">0</span>;
-    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> n: nums) {
-        <span class="hljs-keyword">if</span> (count == <span class="hljs-number">0</span>) {
-            count++;
-            major = n;
-        } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (major == n)  {
-            count++;
-        } <span class="hljs-keyword">else</span> {
-            count--;
+                                <h3 id="63-unique-paths-ii">63. Unique Paths II</h3>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">uniquePathsWithObstacles</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[][] obstacleGrid)</span> </span>{
+    <span class="hljs-keyword">int</span> width = obstacleGrid[<span class="hljs-number">0</span>].length;
+    <span class="hljs-keyword">int</span>[] dp = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[width];
+    dp[<span class="hljs-number">0</span>] = <span class="hljs-number">1</span>;
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span>[] row : obstacleGrid) {
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>; j &lt; width; j++) {
+            <span class="hljs-keyword">if</span> (row[j] == <span class="hljs-number">1</span>) {
+                dp[j] = <span class="hljs-number">0</span>;
+            } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (j &gt; <span class="hljs-number">0</span>) {
+                dp[j] += dp[j - <span class="hljs-number">1</span>];
+            }
         }
     }
-
-    <span class="hljs-comment">// verify</span>
-    <span class="hljs-keyword">int</span> c = <span class="hljs-number">0</span>;
-    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; array.length; i++) {
-        <span class="hljs-keyword">if</span> (array[i] == major) c++;
-    }
-    <span class="hljs-keyword">return</span> (c &gt; array.length / <span class="hljs-number">2</span>) ? major : <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">return</span> dp[width - <span class="hljs-number">1</span>];
 }
 </code></pre>
-<p>&#x7C89;&#x8272;&#x683C;&#x5B50;&#x4E3A;<code>count=0</code>&#x65F6;&#x6362;&#x4E3B;&#xFF0C;&#x8FD4;&#x56DE;&#x7EFF;&#x8272;&#x683C;&#x5B50;</p>
-<p><img src="https://ws3.sinaimg.cn/large/006tNc79gy1fz5m6vdh8gj312y0bs43x.jpg" width="600"></p>
-<p>2.&#x5B57;&#x5178;</p>
-<p>O(n) + O(n)</p>
-<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">majorityElement3</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] nums)</span> </span>{
-    Map&lt;Integer, Integer&gt; map = <span class="hljs-keyword">new</span> HashMap&lt;&gt;();
-    <span class="hljs-keyword">for</span> (Integer n : nums) {
-        <span class="hljs-keyword">if</span> (map.containsKey(n)) {
-            map.put(n, map.get(n) + <span class="hljs-number">1</span>);
-        } <span class="hljs-keyword">else</span> {
-            map.put(n, <span class="hljs-number">1</span>);
-        }
-        <span class="hljs-keyword">if</span> (map.get(n) &gt; nums.length / <span class="hljs-number">2</span>) {
-            <span class="hljs-keyword">return</span> n;
+<p>&#x7167;&#x7740;62&#x9898;&#x6DFB;&#x52A0;&#x969C;&#x788D;&#x6761;&#x4EF6;&#xFF1A;</p>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">uniquePathsWithObstacles</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[][] obstacleGrid)</span> </span>{
+    <span class="hljs-keyword">int</span> row = obstacleGrid.length;
+    <span class="hljs-keyword">int</span> col = obstacleGrid[<span class="hljs-number">0</span>].length;
+    <span class="hljs-keyword">int</span>[][] dp = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[row + <span class="hljs-number">1</span>][col + <span class="hljs-number">1</span>];
+    dp[<span class="hljs-number">1</span>][<span class="hljs-number">1</span>] = (obstacleGrid[<span class="hljs-number">0</span>][<span class="hljs-number">0</span>] == <span class="hljs-number">1</span>) ? <span class="hljs-number">0</span> : <span class="hljs-number">1</span>;
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= row; i++) {
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">1</span>; j &lt;= col; j++) {
+            dp[i][j] += (obstacleGrid[i - <span class="hljs-number">1</span>][j - <span class="hljs-number">1</span>] == <span class="hljs-number">1</span>) ? <span class="hljs-number">0</span> : dp[i - <span class="hljs-number">1</span>][j] + dp[i][j - <span class="hljs-number">1</span>];
         }
     }
-    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">return</span> dp[row][col];
 }
 </code></pre>
-<p>3.&#x6392;&#x5E8F;+&#x8FD4;&#x56DE;&#x4E2D;&#x95F4;&#x503C; </p>
-<p>O(nlogn) + &#x5927;&#x6982;&#x662F;O(logn)?</p>
-<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">majorityElement</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] nums)</span> </span>{
-    Arrays.sort(nums);
-    <span class="hljs-keyword">return</span> nums[nums.length / <span class="hljs-number">2</span>];
-}
-</code></pre>
-<h3 id="ref">Ref</h3>
-<p><a href="https://en.wikipedia.org/wiki/Boyer%E2%80%93Moore_majority_vote_algorithm" target="_blank">https://en.wikipedia.org/wiki/Boyer%E2%80%93Moore_majority_vote_algorithm</a></p>
-<p><a href="https://gregable.com/2013/10/majority-vote-algorithm-find-majority.html" target="_blank">https://gregable.com/2013/10/majority-vote-algorithm-find-majority.html</a></p>
 
                                 
                                 </section>
@@ -2219,14 +2194,10 @@
 
             
                 
-                <a href="149_Max_Points_on_a_Line.html" class="navigation navigation-prev " aria-label="Previous page: 149. Max Points on a Line">
+                <a href="62_Unique_Paths.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: 62. Unique Paths">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
-                
-                <a href="173_Binary_Search_Tree_Iterator.html" class="navigation navigation-next " aria-label="Next page: 173. Binary Search Tree Iterator">
-                    <i class="fa fa-angle-right"></i>
-                </a>
                 
             
         
@@ -2235,7 +2206,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"169. Majority Element","level":"1.4.16","depth":2,"next":{"title":"173. Binary Search Tree Iterator","level":"1.4.17","depth":2,"path":"alg/173_Binary_Search_Tree_Iterator.md","ref":"alg/173_Binary_Search_Tree_Iterator.md","articles":[]},"previous":{"title":"149. Max Points on a Line","level":"1.4.15","depth":2,"path":"alg/149_Max_Points_on_a_Line.md","ref":"alg/149_Max_Points_on_a_Line.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"alg/169_Majority_Element.md","mtime":"2019-02-16T19:16:59.492Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-04-21T21:49:48.636Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"63. Unique Paths II","level":"1.13.8","depth":2,"previous":{"title":"62. Unique Paths","level":"1.13.7","depth":2,"path":"alg/62_Unique_Paths.md","ref":"alg/62_Unique_Paths.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"alg/63_Unique_Paths_II.md","mtime":"2019-04-21T21:49:34.728Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-04-21T21:49:48.636Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
