@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>53. Maximum Subarray · GitBook</title>
+        <title>198. House Robber · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,8 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="287_Find_the_Duplicate_Number.html" />
     
-    
-    <link rel="prev" href="240_Search_a_2D_Matrix_II.html" />
+    <link rel="prev" href="63_Unique_Paths_II.html" />
     
 
     </head>
@@ -415,7 +413,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.4.22" data-path="53_Maximum_Subarray.html">
+        <li class="chapter " data-level="1.4.22" data-path="53_Maximum_Subarray.html">
             
                 <a href="53_Maximum_Subarray.html">
             
@@ -2088,7 +2086,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.13.9" data-path="198_House_Robber.html">
+        <li class="chapter active" data-level="1.13.9" data-path="198_House_Robber.html">
             
                 <a href="198_House_Robber.html">
             
@@ -2136,7 +2134,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >53. Maximum Subarray</a>
+        <a href=".." >198. House Robber</a>
     </h1>
 </div>
 
@@ -2151,17 +2149,52 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h3 id="53-maximum-subarray">53. Maximum Subarray</h3>
-<p>&#x6C42;&#x51FA;&#x6570;&#x7EC4;&#x7684;&#x8FDE;&#x7EED;&#x5B50;&#x5E8F;&#x5217;&#x4E4B;&#x548C;&#xFF0C;&#x8BBE;&#x5B9A;&#x53D8;&#x91CF;f&#x7528;&#x6765;&#x8BB0;&#x5F55;&#x5F53;&#x524D;&#x7684;&#x6700;&#x5927;&#x548C;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x53D6;&#x51FA;<code>max(i-1&#x524D;&#x9762;&#x7684;&#x5DF2;&#x7ECF;&#x7D2F;&#x52A0;&#x7684;&#x548C;,i&#x7684;&#x6570;&#x503C;)</code>&#xFF0C;&#x800C;res&#x662F;&#x7528;&#x6765;&#x8BB0;&#x5F55;&#x6574;&#x4E2A;&#x904D;&#x5386;&#x8FC7;&#x7A0B;&#x4E2D;&#x6700;&#x5927;&#x7684;f&#x3002;</p>
-<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">maxSubArray</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] nums)</span> </span>{
-    <span class="hljs-keyword">if</span> (nums.length == <span class="hljs-number">0</span> || nums == <span class="hljs-keyword">null</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
-    <span class="hljs-keyword">int</span> f = nums[<span class="hljs-number">0</span>], result = nums[<span class="hljs-number">0</span>];
-    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt; nums.length; i++) {
-        f = Math.max(f + nums[i], nums[i]);
-        result = Math.max(result, f);
-    }
-    <span class="hljs-keyword">return</span> result;
+                                <h3 id="198-house-robber">198. House Robber</h3>
+<p>1.&#x9012;&#x5F52;, &#x89C1;&#x9012;&#x5F52;&#x6811;&#xFF0C;&#x9EC4;&#x8272;&#x4E3A;&#x91CD;&#x53E0;&#x90E8;&#x5206;&#x7ED3;&#x679C;</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1g2bt4p0gxkj30ym0e0af5.jpg" width="400"></p>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">rob</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] nums)</span> </span>{
+    <span class="hljs-keyword">return</span> tryRob(nums, <span class="hljs-number">0</span>);
 }
+
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">tryRob</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] nums, <span class="hljs-keyword">int</span> index)</span> </span>{
+    <span class="hljs-keyword">if</span> (index &gt;= nums.length) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">int</span> res = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = index; i &lt; nums.length; i++) {
+        res = Math.max(res, nums[i] + tryRob(nums, i + <span class="hljs-number">2</span>));
+    }
+    <span class="hljs-keyword">return</span> res;
+}
+</code></pre>
+<p>2.memo, &#x4E3A;index&#x6DFB;&#x52A0;&#x7F13;&#x5B58;</p>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">rob</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] nums)</span> </span>{
+    <span class="hljs-keyword">int</span>[] memo = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[nums.length];
+    Arrays.fill(memo, -<span class="hljs-number">1</span>);
+    <span class="hljs-keyword">return</span> tryRob(nums, <span class="hljs-number">0</span>, memo);
+}
+
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">tryRob</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] nums, <span class="hljs-keyword">int</span> index, <span class="hljs-keyword">int</span>[] memo)</span> </span>{
+    <span class="hljs-keyword">if</span> (index &gt;= nums.length) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">if</span> (memo[index] != -<span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> memo[index];
+    <span class="hljs-keyword">int</span> res = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = index; i &lt; nums.length; i++) {
+        res = Math.max(res, nums[i] + tryRob(nums, i + <span class="hljs-number">2</span>, memo));
+    }
+    memo[index] = res;
+    <span class="hljs-keyword">return</span> res;
+}
+</code></pre>
+<p>3.dp</p>
+<pre><code class="lang-java">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">rob</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] nums)</span> </span>{
+        <span class="hljs-keyword">if</span> (nums == <span class="hljs-keyword">null</span> || nums.length == <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+        <span class="hljs-keyword">int</span> n = nums.length;
+        <span class="hljs-keyword">int</span>[] dp = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[n + <span class="hljs-number">1</span>];
+        dp[<span class="hljs-number">0</span>] = <span class="hljs-number">0</span>;
+        dp[<span class="hljs-number">1</span>] = nums[<span class="hljs-number">0</span>];
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">2</span>; i &lt;= n; i++) {
+            dp[i] = Math.max(dp[i - <span class="hljs-number">1</span>], nums[i - <span class="hljs-number">1</span>] + dp[i - <span class="hljs-number">2</span>]);
+        }
+        <span class="hljs-keyword">return</span> dp[n];
+    }
 </code></pre>
 
                                 
@@ -2190,14 +2223,10 @@
 
             
                 
-                <a href="240_Search_a_2D_Matrix_II.html" class="navigation navigation-prev " aria-label="Previous page: 240. Search a 2D Matrix II">
+                <a href="63_Unique_Paths_II.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: 63. Unique Paths II">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
-                
-                <a href="287_Find_the_Duplicate_Number.html" class="navigation navigation-next " aria-label="Next page: 287. Find the Duplicate Number">
-                    <i class="fa fa-angle-right"></i>
-                </a>
                 
             
         
@@ -2206,7 +2235,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"53. Maximum Subarray","level":"1.4.22","depth":2,"next":{"title":"287. Find the Duplicate Number","level":"1.4.23","depth":2,"path":"alg/287_Find_the_Duplicate_Number.md","ref":"alg/287_Find_the_Duplicate_Number.md","articles":[]},"previous":{"title":"240. Search a 2D Matrix II","level":"1.4.21","depth":2,"path":"alg/240_Search_a_2D_Matrix_II.md","ref":"alg/240_Search_a_2D_Matrix_II.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"alg/53_Maximum_Subarray.md","mtime":"2019-02-09T19:05:20.863Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-04-22T21:50:14.623Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"198. House Robber","level":"1.13.9","depth":2,"previous":{"title":"63. Unique Paths II","level":"1.13.8","depth":2,"path":"alg/63_Unique_Paths_II.md","ref":"alg/63_Unique_Paths_II.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"alg/198_House_Robber.md","mtime":"2019-04-22T21:49:50.826Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-04-22T21:50:14.623Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
