@@ -1,0 +1,2476 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <!-- fix pic 403 -->
+        <meta name="referrer" content="no-referrer" />
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Baby-Step Griant-Step Algorithm · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="../dp.html" />
+    
+    
+    <link rel="prev" href="../crypto.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    🥰Alg
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../others.html">
+            
+                <a href="../others.html">
+            
+                    
+                    其他
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../array.html">
+            
+                <a href="../array.html">
+            
+                    
+                    数组
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../sort.html">
+            
+                <a href="../sort.html">
+            
+                    
+                    Sort
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../alg/Quick_Sort.html">
+            
+                <a href="../alg/Quick_Sort.html">
+            
+                    
+                    🌝Quick Sort
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../alg/Heap_Sort.html">
+            
+                <a href="../alg/Heap_Sort.html">
+            
+                    
+                    🌝Heap Sort
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="../alg/Merge_Sort.html">
+            
+                <a href="../alg/Merge_Sort.html">
+            
+                    
+                    🌝Merge Sort
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="../alg/215_Kth_Largest_Element_in_an_Array.html">
+            
+                <a href="../alg/215_Kth_Largest_Element_in_an_Array.html">
+            
+                    
+                    215. Kth Largest Element in an Array
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.5" data-path="../alg/703_Kth_Largest_Element_in_a_Stream.html">
+            
+                <a href="../alg/703_Kth_Largest_Element_in_a_Stream.html">
+            
+                    
+                    703. Kth Largest Element in a Stream
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.6" data-path="../alg/56_Merge_Intervals.html">
+            
+                <a href="../alg/56_Merge_Intervals.html">
+            
+                    
+                    56. Merge Intervals
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.7" data-path="../alg/54_Spiral_Matrix.html">
+            
+                <a href="../alg/54_Spiral_Matrix.html">
+            
+                    
+                    54. Spiral Matrix
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.8" data-path="../alg/384_Shuffle_an_Array.html">
+            
+                <a href="../alg/384_Shuffle_an_Array.html">
+            
+                    
+                    384. Shuffle an Array
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.9" data-path="../alg/179_Largest_Number.html">
+            
+                <a href="../alg/179_Largest_Number.html">
+            
+                    
+                    179. Largest Number
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.10" data-path="../alg/135_Candy.html">
+            
+                <a href="../alg/135_Candy.html">
+            
+                    
+                    135. Candy
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.11" data-path="../alg/1_2Sum.html">
+            
+                <a href="../alg/1_2Sum.html">
+            
+                    
+                    1. 2Sum
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.12" data-path="../alg/14_Longest_Common_Prefix.html">
+            
+                <a href="../alg/14_Longest_Common_Prefix.html">
+            
+                    
+                    14. Longest Common Prefix
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.13" data-path="../alg/50_Pow.html">
+            
+                <a href="../alg/50_Pow.html">
+            
+                    
+                    50. Pow
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.14" data-path="../alg/69_Sqrtx.html">
+            
+                <a href="../alg/69_Sqrtx.html">
+            
+                    
+                    69. Sqrt(x)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.15" data-path="../alg/149_Max_Points_on_a_Line.html">
+            
+                <a href="../alg/149_Max_Points_on_a_Line.html">
+            
+                    
+                    149. Max Points on a Line
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.16" data-path="../alg/169_Majority_Element.html">
+            
+                <a href="../alg/169_Majority_Element.html">
+            
+                    
+                    169. Majority Element
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.17" data-path="../alg/173_Binary_Search_Tree_Iterator.html">
+            
+                <a href="../alg/173_Binary_Search_Tree_Iterator.html">
+            
+                    
+                    173. Binary Search Tree Iterator
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.18" data-path="../alg/704_Binary_Search.html">
+            
+                <a href="../alg/704_Binary_Search.html">
+            
+                    
+                    704. Binary Search
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.19" data-path="../alg/81_Search_in_Rotated_Sorted_Array_II.html">
+            
+                <a href="../alg/81_Search_in_Rotated_Sorted_Array_II.html">
+            
+                    
+                    81. Search in Rotated Sorted Array II
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.20" data-path="../alg/74_Search_a_2D_Matrix.html">
+            
+                <a href="../alg/74_Search_a_2D_Matrix.html">
+            
+                    
+                    74. Search a 2D Matrix
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.21" data-path="../alg/240_Search_a_2D_Matrix_II.html">
+            
+                <a href="../alg/240_Search_a_2D_Matrix_II.html">
+            
+                    
+                    240. Search a 2D Matrix II
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.22" data-path="../alg/53_Maximum_Subarray.html">
+            
+                <a href="../alg/53_Maximum_Subarray.html">
+            
+                    
+                    53. Maximum Subarray
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.23" data-path="../alg/287_Find_the_Duplicate_Number.html">
+            
+                <a href="../alg/287_Find_the_Duplicate_Number.html">
+            
+                    
+                    287. Find the Duplicate Number
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.24" data-path="../alg/8_String_to_Integer.html">
+            
+                <a href="../alg/8_String_to_Integer.html">
+            
+                    
+                    8. String to Integer
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.25" data-path="../alg/349_Intersection_of_Two_Arrays.html">
+            
+                <a href="../alg/349_Intersection_of_Two_Arrays.html">
+            
+                    
+                    349. Intersection of Two Arrays
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.26" data-path="../alg/350_Intersection_of_Two_Arrays_II.html">
+            
+                <a href="../alg/350_Intersection_of_Two_Arrays_II.html">
+            
+                    
+                    350. Intersection of Two Arrays II
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../1_linkedlist.html">
+            
+                <a href="../1_linkedlist.html">
+            
+                    
+                    Linked List
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../alg/206_Reverse_Linked_List.html">
+            
+                <a href="../alg/206_Reverse_Linked_List.html">
+            
+                    
+                    206. Reverse Linked List
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="../alg/24_Swap_Nodes_in_Pairs.html">
+            
+                <a href="../alg/24_Swap_Nodes_in_Pairs.html">
+            
+                    
+                    24. Swap Nodes in Pairs
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="../alg/876_Middle_of_the_Linked_List.html">
+            
+                <a href="../alg/876_Middle_of_the_Linked_List.html">
+            
+                    
+                    876. Middle of the Linked List
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="../alg/141_Linked_List_Cycle.html">
+            
+                <a href="../alg/141_Linked_List_Cycle.html">
+            
+                    
+                    141. Linked List Cycle
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5" data-path="../alg/142_Linked_List_Cycle_II.html">
+            
+                <a href="../alg/142_Linked_List_Cycle_II.html">
+            
+                    
+                    142. Linked List Cycle II
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6" data-path="../alg/160_Intersection_of_Two_Linked_Lists.html">
+            
+                <a href="../alg/160_Intersection_of_Two_Linked_Lists.html">
+            
+                    
+                    160. Intersection of Two Linked Lists
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7" data-path="../alg/237_Delete_Node_in_a_Linked_List.html">
+            
+                <a href="../alg/237_Delete_Node_in_a_Linked_List.html">
+            
+                    
+                    237. Delete Node in a Linked List
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.8" data-path="../alg/203_Remove_Linked_List_Elements.html">
+            
+                <a href="../alg/203_Remove_Linked_List_Elements.html">
+            
+                    
+                    203. Remove Linked List Elements
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.9" data-path="../alg/83_Remove_Duplicates_from_Sorted_List.html">
+            
+                <a href="../alg/83_Remove_Duplicates_from_Sorted_List.html">
+            
+                    
+                    83. Remove Duplicates from Sorted List
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.10" data-path="../alg/82_Remove_Duplicates_from_Sorted_List_II.html">
+            
+                <a href="../alg/82_Remove_Duplicates_from_Sorted_List_II.html">
+            
+                    
+                    82. Remove Duplicates from Sorted List II
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.11" data-path="../alg/86_Partition_List.html">
+            
+                <a href="../alg/86_Partition_List.html">
+            
+                    
+                    86. Partition List
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.12" data-path="../alg/234_Palindrome_Linked_List.html">
+            
+                <a href="../alg/234_Palindrome_Linked_List.html">
+            
+                    
+                    234. Palindrome Linked List
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.13" data-path="../alg/143_Reorder_List.html">
+            
+                <a href="../alg/143_Reorder_List.html">
+            
+                    
+                    143. Reorder List
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.14" data-path="../alg/147_Insertion_Sort_List.html">
+            
+                <a href="../alg/147_Insertion_Sort_List.html">
+            
+                    
+                    147. Insertion Sort List
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.15" data-path="../alg/328_Odd_Even_Linked_List.html">
+            
+                <a href="../alg/328_Odd_Even_Linked_List.html">
+            
+                    
+                    328. Odd Even Linked List
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.16" data-path="../alg/148_Sort_List.html">
+            
+                <a href="../alg/148_Sort_List.html">
+            
+                    
+                    148. Sort List
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.17" data-path="../alg/21_Merge_Two_Sorted_Lists.html">
+            
+                <a href="../alg/21_Merge_Two_Sorted_Lists.html">
+            
+                    
+                    21. Merge Two Sorted Lists
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.18" data-path="../alg/23_Merge_k_Sorted_Lists.html">
+            
+                <a href="../alg/23_Merge_k_Sorted_Lists.html">
+            
+                    
+                    23. Merge k Sorted Lists
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.19" data-path="../alg/146_LRU_Cache.html">
+            
+                <a href="../alg/146_LRU_Cache.html">
+            
+                    
+                    146. LRU Cache
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.20" data-path="../alg/817_Linked_List_Components.html">
+            
+                <a href="../alg/817_Linked_List_Components.html">
+            
+                    
+                    817. Linked List Components
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.21" data-path="../alg/707_Design_Linked_List.html">
+            
+                <a href="../alg/707_Design_Linked_List.html">
+            
+                    
+                    707. Design Linked List
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.22" data-path="../alg/19_Remove_Nth_Node_From_End_of_List.html">
+            
+                <a href="../alg/19_Remove_Nth_Node_From_End_of_List.html">
+            
+                    
+                    19. Remove Nth Node From End of List
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../2_tree.html">
+            
+                <a href="../2_tree.html">
+            
+                    
+                    Tree
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../alg/144_Binary_Tree_Preorder_Traversal.html">
+            
+                <a href="../alg/144_Binary_Tree_Preorder_Traversal.html">
+            
+                    
+                    144. Binary Tree Preorder Traversal
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="../alg/94_Binary_Tree_Inorder_Traversal.html">
+            
+                <a href="../alg/94_Binary_Tree_Inorder_Traversal.html">
+            
+                    
+                    94. Binary Tree Inorder Traversal
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="../alg/145_Binary_Tree_Postorder_Traversal.html">
+            
+                <a href="../alg/145_Binary_Tree_Postorder_Traversal.html">
+            
+                    
+                    145. Binary Tree Postorder Traversal
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4" data-path="../alg/102_Binary_Tree_Level_Order_Traversal.html">
+            
+                <a href="../alg/102_Binary_Tree_Level_Order_Traversal.html">
+            
+                    
+                    102. Binary Tree Level Order Traversal
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.5" data-path="../alg/103_Binary_Tree_Zigzag_Level_Order_Traversal.html">
+            
+                <a href="../alg/103_Binary_Tree_Zigzag_Level_Order_Traversal.html">
+            
+                    
+                    103. Binary Tree Zigzag Level Order Traversal
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.6" data-path="../alg/637_Average_of_Levels_in_Binary_Tree.html">
+            
+                <a href="../alg/637_Average_of_Levels_in_Binary_Tree.html">
+            
+                    
+                    637. Average of Levels in Binary Tree
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.7" data-path="../alg/114_Flatten_Binary_Tree_to_Linked_List.html">
+            
+                <a href="../alg/114_Flatten_Binary_Tree_to_Linked_List.html">
+            
+                    
+                    114. Flatten Binary Tree to Linked List
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.8" data-path="../alg/897_Increasing_Order_Search_Tree.html">
+            
+                <a href="../alg/897_Increasing_Order_Search_Tree.html">
+            
+                    
+                    897. Increasing Order Search Tree
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.9" data-path="../alg/108_Convert_Sorted_Array_to_Binary_Search_Tree.html">
+            
+                <a href="../alg/108_Convert_Sorted_Array_to_Binary_Search_Tree.html">
+            
+                    
+                    108. Convert Sorted Array to Binary Search Tree
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.10" data-path="../alg/654_Maximum_Binary_Tree.html">
+            
+                <a href="../alg/654_Maximum_Binary_Tree.html">
+            
+                    
+                    654. Maximum Binary Tree
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.11" data-path="../alg/105_Construct_Binary_Tree_from_Preorder_and_Inorder_Traversal.html">
+            
+                <a href="../alg/105_Construct_Binary_Tree_from_Preorder_and_Inorder_Traversal.html">
+            
+                    
+                    105. Construct Binary Tree from Preorder and Inorder Traversal
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.12" data-path="../alg/106_Construct_Binary_Tree_from_Inorder_and_Postorder_Traversal.html">
+            
+                <a href="../alg/106_Construct_Binary_Tree_from_Inorder_and_Postorder_Traversal.html">
+            
+                    
+                    106. Construct Binary Tree from Inorder and Postorder Traversal
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.13" data-path="../alg/100_Same_Tree.html">
+            
+                <a href="../alg/100_Same_Tree.html">
+            
+                    
+                    100. Same Tree
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.14" data-path="../alg/572_Subtree_of_Another_Tree.html">
+            
+                <a href="../alg/572_Subtree_of_Another_Tree.html">
+            
+                    
+                    572. Subtree of Another Tree
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.15" data-path="../alg/101_Symmetric_Tree.html">
+            
+                <a href="../alg/101_Symmetric_Tree.html">
+            
+                    
+                    101. Symmetric Tree
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.16" data-path="../alg/226_Invert_Binary_Tree.html">
+            
+                <a href="../alg/226_Invert_Binary_Tree.html">
+            
+                    
+                    226. Invert Binary Tree
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.17" data-path="../alg/617_Merge_Two_Binary_Trees.html">
+            
+                <a href="../alg/617_Merge_Two_Binary_Trees.html">
+            
+                    
+                    617. Merge Two Binary Trees
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.18" data-path="../alg/872_Leaf-Similar_Trees.html">
+            
+                <a href="../alg/872_Leaf-Similar_Trees.html">
+            
+                    
+                    872. Leaf-Similar Trees
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.19" data-path="../alg/104_Maximum_Depth_of_Binary_Tree.html">
+            
+                <a href="../alg/104_Maximum_Depth_of_Binary_Tree.html">
+            
+                    
+                    104. Maximum Depth of Binary Tree
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.20" data-path="../alg/111_Minimum_Depth_of_Binary_Tree.html">
+            
+                <a href="../alg/111_Minimum_Depth_of_Binary_Tree.html">
+            
+                    
+                    111. Minimum Depth of Binary Tree
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.21" data-path="../alg/110_Balanced_Binary_Tree.html">
+            
+                <a href="../alg/110_Balanced_Binary_Tree.html">
+            
+                    
+                    110. Balanced Binary Tree
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.22" data-path="../alg/222_Count_Complete_Tree_Nodes.html">
+            
+                <a href="../alg/222_Count_Complete_Tree_Nodes.html">
+            
+                    
+                    222. Count Complete Tree Nodes
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.23" data-path="../alg/257_Binary_Tree_Paths.html">
+            
+                <a href="../alg/257_Binary_Tree_Paths.html">
+            
+                    
+                    257. Binary Tree Paths
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.24" data-path="../alg/129_Sum_Root_to_Leaf_Numbers.html">
+            
+                <a href="../alg/129_Sum_Root_to_Leaf_Numbers.html">
+            
+                    
+                    129. Sum Root to Leaf Numbers
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.25" data-path="../alg/112_Path_Sum.html">
+            
+                <a href="../alg/112_Path_Sum.html">
+            
+                    
+                    112. Path Sum
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.26" data-path="../alg/113_Path_Sum_II.html">
+            
+                <a href="../alg/113_Path_Sum_II.html">
+            
+                    
+                    113. Path Sum II
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.27" data-path="../alg/124_Binary_Tree_Maximum_Path_Sum.html">
+            
+                <a href="../alg/124_Binary_Tree_Maximum_Path_Sum.html">
+            
+                    
+                    124. Binary Tree Maximum Path Sum
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.28" data-path="../alg/700_Search_in_a_Binary_Search_Tree.html">
+            
+                <a href="../alg/700_Search_in_a_Binary_Search_Tree.html">
+            
+                    
+                    700. Search in a Binary Search Tree
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.29" data-path="../alg/701_Insert_into_a_Binary_Search_Tree.html">
+            
+                <a href="../alg/701_Insert_into_a_Binary_Search_Tree.html">
+            
+                    
+                    701. Insert into a Binary Search Tree
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.30" data-path="../alg/450_Delete_Node_in_a_BST.html">
+            
+                <a href="../alg/450_Delete_Node_in_a_BST.html">
+            
+                    
+                    450. Delete Node in a BST
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.31" data-path="../alg/98_Validate_Binary_Search_Tree.html">
+            
+                <a href="../alg/98_Validate_Binary_Search_Tree.html">
+            
+                    
+                    98. Validate Binary Search Tree
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.32" data-path="../alg/235_Lowest_Common_Ancestor_of_a_Binary_Search_Tree.html">
+            
+                <a href="../alg/235_Lowest_Common_Ancestor_of_a_Binary_Search_Tree.html">
+            
+                    
+                    235. Lowest Common Ancestor of a Binary Search Tree
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.33" data-path="../alg/236_Lowest_Common_Ancestor_of_a_Binary_Tree.html">
+            
+                <a href="../alg/236_Lowest_Common_Ancestor_of_a_Binary_Tree.html">
+            
+                    
+                    236. Lowest Common Ancestor of a Binary Tree
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.34" data-path="../alg/230_Kth_Smallest_Element_in_a_BST.html">
+            
+                <a href="../alg/230_Kth_Smallest_Element_in_a_BST.html">
+            
+                    
+                    230. Kth Smallest Element in a BST
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.35" data-path="../alg/199_Binary_Tree_Right_Side_View.html">
+            
+                <a href="../alg/199_Binary_Tree_Right_Side_View.html">
+            
+                    
+                    199. Binary Tree Right Side View
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../3_partition.html">
+            
+                <a href="../3_partition.html">
+            
+                    
+                    Partition
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="../alg/75_Sort_Colors.html">
+            
+                <a href="../alg/75_Sort_Colors.html">
+            
+                    
+                    75. Sort Colors
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="../alg/28_Implement_strStr.html">
+            
+                <a href="../alg/28_Implement_strStr.html">
+            
+                    
+                    28. Implement strStr
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3" data-path="../alg/11_Container_With_Most_Water.html">
+            
+                <a href="../alg/11_Container_With_Most_Water.html">
+            
+                    
+                    11. Container With Most Water
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4" data-path="../alg/42_Trapping_Rain_Water.html">
+            
+                <a href="../alg/42_Trapping_Rain_Water.html">
+            
+                    
+                    42. Trapping Rain Water
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5" data-path="../alg/15_3Sum.html">
+            
+                <a href="../alg/15_3Sum.html">
+            
+                    
+                    15. 3Sum
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.6" data-path="../alg/18_4Sum.html">
+            
+                <a href="../alg/18_4Sum.html">
+            
+                    
+                    18. 4Sum
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.7" data-path="../alg/344_Reverse_String.html">
+            
+                <a href="../alg/344_Reverse_String.html">
+            
+                    
+                    344. Reverse String
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.8" data-path="../alg/27_Remove_Element.html">
+            
+                <a href="../alg/27_Remove_Element.html">
+            
+                    
+                    27. Remove Element
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.9" data-path="../alg/26_Remove_Duplicates_from_Sorted_Array.html">
+            
+                <a href="../alg/26_Remove_Duplicates_from_Sorted_Array.html">
+            
+                    
+                    26. Remove Duplicates from Sorted Array
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.10" data-path="../alg/80_Remove_Duplicates_from_Sorted_Array_II.html">
+            
+                <a href="../alg/80_Remove_Duplicates_from_Sorted_Array_II.html">
+            
+                    
+                    80. Remove Duplicates from Sorted Array II
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.11" data-path="../alg/905_Sort_Array_By_Parity.html">
+            
+                <a href="../alg/905_Sort_Array_By_Parity.html">
+            
+                    
+                    905. Sort Array By Parity
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.12" data-path="../alg/7_Reverse_Integer.html">
+            
+                <a href="../alg/7_Reverse_Integer.html">
+            
+                    
+                    7. Reverse Integer
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.13" data-path="../alg/2_Add_Two_Numbers.html">
+            
+                <a href="../alg/2_Add_Two_Numbers.html">
+            
+                    
+                    2. Add Two Numbers
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.14" data-path="../alg/415_Add_Strings.html">
+            
+                <a href="../alg/415_Add_Strings.html">
+            
+                    
+                    415. Add Strings
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.15" data-path="../alg/189_Rotate_Array.html">
+            
+                <a href="../alg/189_Rotate_Array.html">
+            
+                    
+                    189. Rotate Array
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="../4_stack.html">
+            
+                <a href="../4_stack.html">
+            
+                    
+                    Stack
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="../alg/155_Min_Stack.html">
+            
+                <a href="../alg/155_Min_Stack.html">
+            
+                    
+                    155. Min Stack
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2" data-path="../alg/232_Implement_Queue_using_Stacks.html">
+            
+                <a href="../alg/232_Implement_Queue_using_Stacks.html">
+            
+                    
+                    232. Implement Queue using Stacks
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.3" data-path="../alg/225_Implement_Stack_using_Queues.html">
+            
+                <a href="../alg/225_Implement_Stack_using_Queues.html">
+            
+                    
+                    225. Implement Stack using Queues
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4" data-path="../alg/150_Evaluate_Reverse_Polish_Notation.html">
+            
+                <a href="../alg/150_Evaluate_Reverse_Polish_Notation.html">
+            
+                    
+                    150. Evaluate Reverse Polish Notation
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.5" data-path="../alg/239_Sliding_Window_Maximum.html">
+            
+                <a href="../alg/239_Sliding_Window_Maximum.html">
+            
+                    
+                    239. Sliding Window Maximum
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.6" data-path="../alg/32_Longest_Valid_Parentheses.html">
+            
+                <a href="../alg/32_Longest_Valid_Parentheses.html">
+            
+                    
+                    32. Longest Valid Parentheses
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.7" data-path="../alg/227_Basic_Calculator_II.html">
+            
+                <a href="../alg/227_Basic_Calculator_II.html">
+            
+                    
+                    227. Basic Calculator II
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="../5_dfs.html">
+            
+                <a href="../5_dfs.html">
+            
+                    
+                    DFS & BFS
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.1" data-path="../alg/46_Permutations.html">
+            
+                <a href="../alg/46_Permutations.html">
+            
+                    
+                    46. Permutations
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2" data-path="../alg/78_Subsets.html">
+            
+                <a href="../alg/78_Subsets.html">
+            
+                    
+                    78. Subsets
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3" data-path="../alg/77_Combinations.html">
+            
+                <a href="../alg/77_Combinations.html">
+            
+                    
+                    77. Combinations
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4" data-path="../alg/39_Combination_Sum.html">
+            
+                <a href="../alg/39_Combination_Sum.html">
+            
+                    
+                    39. Combination Sum
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.5" data-path="../alg/216_Combination_Sum_III.html">
+            
+                <a href="../alg/216_Combination_Sum_III.html">
+            
+                    
+                    216. Combination Sum III
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.6" data-path="../alg/47_Permutations_II.html">
+            
+                <a href="../alg/47_Permutations_II.html">
+            
+                    
+                    47. Permutations II
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.7" data-path="../alg/90_Subsets_II.html">
+            
+                <a href="../alg/90_Subsets_II.html">
+            
+                    
+                    90. Subsets II
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.8" data-path="../alg/40_Combination_Sum_II.html">
+            
+                <a href="../alg/40_Combination_Sum_II.html">
+            
+                    
+                    40. Combination Sum II
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.9" data-path="../alg/200_Number_of_Islands.html">
+            
+                <a href="../alg/200_Number_of_Islands.html">
+            
+                    
+                    200. Number of Islands
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.10" data-path="../alg/79_Word_Search.html">
+            
+                <a href="../alg/79_Word_Search.html">
+            
+                    
+                    79. Word Search
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.11" data-path="../alg/36_Valid_Sudoku.html">
+            
+                <a href="../alg/36_Valid_Sudoku.html">
+            
+                    
+                    36. Valid Sudoku
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.12" data-path="../alg/37_Sudoku_Solver.html">
+            
+                <a href="../alg/37_Sudoku_Solver.html">
+            
+                    
+                    37. Sudoku Solver
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="../6_bitmanipulation.html">
+            
+                <a href="../6_bitmanipulation.html">
+            
+                    
+                    Bit manipulation
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.1" data-path="../alg/190_Reverse_Bits.html">
+            
+                <a href="../alg/190_Reverse_Bits.html">
+            
+                    
+                    190. Reverse Bits
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.2" data-path="../alg/191_Number_of_1_Bits.html">
+            
+                <a href="../alg/191_Number_of_1_Bits.html">
+            
+                    
+                    191. Number of 1 Bits
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.3" data-path="../alg/461_Hamming_Distance.html">
+            
+                <a href="../alg/461_Hamming_Distance.html">
+            
+                    
+                    461. Hamming Distance
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.4" data-path="../alg/136_Single_Number.html">
+            
+                <a href="../alg/136_Single_Number.html">
+            
+                    
+                    136. Single Number
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.5" data-path="../alg/137_Single_Number_II.html">
+            
+                <a href="../alg/137_Single_Number_II.html">
+            
+                    
+                    137. Single Number II
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.6" data-path="../alg/260_Single_Number_III.html">
+            
+                <a href="../alg/260_Single_Number_III.html">
+            
+                    
+                    260. Single Number III
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.7" data-path="../alg/231_Power_of_Two.html">
+            
+                <a href="../alg/231_Power_of_Two.html">
+            
+                    
+                    231. Power of Two
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.8" data-path="../alg/371_Sum_of_Two_Integers.html">
+            
+                <a href="../alg/371_Sum_of_Two_Integers.html">
+            
+                    
+                    371. Sum of Two Integers
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" >
+            
+                <span>
+            
+                    
+                    HashTable
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.11.1" data-path="../alg/387_First_Unique_Character_in_a_String.html">
+            
+                <a href="../alg/387_First_Unique_Character_in_a_String.html">
+            
+                    
+                    387. First Unique Character in a String
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.2" data-path="../alg/705_Design_HashSet.html">
+            
+                <a href="../alg/705_Design_HashSet.html">
+            
+                    
+                    705. Design HashSet
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.3" data-path="../alg/3_Longest_Substring_Without_Repeating_Characters.html">
+            
+                <a href="../alg/3_Longest_Substring_Without_Repeating_Characters.html">
+            
+                    
+                    3. Longest Substring Without Repeating Characters
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.4" data-path="../alg/532_K-diff_Pairs_in_an_Array.html">
+            
+                <a href="../alg/532_K-diff_Pairs_in_an_Array.html">
+            
+                    
+                    532. K-diff Pairs in an Array
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" data-path="../test.html">
+            
+                <a href="../test.html">
+            
+                    
+                    笔试
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13" data-path="../crypto.html">
+            
+                <a href="../crypto.html">
+            
+                    
+                    Crypto
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter active" data-level="1.13.1" data-path="bsgs.html">
+            
+                <a href="bsgs.html">
+            
+                    
+                    Baby-Step Griant-Step Algorithm
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14" data-path="../dp.html">
+            
+                <a href="../dp.html">
+            
+                    
+                    DP
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.14.1" data-path="../alg/70_Climbing_Stairs.html">
+            
+                <a href="../alg/70_Climbing_Stairs.html">
+            
+                    
+                    70. Climbing Stairs
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.2" data-path="../alg/LongestCommonSequence.html">
+            
+                <a href="../alg/LongestCommonSequence.html">
+            
+                    
+                    Longest Common Sequence
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.3" data-path="../alg/221_Maximal_Square.html">
+            
+                <a href="../alg/221_Maximal_Square.html">
+            
+                    
+                    221. Maximal Square
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.4" data-path="../alg/343_Integer_Break.html">
+            
+                <a href="../alg/343_Integer_Break.html">
+            
+                    
+                    343. Integer Break
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.5" data-path="../alg/120_Triangle.html">
+            
+                <a href="../alg/120_Triangle.html">
+            
+                    
+                    120. Triangle
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.6" data-path="../alg/204_Count_Primes.html">
+            
+                <a href="../alg/204_Count_Primes.html">
+            
+                    
+                    204. Count Primes
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.7" data-path="../alg/62_Unique_Paths.html">
+            
+                <a href="../alg/62_Unique_Paths.html">
+            
+                    
+                    62. Unique Paths
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.8" data-path="../alg/63_Unique_Paths_II.html">
+            
+                <a href="../alg/63_Unique_Paths_II.html">
+            
+                    
+                    63. Unique Paths II
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.9" data-path="../alg/198_House_Robber.html">
+            
+                <a href="../alg/198_House_Robber.html">
+            
+                    
+                    198. House Robber
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.15" >
+            
+                <span>
+            
+                    
+                    Greedy
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.15.1" data-path="../alg/300_Longest_Increasing_Subsequence.html">
+            
+                <a href="../alg/300_Longest_Increasing_Subsequence.html">
+            
+                    
+                    300. Longest Increasing Subsequence
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.15.2" data-path="../alg/435_Non-overlapping_Intervals.html">
+            
+                <a href="../alg/435_Non-overlapping_Intervals.html">
+            
+                    
+                    435. Non-overlapping Intervals
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >Baby-Step Griant-Step Algorithm</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h3 id="baby-step-griant-step-algorithm">Baby-Step Griant-Step Algorithm</h3>
+<h4 id="1-discrete-logarithm-problem">1. Discrete Logarithm problem:</h4>
+<p><img src="http://ww1.sinaimg.cn/large/006tNc79gy1g3s2uo6t4ij30ym09ewhz.jpg" ,="" width="500"></p>
+<p>&#x76EE;&#x7684;&#xFF1A;&#x6C42;x&#x7684;&#x503C;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;generator&#x76F8;&#x4E58;&#x7684;&#x6B21;&#x6570;&#x3002;&#x5728;prime&#x5F88;&#x5927;&#x7684;&#x65F6;&#x5019;&#x6C42;&#x89E3;&#x56F0;&#x96BE;&#xFF0C;&#x56E0;&#x4E3A;brute-force&#x7684;&#x65F6;&#x95F4;&#x590D;&#x6742;&#x5EA6;&#x662F;O(prime)</p>
+<p><img src="http://ww1.sinaimg.cn/large/006tNc79gy1g3s2un300nj311k06640m.jpg" ,="" width="500"></p>
+<p>&#x5E94;&#x7528;&#xFF1A;&#x5728;DH key exchange&#x4E2D;&#xFF0C;&#x4E2D;&#x95F4;&#x4EBA;&#x5982;&#x679C;&#x9700;&#x8981;&#x4ECE;&#x4E00;&#x76F4;&#x6761;&#x4EF6;<code>&#x963F;&#x5C14;&#x6CD5;(generator), A(public key), p(prime)</code>&#x7834;&#x89E3;&#x83B7;&#x5F97;&#x4E24;&#x65B9;&#x7684;&#x5BC6;&#x94A5;a,b&#xFF0C;&#x5C31;&#x9700;&#x8981;&#x89E3;&#x51B3;DLP&#x95EE;&#x9898;&#x3002;</p>
+<p><img src="http://ww2.sinaimg.cn/large/006tNc79gy1g3s35ey30nj312c0pm7pm.jpg" ,="" width="500"></p>
+<h4 id="2-baby-step-griant-step-algorithm">2. Baby-Step Griant-Step Algorithm</h4>
+<p>&#x662F;&#x4E00;&#x79CD;&#x5229;&#x7528;&#x7A7A;&#x95F4;&#x6765;&#x6709;&#x6548;&#x51CF;&#x5C11;DLP&#x65F6;&#x95F4;&#x590D;&#x6742;&#x5EA6;&#x7684;&#x8BA1;&#x7B97;&#xFF0C;&#x65F6;&#x95F4;&#x590D;&#x6742;&#x5EA6;&#x4E3A;<code>O(m * log(m)), m = ceil(sqrt(p))</code>&#xFF0C;&#x7A7A;&#x95F4;&#x590D;&#x6742;&#x5EA6;&#x4E3A;<code>O(sqrt(p))</code>&#x3002;&#x7531;&#x4E8E;&#x65F6;&#x95F4;&#x590D;&#x6742;&#x5EA6;&#x662F;sqrt&#x7EA7;&#x522B;&#x7684;&#x4E0B;&#x964D;&#xFF0C;&#x4E3A;&#x4E86;&#x4FDD;&#x8BC1;&#x5B89;&#x5168;&#x6027;prime&#x7684;bits&#x4E00;&#x5B9A;&#x8981;&#x957F;</p>
+<p>&#x601D;&#x8DEF;&#xFF1A;&#x5206;&#x89E3;<code>x = mq + r, m = sqrt(p)</code>, &#x4F7F;&#x7528;hashtable&#x51CF;&#x5C11;&#x91CD;&#x590D;&#x8BA1;&#x7B97;&#x3002;&#x4E5F;&#x5C31;&#x662F;&#x5DF2;&#x77E5;<code>target, g</code>&#xFF0C;&#x8BA1;&#x7B97;<code>target * g^(-mq) = g^r</code>(&#x7136;&#x540E;&#x6240;&#x6709;&#x8BA1;&#x7B97;&#x51FA;&#x6765;&#x7684;&#x6570;&#x5B57;&#x90FD;&#x8981;mod p)&#x3002;&#x5176;&#x4E2D;r&#x4E3A;baby step ,q&#x4E3A;griant step&#xFF0C;&#x539F;&#x56E0;&#x662F;b&#x662F;&#x9010;&#x4E00;&#x9012;&#x589E;&#xFF0C;q&#x5728;hashtable&#x4E2D;&#x662F;m&#x500D;&#x9012;&#x589E;&#xFF08;&#x662F;&#x8FD9;&#x6837;&#x89E3;&#x91CA;&#x7684;8&#xFF1F;&#xFF09;</p>
+<ul>
+<li>&#x8BA1;&#x7B97;m = sqrt(p)</li>
+<li>babystep: for r in range(m),&#x5728;hashtable&#x4E2D;&#x8BB0;&#x5F55;{g^r mod p : r}&#xFF0C;&#x6CE8;&#x610F;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x4E4B;&#x524D;&#x5DF2;&#x7ECF;&#x8BA1;&#x7B97;&#x8FC7;&#x7684;&#x503C;</li>
+<li>&#x8BA1;&#x7B97;gm = g^(-m)&#xFF0C;&#x4F7F;&#x7528;pow&#x548C;<strong>egcd</strong>&#x8BA1;&#x7B97;inverse&#xFF0C;&#x56E0;&#x4E3A;&#x662F;&#x8D1F;&#x53F7;&#xFF08;&#x8FD9;&#x4E2A;&#x5730;&#x65B9;&#x4E00;&#x76F4;&#x5F88;&#x8FF7;&#xFF09;,&#x5176;&#x4E2D;pow&#x7684;&#x65F6;&#x95F4;&#x590D;&#x6742;&#x5EA6;&#x662F;O(log(m))&#xFF0C;&#x4E0D;&#x77E5;&#x9053;&#x8BA1;&#x7B97;inverse&#x7684;&#x65F6;&#x95F4;&#x590D;&#x6742;&#x5EA6;....</li>
+<li>griantstep: for q in range(m), &#x8BA1;&#x7B97;<code>index = gm^q mod p</code>&#xFF0C;&#x5E76;&#x5728;hashtable&#x4E2D;&#x67E5;&#x627E;&#x662F;&#x5426;&#x6709;&#x5BF9;&#x5E94;&#x7684;key&#xFF0C;&#x5982;&#x679C;&#x6709;&#x76F4;&#x63A5;&#x8FD4;&#x56DE;<code>x = mq + r</code>&#xFF0C;&#x5982;&#x679C;&#x6CA1;&#x6709;&#xFF0C;&#x5728;&#x524D;&#x4E00;&#x6B65;&#x8BA1;&#x7B97;&#x7684;&#x57FA;&#x7840;&#x4E0A;&#x518D;&#x4E58;&#x4EE5;&#x4E00;&#x4E2A;gm&#xFF0C;&#x548C;babystep&#x4E2D;&#x590D;&#x7528;&#x4E00;&#x4E2A;&#x601D;&#x8DEF;&#x3002;</li>
+</ul>
+<p>&#x4EE3;&#x7801;&#x5927;&#x6982;&#x662F;&#x8FD9;&#x6837;&#x7684;8&#xFF0C;&#x4E0D;&#x77E5;&#x9053;&#x53EF;&#x4E0D;&#x53EF;&#x4EE5;&#x7528;&#x4F4D;&#x8FD0;&#x7B97;&#x4EE3;&#x66FF;&#x6A21;&#x8FD0;&#x7B97;&#xFF0C;&#x4F46;&#x662F;&#x67E5;&#x4E86;&#x4E00;&#x4E0B;&#x53EA;&#x6709;&#x8FD9;&#x4E2A;&#x89C4;&#x5F8B;:<code>&#x5F53;%&#x548C;&amp;&#x4E92;&#x6362;&#xFF1A;a % 2^n = a &amp; (2^n - 1)</code>&#xFF0C;&#x7136;&#x800C;p&#x662F;prime</p>
+<pre><code class="lang-python"><span class="hljs-keyword">import</span> math
+<span class="hljs-keyword">import</span> time
+
+<span class="hljs-comment"># find the inverse of a in GF(p) with xGCD. gf_inv(31, 3**6) = 2</span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">gf_inv</span><span class="hljs-params">(p, a)</span>:</span>
+    r1 = p
+    r2 = a
+    c1 = <span class="hljs-number">0</span>
+    c2 = <span class="hljs-number">1</span>
+
+    <span class="hljs-keyword">while</span> r1 &gt; <span class="hljs-number">1</span>:
+        q = r1 // r2
+        r = r1 % r2
+        c = c1 - c2 * q
+        r1 = r2
+        c1 = c2
+        r2 = r
+        c2 = c
+    <span class="hljs-keyword">return</span> c1 % p
+
+
+<span class="hljs-comment"># compute a * b in GF(p)</span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">gf_mul</span><span class="hljs-params">(p, a, b)</span>:</span>
+    <span class="hljs-keyword">return</span> a * b % p
+
+
+<span class="hljs-comment"># compute a ** b in GF(p)</span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">gf_pow</span><span class="hljs-params">(p, a, b)</span>:</span>
+    <span class="hljs-keyword">if</span> b == <span class="hljs-number">0</span>:
+        <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>
+    <span class="hljs-keyword">if</span> b == <span class="hljs-number">1</span>:
+        <span class="hljs-keyword">return</span> a % p
+    v = gf_pow(p, a, b // <span class="hljs-number">2</span>)
+    <span class="hljs-keyword">if</span> b % <span class="hljs-number">2</span> == <span class="hljs-number">0</span>:
+        <span class="hljs-keyword">return</span> v * v % p
+    <span class="hljs-keyword">else</span>:
+        <span class="hljs-keyword">return</span> v * v * a % p
+
+
+<span class="hljs-comment"># compute a + b in GF(p)</span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">gf_add</span><span class="hljs-params">(p, a, b)</span>:</span>
+    <span class="hljs-keyword">return</span> (a + b) % p
+
+
+<span class="hljs-comment"># The basic idea of this algorithm is to check if target * g ^(-mq) == g^r, return x = (r + mq)</span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">bsgs</span><span class="hljs-params">(p, gen, target)</span>:</span>
+    <span class="hljs-comment"># 1. compute m</span>
+    m = math.ceil(math.sqrt(p))
+
+    <span class="hljs-comment"># 2. compute g^r</span>
+    <span class="hljs-comment"># create a dictionary list_gr to store the index {gr:r}</span>
+    gr_list = {}
+    gr = <span class="hljs-number">1</span>
+    <span class="hljs-keyword">for</span> r <span class="hljs-keyword">in</span> range(m):
+        gr_list[gr] = r
+        gr = gen * gr % p  <span class="hljs-comment"># reuse previous result of gr, or gf_mul(p, gen, gr)</span>
+
+    <span class="hljs-comment"># 3. compute inverse g^(-m)</span>
+    gm = gf_inv(p, gf_pow(p, gen, m))
+
+    <span class="hljs-comment"># 4. compute hgmq: target * (g^-m)^q</span>
+    hgmq = target
+    <span class="hljs-keyword">for</span> q <span class="hljs-keyword">in</span> range(m):
+        <span class="hljs-keyword">if</span> hgmq <span class="hljs-keyword">in</span> gr_list:
+            <span class="hljs-keyword">return</span> q * m + gr_list[hgmq]
+        <span class="hljs-keyword">else</span>:
+            hgmq = hgmq * gm % p  <span class="hljs-comment"># reuse precomputed hgmq, or hgmq = gf_mul(p, hgmq, gm)</span>
+    <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;No result&quot;</span>
+
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">brute_force</span><span class="hljs-params">(p, gen, target)</span>:</span>
+    x = <span class="hljs-number">1</span>
+    product = gen
+    <span class="hljs-keyword">while</span> product != target:
+        x += <span class="hljs-number">1</span>
+        product = gf_mul(p, product, gen)
+    <span class="hljs-keyword">return</span> x
+
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">measure_time</span><span class="hljs-params">(func, *args)</span>:</span>
+    p, gen, target = args
+    start = time.time()
+    x = func(p, gen, target)
+    time_elapsed = time.time() - start
+    print(<span class="hljs-string">&quot;secret key: {}, runtime: {:&lt;15f}&quot;</span>.format(x, time_elapsed))
+
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">main</span><span class="hljs-params">()</span>:</span>
+    p_list = [<span class="hljs-number">31</span>, <span class="hljs-number">7919</span>, <span class="hljs-number">688889</span>, <span class="hljs-number">51539607551</span>, <span class="hljs-number">108086391056891903</span>]
+    gen_list = [<span class="hljs-number">3</span>, <span class="hljs-number">7</span>, <span class="hljs-number">13</span>, <span class="hljs-number">19</span>, <span class="hljs-number">19</span>]
+    target_list = [<span class="hljs-number">6</span>, <span class="hljs-number">854</span>, <span class="hljs-number">490760</span>, <span class="hljs-number">43511947506</span>, <span class="hljs-number">18733402164927303</span>]
+
+    print(<span class="hljs-string">&quot;Brute force algorithm:&quot;</span>)
+    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(<span class="hljs-number">5</span>):
+        <span class="hljs-keyword">if</span> i &gt; <span class="hljs-number">2</span>:
+            print(<span class="hljs-string">&quot;secret key: N/A, runtime: N/A&quot;</span>)
+        <span class="hljs-keyword">else</span>:
+            measure_time(brute_force, p_list[i], gen_list[i], target_list[i])
+
+    print(<span class="hljs-string">&quot;Baby-Step Giant-Step algorithm:&quot;</span>)
+    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(<span class="hljs-number">5</span>):
+        measure_time(bsgs, p_list[i], gen_list[i], target_list[i])
+
+
+<span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&apos;__main__&apos;</span>:
+    main()
+
+<span class="hljs-comment"># example output</span>
+<span class="hljs-comment"># Brute force algorithm:</span>
+<span class="hljs-comment"># secret key: 25, runtime: 0.000020</span>
+<span class="hljs-comment"># secret key: 234, runtime: 0.000169</span>
+<span class="hljs-comment"># secret key: 676545, runtime: 0.308789</span>
+<span class="hljs-comment"># secret key: N/A, runtime: N/A</span>
+<span class="hljs-comment"># secret key: N/A, runtime: N/A</span>
+<span class="hljs-comment"># Baby-Step Giant-Step algorithm:</span>
+<span class="hljs-comment"># secret key: 25, runtime: 0.000035</span>
+<span class="hljs-comment"># secret key: 234, runtime: 0.000049</span>
+<span class="hljs-comment"># secret key: 676545, runtime: 0.000525</span>
+<span class="hljs-comment"># secret key: 584050353, runtime: 0.124305</span>
+<span class="hljs-comment"># secret key: 947234702, runtime: 677.787557</span>
+
+<span class="hljs-comment"># Brute force algorithm:</span>
+<span class="hljs-comment"># secret key: 25, runtime: 0.000017</span>
+<span class="hljs-comment"># secret key: 234, runtime: 0.000138</span>
+<span class="hljs-comment"># secret key: 676545, runtime: 0.292695</span>
+<span class="hljs-comment"># secret key: N/A, runtime: N/A</span>
+<span class="hljs-comment"># secret key: N/A, runtime: N/A</span>
+<span class="hljs-comment"># Baby-Step Giant-Step algorithm:</span>
+<span class="hljs-comment"># secret key: 25, runtime: 0.000063</span>
+<span class="hljs-comment"># secret key: 234, runtime: 0.000060</span>
+<span class="hljs-comment"># secret key: 676545, runtime: 0.000528</span>
+<span class="hljs-comment"># secret key: 584050353, runtime: 0.126814</span>
+<span class="hljs-comment"># secret key: 947234702, runtime: 687.591964</span>
+
+<span class="hljs-comment"># check complexity</span>
+<span class="hljs-comment"># https://cp-algorithms.com/algebra/discrete-log.html</span>
+<span class="hljs-comment"># egcd.</span>
+</code></pre>
+<h4 id="3-some-small-functions">3. Some small functions</h4>
+<p>python&#x8BA1;&#x7B97;bit length&#xFF0C;&#x53EF;&#x4EE5;&#x7528;&#x6765;&#x8BA1;&#x7B97;prime&#x7684;&#x4E8C;&#x8FDB;&#x5236;&#x957F;&#x5EA6;&#xFF0C;&#x4ECE;&#x800C;&#x5224;&#x65AD;&#x57FA;&#x672C;&#x7684;&#x65F6;&#x95F4;&#x590D;&#x6742;&#x5EA6;</p>
+<pre><code>&gt;&gt;&gt; a = 108086391056891903
+&gt;&gt;&gt; a.bit_length()
+57
+&gt;&gt;&gt; len(bin(108086391056891903)[2:])
+57
+</code></pre><h4 id="&#x5176;&#x4ED6;">&#x5176;&#x4ED6;</h4>
+<p>&#x5199;&#x4F4D;&#x8FD0;&#x7B97;&#x8FD8;&#x662F;&#x6BD4;&#x8F83;&#x96BE;&#xFF0C;&#x5F88;&#x96BE;&#x7406;&#x89E3;</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="../crypto.html" class="navigation navigation-prev " aria-label="Previous page: Crypto">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="../dp.html" class="navigation navigation-next " aria-label="Next page: DP">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Baby-Step Griant-Step Algorithm","level":"1.13.1","depth":2,"next":{"title":"DP","level":"1.14","depth":1,"path":"dp.md","ref":"dp.md","articles":[{"title":"70. Climbing Stairs","level":"1.14.1","depth":2,"path":"alg/70_Climbing_Stairs.md","ref":"alg/70_Climbing_Stairs.md","articles":[]},{"title":"Longest Common Sequence","level":"1.14.2","depth":2,"path":"alg/LongestCommonSequence.md","ref":"alg/LongestCommonSequence.md","articles":[]},{"title":"221. Maximal Square","level":"1.14.3","depth":2,"path":"alg/221_Maximal_Square.md","ref":"alg/221_Maximal_Square.md","articles":[]},{"title":"343. Integer Break","level":"1.14.4","depth":2,"path":"alg/343_Integer_Break.md","ref":"alg/343_Integer_Break.md","articles":[]},{"title":"120. Triangle","level":"1.14.5","depth":2,"path":"alg/120_Triangle.md","ref":"alg/120_Triangle.md","articles":[]},{"title":"204. Count Primes","level":"1.14.6","depth":2,"path":"alg/204_Count_Primes.md","ref":"alg/204_Count_Primes.md","articles":[]},{"title":"62. Unique Paths","level":"1.14.7","depth":2,"path":"alg/62_Unique_Paths.md","ref":"alg/62_Unique_Paths.md","articles":[]},{"title":"63. Unique Paths II","level":"1.14.8","depth":2,"path":"alg/63_Unique_Paths_II.md","ref":"alg/63_Unique_Paths_II.md","articles":[]},{"title":"198. House Robber","level":"1.14.9","depth":2,"path":"alg/198_House_Robber.md","ref":"alg/198_House_Robber.md","articles":[]}]},"previous":{"title":"Crypto","level":"1.13","depth":1,"path":"crypto.md","ref":"crypto.md","articles":[{"title":"Baby-Step Griant-Step Algorithm","level":"1.13.1","depth":2,"path":"crypto/bsgs.md","ref":"crypto/bsgs.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["theme-default"],"pluginsConfig":{"theme-default":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"file":{"path":"crypto/bsgs.md","mtime":"2019-06-06T21:25:21.085Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-06-06T21:42:14.647Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
