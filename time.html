@@ -6,7 +6,7 @@
         <!-- fix pic 403 -->
         <meta name="referrer" content="no-referrer" />
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Partition · GitBook</title>
+        <title>时间 · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -59,10 +59,10 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="alg/75_Sort_Colors.html" />
+    <link rel="next" href="others.html" />
     
     
-    <link rel="prev" href="alg/199_Binary_Tree_Right_Side_View.html" />
+    <link rel="prev" href="./" />
     
 
     </head>
@@ -104,7 +104,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2" data-path="time.html">
+        <li class="chapter active" data-level="1.2" data-path="time.html">
             
                 <a href="time.html">
             
@@ -1279,7 +1279,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.8" data-path="3_partition.html">
+        <li class="chapter " data-level="1.8" data-path="3_partition.html">
             
                 <a href="3_partition.html">
             
@@ -2241,7 +2241,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >Partition</a>
+        <a href="." >时间</a>
     </h1>
 </div>
 
@@ -2256,24 +2256,366 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h3 id="partition">Partition</h3>
-<p>&#x591A;&#x4E2A;&#x6307;&#x9488;&#x64CD;&#x4F5C;&#x6570;&#x7EC4;&#x6216;&#x5B57;&#x7B26;&#x4E32;&#xFF0C;&#x4F7F;&#x5F97;&#x67D0;&#x4E9B;&#x64CD;&#x4F5C;&#x8FBE;&#x5230;&#x7EBF;&#x6027;&#x7684;&#x65F6;&#x95F4;&#x590D;&#x6742;&#x5EA6;&#x3002;</p>
-<p>&#x96BE;&#x70B9;: &#x627E;&#x5230;&#x6307;&#x9488;&#x79FB;&#x52A8;&#x7684;&#x6761;&#x4EF6;&#xFF0C;&#x8D2A;&#x5FC3;&#x6BD4;&#x4EC0;&#x4E48;&#xFF0C;<strong>&#x8FB9;&#x754C;&#x95EE;&#x9898;</strong>&#x3002;</p>
-<p>&#x64CD;&#x4F5C;: &#x901A;&#x5E38;&#x65F6;&#x5DE6;&#x53F3;&#x6307;&#x9488;&#x4ECE;&#x4E24;&#x8FB9;&#x8D70;(&#x6216;&#x5355;&#x8FB9;)&#xFF0C;&#x6709;&#x65F6;&#x5019;&#x4F1A;&#x6709;&#x7B2C;&#x4E09;&#x4E2A;&#x6307;&#x9488;&#x3002;</p>
+                                <h3 id="1-&#x65F6;&#x95F4;&#x590D;&#x6742;&#x5EA6;on">1. &#x65F6;&#x95F4;&#x590D;&#x6742;&#x5EA6;O(n)</h3>
+<p>O(n)&#x8861;&#x91CF;&#x4E86;&#x7B97;&#x6CD5;&#x7684;&#x589E;&#x957F;&#x66F2;&#x7EBF;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;<strong>&#x7A0B;&#x5E8F;&#x8FD0;&#x884C;&#x65F6;&#x95F4;</strong>&#x548C;<strong>&#x8F93;&#x5165;&#x5927;&#x5C0F;</strong>&#x7684;&#x5173;&#x7CFB;&#x3002;</p>
 <ul>
-<li><p>&#x57FA;&#x7840;&#x5FEB;&#x6392;: 75(&#x8377;&#x5170;&#x56FD;&#x65D7;), <strong>215</strong>(k&#x5927;)</p>
-</li>
-<li><p>&#x79FB;&#x9664;&#x6570;&#x7EC4;&#x4E2D;&#x7684;&#x5143;&#x7D20;: 26,27,80</p>
-</li>
-<li><p>&#x5B57;&#x7B26;&#x4E32;/&#x6570;&#x7EC4;&#x4EA4;&#x6362;: 344(reverse), 905(&#x5947;&#x5076;&#x4EA4;&#x6362;), 15(3sum), 18(4sum)</p>
-</li>
-<li><p>&#x5B57;&#x7B26;&#x4E32;&#x6BD4;&#x8F83;: <strong>28</strong></p>
-</li>
-<li><p>&#x8D2A;&#x5FC3;: 11, 42</p>
-</li>
-<li><p>&#x6570;&#x5B57;&#x76F8;&#x52A0;&#xFF1A;2, 415</p>
-</li>
+<li>&#x8BBE;f(n)&#x548C;g(n)&#x4E3A;&#x4E24;&#x4E2A;&#x51FD;&#x6570;&#xFF0C;f(n)=O(g(n))&#x6210;&#x7ACB;&#x7684;&#x6761;&#x4EF6;&#x662F;&#xFF1A;</li>
 </ul>
+<p><code>&#x5982;&#x679C;&#x5B58;&#x5728;&#x4E00;&#x4E2A;**&#x5E38;&#x6570;c**&gt;0, n&gt;=n0&gt;=1&#xFF0C;&#x4F7F;&#x5F97;f(n)&lt;=c*g(n)&#xFF0C;&#x4E14;n&gt;=n0</code></p>
+<p>&#x8BC1;&#x660E;2n+10&#x7684;&#x65F6;&#x95F4;&#x590D;&#x6742;&#x5EA6;&#x662F;O(n): <code>2n+10 &lt;= cn&#xFF0C;&#x5B58;&#x5728;c=3,n0=10&#x4F7F;&#x5F97;&#x7B49;&#x5F0F;&#x6210;&#x7ACB;</code></p>
+<ul>
+<li>&#x7B80;&#x5355;&#x7A0B;&#x5E8F;&#x5206;&#x6790;&#xFF1A;</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">double</span> <span class="hljs-title">max</span><span class="hljs-params">(<span class="hljs-keyword">double</span>[] nums)</span> </span>{<span class="hljs-comment">// array size = n</span>
+    <span class="hljs-keyword">int</span> size = nums.length;             <span class="hljs-comment">// 2 ops</span>
+    <span class="hljs-keyword">double</span> max = nums[<span class="hljs-number">0</span>];               <span class="hljs-comment">// 2 ops</span>
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt; size; i++) {    <span class="hljs-comment">// 2 * (n - 1) ops</span>
+        <span class="hljs-keyword">if</span> (nums[i] &gt; max) {            <span class="hljs-comment">// 2 * (n - 1) ops</span>
+            max = nums[i];              <span class="hljs-comment">// 0 to (n - 1) ops</span>
+        }
+    }
+    <span class="hljs-keyword">return</span> max;                         <span class="hljs-comment">// 1 op</span>
+}                                       <span class="hljs-comment">// total: 5n ---&gt; runs in O(n)</span>
+</code></pre>
+<ul>
+<li>&#x7B80;&#x5355;&#x9012;&#x5F52;&#x7A0B;&#x5E8F;&#x5206;&#x6790;&#xFF1A;</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">fac</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span> </span>{ <span class="hljs-comment">// n &gt;= 0</span>
+    <span class="hljs-keyword">if</span> (n == <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;
+    <span class="hljs-keyword">return</span> n * fac(n - <span class="hljs-number">1</span>);
+}
+</code></pre>
+<pre><code>T(n) = T(n - 1) + b
+T(0) = c
+</code></pre><p>&#x63A8;&#x51FA;&#x901A;&#x9879;&#x516C;&#x5F0F;<code>T(n) = c + nb</code>&#xFF0C;&#x6240;&#x4EE5;&#x65F6;&#x95F4;&#x590D;&#x6742;&#x5EA6;&#x4E3A;<code>O(n)</code></p>
+<p>&#x5176;&#x4ED6;&#x7B80;&#x5355;&#x63A8;&#x8BBA;&#xFF1A;&#x9012;&#x5F52;&#x8F93;&#x5165;<code>T(n) = T(n/2) + c</code>&#x7684;&#x65F6;&#x95F4;&#x590D;&#x6742;&#x5EA6;&#x4E3A;<code>O(logn)</code>, <code>T(n) = 2T(n - 1) + c</code>&#x65F6;&#x95F4;&#x590D;&#x6742;&#x5EA6;&#x4E3A;<code>O(2^n)</code>&#xFF0C;&#x5982;&#x524D;&#x9762;&#x7684;&#x6C49;&#x8BFA;&#x5854;</p>
+<h3 id="2-&#x6D4B;&#x91CF;&#x65F6;&#x95F4;&#x4EE3;&#x7801;">2. &#x6D4B;&#x91CF;&#x65F6;&#x95F4;&#x4EE3;&#x7801;</h3>
+<p>&#x7EB3;&#x79D2;</p>
+<pre><code class="lang-java"><span class="hljs-keyword">long</span> startTime = System.nanoTime();
+Arrays.sort(arr);
+<span class="hljs-keyword">long</span> timeElapsed = System.nanoTime() - startTime;
+System.out.println(<span class="hljs-string">&quot;Execution time in nanosecond: &quot;</span> + timeElapsed);
+</code></pre>
+<p>&#x5FAE;&#x79D2;</p>
+<pre><code class="lang-java"><span class="hljs-keyword">long</span> startTime = System.currentTimeMillis();
+Arrays.sort(arr);
+<span class="hljs-keyword">long</span> timeElapsed = System.currentTimeMillis() - startTime;
+<span class="hljs-comment">// convert to seconds</span>
+<span class="hljs-comment">// long timeElapsedSecond = TimeUnit.MILLISECONDS.toSeconds(timeElapsed);</span>
+System.out.println(<span class="hljs-string">&quot;Execution time in nanosecond: &quot;</span> + timeElapsed);
+</code></pre>
+<pre><code class="lang-python"><span class="hljs-meta">&gt;&gt;&gt; </span>timeit(<span class="hljs-string">&apos;x.append(1)&apos;</span>,<span class="hljs-string">&apos;x=[]&apos;</span>, number = <span class="hljs-number">10000</span>)
+<span class="hljs-number">0.0014090538024902344</span>
+</code></pre>
+<h3 id="3-&#x65F6;&#x95F4;&#x590D;&#x6742;&#x5EA6;&#x548C;input-size&#x7684;&#x5173;&#x7CFB;">3. &#x65F6;&#x95F4;&#x590D;&#x6742;&#x5EA6;&#x548C;input size&#x7684;&#x5173;&#x7CFB;</h3>
+<p>&#x7B80;&#x5355;&#x52A0;&#x6CD5;O(n)&#x7EA7;&#x522B;&#x4E0D;&#x540C;input size&#x7684;&#x8FD0;&#x884C;&#x65F6;&#x95F4;&#x6D4B;&#x8BD5;:</p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">runtimeTest</span> </span>{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">double</span> <span class="hljs-title">sum</span><span class="hljs-params">(<span class="hljs-keyword">double</span> n)</span> </span>{
+        <span class="hljs-keyword">long</span> start = System.currentTimeMillis();
+        <span class="hljs-keyword">long</span> sum = <span class="hljs-number">0</span>;
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">long</span> j = <span class="hljs-number">0</span>; j &lt; n; j++) { <span class="hljs-comment">// &#x6CE8;&#x610F;&#x8FD9;&#x8FB9;j&#x662F;long&#xFF0C;&#x5426;&#x5219;&#x4F1A;&#x9020;&#x6210;&#x6B7B;&#x5FAA;&#x73AF;&#xFF08;&#x6574;&#x6570;&#x6EA2;&#x51FA;&#xFF09;</span>
+            sum += <span class="hljs-number">1</span>;
+        }
+        <span class="hljs-keyword">return</span> (System.currentTimeMillis() - start) / <span class="hljs-number">1000.0</span>;
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>{
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt; <span class="hljs-number">11</span>; i++) {
+            <span class="hljs-keyword">double</span> n = Math.pow(<span class="hljs-number">10</span>, i);
+            <span class="hljs-keyword">double</span> time = <span class="hljs-number">0</span>;
+            <span class="hljs-keyword">double</span> count = <span class="hljs-number">1</span>;
+            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>; j &lt; <span class="hljs-number">10</span>; j++) {
+                time += sum(n);
+            }
+            System.out.println(<span class="hljs-string">&quot;10^&quot;</span> + i + <span class="hljs-string">&quot;: &quot;</span> + time / count + <span class="hljs-string">&quot; s&quot;</span>);
+        }
+    }
+}
+<span class="hljs-comment">// 10^1: 0.0 s</span>
+<span class="hljs-comment">// 10^2: 0.0 s</span>
+<span class="hljs-comment">// 10^3: 0.0 s</span>
+<span class="hljs-comment">// 10^4: 0.001 s</span>
+<span class="hljs-comment">// 10^5: 0.002 s</span>
+<span class="hljs-comment">// 10^6: 0.013000000000000003 s</span>
+<span class="hljs-comment">// 10^7: 0.13499999999999998 s</span>
+<span class="hljs-comment">// 10^8: 1.366 s</span>
+<span class="hljs-comment">// 10^9: 11.797 s</span>
+<span class="hljs-comment">// 10^10: 119.626 s</span>
+</code></pre>
+<p>&#x7ED3;&#x8BBA;&#xFF1A;&#x4ECE;10^5&#x5F00;&#x59CB;&#xFF0C;&#x65F6;&#x95F4;10&#x500D;&#x589E;&#x52A0;&#x3002;</p>
+<p>&#x7A0B;&#x5E8F;&#x8FD0;&#x884C;&#x65F6;&#x95F4;<strong>1s</strong>&#x4EE5;&#x4E0B;&#x7684;&#x8F93;&#x5165;&#x6570;&#x636E;&#x89C4;&#x6A21;&#xFF1A;</p>
+<pre><code class="lang-java">O(n): &lt; <span class="hljs-number">10</span> ^ <span class="hljs-number">8</span>
+O(n^<span class="hljs-number">2</span>) &lt; <span class="hljs-number">10</span> ^ <span class="hljs-number">4</span>   (x ^ <span class="hljs-number">2</span> = <span class="hljs-number">10</span> ^ <span class="hljs-number">8</span>)
+O(n*logn) &lt; <span class="hljs-number">10</span> ^ <span class="hljs-number">7</span>    (x * log_7^x = <span class="hljs-number">10</span> ^ <span class="hljs-number">8</span>)
+</code></pre>
+<p>&#x5B9E;&#x9645;&#x95EE;&#x9898;&#x7684;&#x6570;&#x636E;&#x89C4;&#x6A21;&#x9700;&#x8981;&#x5728;&#x8FD9;&#x4E2A;&#x57FA;&#x7840;&#x4E0A;&#x518D;&#x9664;&#x4EE5;10&#x6216;2</p>
+<p>&#x7B97;&#x6CD5;&#x7684;&#x65F6;&#x95F4;&#x590D;&#x6742;&#x5EA6;&#x548C;&#x8F93;&#x5165;&#x89C4;&#x6A21;&#x7684;&#x5173;&#x7CFB;(&#x5047;&#x8BBE;&#x8FD0;&#x884C;&#x65F6;&#x95F4;&#x4E0A;&#x9650;&#x4E3A;1s)&#xFF1A;</p>
+<ul>
+<li>&#x5982;&#x679C;&#x8F93;&#x5165;&#x89C4;&#x6A21;&#x4E3A;1000&#x4EE5;&#x4E0B;&#xFF0C;&#x90A3;&#x4E48;&#x8BBE;&#x8BA1;O(n^2)&#x7EA7;&#x522B;&#x7684;&#x7B97;&#x6CD5;&#x6CA1;&#x6709;&#x95EE;&#x9898;&#x3002;&#x6240;&#x4EE5;&#x6392;&#x5E8F;&#x7B97;&#x6CD5;&#x5728;&#x8F93;&#x5165;&#x89C4;&#x6A21;&#x8F83;&#x5C0F;&#x65F6;&#x53EF;&#x4EE5;&#x6539;&#x7528;O(n^2)&#x7684;&#x6392;&#x5E8F;&#x7B97;&#x6CD5;&#x8FDB;&#x884C;&#x4F18;&#x5316;&#x3002;</li>
+<li>&#x5982;&#x679C;&#x8F93;&#x5165;&#x89C4;&#x6A21;&#x5728;10^8&#x5DE6;&#x53F3;&#xFF0C;&#x90A3;&#x4E48;&#x9700;&#x8981;&#x8BBE;&#x8BA1;O(n)&#x6216;&#x8005;O(nlogn)&#x7EA7;&#x522B;&#x7684;&#x7B97;&#x6CD5;</li>
+</ul>
+<h3 id="4-&#x5173;&#x4E8E;ologn&#x7684;&#x533A;&#x522B;">4. &#x5173;&#x4E8E;O(log(n))&#x7684;&#x533A;&#x522B;</h3>
+<p>log_2 : &#x4E8C;&#x53C9;&#x6811;</p>
+<p>log_10 : &#x6C42;&#x6574;&#x6570;&#x4F4D;&#x6570;</p>
+<p>&#x6839;&#x636E;log&#x6362;&#x5E95;&#x516C;&#x5F0F;<code>log_b^N = log_b^a * log_a^N</code>&#xFF0C;log&#x5E95;&#x6570;&#x7684;&#x8F6C;&#x6362;&#x4E3A;&#x5E38;&#x6570;&#x500D;,&#x6240;&#x4EE5;&#x4E0D;&#x7BA1;&#x5E95;&#x662F;&#x591A;&#x5C11;&#xFF0C;&#x65F6;&#x95F4;&#x590D;&#x6742;&#x5EA6;&#x90FD;&#x662F;O(logn)</p>
+<h3 id="5-&#x5FAA;&#x73AF;&#x7684;&#x5F62;&#x5F0F;&#x548C;&#x65F6;&#x95F4;&#x590D;&#x6742;&#x5EA6;&#x7684;&#x5173;&#x7CFB;">5. &#x5FAA;&#x73AF;&#x7684;&#x5F62;&#x5F0F;&#x548C;&#x65F6;&#x95F4;&#x590D;&#x6742;&#x5EA6;&#x7684;&#x5173;&#x7CFB;</h3>
+<p>&#x7B80;&#x5355;&#x5FAA;&#x73AF;&#x7684;&#x65F6;&#x95F4;&#x590D;&#x6742;&#x5EA6;</p>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">runDiffTimeComp</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">int</span>[] arr = {<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>};
+    reverse(arr);
+    arr = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[]{<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>};
+    reverse(arr);
+    sort(arr);
+    binarySearch(arr, <span class="hljs-number">2</span>);
+    reverseNumber(<span class="hljs-number">123</span>);
+    test(<span class="hljs-number">10</span>);
+    System.out.println(isPrime(<span class="hljs-number">10</span>));
+}
+
+<span class="hljs-comment">// swap</span>
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">swap</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] arr, <span class="hljs-keyword">int</span> i, <span class="hljs-keyword">int</span> j)</span> </span>{
+    <span class="hljs-keyword">int</span> temp = arr[i];
+    arr[i] = arr[j];
+    arr[j] = temp;
+}
+
+<span class="hljs-comment">// O(n) reverse array</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span>[] reverse(<span class="hljs-keyword">int</span>[] arr) {
+    <span class="hljs-keyword">int</span> len = arr.length;
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; len / <span class="hljs-number">2</span>; i++) {
+        swap(arr, i, len - <span class="hljs-number">1</span> - i);
+    }
+    <span class="hljs-keyword">return</span> arr;
+}
+
+<span class="hljs-comment">// O(n)</span>
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">print</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] arr)</span> </span>{
+    <span class="hljs-keyword">int</span> len = arr.length;
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; len; i++) {
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>; j &lt; <span class="hljs-number">10</span>; j++) {
+            System.out.println(arr[i] + <span class="hljs-string">&quot; &quot;</span> + j);
+        }
+    }
+}
+
+<span class="hljs-comment">// O(n^2): (n - 1) + (n - 2) + .. + 0 = (n - 1)n/2</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span>[] bsort(<span class="hljs-keyword">int</span>[] arr) {
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; arr.length; i++) {
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">1</span>; j &lt; arr.length - i; j++) {
+            <span class="hljs-keyword">if</span> (arr[j - <span class="hljs-number">1</span>] &gt; arr[j]) {
+                swap(arr, j, j - <span class="hljs-number">1</span>);
+            }
+        }
+    }
+    <span class="hljs-keyword">return</span> arr;
+}
+
+<span class="hljs-comment">// O(n^2): selection sort</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span>[] ssort(<span class="hljs-keyword">int</span>[] arr) {
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; arr.length; i++) {
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = i + <span class="hljs-number">1</span>; j &lt; arr.length; j++) {
+            <span class="hljs-keyword">if</span> (arr[j] &gt; arr[i])
+                swap(arr, j, i);
+        }
+    }
+    <span class="hljs-keyword">return</span> arr;
+}
+
+<span class="hljs-comment">// O(logn): log_2^n</span>
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">binarySearch</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] arr, <span class="hljs-keyword">int</span> target)</span> </span>{
+    <span class="hljs-keyword">int</span> l = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">int</span> r = arr.length;
+    <span class="hljs-keyword">while</span> (l &lt; r) {
+        <span class="hljs-keyword">int</span> mid = (l + r) &gt;&gt;&gt; <span class="hljs-number">1</span>;
+        <span class="hljs-keyword">if</span> (arr[mid] == target) {
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;
+        } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (arr[mid] &lt; target)
+            l = mid + <span class="hljs-number">1</span>;
+        <span class="hljs-keyword">else</span>
+            r = mid;
+    }
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
+}
+
+<span class="hljs-comment">// O(logn): log_10^n</span>
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> <span class="hljs-title">reverseNumber</span><span class="hljs-params">(<span class="hljs-keyword">int</span> num)</span> </span>{
+    <span class="hljs-keyword">int</span> n = num;
+    <span class="hljs-keyword">int</span> res = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">while</span> (n &gt; <span class="hljs-number">0</span>) {
+        <span class="hljs-keyword">int</span> r = n % <span class="hljs-number">10</span>;
+        n = n / <span class="hljs-number">10</span>;
+        res = res * <span class="hljs-number">10</span> + r;
+    }
+    <span class="hljs-keyword">return</span> res;
+}
+
+<span class="hljs-comment">// O(nlogn)</span>
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">test</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span> </span>{
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt; n; i += i)  <span class="hljs-comment">// O(log(n))</span>
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>; j &lt; n; j++) <span class="hljs-comment">//  O(n)</span>
+            System.out.print(i + <span class="hljs-string">&quot; &quot;</span>); <span class="hljs-comment">// 1.., 2.., 4.., 8..</span>
+}
+
+<span class="hljs-comment">// O(sqrt(n))</span>
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">isPrime</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span> </span>{
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">2</span>; i * i &lt; n; i++) {
+        <span class="hljs-keyword">if</span> (n % i == <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
+    }
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;
+}
+</code></pre>
+<h3 id="6-&#x4E24;&#x500D;input-size&#x589E;&#x52A0;&#x6D4B;&#x8BD5;&#x65F6;&#x95F4;&#x590D;&#x6742;&#x5EA6;">6. &#x4E24;&#x500D;input size&#x589E;&#x52A0;&#x6D4B;&#x8BD5;&#x65F6;&#x95F4;&#x590D;&#x6742;&#x5EA6;</h3>
+<p>input size&#x6BCF;&#x6B21;&#x589E;&#x52A0;&#x4E24;&#x500D;&#xFF0C;&#x89C2;&#x5BDF;runtime&#x7684;&#x6539;&#x53D8;</p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span>[] generateRandomArray(<span class="hljs-keyword">int</span> len, <span class="hljs-keyword">int</span> l, <span class="hljs-keyword">int</span> r) {
+    Random rand = <span class="hljs-keyword">new</span> Random();
+    <span class="hljs-keyword">int</span>[] arr = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[len];
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; len; i++) {
+        arr[i] = rand.nextInt(r - l + <span class="hljs-number">1</span>) + l;
+    }
+    <span class="hljs-keyword">return</span> arr;
+}
+
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testTwoTimesIncrement</span><span class="hljs-params">(String name, <span class="hljs-keyword">int</span> a, <span class="hljs-keyword">int</span> b)</span> <span class="hljs-keyword">throws</span> Exception </span>{
+    Method method = runtimeTest.class.getMethod(name, <span class="hljs-keyword">int</span>[].class);
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = a; i &lt; b; i++) {
+        <span class="hljs-keyword">int</span> n = (<span class="hljs-keyword">int</span>) Math.pow(<span class="hljs-number">2</span>, i); <span class="hljs-comment">// 2, 4, 8, 16, 32, 64, ...</span>
+        <span class="hljs-keyword">int</span>[] arr = generateRandomArray(n, <span class="hljs-number">0</span>, <span class="hljs-number">10000000</span>);
+        <span class="hljs-keyword">long</span> start = System.currentTimeMillis();
+        method.invoke(<span class="hljs-keyword">null</span>, arr);
+        <span class="hljs-keyword">double</span> end = (System.currentTimeMillis() - start) / <span class="hljs-number">1000.0</span>;
+        System.out.println(<span class="hljs-string">&quot;i: &quot;</span> + i + <span class="hljs-string">&quot;, input size: &quot;</span> + n + <span class="hljs-string">&quot;, runtime: &quot;</span> + String.format(<span class="hljs-string">&quot;%10.6e&quot;</span>, end) + <span class="hljs-string">&quot; s&quot;</span>);
+    }
+}
+
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> Exception </span>{
+    testTwoTimesIncrement(<span class="hljs-string">&quot;reverse&quot;</span>, <span class="hljs-number">15</span>, <span class="hljs-number">29</span>);
+    testTwoTimesIncrement(<span class="hljs-string">&quot;ssort&quot;</span>, <span class="hljs-number">10</span>, <span class="hljs-number">17</span>);
+    <span class="hljs-comment">// change method param signature.</span>
+    testTwoTimesIncrement1(<span class="hljs-string">&quot;binarySearch&quot;</span>, <span class="hljs-number">20</span>, <span class="hljs-number">28</span>);
+}
+
+<span class="hljs-comment">// O(n) reverse() 2 times increment</span>
+<span class="hljs-comment">//i: 22, input size: 4194304, runtime: 1,0e-03 s</span>
+<span class="hljs-comment">//i: 23, input size: 8388608, runtime: 5,0e-03 s</span>
+<span class="hljs-comment">//i: 24, input size: 16777216, runtime: 8,0e-03 s</span>
+<span class="hljs-comment">//i: 25, input size: 33554432, runtime: 1,7e-02 s</span>
+<span class="hljs-comment">//i: 26, input size: 67108864, runtime: 2,8e-02 s</span>
+<span class="hljs-comment">//i: 27, input size: 134217728, runtime: 5,5e-02 s</span>
+<span class="hljs-comment">//i: 28, input size: 268435456, runtime: 1,1e-01 s</span>
+
+<span class="hljs-comment">// O(n^2) ssort() 4 times increment</span>
+<span class="hljs-comment">//i: 10, input size: 1024, runtime: 6,0e-03 s</span>
+<span class="hljs-comment">//i: 11, input size: 2048, runtime: 9,0e-03 s</span>
+<span class="hljs-comment">//i: 12, input size: 4096, runtime: 4,5e-02 s</span>
+<span class="hljs-comment">//i: 13, input size: 8192, runtime: 1,3e-01 s</span>
+<span class="hljs-comment">//i: 14, input size: 16384, runtime: 4,8e-01 s</span>
+<span class="hljs-comment">//i: 15, input size: 32768, runtime: 1,7e+00 s</span>
+<span class="hljs-comment">//i: 16, input size: 65536, runtime: 6,5e+00 s</span>
+<span class="hljs-comment">//i: 17, input size: 131072, runtime: 2,7e+01 s</span>
+
+<span class="hljs-comment">//O(logn) binary search slowly increment: (log2n/logn = 1 + log2/logn)</span>
+<span class="hljs-comment">//i: 20, input size: 1048576, runtime: 6,1e+04 ns</span>
+<span class="hljs-comment">//i: 21, input size: 2097152, runtime: 3,3e+04 ns</span>
+<span class="hljs-comment">//i: 22, input size: 4194304, runtime: 2,9e+04 ns</span>
+<span class="hljs-comment">//i: 23, input size: 8388608, runtime: 3,3e+04 ns</span>
+<span class="hljs-comment">//i: 24, input size: 16777216, runtime: 4,1e+04 ns</span>
+<span class="hljs-comment">//i: 25, input size: 33554432, runtime: 4,3e+04 ns</span>
+<span class="hljs-comment">//i: 26, input size: 67108864, runtime: 3,8e+04 ns</span>
+<span class="hljs-comment">//i: 27, input size: 134217728, runtime: 5,4e+04 ns</span>
+</code></pre>
+<p>&#x7ED3;&#x8BBA;&#xFF1A;O(logn)&#x7684;&#x65F6;&#x95F4;&#x590D;&#x6742;&#x5EA6;&#x6BD4;O(n)&#x5C0F;&#x5F97;&#x591A;&#xFF0C;O(nlogn)&#x76F8;&#x6BD4;O(n^2)&#x65F6;&#x95F4;&#x590D;&#x6742;&#x5EA6;&#x5C0F;&#x7684;&#x591A;</p>
+<h3 id="7-&#x5747;&#x644A;&#x65F6;&#x95F4;&#x590D;&#x6742;&#x5EA6;&#x5206;&#x6790;arraylist&#x4E3A;&#x4F8B;">7. &#x5747;&#x644A;&#x65F6;&#x95F4;&#x590D;&#x6742;&#x5EA6;&#x5206;&#x6790;(ArrayList&#x4E3A;&#x4F8B;)</h3>
+<pre><code class="lang-java"><span class="hljs-keyword">import</span> java.util.Arrays;
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyArrayList</span> </span>{
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> cap;
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span>[] arr;
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> pointer;
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">MyArrayList</span><span class="hljs-params">(<span class="hljs-keyword">int</span> cap)</span> </span>{
+        <span class="hljs-keyword">this</span>.cap = cap;
+        pointer = <span class="hljs-number">0</span>;
+        arr = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[cap];
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">add</span><span class="hljs-params">(<span class="hljs-keyword">int</span> e)</span> </span>{
+        <span class="hljs-keyword">if</span> (pointer &gt;= cap) resize(cap * <span class="hljs-number">2</span>);
+        arr[pointer++] = e;
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">resize</span><span class="hljs-params">(<span class="hljs-keyword">int</span> size)</span> </span>{
+        System.out.println(<span class="hljs-string">&quot;resize&quot;</span>);
+        <span class="hljs-keyword">int</span>[] newArr = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[size];
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; pointer; i++) {
+            newArr[i] = arr[i];
+        }
+        cap = size;
+        arr = newArr;
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">pop</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">assert</span> (pointer &gt;= <span class="hljs-number">0</span>);
+        pointer--;
+        <span class="hljs-keyword">int</span> res = arr[pointer];
+        <span class="hljs-keyword">if</span> (pointer &lt;= cap / <span class="hljs-number">4</span>) resize(cap / <span class="hljs-number">2</span>); <span class="hljs-comment">// change if condition from cap/2 to cap/4(&#x521A;&#x597D;&#x6BD4;1/4&#x591A;&#x4E00;&#x4E2A;&#x5143;&#x7D20;&#x7684;&#x65F6;&#x5019;resize)</span>
+
+        <span class="hljs-keyword">return</span> res;
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">getArray</span><span class="hljs-params">()</span> </span>{
+        System.out.println(Arrays.toString(arr));
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>{
+        MyArrayList list = <span class="hljs-keyword">new</span> MyArrayList(<span class="hljs-number">3</span>);
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">9</span>; i++) {
+            list.add(i);
+            list.getArray();
+        }
+
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">9</span>; i++) {
+            System.out.println(<span class="hljs-string">&quot;pointer: &quot;</span> + list.pointer + <span class="hljs-string">&quot;, pop :&quot;</span> + list.pop());
+            list.getArray();
+        }
+    }
+}
+</code></pre>
+<p>&#x67D0;&#x4E2A;&#x65F6;&#x95F4;&#x590D;&#x6742;&#x5EA6;&#x8F83;&#x9AD8;&#x7684;&#x65B9;&#x6CD5;&#x5747;&#x644A;&#x5230;&#x5176;&#x4ED6;&#x64CD;&#x4F5C;&#x4E2D;&#xFF0C;&#x5982;MyArrayList&#x4E2D;&#x7684;resize()&#x65B9;&#x6CD5;&#x5E73;&#x5206;&#x5230;&#x6BCF;&#x4E00;&#x6B21;&#x64CD;&#x4F5C;&#x4E4B;&#x540E;&#xFF0C;add()&#x7684;&#x65F6;&#x95F4;&#x590D;&#x6742;&#x5EA6;&#x4ECD;&#x7136;&#x4E3A;O(1)&#x3002;</p>
+<p>&#x6CE8;&#x610F;pop&#x7684;&#x6761;&#x4EF6;&#x662F;<code>pointer &lt;= cap / 4</code>, &#x9632;&#x6B62;&#x590D;&#x6742;&#x5EA6;&#x9707;&#x8361;&#xFF08;&#x5728;&#x540C;&#x4E00;&#x4E2A;&#x70B9;&#x4E0D;&#x65AD;&#x8C03;&#x7528;resize())</p>
+<p>output:</p>
+<pre><code class="lang-java">[<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>]
+[<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>]
+[<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>]
+resize
+[<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>]
+[<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">0</span>]
+[<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>]
+resize
+[<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>]
+[<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>, <span class="hljs-number">7</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>]
+[<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>, <span class="hljs-number">7</span>, <span class="hljs-number">8</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>]
+pointer: <span class="hljs-number">9</span>, pop :<span class="hljs-number">8</span>
+[<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>, <span class="hljs-number">7</span>, <span class="hljs-number">8</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>]
+pointer: <span class="hljs-number">8</span>, pop :<span class="hljs-number">7</span>
+[<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>, <span class="hljs-number">7</span>, <span class="hljs-number">8</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>]
+pointer: <span class="hljs-number">7</span>, pop :<span class="hljs-number">6</span>
+[<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>, <span class="hljs-number">7</span>, <span class="hljs-number">8</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>]
+pointer: <span class="hljs-number">6</span>, pop :<span class="hljs-number">5</span>
+[<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>, <span class="hljs-number">7</span>, <span class="hljs-number">8</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>]
+pointer: <span class="hljs-number">5</span>, pop :<span class="hljs-number">4</span>
+[<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>, <span class="hljs-number">7</span>, <span class="hljs-number">8</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>]
+resize
+pointer: <span class="hljs-number">4</span>, pop :<span class="hljs-number">3</span>
+[<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>]
+pointer: <span class="hljs-number">3</span>, pop :<span class="hljs-number">2</span>
+[<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>]
+resize
+pointer: <span class="hljs-number">2</span>, pop :<span class="hljs-number">1</span>
+[<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>]
+resize
+pointer: <span class="hljs-number">1</span>, pop :<span class="hljs-number">0</span>
+[<span class="hljs-number">0</span>]
+</code></pre>
 
                                 
                                 </section>
@@ -2301,12 +2643,12 @@
 
             
                 
-                <a href="alg/199_Binary_Tree_Right_Side_View.html" class="navigation navigation-prev " aria-label="Previous page: 199. Binary Tree Right Side View">
+                <a href="./" class="navigation navigation-prev " aria-label="Previous page: 🥰Alg">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="alg/75_Sort_Colors.html" class="navigation navigation-next " aria-label="Next page: 75. Sort Colors">
+                <a href="others.html" class="navigation navigation-next " aria-label="Next page: 其他">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -2317,7 +2659,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Partition","level":"1.8","depth":1,"next":{"title":"75. Sort Colors","level":"1.8.1","depth":2,"path":"alg/75_Sort_Colors.md","ref":"alg/75_Sort_Colors.md","articles":[]},"previous":{"title":"199. Binary Tree Right Side View","level":"1.7.35","depth":2,"path":"alg/199_Binary_Tree_Right_Side_View.md","ref":"alg/199_Binary_Tree_Right_Side_View.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["theme-default"],"pluginsConfig":{"theme-default":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"file":{"path":"3_partition.md","mtime":"2019-02-07T00:12:02.249Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-06-09T21:04:44.440Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"时间","level":"1.2","depth":1,"next":{"title":"其他","level":"1.3","depth":1,"path":"others.md","ref":"others.md","articles":[]},"previous":{"title":"🥰Alg","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["theme-default"],"pluginsConfig":{"theme-default":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"file":{"path":"time.md","mtime":"2019-06-09T21:03:13.883Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-06-09T21:04:44.440Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
