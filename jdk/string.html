@@ -2371,9 +2371,10 @@
                                 <section class="normal markdown-section">
                                 
                                 <h2 id="stringjava">String.java</h2>
-<p>&#x7B2C;&#x4E00;&#x4E2A;&#x5F88;&#x91CD;&#x8981;&#x7684;&#x95EE;&#x9898;&#x662F;&#xFF1A;&#x4E3A;&#x4EC0;&#x4E48;String&#x662F;final class&#xFF1F;</p>
-<p>&#x76EE;&#x524D;&#x7ED3;&#x8BBA;&#xFF1A;&#x4E3A;&#x4E86;&#x7EF4;&#x62A4;String&#x662F;&#x4E00;&#x4E2A;constant&#xFF0C;&#x4E00;&#x65E6;&#x521B;&#x5EFA;&#xFF0C;&#x5B83;&#x7684;&#x503C;&#x5C31;&#x4E0D;&#x53EF;&#x4EE5;&#x88AB;&#x4FEE;&#x6539;</p>
-<h3 id="&#x5B9E;&#x9A8C;&#x8BC1;&#x660E;string&#x662F;&#x4E00;&#x4E2A;constant">&#x5B9E;&#x9A8C;&#x8BC1;&#x660E;String&#x662F;&#x4E00;&#x4E2A;constant</h3>
+<h3 id="1&#x4E3A;&#x4EC0;&#x4E48;string&#x662F;final-class&#xFF1F;">1.&#x4E3A;&#x4EC0;&#x4E48;String&#x662F;final class&#xFF1F;</h3>
+<p>&#x76EE;&#x524D;&#x7ED3;&#x8BBA;&#xFF1A;&#x9996;&#x5148;&#xFF0C;final&#x662F;&#x4E3A;&#x4E86;&#x4E0D;&#x80FD;&#x8BA9;&#x7C7B;&#x7EE7;&#x627F;&#x3002;&#x800C;&#x4E0D;&#x80FD;&#x7EE7;&#x627F;&#x662F;&#x4E3A;&#x4E86;&#x7EF4;&#x62A4;String&#x662F;&#x4E00;&#x4E2A;constant&#xFF0C;&#x5177;&#x6709;immutable&#x7684;&#x6027;&#x8D28;&#x3002;&#x4E00;&#x65E6;&#x521B;&#x5EFA;&#xFF0C;&#x5B83;&#x5C31;&#x4E0D;&#x53EF;&#x4EE5;&#x88AB;&#x4FEE;&#x6539;&#x3002;&#x5177;&#x4F53;&#x89C1;4</p>
+<h3 id="2&#x5B9E;&#x9A8C;&#x8BC1;&#x660E;string&#x662F;&#x4E00;&#x4E2A;constant">2.&#x5B9E;&#x9A8C;&#x8BC1;&#x660E;String&#x662F;&#x4E00;&#x4E2A;constant</h3>
+<p>&#x7406;&#x89E3;&#x91CD;&#x70B9;&#xFF1A;&#x5C06;&#x53D8;&#x91CF;a,p&#x548C;String&#x672C;&#x8EAB;,&#x5982;&quot;apple&quot;&#x770B;&#x6210;&#x4E09;&#x4E2A;&#x4E0D;&#x540C;&#x7684;&#x4E1C;&#x897F;&#x3002;a,p&#x662F;&#x5728;stack&#x4E0A;&#x7684;&#x5F15;&#x7528;/&#x53D8;&#x91CF;&#x3002;&quot;apple&quot;&#x6839;&#x636E;&#x521D;&#x59CB;&#x5316;&#x7684;&#x4E0D;&#x540C;&#x5728;heap&#x6216;&#x8005;constant pool&#x4E2D;</p>
 <ul>
 <li>&#x5B9E;&#x9A8C;1&#xFF0C;&#x6CE8;&#x610F;&#x5BF9;&#x6BD4;&#x6307;&#x9488;(&#x53D8;&#x91CF;)a&#x548C;p&#x7684;&#x5173;&#x7CFB;</li>
 </ul>
@@ -2383,6 +2384,7 @@ System.out.println(a == p); <span class="hljs-comment">// true</span>
 p = <span class="hljs-string">&quot;pear&quot;</span>;
 System.out.println(a == p); <span class="hljs-comment">// false</span>
 </code></pre>
+<p><img src="https://ww1.sinaimg.cn/large/006tNc79gy1g48dyg7z0jj30og0bon0c.jpg" ,="" width="400"></p>
 <ul>
 <li>&#x5B9E;&#x9A8C;2&#xFF0C;&#x6CE8;&#x610F;&#x89C2;&#x5BDF;&#x6307;&#x9488;a&#x5730;&#x5740;&#x7684;&#x6539;&#x53D8;</li>
 </ul>
@@ -2413,6 +2415,71 @@ System.out.println(a == p); <span class="hljs-comment">// false</span>
     p.insert(<span class="hljs-number">0</span>, <span class="hljs-string">&quot;green &quot;</span>);
 }
 </code></pre>
+<p>&#x56E0;&#x4E3A;String immutable&#x7684;&#x6027;&#x8D28;&#xFF0C;&#x5728;&#x8FDB;&#x884C;<code>+</code>&#x64CD;&#x4F5C;&#x65F6;&#x4F1A;&#x65B0;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#xFF0C;&#x5728;loop&#x4E2D;&#x4F7F;&#x7528;string&#x4F1A;&#x7279;&#x522B;&#x6162;&#x3002;&#x6240;&#x4EE5;&#x4E00;&#x822C;&#x4F7F;&#x7528;StringBuilder&#x6216;&#x8005;StringBuffer&#x3002;</p>
+<p>todo : String&#x7684;&#x56DE;&#x6536;</p>
+<h3 id="3string&#x4E0D;&#x540C;&#x7684;&#x521D;&#x59CB;&#x5316;&#x65B9;&#x5F0F;">3.String&#x4E0D;&#x540C;&#x7684;&#x521D;&#x59CB;&#x5316;&#x65B9;&#x5F0F;</h3>
+<ul>
+<li>&#x5728;Heap&#x4E2D;&#x521D;&#x59CB;&#x5316;&#xFF0C;ab&#x6307;&#x5411;&#x5730;&#x5740;&#x4E0D;&#x540C;</li>
+</ul>
+<pre><code class="lang-java">String a = <span class="hljs-keyword">new</span> String(<span class="hljs-string">&quot;object&quot;</span>);
+String b = <span class="hljs-keyword">new</span> String(<span class="hljs-string">&quot;object&quot;</span>);
+System.out.println(a == b);<span class="hljs-comment">// stored in heap, return false</span>
+System.out.println(a.intern() == b.intern());<span class="hljs-comment">// stored in constant pool, return true</span>
+</code></pre>
+<ul>
+<li>&#x5728;constant pool(method area)&#x4E2D;&#x521D;&#x59CB;&#x5316;&#xFF0C;ab&#x6307;&#x5411;&#x4E00;&#x4E2A;&#x5B57;&#x7B26;&#x4E32;</li>
+</ul>
+<pre><code class="lang-java">String a = <span class="hljs-string">&quot;constant&quot;</span>;
+String b = <span class="hljs-string">&quot;constant&quot;</span>;
+System.out.println(a == b);<span class="hljs-comment">// stored in constant pool, return true</span>
+System.out.println(a.intern() == b.intern());<span class="hljs-comment">// exactly return true</span>
+</code></pre>
+<h3 id="4&#x5982;&#x679C;string&#x53EF;&#x4EE5;&#x88AB;&#x7EE7;&#x627F;">4.&#x5982;&#x679C;String&#x53EF;&#x4EE5;&#x88AB;&#x7EE7;&#x627F;</h3>
+<p>&#x8FD9;&#x662F;&#x4E00;&#x4E2A;&#x65B0;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x4E0D;&#x5E26;<code>final</code>&#x7684;<code>MyString</code>&#x7C7B;&#xFF0C;&#x7136;&#x540E;&#x4F7F;&#x7528;<code>FuckMyString</code>&#x5B50;&#x7C7B;&#x7EE7;&#x627F;&#xFF0C;&#x6700;&#x540E;&#x6539;&#x53D8;MyString&#x503C;&#x7684;&#x6545;&#x4E8B;</p>
+<pre><code class="lang-java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyString</span> </span>{
+
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">byte</span>[] values;
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">MyString</span><span class="hljs-params">(<span class="hljs-keyword">byte</span>[] bytes)</span> </span>{
+        values = bytes;
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">byte</span>[] toArray() {
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.values;
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">getContent</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">byte</span> b : values) {
+            System.out.print(b);
+        }
+    }
+}
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">FuckMyString</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">MyString</span> </span>{
+
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">byte</span>[] someValues;
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">FuckMyString</span><span class="hljs-params">(<span class="hljs-keyword">byte</span>[] bytes)</span> </span>{
+        <span class="hljs-keyword">super</span>(bytes);
+        someValues = bytes;
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>{
+        FuckMyString dummy = <span class="hljs-keyword">new</span> FuckMyString(<span class="hljs-keyword">new</span> <span class="hljs-keyword">byte</span>[]{<span class="hljs-string">&apos;a&apos;</span>, <span class="hljs-string">&apos;b&apos;</span>, <span class="hljs-string">&apos;c&apos;</span>});
+        MyString string = dummy;
+        dummy.getContent(); <span class="hljs-comment">// 979899</span>
+        <span class="hljs-comment">// change the byte array that both pointer &quot;values&quot; and &quot;someValues&quot; pointed to</span>
+        dummy.someValues[<span class="hljs-number">0</span>] = <span class="hljs-string">&apos;b&apos;</span>;
+        dummy.getContent(); <span class="hljs-comment">// 989899</span>
+        System.out.println();
+        <span class="hljs-comment">// Finally we change the value in MyString</span>
+        string.getContent(); <span class="hljs-comment">// 989899</span>
+    }
+}
+</code></pre>
+<p>&#x6839;&#x672C;&#x539F;&#x56E0;&#x662F;&#x56E0;&#x4E3A;<code>private final byte[] values;</code>&#x4E2D;&#x7684;final&#x4EC5;&#x4EC5;&#x662F;&#x4FDD;&#x6301;values&#x5730;&#x5740;&#x4E0D;&#x53D8;&#xFF0C;&#x800C;&#x4E0D;&#x80FD;&#x4FDD;&#x8BC1;&#x5176;&#x4E2D;&#x7684;&#x503C;&#x4E0D;&#x53D8;&#x3002;</p>
+<p><img src="https://ww1.sinaimg.cn/large/006tNc79gy1g48dke541dj30ee0ckdij.jpg" ,="" width="400"></p>
+<h3 id="todoimportant-encodedecode">todo(important) encode/decode</h3>
 
                                 
                                 </section>
@@ -2452,7 +2519,7 @@ System.out.println(a == p); <span class="hljs-comment">// false</span>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"String.java","level":"1.17.2","depth":2,"next":{"title":"Other data structures","level":"1.18","depth":1,"ref":"","articles":[{"title":"BTree","level":"1.18.1","depth":2,"path":"ds/btree.md","ref":"ds/btree.md","articles":[]}]},"previous":{"title":"Arrays.java","level":"1.17.1","depth":2,"path":"jdk/arrays.md","ref":"jdk/arrays.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["theme-default"],"pluginsConfig":{"theme-default":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"file":{"path":"jdk/string.md","mtime":"2019-06-20T21:57:11.036Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-06-20T21:57:19.234Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"String.java","level":"1.17.2","depth":2,"next":{"title":"Other data structures","level":"1.18","depth":1,"ref":"","articles":[{"title":"BTree","level":"1.18.1","depth":2,"path":"ds/btree.md","ref":"ds/btree.md","articles":[]}]},"previous":{"title":"Arrays.java","level":"1.17.1","depth":2,"path":"jdk/arrays.md","ref":"jdk/arrays.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["theme-default"],"pluginsConfig":{"theme-default":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"file":{"path":"jdk/string.md","mtime":"2019-06-20T22:51:54.231Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-06-20T22:51:58.900Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
