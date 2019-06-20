@@ -6,7 +6,7 @@
         <!-- fix pic 403 -->
         <meta name="referrer" content="no-referrer" />
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>239. Sliding Window Maximum · GitBook</title>
+        <title>404. Sum of Left Leaves · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -59,10 +59,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="32_Longest_Valid_Parentheses.html" />
+    <link rel="next" href="637_Average_of_Levels_in_Binary_Tree.html" />
     
     
-    <link rel="prev" href="150_Evaluate_Reverse_Polish_Notation.html" />
+    <link rel="prev" href="103_Binary_Tree_Zigzag_Level_Order_Traversal.html" />
     
 
     </head>
@@ -884,7 +884,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.7.6" data-path="404_Sum_of_Left_Leaves.html">
+        <li class="chapter active" data-level="1.7.6" data-path="404_Sum_of_Left_Leaves.html">
             
                 <a href="404_Sum_of_Left_Leaves.html">
             
@@ -1598,7 +1598,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.9.5" data-path="239_Sliding_Window_Maximum.html">
+        <li class="chapter " data-level="1.9.5" data-path="239_Sliding_Window_Maximum.html">
             
                 <a href="239_Sliding_Window_Maximum.html">
             
@@ -2357,7 +2357,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >239. Sliding Window Maximum</a>
+        <a href=".." >404. Sum of Left Leaves</a>
     </h1>
 </div>
 
@@ -2372,41 +2372,36 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h3 id="239-sliding-window-maximum">239. Sliding Window Maximum</h3>
-<p>naive&#x6BD4;&#x8F83;&#x65B9;&#x6CD5;&#xFF0C;<code>O(kn)</code></p>
-<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> ArrayList&lt;Integer&gt; <span class="hljs-title">maxInWindows</span><span class="hljs-params">(<span class="hljs-keyword">int</span> [] num, <span class="hljs-keyword">int</span> size)</span>
-</span>{
-    <span class="hljs-keyword">if</span> (size == <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> ArrayList&lt;&gt;();
-    ArrayList&lt;Integer&gt; res = <span class="hljs-keyword">new</span> ArrayList&lt;&gt;();
-    <span class="hljs-keyword">int</span> length = size - <span class="hljs-number">1</span>;
-    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; num.length - length; i++) {
-            res.add(findMax(num, i, i + length));
-    }
-    <span class="hljs-keyword">return</span> res;
-}
-
-<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">findMax</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] num, <span class="hljs-keyword">int</span> i, <span class="hljs-keyword">int</span> j)</span> </span>{
-    <span class="hljs-keyword">int</span> max = num[i];
-    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> k = i; k &lt;= j; k++) {
-        <span class="hljs-keyword">if</span> (num[k] &gt; max) max = num[k];
-    }
-    <span class="hljs-keyword">return</span> max;
+                                <h3 id="404-sum-of-left-leaves">404. Sum of Left Leaves</h3>
+<h4 id="recursion">* Recursion:</h4>
+<p>1.The core logic is to find the left leaf nodes. We could check a left leaf node by it&apos;s parents <code>root</code>:</p>
+<pre><code class="lang-java">root.left.left == <span class="hljs-keyword">null</span> &amp;&amp; root.left.right == <span class="hljs-keyword">null</span>
+</code></pre>
+<p>2.Then we must ensure that <code>root.left</code> could not be null. Otherwise <code>root.left.left</code> or <code>root.left.right</code> may return NullPointerException. Similarly, we also need to write down the base condition when <code>root == null</code>.</p>
+<p>3.After getting all the left node of root and calculate its sum, we just need to add it with the <code>sumOfLeftLeaves(root.left)</code> and <code>sumOfLeftLeaves(root.right)</code>, and then return the final result.</p>
+<ul>
+<li>The complete code:</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">sumOfLeftLeaves</span><span class="hljs-params">(TreeNode root)</span> </span>{
+    <span class="hljs-keyword">int</span> sum = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">if</span> (root == <span class="hljs-keyword">null</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">if</span> (root.left != <span class="hljs-keyword">null</span> &amp;&amp; root.left.left == <span class="hljs-keyword">null</span> &amp;&amp; root.left.right == <span class="hljs-keyword">null</span>) 
+        sum = root.left.val;
+    <span class="hljs-keyword">return</span> sum + sumOfLeftLeaves(root.left) + sumOfLeftLeaves(root.right);
 }
 </code></pre>
-<p>&#x53CC;&#x5411;&#x961F;&#x5217;</p>
-<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span>[] maxSlidingWindow(<span class="hljs-keyword">int</span>[] nums, <span class="hljs-keyword">int</span> k) {
-    <span class="hljs-keyword">if</span> (nums == <span class="hljs-keyword">null</span> || nums.length== <span class="hljs-number">0</span> || k &lt;= <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[<span class="hljs-number">0</span>];
-    <span class="hljs-keyword">int</span> length = nums.length;
-    <span class="hljs-keyword">int</span>[] res = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[length - k + <span class="hljs-number">1</span>];
-    <span class="hljs-keyword">int</span> resIndex = <span class="hljs-number">0</span>;
-    Deque&lt;Integer&gt; q = <span class="hljs-keyword">new</span> ArrayDeque&lt;&gt;();
-    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; length; i++) {
-        <span class="hljs-keyword">while</span> (!q.isEmpty() &amp;&amp; q.peek() &lt; i - k + <span class="hljs-number">1</span>) q.poll(); <span class="hljs-comment">// poll elements out of range(k - 1)</span>
-        <span class="hljs-keyword">while</span> (!q.isEmpty() &amp;&amp; nums[q.peekLast()] &lt; nums[i]) q.pollLast();
-        q.offer(i);
-        <span class="hljs-keyword">if</span> (i &gt;= k - <span class="hljs-number">1</span>) res[resIndex++] = nums[q.peek()]; <span class="hljs-comment">// start filling result after k - 1</span>
+<h4 id="bfs-tree-level-traversal">* BFS tree level traversal:</h4>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">sumOfLeftLeaves</span><span class="hljs-params">(TreeNode root)</span> </span>{
+    <span class="hljs-keyword">int</span> sum = <span class="hljs-number">0</span>;
+    Queue&lt;TreeNode&gt; q = <span class="hljs-keyword">new</span> LinkedList&lt;&gt;();
+    <span class="hljs-keyword">if</span> (root != <span class="hljs-keyword">null</span>) q.offer(root);
+    <span class="hljs-keyword">while</span> (!q.isEmpty()) {
+        TreeNode node = q.poll();
+        <span class="hljs-keyword">if</span> (node.left != <span class="hljs-keyword">null</span>) q.add(node.left);
+        <span class="hljs-keyword">if</span> (node.right != <span class="hljs-keyword">null</span>) q.add(node.right);
+        <span class="hljs-keyword">if</span> (node.left != <span class="hljs-keyword">null</span> &amp;&amp; node.left.left == <span class="hljs-keyword">null</span> &amp;&amp; node.left.right == <span class="hljs-keyword">null</span>) sum += node.left.val;
     }
-    <span class="hljs-keyword">return</span> res;
+    <span class="hljs-keyword">return</span> sum;
 }
 </code></pre>
 
@@ -2436,12 +2431,12 @@
 
             
                 
-                <a href="150_Evaluate_Reverse_Polish_Notation.html" class="navigation navigation-prev " aria-label="Previous page: 150. Evaluate Reverse Polish Notation">
+                <a href="103_Binary_Tree_Zigzag_Level_Order_Traversal.html" class="navigation navigation-prev " aria-label="Previous page: 103. Binary Tree Zigzag Level Order Traversal">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="32_Longest_Valid_Parentheses.html" class="navigation navigation-next " aria-label="Next page: 32. Longest Valid Parentheses">
+                <a href="637_Average_of_Levels_in_Binary_Tree.html" class="navigation navigation-next " aria-label="Next page: 637. Average of Levels in Binary Tree">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -2452,7 +2447,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"239. Sliding Window Maximum","level":"1.9.5","depth":2,"next":{"title":"32. Longest Valid Parentheses","level":"1.9.6","depth":2,"path":"alg/32_Longest_Valid_Parentheses.md","ref":"alg/32_Longest_Valid_Parentheses.md","articles":[]},"previous":{"title":"150. Evaluate Reverse Polish Notation","level":"1.9.4","depth":2,"path":"alg/150_Evaluate_Reverse_Polish_Notation.md","ref":"alg/150_Evaluate_Reverse_Polish_Notation.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["theme-default"],"pluginsConfig":{"theme-default":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"file":{"path":"alg/239_Sliding_Window_Maximum.md","mtime":"2019-02-22T21:51:08.579Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-06-20T21:57:19.234Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"404. Sum of Left Leaves","level":"1.7.6","depth":2,"next":{"title":"637. Average of Levels in Binary Tree","level":"1.7.7","depth":2,"path":"alg/637_Average_of_Levels_in_Binary_Tree.md","ref":"alg/637_Average_of_Levels_in_Binary_Tree.md","articles":[]},"previous":{"title":"103. Binary Tree Zigzag Level Order Traversal","level":"1.7.5","depth":2,"path":"alg/103_Binary_Tree_Zigzag_Level_Order_Traversal.md","ref":"alg/103_Binary_Tree_Zigzag_Level_Order_Traversal.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["theme-default"],"pluginsConfig":{"theme-default":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"file":{"path":"alg/404_Sum_of_Left_Leaves.md","mtime":"2019-06-20T21:15:31.923Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-06-20T21:57:19.234Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

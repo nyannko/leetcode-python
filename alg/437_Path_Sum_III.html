@@ -6,7 +6,7 @@
         <!-- fix pic 403 -->
         <meta name="referrer" content="no-referrer" />
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>239. Sliding Window Maximum · GitBook</title>
+        <title>437. Path Sum III · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -59,10 +59,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="32_Longest_Valid_Parentheses.html" />
+    <link rel="next" href="124_Binary_Tree_Maximum_Path_Sum.html" />
     
     
-    <link rel="prev" href="150_Evaluate_Reverse_Polish_Notation.html" />
+    <link rel="prev" href="113_Path_Sum_II.html" />
     
 
     </head>
@@ -1170,7 +1170,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.7.28" data-path="437_Path_Sum_III.html">
+        <li class="chapter active" data-level="1.7.28" data-path="437_Path_Sum_III.html">
             
                 <a href="437_Path_Sum_III.html">
             
@@ -1598,7 +1598,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.9.5" data-path="239_Sliding_Window_Maximum.html">
+        <li class="chapter " data-level="1.9.5" data-path="239_Sliding_Window_Maximum.html">
             
                 <a href="239_Sliding_Window_Maximum.html">
             
@@ -2357,7 +2357,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >239. Sliding Window Maximum</a>
+        <a href=".." >437. Path Sum III</a>
     </h1>
 </div>
 
@@ -2372,40 +2372,65 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h3 id="239-sliding-window-maximum">239. Sliding Window Maximum</h3>
-<p>naive&#x6BD4;&#x8F83;&#x65B9;&#x6CD5;&#xFF0C;<code>O(kn)</code></p>
-<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> ArrayList&lt;Integer&gt; <span class="hljs-title">maxInWindows</span><span class="hljs-params">(<span class="hljs-keyword">int</span> [] num, <span class="hljs-keyword">int</span> size)</span>
-</span>{
-    <span class="hljs-keyword">if</span> (size == <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> ArrayList&lt;&gt;();
-    ArrayList&lt;Integer&gt; res = <span class="hljs-keyword">new</span> ArrayList&lt;&gt;();
-    <span class="hljs-keyword">int</span> length = size - <span class="hljs-number">1</span>;
-    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; num.length - length; i++) {
-            res.add(findMax(num, i, i + length));
+                                <h3 id="437-path-sum-iii">437. Path Sum III</h3>
+<p>&#x627E;&#x5230;&#x4E00;&#x9897;&#x6811;&#x4E2D;&#x6240;&#x6709;&#x548C;&#x4E3A;sum&#x7684;&#x8DEF;&#x5F84;</p>
+<pre><code class="lang-java">root = [<span class="hljs-number">10</span>,<span class="hljs-number">5</span>,-<span class="hljs-number">3</span>,<span class="hljs-number">3</span>,<span class="hljs-number">2</span>,<span class="hljs-keyword">null</span>,<span class="hljs-number">11</span>,<span class="hljs-number">3</span>,-<span class="hljs-number">2</span>,<span class="hljs-keyword">null</span>,<span class="hljs-number">1</span>], sum = <span class="hljs-number">8</span>
+
+      <span class="hljs-number">10</span>
+     /  \
+    <span class="hljs-number">5</span>   -<span class="hljs-number">3</span>
+   / \    \
+  <span class="hljs-number">3</span>   <span class="hljs-number">2</span>   <span class="hljs-number">11</span>
+ / \   \
+<span class="hljs-number">3</span>  -<span class="hljs-number">2</span>   <span class="hljs-number">1</span>
+
+Return <span class="hljs-number">3</span>. The paths that sum to <span class="hljs-number">8</span> are:
+
+<span class="hljs-number">1</span>.  <span class="hljs-number">5</span> -&gt; <span class="hljs-number">3</span>
+<span class="hljs-number">2</span>.  <span class="hljs-number">5</span> -&gt; <span class="hljs-number">2</span> -&gt; <span class="hljs-number">1</span>
+<span class="hljs-number">3</span>. -<span class="hljs-number">3</span> -&gt; <span class="hljs-number">11</span>
+</code></pre>
+<p>&#x4E3B;&#x8981;&#x903B;&#x8F91;&#xFF1A;</p>
+<p>&#x6BCF;&#x4E2A;&#x70B9;&#x90FD;&#x8C03;&#x7528;&#x4E00;&#x4E2A;&#x51FD;&#x6570;<code>findPath</code>&#xFF0C;&#x6765;&#x5BFB;&#x627E;&#x4EE5;&#x5F53;&#x524D;&#x8282;&#x70B9;&#x4E3A;root&#x7684;&#x8DEF;&#x5F84;&#x4E2D;&#x548C;&#x4E3A;sum&#x7684;&#x8DEF;&#x5F84;&#x6570;&#x91CF;</p>
+<pre><code class="lang-java"><span class="hljs-keyword">int</span> res = <span class="hljs-number">0</span>;
+<span class="hljs-keyword">if</span> (root.val == num) res++;
+res += findPath(root.left, num - root.val) + findPath(root.right, num - root.val);
+<span class="hljs-keyword">return</span> res;
+</code></pre>
+<p>&#x4E3A;&#x4E86;&#x6EE1;&#x8DB3;&#x8FD9;&#x4E2A;&#x903B;&#x8F91;&#xFF0C;&#x9700;&#x8981;base condition<code>if(root == null) return 0;</code>&#x5224;&#x7A7A;&#xFF0C;&#x6240;&#x4EE5;&#x6574;&#x4E2A;&#x51FD;&#x6570;&#x5199;&#x6210;&#x8FD9;&#x6837;&#xFF1A;</p>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">findPath</span><span class="hljs-params">(TreeNode root, <span class="hljs-keyword">int</span> num)</span> </span>{
+    <span class="hljs-keyword">if</span> (root == <span class="hljs-keyword">null</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">int</span> res = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">if</span> (root.val == num) {
+        res++;
     }
+    res += findPath(root.left, num - root.val) + findPath(root.right, num - root.val);
+    <span class="hljs-keyword">return</span> res;
+}
+</code></pre>
+<p><code>pathSum</code>&#x4E3B;&#x51FD;&#x6570;&#x7528;&#x6765;&#x627E;&#x5230;root&#xFF0C;&#x4EE5;&#x53CA;root.left&#x548C;root.right&#x7684;&#x4E2D;&#x6EE1;&#x8DB3;&#x6761;&#x4EF6;&#x8DEF;&#x5F84;&#x7684;&#x6570;&#x91CF;&#x3002;</p>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">pathSum</span><span class="hljs-params">(TreeNode root, <span class="hljs-keyword">int</span> sum)</span> </span>{
+    <span class="hljs-keyword">if</span> (root == <span class="hljs-keyword">null</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">int</span> res = findPath(root, sum);
+    res += pathSum(root.left, sum) + pathSum(root.right, sum);
+    <span class="hljs-keyword">return</span> res;
+}
+</code></pre>
+<p>&#x5B8C;&#x6574;&#x4EE3;&#x7801;&#xFF1A;</p>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">pathSum</span><span class="hljs-params">(TreeNode root, <span class="hljs-keyword">int</span> sum)</span> </span>{
+    <span class="hljs-keyword">if</span> (root == <span class="hljs-keyword">null</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">int</span> res = findPath(root, sum);
+    res += pathSum(root.left, sum) + pathSum(root.right, sum);
     <span class="hljs-keyword">return</span> res;
 }
 
-<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">findMax</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] num, <span class="hljs-keyword">int</span> i, <span class="hljs-keyword">int</span> j)</span> </span>{
-    <span class="hljs-keyword">int</span> max = num[i];
-    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> k = i; k &lt;= j; k++) {
-        <span class="hljs-keyword">if</span> (num[k] &gt; max) max = num[k];
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">findPath</span><span class="hljs-params">(TreeNode root, <span class="hljs-keyword">int</span> num)</span> </span>{
+    <span class="hljs-keyword">if</span> (root == <span class="hljs-keyword">null</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">int</span> res = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">if</span> (root.val == num) {
+        res++;
     }
-    <span class="hljs-keyword">return</span> max;
-}
-</code></pre>
-<p>&#x53CC;&#x5411;&#x961F;&#x5217;</p>
-<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span>[] maxSlidingWindow(<span class="hljs-keyword">int</span>[] nums, <span class="hljs-keyword">int</span> k) {
-    <span class="hljs-keyword">if</span> (nums == <span class="hljs-keyword">null</span> || nums.length== <span class="hljs-number">0</span> || k &lt;= <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[<span class="hljs-number">0</span>];
-    <span class="hljs-keyword">int</span> length = nums.length;
-    <span class="hljs-keyword">int</span>[] res = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[length - k + <span class="hljs-number">1</span>];
-    <span class="hljs-keyword">int</span> resIndex = <span class="hljs-number">0</span>;
-    Deque&lt;Integer&gt; q = <span class="hljs-keyword">new</span> ArrayDeque&lt;&gt;();
-    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; length; i++) {
-        <span class="hljs-keyword">while</span> (!q.isEmpty() &amp;&amp; q.peek() &lt; i - k + <span class="hljs-number">1</span>) q.poll(); <span class="hljs-comment">// poll elements out of range(k - 1)</span>
-        <span class="hljs-keyword">while</span> (!q.isEmpty() &amp;&amp; nums[q.peekLast()] &lt; nums[i]) q.pollLast();
-        q.offer(i);
-        <span class="hljs-keyword">if</span> (i &gt;= k - <span class="hljs-number">1</span>) res[resIndex++] = nums[q.peek()]; <span class="hljs-comment">// start filling result after k - 1</span>
-    }
+    res += findPath(root.left, num - root.val) + findPath(root.right, num - root.val);
     <span class="hljs-keyword">return</span> res;
 }
 </code></pre>
@@ -2436,12 +2461,12 @@
 
             
                 
-                <a href="150_Evaluate_Reverse_Polish_Notation.html" class="navigation navigation-prev " aria-label="Previous page: 150. Evaluate Reverse Polish Notation">
+                <a href="113_Path_Sum_II.html" class="navigation navigation-prev " aria-label="Previous page: 113. Path Sum II">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="32_Longest_Valid_Parentheses.html" class="navigation navigation-next " aria-label="Next page: 32. Longest Valid Parentheses">
+                <a href="124_Binary_Tree_Maximum_Path_Sum.html" class="navigation navigation-next " aria-label="Next page: 124. Binary Tree Maximum Path Sum">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -2452,7 +2477,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"239. Sliding Window Maximum","level":"1.9.5","depth":2,"next":{"title":"32. Longest Valid Parentheses","level":"1.9.6","depth":2,"path":"alg/32_Longest_Valid_Parentheses.md","ref":"alg/32_Longest_Valid_Parentheses.md","articles":[]},"previous":{"title":"150. Evaluate Reverse Polish Notation","level":"1.9.4","depth":2,"path":"alg/150_Evaluate_Reverse_Polish_Notation.md","ref":"alg/150_Evaluate_Reverse_Polish_Notation.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["theme-default"],"pluginsConfig":{"theme-default":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"file":{"path":"alg/239_Sliding_Window_Maximum.md","mtime":"2019-02-22T21:51:08.579Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-06-20T21:57:19.234Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"437. Path Sum III","level":"1.7.28","depth":2,"next":{"title":"124. Binary Tree Maximum Path Sum","level":"1.7.29","depth":2,"path":"alg/124_Binary_Tree_Maximum_Path_Sum.md","ref":"alg/124_Binary_Tree_Maximum_Path_Sum.md","articles":[]},"previous":{"title":"113. Path Sum II","level":"1.7.27","depth":2,"path":"alg/113_Path_Sum_II.md","ref":"alg/113_Path_Sum_II.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["theme-default"],"pluginsConfig":{"theme-default":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"file":{"path":"alg/437_Path_Sum_III.md","mtime":"2019-06-20T20:41:59.213Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-06-20T21:57:19.234Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
