@@ -6,7 +6,7 @@
         <!-- fix pic 403 -->
         <meta name="referrer" content="no-referrer" />
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>37. Sudoku Solver · GitBook</title>
+        <title>454. 4Sum II · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -59,10 +59,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="../6_bitmanipulation.html" />
+    <link rel="next" href="344_Reverse_String.html" />
     
     
-    <link rel="prev" href="36_Valid_Sudoku.html" />
+    <link rel="prev" href="18_4Sum.html" />
     
 
     </head>
@@ -1384,7 +1384,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.8.7" data-path="454_4Sum_II.html">
+        <li class="chapter active" data-level="1.8.7" data-path="454_4Sum_II.html">
             
                 <a href="454_4Sum_II.html">
             
@@ -1812,7 +1812,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.10.12" data-path="37_Sudoku_Solver.html">
+        <li class="chapter " data-level="1.10.12" data-path="37_Sudoku_Solver.html">
             
                 <a href="37_Sudoku_Solver.html">
             
@@ -2370,7 +2370,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >37. Sudoku Solver</a>
+        <a href=".." >454. 4Sum II</a>
     </h1>
 </div>
 
@@ -2385,46 +2385,32 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h3 id="37-sudoku-solver">37. Sudoku Solver</h3>
-<p>&#x6CE8;&#x610F;solve&#x51FD;&#x6570;&#x7684;&#x5199;&#x6CD5;</p>
-<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">solveSudoku</span><span class="hljs-params">(<span class="hljs-keyword">char</span>[][] board)</span> </span>{
-    solve(board);
-}
-
-<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">solve</span><span class="hljs-params">(<span class="hljs-keyword">char</span>[][] board)</span> </span>{
-    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; board.length; i++) {
-        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>; j &lt; board[<span class="hljs-number">0</span>].length; j++) {
-            <span class="hljs-keyword">if</span> (board[i][j] == <span class="hljs-string">&apos;.&apos;</span>) { <span class="hljs-comment">// start filling the blank </span>
-                <span class="hljs-keyword">for</span> (<span class="hljs-keyword">char</span> curr = <span class="hljs-string">&apos;1&apos;</span>; curr &lt;= <span class="hljs-string">&apos;9&apos;</span>; curr++) { 
-                    board[i][j] = curr; <span class="hljs-comment">// fill it with &apos;1&apos; - &apos;9&apos;</span>
-                    <span class="hljs-keyword">if</span> (isValid(board, i, j) &amp;&amp; solve(board)) <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>; <span class="hljs-comment">// check if it is valid and can be solved</span>
-                    <span class="hljs-keyword">else</span> board[i][j] = <span class="hljs-string">&apos;.&apos;</span>; <span class="hljs-comment">// turn back</span>
-                }
-                <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
-            }
+                                <h3 id="454-4sum-ii">454. 4Sum II</h3>
+<p>&#x5728;&#x56DB;&#x4E2A;&#x4E0D;&#x540C;&#x7684;&#x6570;&#x7EC4;&#x4E2D;&#x5BFB;&#x627E;&#x548C;&#x4E3A;0&#x7684;&#x4E00;&#x7EC4;&#x6570;&#x5B57;&#x3002;&#x6839;&#x636E;&#x6570;&#x636E;&#x89C4;&#x6A21;: N&lt;=500 &#x8BA1;&#x7B97;</p>
+<pre><code class="lang-python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-number">500</span> ** <span class="hljs-number">4</span>
+<span class="hljs-number">62500000000</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-number">500</span> ** <span class="hljs-number">3</span>
+<span class="hljs-number">125000000</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-number">500</span> ** <span class="hljs-number">2</span>
+<span class="hljs-number">250000</span>
+</code></pre>
+<p>&#x53EF;&#x77E5;O(n^2)&#x7684;&#x7B97;&#x6CD5;&#x53EF;&#x884C;&#xFF0C;&#x6240;&#x4EE5;&#x5C06;&#x56DB;&#x91CD;&#x5FAA;&#x73AF;&#x62C6;&#x6210;&#x4E8C;&#x91CD;&#x3002;</p>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">fourSumCount</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] A, <span class="hljs-keyword">int</span>[] B, <span class="hljs-keyword">int</span>[] C, <span class="hljs-keyword">int</span>[] D)</span> </span>{
+    Map&lt;Integer, Integer&gt; map = <span class="hljs-keyword">new</span> HashMap&lt;&gt;();
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> a : A) {
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> b : B) {
+            map.put(a + b, map.getOrDefault(a + b, <span class="hljs-number">0</span>) + <span class="hljs-number">1</span>);
         }
     }
-    <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;
-}
 
-<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">isValid</span><span class="hljs-params">(<span class="hljs-keyword">char</span>[][] board, <span class="hljs-keyword">int</span> i, <span class="hljs-keyword">int</span> j)</span> </span>{
-    <span class="hljs-comment">// same element in the same col</span>
-    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> curX = <span class="hljs-number">0</span>; curX &lt; board.length; curX++) {
-        <span class="hljs-keyword">if</span> (curX != i &amp;&amp; board[curX][j] == board[i][j]) <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
-    }
-    <span class="hljs-comment">// same element in the same row</span>
-    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> curY = <span class="hljs-number">0</span>; curY &lt; board.length; curY++) {
-        <span class="hljs-keyword">if</span> (curY != j &amp;&amp; board[i][curY] == board[i][j]) <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
-    }
-    <span class="hljs-comment">// same element in the same subgrid</span>
-    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> curX = <span class="hljs-number">3</span> * (i / <span class="hljs-number">3</span>); curX &lt; <span class="hljs-number">3</span> * (i / <span class="hljs-number">3</span> + <span class="hljs-number">1</span>); curX++) {
-        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> curY = <span class="hljs-number">3</span> * (j / <span class="hljs-number">3</span>); curY &lt; <span class="hljs-number">3</span> * (j / <span class="hljs-number">3</span> + <span class="hljs-number">1</span>); curY++) {
-            <span class="hljs-keyword">if</span> (curX != i &amp;&amp; curY != j &amp;&amp; board[curX][curY] == board[i][j]) {
-                <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
-            }
+    <span class="hljs-keyword">int</span> res = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> c : C) {
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> d : D) {
+            <span class="hljs-keyword">if</span> (map.containsKey(- c - d)) 
+                res += map.get(-c -d);
         }
     }
-    <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;
+    <span class="hljs-keyword">return</span> res;
 }
 </code></pre>
 
@@ -2454,12 +2440,12 @@
 
             
                 
-                <a href="36_Valid_Sudoku.html" class="navigation navigation-prev " aria-label="Previous page: 36. Valid Sudoku">
+                <a href="18_4Sum.html" class="navigation navigation-prev " aria-label="Previous page: 18. 4Sum">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="../6_bitmanipulation.html" class="navigation navigation-next " aria-label="Next page: Bit manipulation">
+                <a href="344_Reverse_String.html" class="navigation navigation-next " aria-label="Next page: 344. Reverse String">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -2470,7 +2456,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"37. Sudoku Solver","level":"1.10.12","depth":2,"next":{"title":"Bit manipulation","level":"1.11","depth":1,"path":"6_bitmanipulation.md","ref":"6_bitmanipulation.md","articles":[{"title":"190. Reverse Bits","level":"1.11.1","depth":2,"path":"alg/190_Reverse_Bits.md","ref":"alg/190_Reverse_Bits.md","articles":[]},{"title":"191. Number of 1 Bits","level":"1.11.2","depth":2,"path":"alg/191_Number_of_1_Bits.md","ref":"alg/191_Number_of_1_Bits.md","articles":[]},{"title":"461. Hamming Distance","level":"1.11.3","depth":2,"path":"alg/461_Hamming_Distance.md","ref":"alg/461_Hamming_Distance.md","articles":[]},{"title":"136. Single Number","level":"1.11.4","depth":2,"path":"alg/136_Single_Number.md","ref":"alg/136_Single_Number.md","articles":[]},{"title":"137. Single Number II","level":"1.11.5","depth":2,"path":"alg/137_Single_Number_II.md","ref":"alg/137_Single_Number_II.md","articles":[]},{"title":"260. Single Number III","level":"1.11.6","depth":2,"path":"alg/260_Single_Number_III.md","ref":"alg/260_Single_Number_III.md","articles":[]},{"title":"231. Power of Two","level":"1.11.7","depth":2,"path":"alg/231_Power_of_Two.md","ref":"alg/231_Power_of_Two.md","articles":[]},{"title":"371. Sum of Two Integers","level":"1.11.8","depth":2,"path":"alg/371_Sum_of_Two_Integers.md","ref":"alg/371_Sum_of_Two_Integers.md","articles":[]}]},"previous":{"title":"36. Valid Sudoku","level":"1.10.11","depth":2,"path":"alg/36_Valid_Sudoku.md","ref":"alg/36_Valid_Sudoku.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["theme-default"],"pluginsConfig":{"theme-default":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"file":{"path":"alg/37_Sudoku_Solver.md","mtime":"2019-02-25T20:06:45.590Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-06-22T21:57:39.053Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"454. 4Sum II","level":"1.8.7","depth":2,"next":{"title":"344. Reverse String","level":"1.8.8","depth":2,"path":"alg/344_Reverse_String.md","ref":"alg/344_Reverse_String.md","articles":[]},"previous":{"title":"18. 4Sum","level":"1.8.6","depth":2,"path":"alg/18_4Sum.md","ref":"alg/18_4Sum.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["theme-default"],"pluginsConfig":{"theme-default":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"file":{"path":"alg/454_4Sum_II.md","mtime":"2019-06-22T21:51:38.633Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-06-22T21:57:39.053Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

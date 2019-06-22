@@ -467,32 +467,6 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5.25" data-path="alg/349_Intersection_of_Two_Arrays.html">
-            
-                <a href="alg/349_Intersection_of_Two_Arrays.html">
-            
-                    
-                    349. Intersection of Two Arrays
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.26" data-path="alg/350_Intersection_of_Two_Arrays_II.html">
-            
-                <a href="alg/350_Intersection_of_Two_Arrays_II.html">
-            
-                    
-                    350. Intersection of Two Arrays II
-            
-                </a>
-            
-
-            
-        </li>
-    
 
             </ul>
             
@@ -1408,7 +1382,20 @@
             
         </li>
     
-        <li class="chapter " data-level="1.8.7" data-path="alg/344_Reverse_String.html">
+        <li class="chapter " data-level="1.8.7" data-path="alg/454_4Sum_II.html">
+            
+                <a href="alg/454_4Sum_II.html">
+            
+                    
+                    454. 4Sum II
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.8" data-path="alg/344_Reverse_String.html">
             
                 <a href="alg/344_Reverse_String.html">
             
@@ -1421,7 +1408,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.8.8" data-path="alg/27_Remove_Element.html">
+        <li class="chapter " data-level="1.8.9" data-path="alg/27_Remove_Element.html">
             
                 <a href="alg/27_Remove_Element.html">
             
@@ -1434,7 +1421,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.8.9" data-path="alg/26_Remove_Duplicates_from_Sorted_Array.html">
+        <li class="chapter " data-level="1.8.10" data-path="alg/26_Remove_Duplicates_from_Sorted_Array.html">
             
                 <a href="alg/26_Remove_Duplicates_from_Sorted_Array.html">
             
@@ -1447,7 +1434,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.8.10" data-path="alg/80_Remove_Duplicates_from_Sorted_Array_II.html">
+        <li class="chapter " data-level="1.8.11" data-path="alg/80_Remove_Duplicates_from_Sorted_Array_II.html">
             
                 <a href="alg/80_Remove_Duplicates_from_Sorted_Array_II.html">
             
@@ -1460,7 +1447,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.8.11" data-path="alg/905_Sort_Array_By_Parity.html">
+        <li class="chapter " data-level="1.8.12" data-path="alg/905_Sort_Array_By_Parity.html">
             
                 <a href="alg/905_Sort_Array_By_Parity.html">
             
@@ -1473,7 +1460,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.8.12" data-path="alg/7_Reverse_Integer.html">
+        <li class="chapter " data-level="1.8.13" data-path="alg/7_Reverse_Integer.html">
             
                 <a href="alg/7_Reverse_Integer.html">
             
@@ -1486,7 +1473,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.8.13" data-path="alg/2_Add_Two_Numbers.html">
+        <li class="chapter " data-level="1.8.14" data-path="alg/2_Add_Two_Numbers.html">
             
                 <a href="alg/2_Add_Two_Numbers.html">
             
@@ -1499,7 +1486,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.8.14" data-path="alg/415_Add_Strings.html">
+        <li class="chapter " data-level="1.8.15" data-path="alg/415_Add_Strings.html">
             
                 <a href="alg/415_Add_Strings.html">
             
@@ -1512,12 +1499,38 @@
             
         </li>
     
-        <li class="chapter " data-level="1.8.15" data-path="alg/189_Rotate_Array.html">
+        <li class="chapter " data-level="1.8.16" data-path="alg/189_Rotate_Array.html">
             
                 <a href="alg/189_Rotate_Array.html">
             
                     
                     189. Rotate Array
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.17" data-path="alg/349_Intersection_of_Two_Arrays.html">
+            
+                <a href="alg/349_Intersection_of_Two_Arrays.html">
+            
+                    
+                    349. Intersection of Two Arrays
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.18" data-path="alg/350_Intersection_of_Two_Arrays_II.html">
+            
+                <a href="alg/350_Intersection_of_Two_Arrays_II.html">
+            
+                    
+                    350. Intersection of Two Arrays II
             
                 </a>
             
@@ -2382,7 +2395,7 @@ Integer[] res = <span class="hljs-keyword">new</span> Integer[arr.length];
     res[j++] = i; 
 }
 </code></pre>
-<p>2.Java8, looks like a line of shit</p>
+<p>2.Java8, the stream is as slow as fuck, and looks like a line of shit</p>
 <pre><code class="lang-java"><span class="hljs-keyword">int</span>[] arr = {<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>};
 Integer[] res = Arrays.stream( arr ).boxed().toArray( Integer[]::<span class="hljs-keyword">new</span> );
 </code></pre>
@@ -2434,6 +2447,59 @@ List&lt;Integer&gt; arr = <span class="hljs-keyword">new</span> ArrayList&lt;&gt
 <pre><code class="lang-java">List&lt;Integer&gt; arr = <span class="hljs-keyword">new</span> ArrayList&lt;&gt;(Arrays.asList(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>));
 Integer[] res = arr.toArray(<span class="hljs-keyword">new</span> Integer[arr.size()]);
 </code></pre>
+<h3 id="containers&#x4E4B;&#x95F4;&#x7684;&#x8F6C;&#x6362;">Containers&#x4E4B;&#x95F4;&#x7684;&#x8F6C;&#x6362;</h3>
+<p><img src="https://ww1.sinaimg.cn/large/006tNc79gy1g4a9dqqsfdj314o0ooqc4.jpg" ,="" width="600"></p>
+<p>&#x96C6;&#x5408;&#x4E4B;&#x95F4;&#x7684;&#x8F6C;&#x6362;&#x5927;&#x6982;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF1A;&#x4E0D;&#x8FC7;&#x8FD9;&#x8FB9;&#x7684;addAll&#x53EA;&#x5BF9;object&#x6709;&#x6548;&#xFF0C;&#x5BF9;primitive&#x65E0;&#x6548;&#xFF0C;&#x6240;&#x4EE5;&#x6709;&#x65F6;&#x5019;&#x8FD8;&#x662F;&#x9700;&#x8981;&#x624B;&#x52A8;loop</p>
+<pre><code class="lang-java">Set&lt;Integer&gt; set = <span class="hljs-keyword">new</span> HashSet&lt;&gt;(Arrays.asList(original));
+List&lt;Integer&gt; res = <span class="hljs-keyword">new</span> LinkedList&lt;&gt;(set); <span class="hljs-comment">// HashSet -&gt; LinkedList</span>
+res.addAll(res);
+</code></pre>
+<h3 id="map&#x7684;&#x5199;&#x6CD5;">Map&#x7684;&#x5199;&#x6CD5;</h3>
+<ul>
+<li>&#x7EDF;&#x8BA1;&#x6570;&#x7EC4;&#x4E2D;&#x5404;&#x6570;&#x5B57;&#x51FA;&#x73B0;&#x7684;&#x6B21;&#x6570;</li>
+</ul>
+<pre><code class="lang-java">Integer[] original = {<span class="hljs-number">1</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">1</span>}; 
+HashMap&lt;Integer, Integer&gt; map = <span class="hljs-keyword">new</span> HashMap&lt;&gt;(); <span class="hljs-comment">// number, count</span>
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i : original) {
+    map.put(i, map.getOrDefault(i, <span class="hljs-number">0</span>) + <span class="hljs-number">1</span>); <span class="hljs-comment">// replace null returned by map.get(&quot;non-exist element&quot;) </span>
+}
+</code></pre>
+<p>&#x5BF9;&#x6BD4;&#x4E0B;python</p>
+<pre><code class="lang-python"><span class="hljs-meta">&gt;&gt;&gt; </span>d = {}
+<span class="hljs-meta">&gt;&gt;&gt; </span>l = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">1</span>]
+<span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> l:
+<span class="hljs-meta">... </span>    d[i] = d.get(i, <span class="hljs-number">0</span>) + <span class="hljs-number">1</span>
+...
+<span class="hljs-meta">&gt;&gt;&gt; </span>d
+{<span class="hljs-number">1</span>: <span class="hljs-number">2</span>, <span class="hljs-number">2</span>: <span class="hljs-number">1</span>, <span class="hljs-number">3</span>: <span class="hljs-number">1</span>}
+</code></pre>
+<p>&#x6DF7;&#x5408;&#x7528;&#x6CD5;&#xFF0C;&#x53C2;&#x89C1;350, <a href="alg/350_Intersection_of_Two_Arrays_II.html">350. Intersection of Two Arrays II</a></p>
+<ul>
+<li>&#x7EDF;&#x8BA1;keySet(), values()&#x4E2D;&#x7684;&#x6700;&#x5927;&#x503C;</li>
+</ul>
+<p>&#x53EF;&#x4EE5;&#x4F7F;&#x7528;Collections.max&#xFF0C;&#x5E95;&#x5C42;&#x662F;interator</p>
+<pre><code class="lang-java"><span class="hljs-keyword">int</span> maxKey = Collections.max(map.keySet());
+<span class="hljs-keyword">int</span> maxValue = Collections.max(map.values());
+</code></pre>
+<p>Entry, Iterator&#x7684;&#x7528;&#x6CD5;</p>
+<pre><code class="lang-java">Map&lt;Integer, Integer&gt; map = <span class="hljs-keyword">new</span> HashMap&lt;&gt;();
+map.put(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>);
+<span class="hljs-comment">// for each: entrySet(key-value pair)</span>
+<span class="hljs-keyword">for</span> (Map.Entry&lt;Integer, Integer&gt; entry : map.entrySet()) {
+    <span class="hljs-keyword">int</span> key = entry.getKey();
+    <span class="hljs-keyword">int</span> value = entry.getValue();
+}
+
+<span class="hljs-comment">// iterator: key</span>
+Iterator&lt;Integer&gt; it = map.keySet().iterator();
+<span class="hljs-keyword">int</span> key = it.next();
+
+<span class="hljs-comment">// for each: values</span>
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> value : map.values()) {
+    System.out.println(value);
+}
+</code></pre>
+<p>&#x5176;&#x4ED6;&#x6742;&#x4E03;&#x6742;&#x516B;&#x7684;api&#x7528;&#x6CD5;&#xFF1A;<a href="https://www.nyannko.cf/posts/containers.html" target="_blank">https://www.nyannko.cf/posts/containers.html</a></p>
 
                                 
                                 </section>
@@ -2473,7 +2539,7 @@ Integer[] res = arr.toArray(<span class="hljs-keyword">new</span> Integer[arr.si
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"🥰Alg","level":"1.1","depth":1,"next":{"title":"时间","level":"1.2","depth":1,"path":"time.md","ref":"time.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["theme-default"],"pluginsConfig":{"theme-default":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"file":{"path":"README.md","mtime":"2019-06-21T21:58:53.277Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-06-21T21:58:58.990Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"🥰Alg","level":"1.1","depth":1,"next":{"title":"时间","level":"1.2","depth":1,"path":"time.md","ref":"time.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["theme-default"],"pluginsConfig":{"theme-default":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"file":{"path":"README.md","mtime":"2019-06-22T15:53:28.546Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-06-22T21:57:39.053Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

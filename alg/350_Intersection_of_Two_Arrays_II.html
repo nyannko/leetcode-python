@@ -59,7 +59,7 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="../1_linkedlist.html" />
+    <link rel="next" href="../4_stack.html" />
     
     
     <link rel="prev" href="349_Intersection_of_Two_Arrays.html" />
@@ -462,32 +462,6 @@
             
                     
                     8. String to Integer
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.25" data-path="349_Intersection_of_Two_Arrays.html">
-            
-                <a href="349_Intersection_of_Two_Arrays.html">
-            
-                    
-                    349. Intersection of Two Arrays
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter active" data-level="1.5.26" data-path="350_Intersection_of_Two_Arrays_II.html">
-            
-                <a href="350_Intersection_of_Two_Arrays_II.html">
-            
-                    
-                    350. Intersection of Two Arrays II
             
                 </a>
             
@@ -1410,7 +1384,20 @@
             
         </li>
     
-        <li class="chapter " data-level="1.8.7" data-path="344_Reverse_String.html">
+        <li class="chapter " data-level="1.8.7" data-path="454_4Sum_II.html">
+            
+                <a href="454_4Sum_II.html">
+            
+                    
+                    454. 4Sum II
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.8" data-path="344_Reverse_String.html">
             
                 <a href="344_Reverse_String.html">
             
@@ -1423,7 +1410,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.8.8" data-path="27_Remove_Element.html">
+        <li class="chapter " data-level="1.8.9" data-path="27_Remove_Element.html">
             
                 <a href="27_Remove_Element.html">
             
@@ -1436,7 +1423,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.8.9" data-path="26_Remove_Duplicates_from_Sorted_Array.html">
+        <li class="chapter " data-level="1.8.10" data-path="26_Remove_Duplicates_from_Sorted_Array.html">
             
                 <a href="26_Remove_Duplicates_from_Sorted_Array.html">
             
@@ -1449,7 +1436,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.8.10" data-path="80_Remove_Duplicates_from_Sorted_Array_II.html">
+        <li class="chapter " data-level="1.8.11" data-path="80_Remove_Duplicates_from_Sorted_Array_II.html">
             
                 <a href="80_Remove_Duplicates_from_Sorted_Array_II.html">
             
@@ -1462,7 +1449,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.8.11" data-path="905_Sort_Array_By_Parity.html">
+        <li class="chapter " data-level="1.8.12" data-path="905_Sort_Array_By_Parity.html">
             
                 <a href="905_Sort_Array_By_Parity.html">
             
@@ -1475,7 +1462,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.8.12" data-path="7_Reverse_Integer.html">
+        <li class="chapter " data-level="1.8.13" data-path="7_Reverse_Integer.html">
             
                 <a href="7_Reverse_Integer.html">
             
@@ -1488,7 +1475,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.8.13" data-path="2_Add_Two_Numbers.html">
+        <li class="chapter " data-level="1.8.14" data-path="2_Add_Two_Numbers.html">
             
                 <a href="2_Add_Two_Numbers.html">
             
@@ -1501,7 +1488,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.8.14" data-path="415_Add_Strings.html">
+        <li class="chapter " data-level="1.8.15" data-path="415_Add_Strings.html">
             
                 <a href="415_Add_Strings.html">
             
@@ -1514,12 +1501,38 @@
             
         </li>
     
-        <li class="chapter " data-level="1.8.15" data-path="189_Rotate_Array.html">
+        <li class="chapter " data-level="1.8.16" data-path="189_Rotate_Array.html">
             
                 <a href="189_Rotate_Array.html">
             
                     
                     189. Rotate Array
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.17" data-path="349_Intersection_of_Two_Arrays.html">
+            
+                <a href="349_Intersection_of_Two_Arrays.html">
+            
+                    
+                    349. Intersection of Two Arrays
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.8.18" data-path="350_Intersection_of_Two_Arrays_II.html">
+            
+                <a href="350_Intersection_of_Two_Arrays_II.html">
+            
+                    
+                    350. Intersection of Two Arrays II
             
                 </a>
             
@@ -2373,23 +2386,52 @@
                                 <section class="normal markdown-section">
                                 
                                 <h3 id="350-intersection-of-two-arrays-ii">350. Intersection of Two Arrays II</h3>
+<p>&#x6C42;&#x4E24;&#x4E2A;&#x6570;&#x7EC4;&#x7684;&#x4EA4;&#x96C6;&#xFF0C;&#x7ED3;&#x679C;&#x5141;&#x8BB8;&#x6709;&#x91CD;&#x590D;</p>
+<p>1.&#x5E38;&#x89C4;O(n)&#x89E3;&#x6CD5;</p>
 <pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span>[] intersect(<span class="hljs-keyword">int</span>[] nums1, <span class="hljs-keyword">int</span>[] nums2) {
-    Map&lt;Integer, Integer&gt; map = <span class="hljs-keyword">new</span> HashMap&lt;&gt;();
-    <span class="hljs-keyword">int</span> size = Math.min(nums1.length, nums2.length);
-    <span class="hljs-keyword">int</span>[] res = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[size];
-
-    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> num : nums1) {
-        map.put(num, map.getOrDefault(num, <span class="hljs-number">0</span>) + <span class="hljs-number">1</span>);
+    <span class="hljs-comment">// create res[]</span>
+    <span class="hljs-keyword">int</span>[] res = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[Math.min(nums1.length, nums2.length)];
+    <span class="hljs-comment">// create a map for nums1</span>
+    Map&lt;Integer, Integer&gt; map = <span class="hljs-keyword">new</span> HashMap&lt;&gt;(); <span class="hljs-comment">// element, count</span>
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i : nums1) {
+        map.put(i, map.getOrDefault(i, <span class="hljs-number">0</span>) + <span class="hljs-number">1</span>);
     }
 
-    <span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;
-    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> num : nums2) {
-        <span class="hljs-keyword">if</span> (map.getOrDefault(num, <span class="hljs-number">0</span>) &gt; <span class="hljs-number">0</span>) {
-            res[i++] = num;
-            map.put(num, map.get(num) - <span class="hljs-number">1</span>);
+    <span class="hljs-comment">// check nums2, if count &gt; 0, add to res</span>
+    <span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i : nums2) {
+        <span class="hljs-keyword">if</span> (map.getOrDefault(i, <span class="hljs-number">0</span>) &gt; <span class="hljs-number">0</span>) { <span class="hljs-comment">// simplify map.containsKey(i) &amp;&amp; map.get(i) &gt; 0</span>
+            res[j++] = i;
+            map.put(i, map.get(i) - <span class="hljs-number">1</span>);
         }
     }
-    <span class="hljs-keyword">return</span> Arrays.copyOf(res, i);
+
+    <span class="hljs-keyword">return</span> Arrays.copyOf(res, j);
+}
+</code></pre>
+<p>2.&#x6570;&#x7EC4;&#x6307;&#x9488;+inplace&#x590D;&#x5236;</p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span>[] intersect(<span class="hljs-keyword">int</span>[] nums1, <span class="hljs-keyword">int</span>[] nums2) {
+    <span class="hljs-comment">// range boundary here</span>
+    <span class="hljs-keyword">if</span> (nums1 == <span class="hljs-keyword">null</span> || nums2 == <span class="hljs-keyword">null</span>) <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[]{};
+
+    <span class="hljs-comment">// sort</span>
+    Arrays.sort(nums1);
+    Arrays.sort(nums2);
+
+    <span class="hljs-keyword">int</span> i, j , k;
+    i = j = k = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">while</span> (i &lt; nums1.length &amp;&amp; j &lt; nums2.length) {
+        <span class="hljs-keyword">if</span> (nums1[i] &lt; nums2[j]) {
+            i++;
+        } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (nums1[i] &gt; nums2[j]) {
+            j++;
+        } <span class="hljs-keyword">else</span> {
+            nums1[k++] = nums1[i];
+            i++;
+            j++;
+        }
+    }
+    <span class="hljs-keyword">return</span> Arrays.copyOf(nums1, k);
 }
 </code></pre>
 
@@ -2424,7 +2466,7 @@
                 </a>
                 
                 
-                <a href="../1_linkedlist.html" class="navigation navigation-next " aria-label="Next page: Linked List">
+                <a href="../4_stack.html" class="navigation navigation-next " aria-label="Next page: Stack">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -2435,7 +2477,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"350. Intersection of Two Arrays II","level":"1.5.26","depth":2,"next":{"title":"Linked List","level":"1.6","depth":1,"path":"1_linkedlist.md","ref":"1_linkedlist.md","articles":[{"title":"206. Reverse Linked List","level":"1.6.1","depth":2,"path":"alg/206_Reverse_Linked_List.md","ref":"alg/206_Reverse_Linked_List.md","articles":[]},{"title":"24. Swap Nodes in Pairs","level":"1.6.2","depth":2,"path":"alg/24_Swap_Nodes_in_Pairs.md","ref":"alg/24_Swap_Nodes_in_Pairs.md","articles":[]},{"title":"876. Middle of the Linked List","level":"1.6.3","depth":2,"path":"alg/876_Middle_of_the_Linked_List.md","ref":"alg/876_Middle_of_the_Linked_List.md","articles":[]},{"title":"141. Linked List Cycle","level":"1.6.4","depth":2,"path":"alg/141_Linked_List_Cycle.md","ref":"alg/141_Linked_List_Cycle.md","articles":[]},{"title":"142. Linked List Cycle II","level":"1.6.5","depth":2,"path":"alg/142_Linked_List_Cycle_II.md","ref":"alg/142_Linked_List_Cycle_II.md","articles":[]},{"title":"160. Intersection of Two Linked Lists","level":"1.6.6","depth":2,"path":"alg/160_Intersection_of_Two_Linked_Lists.md","ref":"alg/160_Intersection_of_Two_Linked_Lists.md","articles":[]},{"title":"237. Delete Node in a Linked List","level":"1.6.7","depth":2,"path":"alg/237_Delete_Node_in_a_Linked_List.md","ref":"alg/237_Delete_Node_in_a_Linked_List.md","articles":[]},{"title":"203. Remove Linked List Elements","level":"1.6.8","depth":2,"path":"alg/203_Remove_Linked_List_Elements.md","ref":"alg/203_Remove_Linked_List_Elements.md","articles":[]},{"title":"83. Remove Duplicates from Sorted List","level":"1.6.9","depth":2,"path":"alg/83_Remove_Duplicates_from_Sorted_List.md","ref":"alg/83_Remove_Duplicates_from_Sorted_List.md","articles":[]},{"title":"82. Remove Duplicates from Sorted List II","level":"1.6.10","depth":2,"path":"alg/82_Remove_Duplicates_from_Sorted_List_II.md","ref":"alg/82_Remove_Duplicates_from_Sorted_List_II.md","articles":[]},{"title":"86. Partition List","level":"1.6.11","depth":2,"path":"alg/86_Partition_List.md","ref":"alg/86_Partition_List.md","articles":[]},{"title":"234. Palindrome Linked List","level":"1.6.12","depth":2,"path":"alg/234_Palindrome_Linked_List.md","ref":"alg/234_Palindrome_Linked_List.md","articles":[]},{"title":"143. Reorder List","level":"1.6.13","depth":2,"path":"alg/143_Reorder_List.md","ref":"alg/143_Reorder_List.md","articles":[]},{"title":"147. Insertion Sort List","level":"1.6.14","depth":2,"path":"alg/147_Insertion_Sort_List.md","ref":"alg/147_Insertion_Sort_List.md","articles":[]},{"title":"328. Odd Even Linked List","level":"1.6.15","depth":2,"path":"alg/328_Odd_Even_Linked_List.md","ref":"alg/328_Odd_Even_Linked_List.md","articles":[]},{"title":"148. Sort List","level":"1.6.16","depth":2,"path":"alg/148_Sort_List.md","ref":"alg/148_Sort_List.md","articles":[]},{"title":"21. Merge Two Sorted Lists","level":"1.6.17","depth":2,"path":"alg/21_Merge_Two_Sorted_Lists.md","ref":"alg/21_Merge_Two_Sorted_Lists.md","articles":[]},{"title":"23. Merge k Sorted Lists","level":"1.6.18","depth":2,"path":"alg/23_Merge_k_Sorted_Lists.md","ref":"alg/23_Merge_k_Sorted_Lists.md","articles":[]},{"title":"146. LRU Cache","level":"1.6.19","depth":2,"path":"alg/146_LRU_Cache.md","ref":"alg/146_LRU_Cache.md","articles":[]},{"title":"817. Linked List Components","level":"1.6.20","depth":2,"path":"alg/817_Linked_List_Components.md","ref":"alg/817_Linked_List_Components.md","articles":[]},{"title":"707. Design Linked List","level":"1.6.21","depth":2,"path":"alg/707_Design_Linked_List.md","ref":"alg/707_Design_Linked_List.md","articles":[]},{"title":"19. Remove Nth Node From End of List","level":"1.6.22","depth":2,"path":"alg/19_Remove_Nth_Node_From_End_of_List.md","ref":"alg/19_Remove_Nth_Node_From_End_of_List.md","articles":[]}]},"previous":{"title":"349. Intersection of Two Arrays","level":"1.5.25","depth":2,"path":"alg/349_Intersection_of_Two_Arrays.md","ref":"alg/349_Intersection_of_Two_Arrays.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["theme-default"],"pluginsConfig":{"theme-default":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"file":{"path":"alg/350_Intersection_of_Two_Arrays_II.md","mtime":"2019-02-11T00:47:17.881Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-06-21T21:58:58.990Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"350. Intersection of Two Arrays II","level":"1.8.18","depth":2,"next":{"title":"Stack","level":"1.9","depth":1,"path":"4_stack.md","ref":"4_stack.md","articles":[{"title":"155. Min Stack","level":"1.9.1","depth":2,"path":"alg/155_Min_Stack.md","ref":"alg/155_Min_Stack.md","articles":[]},{"title":"232. Implement Queue using Stacks","level":"1.9.2","depth":2,"path":"alg/232_Implement_Queue_using_Stacks.md","ref":"alg/232_Implement_Queue_using_Stacks.md","articles":[]},{"title":"225. Implement Stack using Queues","level":"1.9.3","depth":2,"path":"alg/225_Implement_Stack_using_Queues.md","ref":"alg/225_Implement_Stack_using_Queues.md","articles":[]},{"title":"150. Evaluate Reverse Polish Notation","level":"1.9.4","depth":2,"path":"alg/150_Evaluate_Reverse_Polish_Notation.md","ref":"alg/150_Evaluate_Reverse_Polish_Notation.md","articles":[]},{"title":"239. Sliding Window Maximum","level":"1.9.5","depth":2,"path":"alg/239_Sliding_Window_Maximum.md","ref":"alg/239_Sliding_Window_Maximum.md","articles":[]},{"title":"32. Longest Valid Parentheses","level":"1.9.6","depth":2,"path":"alg/32_Longest_Valid_Parentheses.md","ref":"alg/32_Longest_Valid_Parentheses.md","articles":[]},{"title":"227. Basic Calculator II","level":"1.9.7","depth":2,"path":"alg/227_Basic_Calculator_II.md","ref":"alg/227_Basic_Calculator_II.md","articles":[]}]},"previous":{"title":"349. Intersection of Two Arrays","level":"1.8.17","depth":2,"path":"alg/349_Intersection_of_Two_Arrays.md","ref":"alg/349_Intersection_of_Two_Arrays.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["theme-default"],"pluginsConfig":{"theme-default":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"file":{"path":"alg/350_Intersection_of_Two_Arrays_II.md","mtime":"2019-06-22T15:20:00.402Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-06-22T21:57:39.053Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
