@@ -6,7 +6,7 @@
         <!-- fix pic 403 -->
         <meta name="referrer" content="no-referrer" />
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>203. Remove Linked List Elements · GitBook</title>
+        <title>347. Top K Frequent Elements · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -59,10 +59,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="83_Remove_Duplicates_from_Sorted_List.html" />
+    <link rel="next" href="215_Kth_Largest_Element_in_an_Array.html" />
     
     
-    <link rel="prev" href="237_Delete_Node_in_a_Linked_List.html" />
+    <link rel="prev" href="Merge_Sort.html" />
     
 
     </head>
@@ -196,7 +196,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5.4" data-path="347_Top_K_Frequent_Elements.html">
+        <li class="chapter active" data-level="1.5.4" data-path="347_Top_K_Frequent_Elements.html">
             
                 <a href="347_Top_K_Frequent_Elements.html">
             
@@ -592,7 +592,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.6.8" data-path="203_Remove_Linked_List_Elements.html">
+        <li class="chapter " data-level="1.6.8" data-path="203_Remove_Linked_List_Elements.html">
             
                 <a href="203_Remove_Linked_List_Elements.html">
             
@@ -2396,7 +2396,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >203. Remove Linked List Elements</a>
+        <a href=".." >347. Top K Frequent Elements</a>
     </h1>
 </div>
 
@@ -2411,47 +2411,96 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h3 id="203-remove-linked-list-elements">203. Remove Linked List Elements</h3>
-<p>recursion</p>
-<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> ListNode <span class="hljs-title">removeElements</span><span class="hljs-params">(ListNode head, <span class="hljs-keyword">int</span> val)</span> </span>{
-    <span class="hljs-keyword">if</span> (head == <span class="hljs-keyword">null</span>) <span class="hljs-keyword">return</span> <span class="hljs-keyword">null</span>;
-    head.next = removeElements(head.next, val);
-    <span class="hljs-keyword">return</span> (head.val == val) ? head.next : head;
-}
-</code></pre>
-<p>naive&#x65B9;&#x6CD5;&#xFF0C;&#x5148;&#x79FB;&#x9664;&#x5934;&#x90E8;&#xFF0C;&#x518D;&#x79FB;&#x9664;&#x4E2D;&#x95F4;&#x3002;</p>
-<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> ListNode <span class="hljs-title">removeElements</span><span class="hljs-params">(ListNode head, <span class="hljs-keyword">int</span> val)</span> </span>{
-    <span class="hljs-comment">// remove head</span>
-    <span class="hljs-keyword">while</span> (head != <span class="hljs-keyword">null</span> &amp;&amp; head.val == val) head = head.next;
-    <span class="hljs-comment">// remove internal nodes</span>
-    ListNode node = head;
-    <span class="hljs-keyword">while</span> (node != <span class="hljs-keyword">null</span> &amp;&amp; node.next != <span class="hljs-keyword">null</span>) {
-        <span class="hljs-keyword">if</span> (node.next != <span class="hljs-keyword">null</span> &amp;&amp; node.next.val == val) {
-            node.next = node.next.next;
-        } <span class="hljs-keyword">else</span> {
-            node = node.next;
-        }
+                                <h3 id="347-top-k-frequent-elements">347. Top K Frequent Elements</h3>
+<p>&#x5BFB;&#x627E;&#x4E00;&#x4E2A;&#x6570;&#x7EC4;&#x4E2D;&#x51FA;&#x73B0;&#x9891;&#x7387;&#x4ECE;&#x9AD8;&#x5230;&#x4F4E;&#x7684;k&#x4E2A;&#x5143;&#x7D20;</p>
+<p>&#x601D;&#x8DEF;&#xFF1A;map&#xFF0C;pq&#xFF0C;&#x6CE8;&#x610F;&#x8C03;&#x7528;API</p>
+<p>1.map + sort: O(n) + O(nlogn)</p>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> List&lt;Integer&gt; <span class="hljs-title">topKFrequent</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] nums, <span class="hljs-keyword">int</span> k)</span> </span>{
+    <span class="hljs-comment">// boundary check: if nums is null or length == 0; then must return null to avoid nullpointerexception when adding elements to the list</span>
+    <span class="hljs-comment">// if k &lt; 0: can be returned</span>
+    <span class="hljs-comment">// if k == 0: similar to k &lt; 0, but it makes no sense</span>
+    <span class="hljs-keyword">if</span> (nums == <span class="hljs-keyword">null</span> || nums.length == <span class="hljs-number">0</span> || k &lt;= <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-keyword">null</span>;
+
+    <span class="hljs-comment">// put elements into map</span>
+    HashMap&lt;Integer, Integer&gt; map = <span class="hljs-keyword">new</span> HashMap&lt;&gt;();
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; nums.length; i++) {
+        map.put(nums[i], map.getOrDefault(nums[i], <span class="hljs-number">0</span>) + <span class="hljs-number">1</span>);
     }
-    <span class="hljs-keyword">return</span> head;
-}
-</code></pre>
-<p>dummy node&#x65B9;&#x6CD5;</p>
-<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> ListNode <span class="hljs-title">removeElements</span><span class="hljs-params">(ListNode head, <span class="hljs-keyword">int</span> val)</span> </span>{
-    ListNode dummy = <span class="hljs-keyword">new</span> ListNode(<span class="hljs-number">0</span>);
-    dummy.next = head;
-    ListNode cur = dummy;
-    <span class="hljs-keyword">while</span> (head != <span class="hljs-keyword">null</span>) {
-        <span class="hljs-keyword">if</span> (head.val != val) {
-            cur.next = head;
-            cur = head;
-        }
-        head = head.next;
+
+    <span class="hljs-comment">// boundary check again</span>
+    <span class="hljs-keyword">if</span> (k &gt; map.size()) <span class="hljs-keyword">return</span> <span class="hljs-keyword">null</span>;
+
+    <span class="hljs-comment">// put entries into a list</span>
+    List&lt;Map.Entry&lt;Integer, Integer&gt;&gt; entries = <span class="hljs-keyword">new</span> ArrayList&lt;&gt;(map.entrySet());
+
+    <span class="hljs-comment">// sort list by comparator, faster than no reversed()</span>
+    entries.sort(Map.Entry.&lt;Integer, Integer&gt;comparingByValue().reversed());
+
+    <span class="hljs-comment">// return result</span>
+    List&lt;Integer&gt; res = <span class="hljs-keyword">new</span> ArrayList&lt;&gt;();
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; k; i++) {
+        res.add((<span class="hljs-keyword">int</span>) entries.get(i).getKey());
     }
-    cur.next = <span class="hljs-keyword">null</span>; <span class="hljs-comment">// in case that all elements in the list are same</span>
-    <span class="hljs-keyword">return</span> dummy.next;
+    <span class="hljs-keyword">return</span> res;
 }
 </code></pre>
-<p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fzfsf5qhgnj30e20cuju0.jpg" width="300"></p>
+<p>2.priority queue(min heap): O(nlogk), used when k much less than n</p>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> List&lt;Integer&gt; <span class="hljs-title">topKFrequent</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] nums, <span class="hljs-keyword">int</span> k)</span> </span>{
+    <span class="hljs-keyword">if</span> (nums == <span class="hljs-keyword">null</span> || nums.length == <span class="hljs-number">0</span> || k &lt;= <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-keyword">null</span>;
+
+    <span class="hljs-comment">// count frequencies by map, use foreach</span>
+    Map&lt;Integer, Integer&gt; map = <span class="hljs-keyword">new</span> HashMap&lt;&gt;();
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i : nums) {
+        map.put(i, map.getOrDefault(i, <span class="hljs-number">0</span>) + <span class="hljs-number">1</span>);
+    }
+
+    <span class="hljs-comment">// boundary check again</span>
+    <span class="hljs-keyword">if</span> (k &gt; map.size()) <span class="hljs-keyword">return</span> <span class="hljs-keyword">null</span>;
+
+    <span class="hljs-comment">// create a priority queue(min heap with regard to map.values())</span>
+    PriorityQueue&lt;Map.Entry&lt;Integer, Integer&gt;&gt; q = 
+        <span class="hljs-keyword">new</span> PriorityQueue&lt;&gt;(Map.Entry.comparingByValue());
+    <span class="hljs-keyword">for</span> (Map.Entry e : map.entrySet()) {
+        q.offer(e);
+        <span class="hljs-keyword">if</span> (q.size() &gt; k) 
+            q.poll();
+    }
+
+    <span class="hljs-comment">// create result list</span>
+    List&lt;Integer&gt; res = <span class="hljs-keyword">new</span> ArrayList&lt;&gt;();
+    <span class="hljs-keyword">for</span> (Map.Entry e : q) {
+        res.add((<span class="hljs-keyword">int</span>)e.getKey());
+    }
+    <span class="hljs-keyword">return</span> res;
+}
+</code></pre>
+<p>3.priority queue(max heap): O(nlog(n - k)), used when k is almost equal to n</p>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> List&lt;Integer&gt; <span class="hljs-title">topKFrequent</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] nums, <span class="hljs-keyword">int</span> k)</span> </span>{
+    <span class="hljs-keyword">if</span> (nums == <span class="hljs-keyword">null</span> || nums.length == <span class="hljs-number">0</span> || k &lt;= <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-keyword">null</span>;
+
+    <span class="hljs-comment">// count frequencies by map</span>
+    Map&lt;Integer, Integer&gt; map = <span class="hljs-keyword">new</span> HashMap&lt;&gt;();
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i : nums) {
+        map.put(i, map.getOrDefault(i, <span class="hljs-number">0</span>) + <span class="hljs-number">1</span>);
+    }
+
+    <span class="hljs-comment">// boundary check again</span>
+    <span class="hljs-keyword">if</span> (k &gt; map.size()) <span class="hljs-keyword">return</span> <span class="hljs-keyword">null</span>;
+
+    <span class="hljs-comment">// create result list</span>
+    List&lt;Integer&gt; res = <span class="hljs-keyword">new</span> ArrayList&lt;&gt;();
+
+    <span class="hljs-comment">// create a priority queue(max heap)</span>
+    PriorityQueue&lt;Map.Entry&lt;Integer, Integer&gt;&gt; q = 
+        <span class="hljs-keyword">new</span> PriorityQueue&lt;&gt;(Map.Entry.&lt;Integer, Integer&gt;comparingByValue().reversed()); <span class="hljs-comment">// n - k</span>
+    <span class="hljs-keyword">for</span> (Map.Entry e : map.entrySet()) {
+        q.offer(e);
+        <span class="hljs-keyword">if</span> (q.size() &gt; map.size() - k) <span class="hljs-comment">// get elements excluded from max heap </span>
+            res.add((<span class="hljs-keyword">int</span>)q.poll().getKey());
+    }
+    <span class="hljs-keyword">return</span> res;
+}
+</code></pre>
 
                                 
                                 </section>
@@ -2479,12 +2528,12 @@
 
             
                 
-                <a href="237_Delete_Node_in_a_Linked_List.html" class="navigation navigation-prev " aria-label="Previous page: 237. Delete Node in a Linked List">
+                <a href="Merge_Sort.html" class="navigation navigation-prev " aria-label="Previous page: 🌝Merge Sort">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="83_Remove_Duplicates_from_Sorted_List.html" class="navigation navigation-next " aria-label="Next page: 83. Remove Duplicates from Sorted List">
+                <a href="215_Kth_Largest_Element_in_an_Array.html" class="navigation navigation-next " aria-label="Next page: 215. Kth Largest Element in an Array">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -2495,7 +2544,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"203. Remove Linked List Elements","level":"1.6.8","depth":2,"next":{"title":"83. Remove Duplicates from Sorted List","level":"1.6.9","depth":2,"path":"alg/83_Remove_Duplicates_from_Sorted_List.md","ref":"alg/83_Remove_Duplicates_from_Sorted_List.md","articles":[]},"previous":{"title":"237. Delete Node in a Linked List","level":"1.6.7","depth":2,"path":"alg/237_Delete_Node_in_a_Linked_List.md","ref":"alg/237_Delete_Node_in_a_Linked_List.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["theme-default"],"pluginsConfig":{"theme-default":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"file":{"path":"alg/203_Remove_Linked_List_Elements.md","mtime":"2019-01-22T15:50:46.529Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-06-25T21:46:25.437Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"347. Top K Frequent Elements","level":"1.5.4","depth":2,"next":{"title":"215. Kth Largest Element in an Array","level":"1.5.5","depth":2,"path":"alg/215_Kth_Largest_Element_in_an_Array.md","ref":"alg/215_Kth_Largest_Element_in_an_Array.md","articles":[]},"previous":{"title":"🌝Merge Sort","level":"1.5.3","depth":2,"path":"alg/Merge_Sort.md","ref":"alg/Merge_Sort.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["theme-default"],"pluginsConfig":{"theme-default":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"file":{"path":"alg/347_Top_K_Frequent_Elements.md","mtime":"2019-06-25T21:43:38.269Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-06-25T21:46:25.437Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
