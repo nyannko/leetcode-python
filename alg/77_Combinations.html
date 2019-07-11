@@ -1553,6 +1553,19 @@
             
         </li>
     
+        <li class="chapter " data-level="1.8.19" data-path="209_Minimum_Size_Subarray_Sum.html">
+            
+                <a href="209_Minimum_Size_Subarray_Sum.html">
+            
+                    
+                    209. Minimum Size Subarray Sum
+            
+                </a>
+            
+
+            
+        </li>
+    
 
             </ul>
             
@@ -2477,6 +2490,8 @@ Output:
 ]
 </code></pre>
 <pre><code class="lang-java"><span class="hljs-keyword">public</span> List&lt;List&lt;Integer&gt;&gt; combine(<span class="hljs-keyword">int</span> n, <span class="hljs-keyword">int</span> k) {
+    <span class="hljs-comment">// boundary check</span>
+    <span class="hljs-keyword">if</span> (n &lt;= <span class="hljs-number">0</span> || k &lt;= <span class="hljs-number">0</span> || k &gt; n) <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> ArrayList&lt;&gt;();
     List&lt;List&lt;Integer&gt;&gt; res = <span class="hljs-keyword">new</span> ArrayList&lt;&gt;();
     List&lt;Integer&gt; path = <span class="hljs-keyword">new</span> ArrayList&lt;&gt;();
     dfs(path, res, n, k, <span class="hljs-number">1</span>);
@@ -2494,6 +2509,51 @@ Output:
         path.remove(path.size() - <span class="hljs-number">1</span>);
     }
 }
+</code></pre>
+<p>debug&#x4EE3;&#x7801;:</p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> List&lt;List&lt;Integer&gt;&gt; combine(<span class="hljs-keyword">int</span> n, <span class="hljs-keyword">int</span> k) {
+    <span class="hljs-comment">// boundary check</span>
+    <span class="hljs-keyword">if</span> (n &lt;= <span class="hljs-number">0</span> || k &lt;= <span class="hljs-number">0</span> || k &gt; n) <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> ArrayList&lt;&gt;();
+    List&lt;List&lt;Integer&gt;&gt; res = <span class="hljs-keyword">new</span> ArrayList&lt;&gt;();
+    List&lt;Integer&gt; path = <span class="hljs-keyword">new</span> ArrayList&lt;&gt;();
+    dfs(n, k, res, path, <span class="hljs-number">1</span>);
+    <span class="hljs-keyword">return</span> res;
+}
+
+<span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">dfs</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n, <span class="hljs-keyword">int</span> k, List&lt;List&lt;Integer&gt;&gt; res, List&lt;Integer&gt; path, <span class="hljs-keyword">int</span> index)</span> </span>{
+    <span class="hljs-keyword">if</span> (path.size() == k) {
+        res.add(<span class="hljs-keyword">new</span> ArrayList&lt;&gt;(path));
+        <span class="hljs-keyword">return</span>;
+    }
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = index; i &lt;= n - (k - path.size()) + <span class="hljs-number">1</span>; i++) {
+        System.out.println(<span class="hljs-string">&quot;level &quot;</span> + path.size() + <span class="hljs-string">&quot; add &quot;</span> + i + <span class="hljs-string">&quot; to path &quot;</span> + path);
+        path.add(i);
+        dfs(n, k, res, path, i + <span class="hljs-number">1</span>);
+        System.out.println(<span class="hljs-string">&quot;remove &quot;</span> + path.get(path.size() - <span class="hljs-number">1</span>));
+        path.remove(path.size() - <span class="hljs-number">1</span>);
+    }
+}
+</code></pre>
+<pre><code class="lang-java">level <span class="hljs-number">0</span> add <span class="hljs-number">1</span> to path []
+level <span class="hljs-number">1</span> add <span class="hljs-number">2</span> to path [<span class="hljs-number">1</span>]
+remove <span class="hljs-number">2</span>
+level <span class="hljs-number">1</span> add <span class="hljs-number">3</span> to path [<span class="hljs-number">1</span>]
+remove <span class="hljs-number">3</span>
+level <span class="hljs-number">1</span> add <span class="hljs-number">4</span> to path [<span class="hljs-number">1</span>]
+remove <span class="hljs-number">4</span>
+remove <span class="hljs-number">1</span>
+level <span class="hljs-number">0</span> add <span class="hljs-number">2</span> to path []
+level <span class="hljs-number">1</span> add <span class="hljs-number">3</span> to path [<span class="hljs-number">2</span>]
+remove <span class="hljs-number">3</span>
+level <span class="hljs-number">1</span> add <span class="hljs-number">4</span> to path [<span class="hljs-number">2</span>]
+remove <span class="hljs-number">4</span>
+remove <span class="hljs-number">2</span>
+level <span class="hljs-number">0</span> add <span class="hljs-number">3</span> to path []
+level <span class="hljs-number">1</span> add <span class="hljs-number">4</span> to path [<span class="hljs-number">3</span>]
+remove <span class="hljs-number">4</span>
+remove <span class="hljs-number">3</span>
+level <span class="hljs-number">0</span> add <span class="hljs-number">4</span> to path []
+remove <span class="hljs-number">4</span>
 </code></pre>
 
                                 
@@ -2538,7 +2598,7 @@ Output:
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"77. Combinations","level":"1.10.5","depth":2,"next":{"title":"39. Combination Sum","level":"1.10.6","depth":2,"path":"alg/39_Combination_Sum.md","ref":"alg/39_Combination_Sum.md","articles":[]},"previous":{"title":"78. Subsets","level":"1.10.4","depth":2,"path":"alg/78_Subsets.md","ref":"alg/78_Subsets.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["theme-default"],"pluginsConfig":{"theme-default":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"file":{"path":"alg/77_Combinations.md","mtime":"2019-04-06T21:52:57.229Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-07-02T21:55:49.879Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"77. Combinations","level":"1.10.5","depth":2,"next":{"title":"39. Combination Sum","level":"1.10.6","depth":2,"path":"alg/39_Combination_Sum.md","ref":"alg/39_Combination_Sum.md","articles":[]},"previous":{"title":"78. Subsets","level":"1.10.4","depth":2,"path":"alg/78_Subsets.md","ref":"alg/78_Subsets.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["theme-default"],"pluginsConfig":{"theme-default":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"file":{"path":"alg/77_Combinations.md","mtime":"2019-07-05T15:23:17.398Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-07-11T21:41:46.803Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

@@ -1553,6 +1553,19 @@
             
         </li>
     
+        <li class="chapter " data-level="1.8.19" data-path="209_Minimum_Size_Subarray_Sum.html">
+            
+                <a href="209_Minimum_Size_Subarray_Sum.html">
+            
+                    
+                    209. Minimum Size Subarray Sum
+            
+                </a>
+            
+
+            
+        </li>
+    
 
             </ul>
             
@@ -2464,9 +2477,7 @@
                                 <section class="normal markdown-section">
                                 
                                 <h3 id="17-letter-combinations-of-a-phone-number">17. Letter Combinations of a Phone Number</h3>
-<ol>
-<li>&#x5178;&#x578B;&#x7684;dfs&#xFF0C;hashmap&#x4E2D;&#x5B58;&#x653E;char&#x4F1A;&#x6BD4;string&#x5FEB;&#x4E00;&#x4E9B;&#x3002;&#x4E00;&#x5F00;&#x59CB;&#x7684;&#x89E3;&#x6CD5;&#xFF0C;&#x4EE3;&#x7801;/&#x4F20;&#x53C2;&#x5F88;&#x591A;&#xFF0C;&#x8F83;&#x4E3A;&#x9EBB;&#x70E6;&#x3002;</li>
-</ol>
+<p>1.&#x5178;&#x578B;&#x7684;dfs&#xFF0C;hashmap&#x4E2D;&#x5B58;&#x653E;char&#x4F1A;&#x6BD4;string&#x5FEB;&#x4E00;&#x4E9B;&#x3002;&#x4E00;&#x5F00;&#x59CB;&#x7684;&#x89E3;&#x6CD5;&#xFF0C;&#x4EE3;&#x7801;/&#x4F20;&#x53C2;&#x5F88;&#x591A;&#xFF0C;&#x8F83;&#x4E3A;&#x9EBB;&#x70E6;&#x3002;</p>
 <pre><code class="lang-java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>{
 
     <span class="hljs-comment">// set map as static variable </span>
@@ -2517,9 +2528,7 @@
     }
 }
 </code></pre>
-<ol>
-<li>&#x7136;&#x540E;&#x662F;&#x5B57;&#x7B26;&#x4E32;&#x539F;&#x751F;&#x64CD;&#x4F5C;&#xFF0C;&#x6BD4;&#x8F83;&#x5FEB;&#xFF0C;&#x4F46;&#x662F;&#x9700;&#x8981;&#x4E60;&#x60EF;char&#x53D6;index</li>
-</ol>
+<p>2.&#x7136;&#x540E;&#x662F;&#x5B57;&#x7B26;&#x4E32;&#x539F;&#x751F;&#x64CD;&#x4F5C;&#xFF0C;&#x6BD4;&#x8F83;&#x5FEB;&#xFF0C;&#x4F46;&#x662F;&#x9700;&#x8981;&#x4E60;&#x60EF;char&#x53D6;index</p>
 <pre><code class="lang-java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>{
     String[] map = {<span class="hljs-string">&quot; &quot;</span>,    <span class="hljs-comment">//0</span>
                     <span class="hljs-string">&quot;&quot;</span>,     <span class="hljs-comment">//1</span>
@@ -2544,9 +2553,11 @@
             res.add(path);
             <span class="hljs-keyword">return</span>;
         }
-        <span class="hljs-keyword">char</span> key = keys[index]; <span class="hljs-comment">//2 or 3</span>
-        String letters = map[key - <span class="hljs-string">&apos;0&apos;</span>];
+        <span class="hljs-keyword">char</span> key = keys[index]; <span class="hljs-comment">// 2 or 3</span>
+        String letters = map[key - <span class="hljs-string">&apos;0&apos;</span>]; <span class="hljs-comment">// remember this fucking shit</span>
         <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; letters.length(); i++) {
+            <span class="hljs-comment">// a convenient way to debug</span>
+            System.out.println(index + <span class="hljs-string">&quot; use: &quot;</span> + letters.charAt(i) + <span class="hljs-string">&quot; get:&quot;</span> + s + letters.charAt(i));
             dfs(keys, res, path + letters.charAt(i), index + <span class="hljs-number">1</span>);
         }
     }
@@ -2556,6 +2567,21 @@
 <pre><code class="lang-java"><span class="hljs-string">&quot;&quot;</span>
 <span class="hljs-string">&quot;0&quot;</span>
 <span class="hljs-string">&quot;()*&amp;&quot;</span>
+</code></pre>
+<p>print debug&#x5927;&#x6CD5;</p>
+<pre><code class="lang-java"><span class="hljs-number">0</span> use: a get:a
+<span class="hljs-number">1</span> use: d get:ad
+<span class="hljs-number">1</span> use: e get:ae
+<span class="hljs-number">1</span> use: f get:af
+<span class="hljs-number">0</span> use: b get:b
+<span class="hljs-number">1</span> use: d get:bd
+<span class="hljs-number">1</span> use: e get:be
+<span class="hljs-number">1</span> use: f get:bf
+<span class="hljs-number">0</span> use: c get:c
+<span class="hljs-number">1</span> use: d get:cd
+<span class="hljs-number">1</span> use: e get:ce
+<span class="hljs-number">1</span> use: f get:cf
+[ad, ae, af, bd, be, bf, cd, ce, cf]
 </code></pre>
 
                                 
@@ -2600,7 +2626,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"17. Letter Combinations of a Phone Number","level":"1.10.2","depth":2,"next":{"title":"46. Permutations","level":"1.10.3","depth":2,"path":"alg/46_Permutations.md","ref":"alg/46_Permutations.md","articles":[]},"previous":{"title":"279. Perfect Squares","level":"1.10.1","depth":2,"path":"alg/279_Perfect_Squares.md","ref":"alg/279_Perfect_Squares.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["theme-default"],"pluginsConfig":{"theme-default":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"file":{"path":"alg/17_Letter_Combinations_of_a_Phone_Number.md","mtime":"2019-07-02T21:55:51.944Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-07-02T21:55:49.879Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"17. Letter Combinations of a Phone Number","level":"1.10.2","depth":2,"next":{"title":"46. Permutations","level":"1.10.3","depth":2,"path":"alg/46_Permutations.md","ref":"alg/46_Permutations.md","articles":[]},"previous":{"title":"279. Perfect Squares","level":"1.10.1","depth":2,"path":"alg/279_Perfect_Squares.md","ref":"alg/279_Perfect_Squares.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["theme-default"],"pluginsConfig":{"theme-default":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"file":{"path":"alg/17_Letter_Combinations_of_a_Phone_Number.md","mtime":"2019-07-04T21:40:35.439Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-07-11T21:41:46.803Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

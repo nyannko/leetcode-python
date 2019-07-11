@@ -1553,6 +1553,19 @@
             
         </li>
     
+        <li class="chapter " data-level="1.8.19" data-path="209_Minimum_Size_Subarray_Sum.html">
+            
+                <a href="209_Minimum_Size_Subarray_Sum.html">
+            
+                    
+                    209. Minimum Size Subarray Sum
+            
+                </a>
+            
+
+            
+        </li>
+    
 
             </ul>
             
@@ -2552,6 +2565,40 @@
     <span class="hljs-keyword">return</span> res;
 }
 </code></pre>
+<p>&#x6700;&#x4F73;&#x89E3;&#x7B54;&#xFF0C;&#x8BBE;&#x7F6E;&#x989D;&#x5916;&#x7684;visited&#x6570;&#x7EC4;&#xFF08;&#x540C;&#x4E0A;&#xFF09;&#x6BCF;&#x6B21;&#x5728;&#x4E3B;&#x51FD;&#x6570;&#x4E2D;&#x8FDB;&#x884C;loop&#x7684;&#x65F6;&#x5019;visited&#x6570;&#x7EC4;&#x90FD;&#x662F;false&#xFF0C;&#x5E76;&#x4E14;&#x7B80;&#x5316;dfs&#x7684;&#x5199;&#x6CD5;</p>
+<pre><code class="lang-java">    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">boolean</span>[][] visited;
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span>[][] distance = {{<span class="hljs-number">1</span>, <span class="hljs-number">0</span>}, {-<span class="hljs-number">1</span>, <span class="hljs-number">0</span>}, {<span class="hljs-number">0</span>, <span class="hljs-number">1</span>}, {<span class="hljs-number">0</span>, -<span class="hljs-number">1</span>}};
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">wordSearchWithTable</span><span class="hljs-params">(<span class="hljs-keyword">char</span>[][] board, String s)</span> </span>{
+        <span class="hljs-keyword">if</span> (board == <span class="hljs-keyword">null</span> || board.length == <span class="hljs-number">0</span> || board[<span class="hljs-number">0</span>].length == <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
+<span class="hljs-comment">//        if (s == null || s.length() == 0) return false;</span>
+
+        visited = <span class="hljs-keyword">new</span> <span class="hljs-keyword">boolean</span>[board.length][board[<span class="hljs-number">0</span>].length];
+        <span class="hljs-keyword">char</span>[] letters = s.toCharArray();
+
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; board.length; i++) {
+            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>; j &lt; board[<span class="hljs-number">0</span>].length; j++) {
+                <span class="hljs-comment">// all elements in visited are false for every loop</span>
+                <span class="hljs-keyword">if</span> (dfs2(board, i, j, letters, <span class="hljs-number">0</span>)) <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;
+            }
+        }
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">dfs2</span><span class="hljs-params">(<span class="hljs-keyword">char</span>[][] board, <span class="hljs-keyword">int</span> i, <span class="hljs-keyword">int</span> j, <span class="hljs-keyword">char</span>[] letters, <span class="hljs-keyword">int</span> pointer)</span> </span>{
+        <span class="hljs-keyword">if</span> (pointer == letters.length) <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;
+        <span class="hljs-keyword">if</span> (i &lt; <span class="hljs-number">0</span> || j &lt; <span class="hljs-number">0</span> || i &gt;= board.length || j &gt;= board[<span class="hljs-number">0</span>].length || board[i][j] != letters[pointer] || visited[i][j])
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
+        visited[i][j] = <span class="hljs-keyword">true</span>;
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> k = <span class="hljs-number">0</span>; k &lt; <span class="hljs-number">4</span>; k++) {
+            <span class="hljs-keyword">int</span> newX = i + distance[k][<span class="hljs-number">0</span>];
+            <span class="hljs-keyword">int</span> newY = j + distance[k][<span class="hljs-number">1</span>];
+            <span class="hljs-keyword">if</span> (dfs2(board, newX, newY, letters, pointer + <span class="hljs-number">1</span>)) <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;
+        }
+        visited[i][j] = <span class="hljs-keyword">false</span>;
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
+    }
+</code></pre>
 <p>&#x673A;&#x5668;&#x4EBA;&#x7684;&#x8FD0;&#x52A8;&#x8303;&#x56F4;&#xFF1A;</p>
 <p>&#x5730;&#x4E0A;&#x6709;&#x4E00;&#x4E2A;m&#x884C;&#x548C;n&#x5217;&#x7684;&#x65B9;&#x683C;&#x3002;&#x4E00;&#x4E2A;&#x673A;&#x5668;&#x4EBA;&#x4ECE;&#x5750;&#x6807;0,0&#x7684;&#x683C;&#x5B50;&#x5F00;&#x59CB;&#x79FB;&#x52A8;&#xFF0C;&#x6BCF;&#x4E00;&#x6B21;&#x53EA;&#x80FD;&#x5411;&#x5DE6;&#xFF0C;&#x53F3;&#xFF0C;&#x4E0A;&#xFF0C;&#x4E0B;&#x56DB;&#x4E2A;&#x65B9;&#x5411;&#x79FB;&#x52A8;&#x4E00;&#x683C;&#xFF0C;&#x4F46;&#x662F;&#x4E0D;&#x80FD;&#x8FDB;&#x5165;&#x884C;&#x5750;&#x6807;&#x548C;&#x5217;&#x5750;&#x6807;&#x7684;&#x6570;&#x4F4D;&#x4E4B;&#x548C;&#x5927;&#x4E8E;k&#x7684;&#x683C;&#x5B50;&#x3002; &#x4F8B;&#x5982;&#xFF0C;&#x5F53;k&#x4E3A;18&#x65F6;&#xFF0C;&#x673A;&#x5668;&#x4EBA;&#x80FD;&#x591F;&#x8FDB;&#x5165;&#x65B9;&#x683C;&#xFF08;35,37&#xFF09;&#xFF0C;&#x56E0;&#x4E3A;3+5+3+7 = 18&#x3002;&#x4F46;&#x662F;&#xFF0C;&#x5B83;&#x4E0D;&#x80FD;&#x8FDB;&#x5165;&#x65B9;&#x683C;&#xFF08;35,38&#xFF09;&#xFF0C;&#x56E0;&#x4E3A;3+5+3+8 = 19&#x3002;&#x8BF7;&#x95EE;&#x8BE5;&#x673A;&#x5668;&#x4EBA;&#x80FD;&#x591F;&#x8FBE;&#x5230;&#x591A;&#x5C11;&#x4E2A;&#x683C;&#x5B50;&#xFF1F;</p>
 <p>&#x601D;&#x8DEF;&#xFF1A;</p>
@@ -2630,7 +2677,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"79. Word Search","level":"1.10.12","depth":2,"next":{"title":"36. Valid Sudoku","level":"1.10.13","depth":2,"path":"alg/36_Valid_Sudoku.md","ref":"alg/36_Valid_Sudoku.md","articles":[]},"previous":{"title":"200. Number of Islands","level":"1.10.11","depth":2,"path":"alg/200_Number_of_Islands.md","ref":"alg/200_Number_of_Islands.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["theme-default"],"pluginsConfig":{"theme-default":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"file":{"path":"alg/79_Word_Search.md","mtime":"2019-02-18T19:54:42.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-07-02T21:55:49.879Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"79. Word Search","level":"1.10.12","depth":2,"next":{"title":"36. Valid Sudoku","level":"1.10.13","depth":2,"path":"alg/36_Valid_Sudoku.md","ref":"alg/36_Valid_Sudoku.md","articles":[]},"previous":{"title":"200. Number of Islands","level":"1.10.11","depth":2,"path":"alg/200_Number_of_Islands.md","ref":"alg/200_Number_of_Islands.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["theme-default"],"pluginsConfig":{"theme-default":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"file":{"path":"alg/79_Word_Search.md","mtime":"2019-07-10T21:16:29.091Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-07-11T21:41:46.803Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
