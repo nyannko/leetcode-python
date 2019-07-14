@@ -2504,8 +2504,42 @@
 <li>&#x57FA;&#x672C;&#xFF1A;getSize&#xFF0C;isEmpty</li>
 <li>&#x57FA;&#x7840;&#x64CD;&#x4F5C;&#xFF1A;insert&#xFF0C;search&#xFF08;get&#xFF0C;set&#xFF0C;contains&#xFF09;&#xFF0C;remove</li>
 <li>&#x5224;&#x65AD;&#x6709;&#x6548;&#x6027;&#xFF1A;isBST&#xFF0C;isBalancedTree</li>
+<li>&#x65CB;&#x8F6C;&#x64CD;&#x4F5C;&#xFF1A;LL&#xFF0C;RR&#xFF0C;LR&#xFF0C;RL</li>
 </ul>
-<p><img src="https://ww2.sinaimg.cn/large/006tNc79gy1g4yx6cot7cj30y80iu7jc.jpg"></p>
+<p><img src="https://ww2.sinaimg.cn/large/006tNc79gy1g5022nohy7j30pa0lmgp4.jpg"></p>
+<h4 id="ll-rr-lr-rl">LL, RR, LR, RL</h4>
+<p>AVL&#x548C;BST&#x6700;&#x5927;&#x7684;&#x533A;&#x522B;&#x5728;&#x4E8E;&#x5728;insert&#x8282;&#x70B9;&#x65F6;&#x9700;&#x8981;&#x8BA1;&#x7B97;&#x5F53;&#x524D;&#x7684;balance factor&#xFF0C;&#x7136;&#x540E;&#x5224;&#x65AD;&#x662F;&#x5426;&#x4E3A;LL&#xFF0C;RR&#xFF0C;LR&#xFF0C;RL&#x4E2D;&#x7684;&#x4EFB;&#x610F;&#x4E00;&#x79CD;&#xFF0C;&#x8FDB;&#x884C;&#x65CB;&#x8F6C;&#x540E;&#x518D;&#x8FD4;&#x56DE;&#x3002;</p>
+<p><img src="https://ww1.sinaimg.cn/large/006tNc79gy1g501sc6ftej30u00xin9k.jpg"></p>
+<p>LL&#x7684;&#x610F;&#x601D;: &#x5F53;&#x524D;&#x8282;&#x70B9;&#x7684;BF&#x503C;&gt;1&#x4E14;&#x5B83;&#x7684;&#x5DE6;&#x8282;&#x70B9;BF&gt;1&#x3002;RR&#x5C31;&#x662F;BF&#x90FD;&#x5C0F;&#x4E8E;1&#xFF0C;LR&#xFF0C;RL&#x540C;&#x7406;&#x3002;</p>
+<p>&#x7167;&#x7740;&#x65CB;&#x8F6C;&#x7684;&#x5B9A;&#x4E49;(&#x56FE;)&#x5199;&#xFF0C;L&#x9700;&#x8981;rightRotate&#xFF0C;R&#x9700;&#x8981;leftRotate:</p>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">private</span> Node <span class="hljs-title">rightRotate</span><span class="hljs-params">(Node y)</span> </span>{
+    Node x = y.left;
+    Node newLeft = x.right;
+
+    x.right = y;
+    y.left = newLeft;
+
+    <span class="hljs-comment">// update height of y, x</span>
+    y.height = Math.max(getHeight(y.left), getHeight(y.right)) + <span class="hljs-number">1</span>;
+    x.height = Math.max(getHeight(x.left), getHeight(x.right)) + <span class="hljs-number">1</span>;
+
+    <span class="hljs-keyword">return</span> x;
+}
+
+<span class="hljs-function"><span class="hljs-keyword">private</span> Node <span class="hljs-title">leftRotate</span><span class="hljs-params">(Node y)</span> </span>{
+    Node x = y.right;
+    Node newRight = x.left;
+
+    x.left = y;
+    y.right = newRight;
+
+    <span class="hljs-comment">// update height of y, x</span>
+    y.height = Math.max(getHeight(y.left), getHeight(y.right)) + <span class="hljs-number">1</span>;
+    x.height = Math.max(getHeight(x.left), getHeight(x.right)) + <span class="hljs-number">1</span>;
+
+    <span class="hljs-keyword">return</span> x;
+}
+</code></pre>
 <h4 id="code">Code:</h4>
 <p><a href="https://github.com/nyannko/leetcode-java/blob/master/src/ds/AVLTree/AVLTree.java" target="_blank">https://github.com/nyannko/leetcode-java/blob/master/src/ds/AVLTree/AVLTree.java</a></p>
 
@@ -2547,7 +2581,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"AVLTree","level":"1.18.2","depth":2,"previous":{"title":"BTree","level":"1.18.1","depth":2,"path":"ds/btree.md","ref":"ds/btree.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["theme-default"],"pluginsConfig":{"theme-default":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"file":{"path":"ds/avltree.md","mtime":"2019-07-13T21:41:59.886Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-07-13T21:44:18.406Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"AVLTree","level":"1.18.2","depth":2,"previous":{"title":"BTree","level":"1.18.1","depth":2,"path":"ds/btree.md","ref":"ds/btree.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["theme-default"],"pluginsConfig":{"theme-default":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"file":{"path":"ds/avltree.md","mtime":"2019-07-14T21:35:24.159Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-07-14T21:35:24.041Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
