@@ -6,7 +6,7 @@
         <!-- fix pic 403 -->
         <meta name="referrer" content="no-referrer" />
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>RedBlackTree · GitBook</title>
+        <title>🔴🌚🌳RedBlackTree · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -2444,7 +2444,7 @@
                 <a href="rbtree.html">
             
                     
-                    RedBlackTree
+                    🔴🌚🌳RedBlackTree
             
                 </a>
             
@@ -2458,6 +2458,32 @@
             
                     
                     SegmentTree
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.18.5" data-path="unionfind.html">
+            
+                <a href="unionfind.html">
+            
+                    
+                    UnionFind
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.18.6" data-path="trie.html">
+            
+                <a href="trie.html">
+            
+                    
+                    Trie
             
                 </a>
             
@@ -2500,7 +2526,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >RedBlackTree</a>
+        <a href=".." >🔴🌚🌳RedBlackTree</a>
     </h1>
 </div>
 
@@ -2530,7 +2556,22 @@
 </ol>
 <h4 id="4-rbtree&#x7684;&#x57FA;&#x672C;&#x64CD;&#x4F5C;">4. rbtree&#x7684;&#x57FA;&#x672C;&#x64CD;&#x4F5C;</h4>
 <p>&#x63D2;&#x5165;&#x4E00;&#x4E2A;&#x65B0;&#x8282;&#x70B9;&#x7684;&#x903B;&#x8F91;&#x94FE;&#x5982;&#x4E0B;&#x56FE;&#xFF0C;&#x6709;&#x7EA2;&#xFF0C;&#x7EFF;&#xFF0C;&#x84DD;&#x4E09;&#x6761;&#x4E3B;&#x7EBF;&#xFF0C;&#x5728;&#x4EE3;&#x7801;&#x4E2D;&#x5206;&#x522B;&#x5199;&#x6210;&#x4E09;&#x4E2A;if&#x8BED;&#x53E5;&#x5224;&#x65AD;</p>
-<p><img src="https://ww3.sinaimg.cn/large/006tNc79gy1g51uj7dz6hj30zu0u0h2o.jpg"></p>
+<p><img src="https://ww2.sinaimg.cn/large/006tNc79gy1g54n4t6f6qj30vo0s8wp4.jpg"></p>
+<pre><code class="lang-java"><span class="hljs-comment">// left rotate &#x53F3;&#x8FB9;&#x8282;&#x70B9;&#x7EA2;&#x8272;&#xFF0C;&#x5DE6;&#x8FB9;&#x8282;&#x70B9;&#x9ED1;&#x8272;</span>
+<span class="hljs-keyword">if</span> (isRed(node.right) &amp;&amp; !isRed(node.left)) {
+    node = leftRotate(node);
+}
+
+<span class="hljs-comment">// right rotate</span>
+<span class="hljs-keyword">if</span> (isRed(node.left) &amp;&amp; isRed(node.left.left)) {
+    node = rightRotate(node);
+}
+
+<span class="hljs-comment">// flip color</span>
+<span class="hljs-keyword">if</span> (isRed(node.left) &amp;&amp; isRed(node.right)) {
+    flipColors(node);
+}
+</code></pre>
 <h4 id="5&#x53EF;&#x89C6;&#x5316;">5.&#x53EF;&#x89C6;&#x5316;</h4>
 <p>&#x624B;&#x7ED8;&#x7B80;&#x5355;&#x6D4B;&#x8BD5;&#x6570;&#x636E;&#xFF1A;</p>
 <pre><code>&#x84DD;&#x7EBF;&#x903B;&#x8F91;&#xFF1A;6,2,8
@@ -2546,6 +2587,8 @@
 <p>bst: &#x9002;&#x7528;&#x4E8E;&#x5B8C;&#x5168;&#x968F;&#x673A;&#x7684;&#x6570;&#x636E;</p>
 <p>rbtree: &#x589E;&#x5220;&#x5360;&#x4F18;&#x52BF;&#xFF0C;&#x7EDF;&#x8BA1;&#x6027;&#x80FD;(crud)&#x5360;&#x4F18;&#x52BF;&#xFF0C;&#x727A;&#x7272;&#x5E73;&#x8861;&#x6027;&#xFF0C;&#x6709;&#x53EF;&#x80FD;&#x9000;&#x5316;&#x6210;&#x94FE;&#x8868;</p>
 <p>avltree: &#x67E5;&#x8BE2;&#x5360;&#x4F18;&#x52BF;</p>
+<h4 id="code">code</h4>
+<p><a href="https://github.com/nyannko/leetcode-java/blob/master/src/ds/rbtree/RBTree.java" target="_blank">https://github.com/nyannko/leetcode-java/blob/master/src/ds/rbtree/RBTree.java</a></p>
 
                                 
                                 </section>
@@ -2589,7 +2632,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"RedBlackTree","level":"1.18.3","depth":2,"next":{"title":"SegmentTree","level":"1.18.4","depth":2,"path":"ds/segmenttree.md","ref":"ds/segmenttree.md","articles":[]},"previous":{"title":"AVLTree","level":"1.18.2","depth":2,"path":"ds/avltree.md","ref":"ds/avltree.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["theme-default"],"pluginsConfig":{"theme-default":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"file":{"path":"ds/rbtree.md","mtime":"2019-07-16T20:25:20.091Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-07-16T20:26:22.594Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"🔴🌚🌳RedBlackTree","level":"1.18.3","depth":2,"next":{"title":"SegmentTree","level":"1.18.4","depth":2,"path":"ds/segmenttree.md","ref":"ds/segmenttree.md","articles":[]},"previous":{"title":"AVLTree","level":"1.18.2","depth":2,"path":"ds/avltree.md","ref":"ds/avltree.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["theme-default"],"pluginsConfig":{"theme-default":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"file":{"path":"ds/rbtree.md","mtime":"2019-07-18T20:37:43.955Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-07-18T21:06:09.328Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

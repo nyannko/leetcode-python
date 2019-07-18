@@ -59,6 +59,8 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
+    <link rel="next" href="unionfind.html" />
+    
     
     <link rel="prev" href="rbtree.html" />
     
@@ -2442,7 +2444,7 @@
                 <a href="rbtree.html">
             
                     
-                    RedBlackTree
+                    🔴🌚🌳RedBlackTree
             
                 </a>
             
@@ -2456,6 +2458,32 @@
             
                     
                     SegmentTree
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.18.5" data-path="unionfind.html">
+            
+                <a href="unionfind.html">
+            
+                    
+                    UnionFind
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.18.6" data-path="trie.html">
+            
+                <a href="trie.html">
+            
+                    
+                    Trie
             
                 </a>
             
@@ -2515,11 +2543,27 @@
                                 
                                 <h3 id="segment-tree">Segment tree</h3>
 <h4 id="1&#x5B9A;&#x4E49;">1.&#x5B9A;&#x4E49;</h4>
+<p>&#x50A8;&#x5B58;&#x533A;&#x95F4;&#x6570;&#x636E;&#x7684;&#x4E8C;&#x53C9;&#x6811;&#xFF0C;&#x6BCF;&#x4E2A;&#x8282;&#x70B9;&#x8868;&#x793A;&#x4E00;&#x4E2A;&#x533A;&#x95F4;(&#x7ECF;&#x8FC7;&#x64CD;&#x4F5C;&#x8FC7;&#x540E;&#x7684;&#x7ED3;&#x679C;)</p>
+<p><img src="https://ww2.sinaimg.cn/large/006tNc79gy1g534cc9aewj30rm0d8jvh.jpg"></p>
 <p>&#x533A;&#x95F4;&#x6709;n&#x4E2A;&#x5143;&#x7D20;&#xFF0C;&#x6570;&#x7EC4;&#x8868;&#x793A;&#x9700;&#x8981;&#x6709;&#x591A;&#x5C11;&#x8282;&#x70B9;&#xFF1F;</p>
 <ul>
 <li>&#x6700;&#x597D;&#x60C5;&#x51B5;: &#x521A;&#x597D;&#x4E3A;&#x6EE1;&#x4E8C;&#x53C9;&#x6811;(n = 2^k)&#xFF0C;&#x4E3A;2n&#x7A7A;&#x95F4;</li>
 <li>&#x6700;&#x5DEE;&#x60C5;&#x51B5;: &#x521A;&#x597D;&#x6EE1;&#x4E8C;&#x53C9;&#x6811;&#x591A;&#x51FA;&#x6765;&#x4E00;&#x4E2A;(n = 2^k + 1)&#xFF0C;&#x4E3A;4n&#x7A7A;&#x95F4;</li>
 </ul>
+<h4 id="2&#x76EE;&#x6807;">2.&#x76EE;&#x6807;</h4>
+<p>&#x9AD8;&#x6548;(<code>O(logn)</code>)&#x8FDB;&#x884C;&#x533A;&#x95F4;&#x66F4;&#x65B0;&#xFF0C;&#x67E5;&#x8BE2;&#xFF1A;2011~2014&#x5E74;&#x7684;&#x5E73;&#x5747;&#xFF0C;&#x6700;&#x9AD8;&#xFF0C;&#x6700;&#x4F4E;&#x6E29;&#x5EA6;</p>
+<p>&#x666E;&#x901A;&#x6570;&#x7EC4;&#x7684;&#x65F6;&#x95F4;&#x590D;&#x6742;&#x5EA6;&#x4E3A;<code>O(n)</code></p>
+<h4 id="3&#x57FA;&#x672C;&#x64CD;&#x4F5C;&#x8FD8;&#x662F;&#x9012;&#x5F52;">3.&#x57FA;&#x672C;&#x64CD;&#x4F5C;(&#x8FD8;&#x662F;&#x9012;&#x5F52;)</h4>
+<p>&#x521D;&#x59CB;&#x5316;&#xFF0C;&#x66F4;&#x65B0;&#xFF0C;&#x67E5;&#x8BE2;</p>
+<p>&#x6CE8;&#x610F;&#xFF1A;&#x8282;&#x70B9;&#x5BB9;&#x91CF;&#xFF1B;&#x9012;&#x5F52;&#x8FB9;&#x754C;&#xFF1B;constructor&#x91CC;&#x9762;return&#x5417;&#xFF1F;&#x629B;&#x51FA;&#x5F02;&#x5E38;&#x5417;&#xFF1F;</p>
+<h4 id="4&#x6269;&#x5C55;">4.&#x6269;&#x5C55;</h4>
+<p>1.&#x533A;&#x95F4;&#x66F4;&#x65B0;(lazy update, &#x8BB0;&#x5F55;lazy&#x6570;&#x7EC4;&#xFF0C;&#x8BBF;&#x95EE;&#x5230;&#x65F6;&#x518D;&#x66F4;&#x65B0;)
+2.&#x4E8C;&#x7EF4;&#x7EBF;&#x6BB5;&#x6811;
+3.&#x52A8;&#x6001;&#x7EBF;&#x6BB5;&#x6811;
+4.binary index tree
+5.range minimum query</p>
+<h4 id="code">code</h4>
+<p><a href="https://github.com/nyannko/leetcode-java/blob/master/src/ds/segmenttree/SegmentTree.java" target="_blank">https://github.com/nyannko/leetcode-java/blob/master/src/ds/segmenttree/SegmentTree.java</a></p>
 
                                 
                                 </section>
@@ -2547,10 +2591,14 @@
 
             
                 
-                <a href="rbtree.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: RedBlackTree">
+                <a href="rbtree.html" class="navigation navigation-prev " aria-label="Previous page: 🔴🌚🌳RedBlackTree">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
+                
+                <a href="unionfind.html" class="navigation navigation-next " aria-label="Next page: UnionFind">
+                    <i class="fa fa-angle-right"></i>
+                </a>
                 
             
         
@@ -2559,7 +2607,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"SegmentTree","level":"1.18.4","depth":2,"previous":{"title":"RedBlackTree","level":"1.18.3","depth":2,"path":"ds/rbtree.md","ref":"ds/rbtree.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["theme-default"],"pluginsConfig":{"theme-default":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"file":{"path":"ds/segmenttree.md","mtime":"2019-07-16T20:25:06.994Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-07-16T20:26:22.594Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"SegmentTree","level":"1.18.4","depth":2,"next":{"title":"UnionFind","level":"1.18.5","depth":2,"path":"ds/unionfind.md","ref":"ds/unionfind.md","articles":[]},"previous":{"title":"🔴🌚🌳RedBlackTree","level":"1.18.3","depth":2,"path":"ds/rbtree.md","ref":"ds/rbtree.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["theme-default"],"pluginsConfig":{"theme-default":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"file":{"path":"ds/segmenttree.md","mtime":"2019-07-18T20:37:55.576Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-07-18T21:06:09.328Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

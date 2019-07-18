@@ -2444,7 +2444,7 @@
                 <a href="rbtree.html">
             
                     
-                    RedBlackTree
+                    🔴🌚🌳RedBlackTree
             
                 </a>
             
@@ -2458,6 +2458,32 @@
             
                     
                     SegmentTree
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.18.5" data-path="unionfind.html">
+            
+                <a href="unionfind.html">
+            
+                    
+                    UnionFind
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.18.6" data-path="trie.html">
+            
+                <a href="trie.html">
+            
+                    
+                    Trie
             
                 </a>
             
@@ -2515,16 +2541,18 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h3 id="avl-tree">AVL Tree</h3>
-<h4 id="&#x5B9A;&#x4E49;">&#x5B9A;&#x4E49;:</h4>
+                                <h3 id="avl-tree">AVL tree</h3>
+<h4 id="1&#x5B9A;&#x4E49;">1.&#x5B9A;&#x4E49;</h4>
 <ul>
 <li>&#x5BF9;&#x4E8E;&#x6811;&#x4E2D;&#x7684;&#x4EFB;&#x610F;&#x4E00;&#x4E2A;&#x8282;&#x70B9;&#xFF0C;&#x5B83;&#x7684;&#x5DE6;&#x5B50;&#x6811;&#x548C;&#x53F3;&#x5B50;&#x6811;&#x7684;&#x9AD8;&#x5EA6;&#x5DEE;(&#x5E73;&#x8861;&#x56E0;&#x5B50;balance factor)&#x4E0D;&#x8D85;&#x8FC7;1</li>
 <li>&#x5E73;&#x8861;&#x4E8C;&#x53C9;&#x6811;&#x7684;&#x9AD8;&#x5EA6;&#x548C;&#x8282;&#x70B9;&#x6570;&#x91CF;&#x662F;<code>O(logn)</code>&#x7EA7;&#x522B;&#x7684;</li>
 <li>&#x6539;&#x8FDB;bst&#x4E2D;&#x53EF;&#x80FD;&#x4F1A;&#x9000;&#x5316;&#x6210;&#x94FE;&#x8868;&#x7684;&#x6027;&#x8D28;</li>
 </ul>
-<h4 id="&#x4F8B;&#x5B50;">&#x4F8B;&#x5B50;:</h4>
+<h4 id="2&#x76EE;&#x6807;">2.&#x76EE;&#x6807;</h4>
+<p>&#x81EA;&#x5E73;&#x8861;&#xFF0C;&#x51CF;&#x5C11;&#x6811;&#x9AD8;</p>
+<p>&#x4F8B;&#x5B50;</p>
 <p><img src="https://ww4.sinaimg.cn/large/006tNc79gy1g4yqgyt86kj30ns0asn05.jpg" width="500"></p>
-<h4 id="&#x7C7B;&#x53CA;&#x5176;&#x51FD;&#x6570;">&#x7C7B;&#x53CA;&#x5176;&#x51FD;&#x6570;:</h4>
+<h4 id="3-1&#x57FA;&#x672C;&#x64CD;&#x4F5C;">3-1.&#x57FA;&#x672C;&#x64CD;&#x4F5C;</h4>
 <p>&#x8981;&#x5B8C;&#x6210;&#x4E00;&#x4E2A;AVL Tree&#xFF0C;&#x9700;&#x8981;&#x4E0B;&#x9762;&#x51E0;&#x4E2A;&#x7C7B;&#xFF0C;&#x53D8;&#x91CF;&#x548C;&#x51FD;&#x6570;</p>
 <ul>
 <li>&#x7C7B;&#xFF1A;Node</li>
@@ -2535,7 +2563,7 @@
 <li>&#x65CB;&#x8F6C;&#x64CD;&#x4F5C;&#xFF1A;LL&#xFF0C;RR&#xFF0C;LR&#xFF0C;RL</li>
 </ul>
 <p><img src="https://ww2.sinaimg.cn/large/006tNc79gy1g5022nohy7j30pa0lmgp4.jpg"></p>
-<h4 id="ll-rr-lr-rl">LL, RR, LR, RL</h4>
+<h4 id="3-2ll-rr-lr-rl">3-2.LL, RR, LR, RL</h4>
 <p>AVL&#x548C;BST&#x6700;&#x5927;&#x7684;&#x533A;&#x522B;&#x5728;&#x4E8E;&#x5728;insert&#x8282;&#x70B9;&#x65F6;&#x9700;&#x8981;&#x8BA1;&#x7B97;&#x5F53;&#x524D;&#x7684;balance factor&#xFF0C;&#x7136;&#x540E;&#x5224;&#x65AD;&#x662F;&#x5426;&#x4E3A;LL&#xFF0C;RR&#xFF0C;LR&#xFF0C;RL&#x4E2D;&#x7684;&#x4EFB;&#x610F;&#x4E00;&#x79CD;&#xFF0C;&#x8FDB;&#x884C;&#x65CB;&#x8F6C;&#x540E;&#x518D;&#x8FD4;&#x56DE;&#x3002;</p>
 <p><img src="https://ww1.sinaimg.cn/large/006tNc79gy1g514kifuirj30ti0zmn9e.jpg"></p>
 <p>LL&#x7684;&#x610F;&#x601D;: &#x5F53;&#x524D;&#x8282;&#x70B9;&#x7684;BF&#x503C;&gt;1&#x4E14;&#x5B83;&#x7684;&#x5DE6;&#x8282;&#x70B9;BF&gt;1&#x3002;RR&#x5C31;&#x662F;BF&#x90FD;&#x5C0F;&#x4E8E;1&#xFF0C;LR&#xFF0C;RL&#x540C;&#x7406;&#x3002;</p>
@@ -2568,7 +2596,7 @@
     <span class="hljs-keyword">return</span> x;
 }
 </code></pre>
-<h4 id="code">Code:</h4>
+<h4 id="code">Code</h4>
 <p><a href="https://github.com/nyannko/leetcode-java/blob/master/src/ds/AVLTree/AVLTree.java" target="_blank">https://github.com/nyannko/leetcode-java/blob/master/src/ds/AVLTree/AVLTree.java</a></p>
 
                                 
@@ -2602,7 +2630,7 @@
                 </a>
                 
                 
-                <a href="rbtree.html" class="navigation navigation-next " aria-label="Next page: RedBlackTree">
+                <a href="rbtree.html" class="navigation navigation-next " aria-label="Next page: 🔴🌚🌳RedBlackTree">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -2613,7 +2641,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"AVLTree","level":"1.18.2","depth":2,"next":{"title":"RedBlackTree","level":"1.18.3","depth":2,"path":"ds/rbtree.md","ref":"ds/rbtree.md","articles":[]},"previous":{"title":"BTree","level":"1.18.1","depth":2,"path":"ds/btree.md","ref":"ds/btree.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["theme-default"],"pluginsConfig":{"theme-default":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"file":{"path":"ds/avltree.md","mtime":"2019-07-15T19:18:43.182Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-07-16T20:26:22.594Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"AVLTree","level":"1.18.2","depth":2,"next":{"title":"🔴🌚🌳RedBlackTree","level":"1.18.3","depth":2,"path":"ds/rbtree.md","ref":"ds/rbtree.md","articles":[]},"previous":{"title":"BTree","level":"1.18.1","depth":2,"path":"ds/btree.md","ref":"ds/btree.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["theme-default"],"pluginsConfig":{"theme-default":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"file":{"path":"ds/avltree.md","mtime":"2019-07-18T10:24:53.753Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-07-18T21:06:09.328Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
