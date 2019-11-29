@@ -6,7 +6,7 @@
         <!-- fix pic 403 -->
         <meta name="referrer" content="no-referrer" />
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>7. Reverse Integer · GitBook</title>
+        <title>409. Longest Palindrome · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -59,10 +59,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="2_Add_Two_Numbers.html" />
+    <link rel="next" href="../1_linkedlist.html" />
     
     
-    <link rel="prev" href="905_Sort_Array_By_Parity.html" />
+    <link rel="prev" href="125_Valid_Palindrome.html" />
     
 
     </head>
@@ -527,7 +527,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6.3" data-path="409_Longest_Palindrome.html">
+        <li class="chapter active" data-level="1.6.3" data-path="409_Longest_Palindrome.html">
             
                 <a href="409_Longest_Palindrome.html">
             
@@ -1559,7 +1559,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.9.13" data-path="7_Reverse_Integer.html">
+        <li class="chapter " data-level="1.9.13" data-path="7_Reverse_Integer.html">
             
                 <a href="7_Reverse_Integer.html">
             
@@ -2623,7 +2623,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >7. Reverse Integer</a>
+        <a href=".." >409. Longest Palindrome</a>
     </h1>
 </div>
 
@@ -2638,45 +2638,40 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h3 id="7-reverse-integer">7. Reverse Integer</h3>
-<p>&#x96BE;&#x70B9;&#x5728;&#x6EA2;&#x51FA;&#xFF0C;&#x5982;&#x679C;&#x662F;python&#x7684;&#x8BDD;&#x8FD8;&#x8981;&#x8003;&#x8651;&#x7B26;&#x53F7;&#xFF0C;&#x56E0;&#x4E3A;python&#x4E2D;<code>-123 % 10 = 7</code></p>
-<p>&#x9884;&#x5148;&#x8BA1;&#x7B97;</p>
-<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">reverse</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span> </span>{
+                                <h3 id="409-longest-palindrome">409. Longest Palindrome</h3>
+<p>set, map, array&#x7684;&#x57FA;&#x672C;&#x7528;&#x6CD5;&#xFF0C;&#x4F18;&#x5148;&#x4F7F;&#x7528;array; palindrome&#x6027;&#x8D28;(&#x5141;&#x8BB8;&#x5B58;&#x5728;&#x4E00;&#x4E2A;&#x5B57;&#x7B26;&#x4E3A;&#x5947;&#x6570;&#x7684;&#x5B57;&#x7B26;&#x4E32;)</p>
+<p>1.set:</p>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">longestPalindrome</span><span class="hljs-params">(String s)</span> </span>{
+    Set&lt;Character&gt; set = <span class="hljs-keyword">new</span> HashSet&lt;&gt;();
+    <span class="hljs-keyword">int</span> count = <span class="hljs-number">0</span>;
+
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">char</span> a : s.toCharArray()) {
+        <span class="hljs-keyword">if</span> (set.contains(a)) {
+            set.remove(a);
+            count++;
+        } <span class="hljs-keyword">else</span> {
+            set.add(a);
+        }
+    }
+    <span class="hljs-keyword">return</span> set.isEmpty() ? count * <span class="hljs-number">2</span> : count * <span class="hljs-number">2</span> + <span class="hljs-number">1</span>;
+}
+</code></pre>
+<p>2.array:</p>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">longestPalindrome</span><span class="hljs-params">(String s)</span> </span>{
+    <span class="hljs-keyword">int</span>[] count = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[<span class="hljs-number">128</span>];
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">char</span> c : s.toCharArray()) {
+        count[c]++;
+    }
+
     <span class="hljs-keyword">int</span> res = <span class="hljs-number">0</span>;
-    <span class="hljs-keyword">while</span> (x != <span class="hljs-number">0</span>) {
-        <span class="hljs-keyword">if</span> (Integer.MAX_VALUE / <span class="hljs-number">10</span> == res &amp;&amp; Integer.MAX_VALUE % <span class="hljs-number">10</span> &lt; (x % <span class="hljs-number">10</span>) || Integer.MAX_VALUE / <span class="hljs-number">10</span> &lt; res) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
-        <span class="hljs-keyword">if</span> (Integer.MIN_VALUE / <span class="hljs-number">10</span> == res &amp;&amp; Integer.MIN_VALUE % <span class="hljs-number">10</span> &gt; (x % <span class="hljs-number">10</span>) || Integer.MIN_VALUE / <span class="hljs-number">10</span> &gt; res) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
-        res = res * <span class="hljs-number">10</span> + x % <span class="hljs-number">10</span>;
-        x = x / <span class="hljs-number">10</span>;
+    <span class="hljs-keyword">int</span> odd_count = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> value : count) {
+        <span class="hljs-keyword">if</span> (value % <span class="hljs-number">2</span> == <span class="hljs-number">1</span>) odd_count++;
+        res += value;
     }
-    <span class="hljs-keyword">return</span> res;
+    <span class="hljs-keyword">return</span> odd_count &gt; <span class="hljs-number">0</span> ? res - odd_count + <span class="hljs-number">1</span> : res;
 }
 </code></pre>
-<p>&#x4E2D;&#x95F4;&#x548C;&#x65E7;&#x503C;&#x8FDB;&#x884C;&#x6BD4;&#x8F83;</p>
-<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">reverse</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span> </span>{
-    <span class="hljs-keyword">int</span> res = <span class="hljs-number">0</span>, cmp = <span class="hljs-number">0</span>;
-    <span class="hljs-keyword">while</span> (x != <span class="hljs-number">0</span>) {
-        cmp = cmp * <span class="hljs-number">10</span> + x % <span class="hljs-number">10</span>;
-        <span class="hljs-keyword">if</span> ((cmp -(x % <span class="hljs-number">10</span>)) / <span class="hljs-number">10</span> != res) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
-        x = x / <span class="hljs-number">10</span>;
-        res = cmp;
-    }
-    <span class="hljs-keyword">return</span> res;
-}
-</code></pre>
-<p>&#x4EE5;<code>-2147483648</code>&#x4E3A;&#x4F8B;&#x5B50;&#xFF0C;&#x8F93;&#x51FA;&#x7ED3;&#x679C;&#x4E3A;</p>
-<pre><code class="lang-java"><span class="hljs-number">0</span>
--<span class="hljs-number">8</span>
--<span class="hljs-number">84</span>
--<span class="hljs-number">846</span>
--<span class="hljs-number">8463</span>
--<span class="hljs-number">84638</span>
--<span class="hljs-number">846384</span>
--<span class="hljs-number">8463847</span>
--<span class="hljs-number">84638474</span>
-<span class="hljs-number">12608718</span>
-</code></pre>
-<p>&#x7136;&#x540E;&#x6709;&#x4E9B;&#x7B54;&#x6848;&#x91CC;&#x662F;res&#x4E3A;long&#x76F4;&#x63A5;&#x5224;&#x65AD;&#x3002;</p>
 
                                 
                                 </section>
@@ -2704,12 +2699,12 @@
 
             
                 
-                <a href="905_Sort_Array_By_Parity.html" class="navigation navigation-prev " aria-label="Previous page: 905. Sort Array By Parity">
+                <a href="125_Valid_Palindrome.html" class="navigation navigation-prev " aria-label="Previous page: 125. Valid Palindrome">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="2_Add_Two_Numbers.html" class="navigation navigation-next " aria-label="Next page: 2. Add Two Numbers">
+                <a href="../1_linkedlist.html" class="navigation navigation-next " aria-label="Next page: Linked List">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -2720,7 +2715,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"7. Reverse Integer","level":"1.9.13","depth":2,"next":{"title":"2. Add Two Numbers","level":"1.9.14","depth":2,"path":"alg/2_Add_Two_Numbers.md","ref":"alg/2_Add_Two_Numbers.md","articles":[]},"previous":{"title":"905. Sort Array By Parity","level":"1.9.12","depth":2,"path":"alg/905_Sort_Array_By_Parity.md","ref":"alg/905_Sort_Array_By_Parity.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["theme-default"],"pluginsConfig":{"theme-default":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"file":{"path":"alg/7_Reverse_Integer.md","mtime":"2019-02-12T07:05:45.647Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-11-29T22:43:41.771Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"409. Longest Palindrome","level":"1.6.3","depth":2,"next":{"title":"Linked List","level":"1.7","depth":1,"path":"1_linkedlist.md","ref":"1_linkedlist.md","articles":[{"title":"206. Reverse Linked List","level":"1.7.1","depth":2,"path":"alg/206_Reverse_Linked_List.md","ref":"alg/206_Reverse_Linked_List.md","articles":[]},{"title":"24. Swap Nodes in Pairs","level":"1.7.2","depth":2,"path":"alg/24_Swap_Nodes_in_Pairs.md","ref":"alg/24_Swap_Nodes_in_Pairs.md","articles":[]},{"title":"876. Middle of the Linked List","level":"1.7.3","depth":2,"path":"alg/876_Middle_of_the_Linked_List.md","ref":"alg/876_Middle_of_the_Linked_List.md","articles":[]},{"title":"141. Linked List Cycle","level":"1.7.4","depth":2,"path":"alg/141_Linked_List_Cycle.md","ref":"alg/141_Linked_List_Cycle.md","articles":[]},{"title":"142. Linked List Cycle II","level":"1.7.5","depth":2,"path":"alg/142_Linked_List_Cycle_II.md","ref":"alg/142_Linked_List_Cycle_II.md","articles":[]},{"title":"160. Intersection of Two Linked Lists","level":"1.7.6","depth":2,"path":"alg/160_Intersection_of_Two_Linked_Lists.md","ref":"alg/160_Intersection_of_Two_Linked_Lists.md","articles":[]},{"title":"237. Delete Node in a Linked List","level":"1.7.7","depth":2,"path":"alg/237_Delete_Node_in_a_Linked_List.md","ref":"alg/237_Delete_Node_in_a_Linked_List.md","articles":[]},{"title":"203. Remove Linked List Elements","level":"1.7.8","depth":2,"path":"alg/203_Remove_Linked_List_Elements.md","ref":"alg/203_Remove_Linked_List_Elements.md","articles":[]},{"title":"83. Remove Duplicates from Sorted List","level":"1.7.9","depth":2,"path":"alg/83_Remove_Duplicates_from_Sorted_List.md","ref":"alg/83_Remove_Duplicates_from_Sorted_List.md","articles":[]},{"title":"82. Remove Duplicates from Sorted List II","level":"1.7.10","depth":2,"path":"alg/82_Remove_Duplicates_from_Sorted_List_II.md","ref":"alg/82_Remove_Duplicates_from_Sorted_List_II.md","articles":[]},{"title":"86. Partition List","level":"1.7.11","depth":2,"path":"alg/86_Partition_List.md","ref":"alg/86_Partition_List.md","articles":[]},{"title":"234. Palindrome Linked List","level":"1.7.12","depth":2,"path":"alg/234_Palindrome_Linked_List.md","ref":"alg/234_Palindrome_Linked_List.md","articles":[]},{"title":"143. Reorder List","level":"1.7.13","depth":2,"path":"alg/143_Reorder_List.md","ref":"alg/143_Reorder_List.md","articles":[]},{"title":"147. Insertion Sort List","level":"1.7.14","depth":2,"path":"alg/147_Insertion_Sort_List.md","ref":"alg/147_Insertion_Sort_List.md","articles":[]},{"title":"328. Odd Even Linked List","level":"1.7.15","depth":2,"path":"alg/328_Odd_Even_Linked_List.md","ref":"alg/328_Odd_Even_Linked_List.md","articles":[]},{"title":"148. Sort List","level":"1.7.16","depth":2,"path":"alg/148_Sort_List.md","ref":"alg/148_Sort_List.md","articles":[]},{"title":"21. Merge Two Sorted Lists","level":"1.7.17","depth":2,"path":"alg/21_Merge_Two_Sorted_Lists.md","ref":"alg/21_Merge_Two_Sorted_Lists.md","articles":[]},{"title":"23. Merge k Sorted Lists","level":"1.7.18","depth":2,"path":"alg/23_Merge_k_Sorted_Lists.md","ref":"alg/23_Merge_k_Sorted_Lists.md","articles":[]},{"title":"146. LRU Cache","level":"1.7.19","depth":2,"path":"alg/146_LRU_Cache.md","ref":"alg/146_LRU_Cache.md","articles":[]},{"title":"817. Linked List Components","level":"1.7.20","depth":2,"path":"alg/817_Linked_List_Components.md","ref":"alg/817_Linked_List_Components.md","articles":[]},{"title":"707. Design Linked List","level":"1.7.21","depth":2,"path":"alg/707_Design_Linked_List.md","ref":"alg/707_Design_Linked_List.md","articles":[]},{"title":"19. Remove Nth Node From End of List","level":"1.7.22","depth":2,"path":"alg/19_Remove_Nth_Node_From_End_of_List.md","ref":"alg/19_Remove_Nth_Node_From_End_of_List.md","articles":[]}]},"previous":{"title":"125. Valid Palindrome","level":"1.6.2","depth":2,"path":"alg/125_Valid_Palindrome.md","ref":"alg/125_Valid_Palindrome.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["theme-default"],"pluginsConfig":{"theme-default":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"file":{"path":"alg/409_Longest_Palindrome.md","mtime":"2019-11-27T17:53:42.530Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-11-29T22:43:41.771Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
