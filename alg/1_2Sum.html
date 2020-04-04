@@ -2639,7 +2639,7 @@
                                 <section class="normal markdown-section">
                                 
                                 <h3 id="1-2sum">1. 2Sum</h3>
-<p>&#x5B57;&#x5178;&#x6CD5;&#xFF0C;&#x5C06;&#x539F;&#x5B57;&#x5178;key&#x548C;value&#x8F6C;&#x6362;&#xFF0C;&#x904D;&#x5386;&#x4E00;&#x6B21;&#x6570;&#x7EC4;&#x5E76;&#x8FD4;&#x56DE;&#x7B2C;&#x4E00;&#x4E2A;&#x6570;&#x5B57;&#x51FA;&#x73B0;&#x7684;index&#x548C;&#x5F53;&#x524D;&#x6570;&#x5B57;&#x7684;index&#x3002;</p>
+<p>&#x5B57;&#x5178;&#x6CD5;&#xFF0C;&#x5C06;&#x539F;&#x5B57;&#x5178;key&#x548C;value&#x8F6C;&#x6362;&#xFF0C;&#x904D;&#x5386;&#x4E00;&#x6B21;&#x6570;&#x7EC4;&#x5E76;&#x8FD4;&#x56DE;&#x7B2C;&#x4E00;&#x4E2A;&#x6570;&#x5B57;&#x51FA;&#x73B0;&#x7684;index&#x548C;&#x5F53;&#x524D;&#x6570;&#x5B57;&#x7684;index&#x3002;&#x5728;&#x540C;&#x4E00;&#x4E2A;loop&#x4E2D;&#x8FB9;&#x8BB0;&#x5FC6;&#x6570;&#x5B57;&#x51FA;&#x73B0;&#x7684;index&#xFF0C;&#x548C;&#x5224;&#x65AD;&#x5F53;&#x524D;&#x8865;&#x6570;&#x662F;&#x5426;&#x5728;&#x5B57;&#x5178;&#x4E2D;&#x3002;</p>
 <pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span>[] twoSum(<span class="hljs-keyword">int</span>[] nums, <span class="hljs-keyword">int</span> target) {
     Map&lt;Integer, Integer&gt; map = <span class="hljs-keyword">new</span> HashMap&lt;&gt;();
     <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; nums.length; i++) {
@@ -2654,6 +2654,10 @@
     <span class="hljs-keyword">return</span> <span class="hljs-keyword">null</span>;
 }
 </code></pre>
+<p>&#x53D8;&#x79CD;&#xFF1A;</p>
+<ol>
+<li>Two Sum II - Input array is sorted&#xFF0C;&#x7531;&#x4E8E;&#x6392;&#x5E8F;&#x7684;&#x7279;&#x6027;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x53CC;&#x6307;&#x9488;</li>
+</ol>
 
                                 
                                 </section>
@@ -2697,7 +2701,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"1. 2Sum","level":"1.5.12","depth":2,"next":{"title":"14. Longest Common Prefix","level":"1.5.13","depth":2,"path":"alg/14_Longest_Common_Prefix.md","ref":"alg/14_Longest_Common_Prefix.md","articles":[]},"previous":{"title":"135. Candy","level":"1.5.11","depth":2,"path":"alg/135_Candy.md","ref":"alg/135_Candy.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["theme-default"],"pluginsConfig":{"theme-default":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"file":{"path":"alg/1_2Sum.md","mtime":"2019-01-20T17:10:48.217Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-11-29T22:43:41.771Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"1. 2Sum","level":"1.5.12","depth":2,"next":{"title":"14. Longest Common Prefix","level":"1.5.13","depth":2,"path":"alg/14_Longest_Common_Prefix.md","ref":"alg/14_Longest_Common_Prefix.md","articles":[]},"previous":{"title":"135. Candy","level":"1.5.11","depth":2,"path":"alg/135_Candy.md","ref":"alg/135_Candy.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["theme-default"],"pluginsConfig":{"theme-default":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"file":{"path":"alg/1_2Sum.md","mtime":"2019-12-19T23:14:57.117Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-04T13:29:43.437Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
